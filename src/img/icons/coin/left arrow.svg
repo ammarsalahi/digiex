@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 10</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="dashboard" transform="translate(-32.000000, -654.000000)" fill="#000000">
+            <g id="Group-29" transform="translate(32.027727, 651.000000)">
+                <g id="Group-10" transform="translate(6.733762, 9.761489) scale(-1, 1) rotate(45.000000) translate(-6.733762, -9.761489) translate(1.972273, 5.000000)">
+                    <rect id="Rectangle" x="2.27373675e-13" y="0" width="9.52297794" height="1" rx="0.5"></rect>
+                    <path d="M4.76148897,4.26148897 L13.2844669,4.26148897 C13.5606093,4.26148897 13.7844669,4.48534659 13.7844669,4.76148897 C13.7844669,5.03763134 13.5606093,5.26148897 13.2844669,5.26148897 L4.76148897,5.26148897 C4.48534659,5.26148897 4.26148897,5.03763134 4.26148897,4.76148897 C4.26148897,4.48534659 4.48534659,4.26148897 4.76148897,4.26148897 Z" id="Rectangle" transform="translate(9.022978, 4.761489) rotate(90.000000) translate(-9.022978, -4.761489) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

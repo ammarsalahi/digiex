@@ -1,0 +1,67 @@
+.transaction-header{
+  padding-top: 3.1%;
+  padding-right: 2.4%;
+  font-size: 17px;
+}
+
+.transaction-list{
+    padding-right: 32px;
+    padding-left: 22px;
+    font-size:14px ;
+  }
+  .transaction-list-item{
+    padding-top: 20px;
+    padding-bottom:20px ;
+    padding-right: 27px;
+  }
+  .transaction-list-box{
+    margin-top: 15px;
+    margin-bottom:15px ;
+    margin-left: 12px;
+    padding-top: 7px !important;
+    font-size: 12px !important;
+  }
+  
+  .transaction-list-header{
+    font-size:14px ;
+    color: rgba(164, 166, 180, 1);
+    margin-right: 83px;
+    margin-left: 61px;
+    padding-top: 23px;
+    padding-bottom:23px ;
+  }
+  
+  .green-state{
+    height: 35px;
+    width: 90px;
+    color:#18af6a;
+    border: 1px solid #bafbe2;
+    background-color: #bafbe2;
+    border-radius: 7px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+  .yellow-state{
+    height: 35px;
+    width: 90px;
+    color:#96a526;
+    border: 1px solid #fbf4c6;
+    background-color: #fbf4c6;
+    border-radius: 7px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .red-state{
+    height: 35px;
+    width: 90px;
+    color:#d63838;
+    border: 1px solid #ffd1d2;
+    background-color: #ffd1d2;
+    border-radius: 7px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }

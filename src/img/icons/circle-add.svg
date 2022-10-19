@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 8</title>
+    <defs>
+        <path d="M12,24 C18.627417,24 24,18.627417 24,12 C24,5.372583 18.627417,0 12,0 C5.372583,0 0,5.372583 0,12 C0,18.627417 5.372583,24 12,24 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="24" height="24" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="input-/-add-cart" transform="translate(-289.000000, -73.000000)">
+            <g id="Group-9" transform="translate(131.000000, 73.000000)">
+                <g id="Group-8" transform="translate(158.000000, 0.000000)">
+                    <use id="Oval" stroke="#9DB0B6" mask="url(#mask-2)" stroke-width="2" stroke-dasharray="3,2" xlink:href="#path-1"></use>
+                    <g id="Group-3" transform="translate(6.000000, 6.000000)" fill="#9DB0B6">
+                        <rect id="Rectangle" x="0" y="5.53487395" width="12" height="1" rx="0.5"></rect>
+                        <path d="M0.409663863,5.59033615 L11.5903362,5.59033615 C11.8165873,5.59033615 12,5.7737489 12,6 C12,6.2262511 11.8165873,6.40966385 11.5903362,6.40966385 L0.409663863,6.40966385 C0.183412764,6.40966385 9.02218757e-09,6.2262511 9.02218744e-09,6 C9.02218741e-09,5.7737489 0.183412764,5.59033615 0.409663863,5.59033615 Z" id="Rectangle" transform="translate(6.000000, 6.000000) rotate(90.000000) translate(-6.000000, -6.000000) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

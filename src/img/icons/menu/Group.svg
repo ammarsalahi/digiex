@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35px" height="35px" viewBox="0 0 35 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <defs>
+        <linearGradient x1="22.6443147%" y1="6.41811898%" x2="77.8449786%" y2="87.045576%" id="linearGradient-1">
+            <stop stop-color="#5080FF" offset="0%"></stop>
+            <stop stop-color="#4D7EFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="75.6562564%" y1="6.79148377%" x2="20.6273708%" y2="90.3124211%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#0642DF" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-3" cx="12.4444444" cy="15.5555556" r="12.4444444"></circle>
+        <filter x="-29.1%" y="-21.1%" width="158.3%" height="158.3%" filterUnits="objectBoundingBox" id="filter-4">
+            <feMorphology radius="0.25" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.0235294118   0 0 0 0 0.258823529   0 0 0 0 0.874509804  0 0 0 0.296875 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <filter x="-25.1%" y="-17.1%" width="150.2%" height="150.2%" filterUnits="objectBoundingBox" id="filter-5">
+            <feGaussianBlur stdDeviation="1.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.540045892 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="right-menu" transform="translate(-230.000000, -144.000000)">
+            <g id="Group" transform="translate(235.139366, 144.000000)">
+                <path d="M13.4814815,0 C21.4998378,0 28,6.96445945 28,15.5555556 L12.4436209,15.555 L12.443188,0.0391662333 C12.7861337,0.0132022646 13.1323686,0 13.4814815,0 Z" id="Combined-Shape" fill="#0072FF"></path>
+                <g id="Oval" opacity="0.299432664">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-3"></use>
+                    <use stroke="url(#linearGradient-2)" stroke-width="0.5" xlink:href="#path-3"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,28 @@
+
+@media only screen and (max-width:700px){
+    .MuiStepLabel-labelContainer span {
+        font-size: 13px;
+        
+    }
+
+}
+
+
+@media only screen and (min-width:700px){
+    .MuiStepLabel-labelContainer span {
+        font-size: 16px;
+    }
+   
+}
+.stepcontent-mob{
+    padding-top: 62px;
+    padding-bottom: 32px;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+.stepcontent-desk{
+    padding-top: 62px;
+    padding-bottom: 32px;
+    padding-left: 13%;
+    padding-right: 13%;
+}

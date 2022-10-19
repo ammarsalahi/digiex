@@ -1,0 +1,97 @@
+html,body{
+  font-family: "IRANYekan" !important;
+  font-weight: lighter !important;
+}
+[class^="Mui"],
+[class^="Mui"] * {
+font-family: "IRANYekan"  !important;
+
+}
+[class*="Mui"],
+[class*="Mui"] * {
+font-family: "IRANYekan"  !important;
+
+}
+
+hr{
+  flex-grow: 1;
+  margin-left: 1%;
+  margin-right: 1%;
+  border-top: 1px dashed rgba(203, 228, 235, 1);
+  opacity: 1;
+}
+
+.maincontent{
+  padding-top:'32px';
+}
+
+
+.bordertop{
+border-top: 1px solid #a4a6b4;
+}
+
+.bordertop-bold{
+border-top: 2px solid #a4a6b4;
+}
+
+.borderbottom{
+border-bottom: 1px solid #a4a6b4;
+}
+.borderbottom-bold{
+border-bottom: 2px solid #a4a6b4;
+}
+
+.border-left{
+border-left: 1px solid #a4a6b4;
+}
+.border-left-bold{
+border-left: 2px solid #a4a6b4;
+}
+
+.border-right{
+border-right: 1px solid #a4a6b4;
+}
+.border-right-bold{
+border-right: 1px solid #a4a6b4;
+}
+.border-right-marginbold{
+border-right: 2px solid #a4a6b4;
+margin-top: 1%;
+margin-bottom: 1%;
+}
+
+.border-right-marginboldblue{
+  border-right: 2px solid #424BFB;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  }
+.full-border{
+border: 1px solid #a4a6b4;
+}
+
+.full-border-active{
+    border: 1px solid #0642df;
+}
+
+.infmargin{
+  padding-left: "10%";
+}
+
+
+.bg-card-img {
+  background-image: url("../img//icons/cart-bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+ input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}  
+.c{
+  color: #ffffff00
+}

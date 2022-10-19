@@ -1,0 +1,50 @@
+.helper-fontsize{
+  font-size: small;
+}
+.helper-btn{
+  border-radius: 25px;
+}
+
+.info-content{
+padding-top: 45px;
+padding-bottom: 30px;
+}
+.content-dashboard{
+  padding-top:32px;
+  padding-bottom:20px;
+  padding-left:32px;
+  padding-right:32px;
+}
+
+.info-list{
+  margin-top: 24px;
+  font-family: 'IRANYekanWebFn';
+  font-size: 14px;
+  font-weight: 300;
+  align-items: center;
+}
+
+@media only screen and (min-width:992px){
+  .form-button{
+    padding-top: 10px;
+    padding-bottom: 32px;
+  }
+  .info-card{
+    padding-top: 100px;
+    padding-bottom: 32px;
+
+  }
+}
+
+@media only screen and (min-width:600px){
+  .form-button{
+    padding-top: 21px;
+    padding-bottom: 24px;
+  }
+  .info-card{
+    padding-top: 114.4px;
+    padding-bottom: 24px;
+
+  }
+ 
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="551px" height="126px" viewBox="0 0 551 126" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 2</title>
+    <defs>
+        <linearGradient x1="100%" y1="50%" x2="1.11022302e-13%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#FAFBFF" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#8A93B9" stop-opacity="0.0987762238" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="50%" x2="1.11022302e-13%" y2="50%" id="linearGradient-2">
+            <stop stop-color="#FAFBFF" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#8A93B9" stop-opacity="0.1" offset="100%"></stop>
+        </linearGradient>
+        <filter x="0.0%" y="0.0%" width="100.0%" height="100.0%" filterUnits="objectBoundingBox" id="filter-3">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="buy---success" transform="translate(-209.000000, -115.000000)">
+            <g id="Group-2" transform="translate(209.000000, 115.000000)">
+                <rect id="Rectangle" fill="url(#linearGradient-1)" transform="translate(405.000000, 47.000000) scale(-1, 1) translate(-405.000000, -47.000000) " x="259" y="30" width="292" height="34"></rect>
+                <rect id="Rectangle" fill="url(#linearGradient-2)" x="1" y="64" width="292" height="34"></rect>
+                <line x1="0.517857143" y1="29.5" x2="550.482143" y2="29.5" id="Line-5" stroke="#979797" opacity="0.0881231399" stroke-linecap="square"></line>
+                <line x1="550.482143" y1="63.5" x2="0.517857143" y2="63.5" id="Line" stroke="#979797" opacity="0.0881231399" stroke-linecap="square"></line>
+                <line x1="550.482143" y1="97.5" x2="0.517857143" y2="97.5" id="Line-2" stroke="#979797" opacity="0.0881231399" stroke-linecap="square"></line>
+                <line x1="500.5" y1="0.636363636" x2="500.5" y2="125.363636" id="Line-6" stroke="#979797" opacity="0.0881231399" stroke-linecap="square"></line>
+                <line x1="550.5" y1="0.636363636" x2="550.5" y2="125.363636" id="Line-6" stroke="#979797" opacity="0.0881231399" stroke-linecap="square"></line>
+                <line x1="450.5" y1="0.636363636" x2="450.5" y2="125.363636" id="Line-6" stroke="#979797" opacity="0.0881231399" stroke-linecap="square"></line>
+                <line x1="400.5" y1="0.636363636" x2="400.5" y2="125.363636" id="Line-6" stroke="#979797" opacity="0.0881231399" stroke-linecap="square"></line>
+                <line x1="350.5" y1="0.636363636" x2="350.5" y2="125.363636" id="Line-6" stroke="#979797" opacity="0.0881231399" stroke-linecap="square"></line>
+                <line x1="300.5" y1="0.636363636" x2="300.5" y2="125.363636" id="Line-6" stroke="#979797" opacity="0.0881231399" stroke-linecap="square"></line>
+                <line x1="250.5" y1="0.636363636" x2="250.5" y2="125.363636" id="Line-6" stroke="#979797" opacity="0.0881231399" stroke-linecap="square"></line>
+                <line x1="200.5" y1="0.636363636" x2="200.5" y2="125.363636" id="Line-6" stroke="#979797" opacity="0.0881231399" stroke-linecap="square"></line>
+                <line x1="150.5" y1="0.636363636" x2="150.5" y2="125.363636" id="Line-6" stroke="#979797" opacity="0.0881231399" stroke-linecap="square"></line>
+                <line x1="100.5" y1="0.636363636" x2="100.5" y2="125.363636" id="Line-6" stroke="#979797" opacity="0.0881231399" stroke-linecap="square"></line>
+                <line x1="50.5" y1="0.636363636" x2="50.5" y2="125.363636" id="Line-6" stroke="#979797" opacity="0.0881231399" stroke-linecap="square"></line>
+                <line x1="0.5" y1="0.636363636" x2="0.5" y2="125.363636" id="Line-6" stroke="#979797" opacity="0.0881231399" stroke-linecap="square"></line>
+                <circle id="Oval" fill="#C5F7DF" filter="url(#filter-3)" cx="266" cy="63" r="49"></circle>
+                <circle id="Oval" fill="#79E3B0" cx="266" cy="63" r="43"></circle>
+                <path d="M258.264446,80.6744186 C258.243267,80.6744186 258.221358,80.6744186 258.200179,80.6736888 C257.587445,80.6547141 257.014878,80.3642546 256.638036,79.8811285 L245.816233,66.0099369 C245.115861,65.1124317 245.27653,63.8174786 246.174817,63.1177486 C247.073104,62.4177997 248.368682,62.5782822 249.069054,63.4759333 L258.3645,75.3906833 L283.773608,46.6950383 C284.528753,45.8429995 285.831635,45.7631596 286.684642,46.5174055 C287.53765,47.2715785 287.617254,48.5738294 286.862109,49.4263061 L259.808332,79.9796512 C259.416883,80.4219086 258.85381,80.6744186 258.264446,80.6744186" id="Fill-4" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

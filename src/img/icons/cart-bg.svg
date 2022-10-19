@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="385px" height="200px" viewBox="0 0 385 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Oval</title>
+    <defs>
+        <linearGradient x1="8.66781656%" y1="36.5069995%" x2="94.8457792%" y2="61.5512734%" id="linearGradient-1">
+            <stop stop-color="#7661FE" offset="0%"></stop>
+            <stop stop-color="#0642DF" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="385" height="200" rx="8"></rect>
+        <linearGradient x1="-1.11022302e-14%" y1="41.0944667%" x2="91.3130734%" y2="96.0238675%" id="linearGradient-4">
+            <stop stop-color="#4C34E1" offset="0%"></stop>
+            <stop stop-color="#5F4FC8" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="36.9755698%" y1="57.827607%" x2="82.5643128%" y2="0%" id="linearGradient-5">
+            <stop stop-color="#7661FE" offset="0%"></stop>
+            <stop stop-color="#5B37EB" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Oval">
+            <mask id="mask-3" fill="white">
+                <use xlink:href="#path-2"></use>
+            </mask>
+            <use id="Mask" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+            <circle stroke="url(#linearGradient-4)" stroke-width="2" mask="url(#mask-3)" cx="358" cy="29" r="108"></circle>
+            <circle stroke="url(#linearGradient-4)" stroke-width="2" opacity="0.365676153" mask="url(#mask-3)" cx="17" cy="224" r="108"></circle>
+            <circle stroke="url(#linearGradient-4)" stroke-width="2" mask="url(#mask-3)" cx="358" cy="29" r="67"></circle>
+            <circle fill="#4065FA" mask="url(#mask-3)" cx="290" cy="37" r="9"></circle>
+            <circle fill="url(#linearGradient-5)" opacity="0.377046131" mask="url(#mask-3)" cx="21.5" cy="218.5" r="90.5"></circle>
+            <circle id="Oval-Copy" fill="#4669F5" mask="url(#mask-3)" cx="253" cy="51" r="5"></circle>
+        </g>
+    </g>
+</svg>
