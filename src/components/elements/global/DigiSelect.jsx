@@ -4,13 +4,13 @@ import {Search} from '@mui/icons-material'
 import Svg from '../../utils/Svgs';
 
 const tetstyle={
-  pt:"2px",height: "28px", width: "28px",
+  pt:"3px",height: "30px", width: "30px",
   borderRadius:"8px",
   backgroundColor:"rgba(217, 243, 232, 1)"
 }
 
 const daistyle={
-  pt:"2px",height: "28px", width: "28px",
+  pt:"3px",height: "30px", width: "30px",
   borderRadius:"8px",
   backgroundColor:"#fbf4c6"
 }
@@ -57,7 +57,8 @@ export default function DigiSelect({options}) {
             open={open}
             onOpen={()=>setopen(true)}
             onClose={handleClose}
-            defaultValue={optionstate[0]}
+            defaultValue={optionstate[0].label}
+            onChange={(e)=>console.log(e.target.value)}
             >
             {options.length >=4 && <TextField 
             color="digi"
@@ -77,12 +78,6 @@ export default function DigiSelect({options}) {
             {optionstate.length 
             ? 
             (optionstate.map((item,idx)=>(
-              // <ListItem key={idx} value={item.label} button >
-              //     <div className="d-flex justify-content-start">
-              //        <Svg Component={item.icon} />
-              //        <div className="mx-2">{item.label}</div>
-              //      </div>
-              // </ListItem>
                  <MenuItem button key={idx} value={item.label} sx={{textAlign:"left"}}>
                     <div className="d-flex justify-content-start">
                         <Box className="text-center" 

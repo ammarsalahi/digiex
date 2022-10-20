@@ -4,23 +4,11 @@ import { Box ,InputAdornment} from '@mui/material'
 import React from 'react';
 import DigiAlert from '../global/DigiAlert';
 
-const boxselect={
-  border:"1px solid #a4a6b4",
-  py:"10px",
-  borderRadius:"8px",
-  mt:'12px',
-}
-const boxfucus={
-  border:"2px solid #a4a6b4",
-  py:"10px",
-  borderRadius:"8px",
-  mt:'12px',
-}
 
 
 
 export default function StepOne({onNext}) {
-
+  const [isfucosed, setisfucosed] = React.useState(false)
   var regex = new RegExp('^(\\+98|0)?9\\d{9}$');
 
   const [alert,setAlert]=React.useState(true);
@@ -60,11 +48,12 @@ export default function StepOne({onNext}) {
     }
    
   }
-  const handlePhone=(event)=>{
+    const handlePhone=(event)=>{
         if(event.target.value.length===11){
           if(regex.test(event.target.value)===false){
             setErrortext({phone:"شماره وارد شده قابل قبول نیست"});
           }else{
+            setFormdata({phone:event.target.value});
             setErrortext({phone:""});
           }
         }
@@ -75,43 +64,47 @@ export default function StepOne({onNext}) {
           setFormdata({phone:event.target.value});
           setErrortext({phone:""});
         }
-          
-       
      
     }
   const handleDate=(props)=>(event)=>{
       if(props==='year'){
         if(event.target.value.length <=4){
-        if(event.target.value <= 1390 || event.target.value >= 1300 ){
-          setFormdata({year:event.target.value});
-        }
-        else{
-          setErrortext({date:"مقدار وارد شده اشتباه است"})
-        }
+          setErrortext({date:""})
+          if(event.target.value >0){
+
+            if(event.target.value <= 1390 ){
+              setFormdata({year:event.target.value});
+            }
+            else{
+              setErrortext({date:"مقدار وارد شده اشتباه است"})
+            }
+          }
+          else{
+            setErrortext({date:"مقدار وارد شده اشتباه است"})
+          }
       }
         
       }
       if(props==='month'){
-        if(event.target.value.length <=2 && event.target.value <= 1 || event.target.value >= 12 ){
-          setFormdata({month:event.target.value});
-        }
-        else{
-          setErrortext({date:"مقدار وارد شده اشتباه است"})
+        if(event.target.value.length <=2 ){
+          if(event.target.value >=1 && event.target.value <=12){
+            setFormdata({month:event.target.value});
+
+          }
         }
       }
       if(props==='day'){
-        if(event.target.value.length <=2 && event.target.value <= 1 || event.target.value >= 31 ){
-          setFormdata({day:event.target.value});
-        }
-        else{
-          setErrortext({date:"مقدار وارد شده اشتباه است"})
+        if(event.target.value.length <=2 ){
+          if(event.target.value >=1 && event.target.value <=31){
+            setFormdata({day:event.target.value});
+
+          }
         }
       }
   }   
 
 
   
-  const [boxtheme,setBoxtheme]=React.useState(boxselect);
   const textfieldstyle={
     pt:"12px"
   }
@@ -176,7 +169,7 @@ export default function StepOne({onNext}) {
                   maxLength:10,
                   disableUnderline: true,
                 }}
-                FormHelperTextProps={{color:"red"}}
+                FormHelperTextProps={{color:"#a4a6b4"}}
                 helperText={errortext.personalid}
                 onChange={handleChnageFormData('personalid')}
                 value={formdata.personalid}
@@ -184,8 +177,8 @@ export default function StepOne({onNext}) {
             </FormGroup>
             <FormGroup className="col-lg-6 col-12" sx={{mb:"32px"}}>
               <FormLabel>تاریخ تولد</FormLabel>
-               <Box className="d-flex" sx={boxtheme} color="digi"
-                onFocus={()=>{setBoxtheme(boxfucus)}} onBlur={()=>{setBoxtheme(boxselect)}}
+               <div className="d-flex boxdate" style={isfucosed? {border:"2px solid #a4a6b4"}:{}}
+               onFocus={()=>{setisfucosed(true)}} onBlur={()=>setisfucosed(false)}
                >
                  <TextField variant='standard'
                  placeholder='سال'
@@ -219,7 +212,7 @@ export default function StepOne({onNext}) {
                   value={formdata.day}
                   onChange={handleDate('day')}               
                 />
-               </Box>
+               </div>
                <Typography variant="p" fontSize={10} sx={{color:"red"}}>
                   {errortext.date}
                </Typography>

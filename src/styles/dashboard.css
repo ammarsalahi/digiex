@@ -30,7 +30,7 @@ padding-bottom: 30px;
     padding-bottom: 32px;
   }
   .info-card{
-    padding-top: 100px;
+    padding-top: 108px;
     padding-bottom: 32px;
 
   }
@@ -38,11 +38,11 @@ padding-bottom: 30px;
 
 @media only screen and (min-width:600px){
   .form-button{
-    padding-top: 21px;
+    padding-top: 20px;
     padding-bottom: 24px;
   }
   .info-card{
-    padding-top: 114.4px;
+    padding-top: 117px;
     padding-bottom: 24px;
 
   }

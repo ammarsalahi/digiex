@@ -1,16 +1,39 @@
 import React from 'react'
 import { Box, Typography ,FormGroup,FormLabel,TextField,Button} from '@mui/material'
 
+
+const labelStyle={
+  fontSize:"13px"
+ }
+
+const textfieldstyle={
+ pt:"12px",
+ fontSize:"16px",
+ textAlign:"center"
+}
+
 export default function MobileNumberPage({send}) {
-        const labelStyle={
-         fontSize:"13px"
+       var regex = new RegExp('^(\\+98|0)?9\\d{9}$');
+       const [phone, setphone] = React.useState("");
+       const [errortext,setErrortext]=React.useState("");
+       const handlePhone=(event)=>{
+        if(event.target.value.length===11){
+          if(regex.test(event.target.value)===false){
+            setErrortext("شماره وارد شده قابل قبول نیست");
+          }else{
+            setPhone(event.target.value);
+            setErrortext("");
+          }
         }
-    
-       const textfieldstyle={
-        pt:"12px",
-        fontSize:"16px",
-        textAlign:"center"
-      }
+        else if(event.target.value.length > 11){
+            setErrortext("تعداد ارقام وارد شده بیشتر از حد مجاز است");
+        }
+        else{
+          setphone(event.target.value);
+          setErrortext("");
+        }
+     
+    }
   return (
         <Box sx={{pt:"10.3%"}}>
          <Typography variant="p" component="div" sx={{py:"48px",px:"55px",fontSize:"20px"}}>
@@ -24,7 +47,10 @@ export default function MobileNumberPage({send}) {
                  variant="outlined"
                  placeholder="09123456789"
                  sx={textfieldstyle}
-                 type="tel"
+                 type="number"
+                 value={phone}
+                 onChange={handlePhone}
+                 helperText={errortext}
                  inputProps={{ maxLength: 11,disableUnderline: true}}
                />
              </FormGroup>
@@ -34,18 +60,6 @@ export default function MobileNumberPage({send}) {
              </Button>
              </Box>
                 </form>
-                 {/* <div>
-                <Box className="d-lg-block d-md-block d-sm-none d-none text-center fixed-bottom" sx={{pb:"32px",pl:"52%"}}>
-                  <Typography variant="p" component="div" fontSize="16px" >
-                  &#169; تمام حقوق این پلتفرم محفوظ میباشد 
-                  </Typography>
-                </Box>
-                <Box className="d-lg-none d-md-none d-sm-block d-block text-center fixed-bottom" sx={{pb:"32px"}}>
-                  <Typography variant="p" component="div" fontSize="16px" >
-                  &#169; تمام حقوق این پلتفرم محفوظ میباشد 
-                  </Typography>
-                </Box>
-                </div>  */}
            </Box>
   )
 }

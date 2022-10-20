@@ -1,48 +1,40 @@
 import React from 'react'
 import { Box, Typography ,MobileStepper} from '@mui/material'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Pagination,EffectFade } from 'swiper';
+import SwiperCore, { Pagination,EffectFlip,Autoplay } from 'swiper';
 
 
 import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
 
-SwiperCore.use([Pagination,EffectFade]);
+SwiperCore.use([Pagination,EffectFlip,Autoplay]);
 const stepSlides=[
   {'name':"مهران صبوری",'text':"یکی از بهترین صرافی ها با قیمت های خوب و رابط کاربری آسان هست که دارم باهاشون معامله میکنم و راضی هستم."},
   {'name':"آرش زرندی",'text':"من از این صرافی برای معاملات خودم استفاده میکنم و بسیار راضی هستم"},
   {'name':"مهران صبوری",'text':"یکی از بهترین صرافی ها با قیمت های خوب و رابط کاربری آسان هست که دارم باهاشون معامله میکنم و راضی هستم."}
 ]
+  
+const boxstyle={
+  borderRadius:"8px",
+  height:"163px",
+  width:"100%",
+  backgroundColor:"rgba(46, 67, 228, 1)",
+  paddingTop:"32px",
+  paddingBottom:"32px",
+}
+const mobstepstyle={
+  my:"2%",
+  height:"20px",
+  width:"70px",
+  backgroundColor:"#424BFB",
+  '& .MuiMobileStepper-dotActive':{
+       backgroundColor:"#fff"
+  }
+
+}
+
 export default function SignLayout({children}) {
-  const [activeStep, setActiveStep] = React.useState(0);
-
-  const handleStepChange = (step) => {
-    setActiveStep(step);
-  };
-
-
-      const boxstyle={
-        borderRadius:"8px",
-        ml:"6%",
-        mr:"9%",
-        mb:"80px",
-        height:"163px",
-        width:"100%",
-        backgroundColor:"rgba(46, 67, 228, 1)",
-        py:"32px",
-        pl:"32px",
-        pr:"57px",
-      }
-      const mobstepstyle={
-         my:"5%",
-         height:"20px",
-         width:"70px",
-         backgroundColor:"#424BFB",
-         '& .MuiMobileStepper-dotActive':{
-              backgroundColor:"#fff"
-         }
-
-      }
+     const [active, setActive] = React.useState(0)
   return (
     <div className='container-fluid ' >
     <Box className="row" dir="rtl">
@@ -59,17 +51,21 @@ export default function SignLayout({children}) {
              </Typography>
            </Box>
            <div>
-            <Box className="container" sx={{pt:"50px",px:"15%"}}>
+            <Box className="container d-flex justify-content-center" sx={{pt:"100px",px:"15%"}}>
             <Swiper
-              style={{borderRadius:"8px 8px 8px 8px"}}
+              style={boxstyle}
               effect="fade"
               spaceBetween={8}
-              slidesPerView={3}
-              autoplay={true}
+              slidesPerView={1}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
+              onSlideChange={(swiper) => setActive(swiper.activeIndex)}
             >
               {stepSlides.map((item,idx)=>(
-                <SwiperSlide key={idx}>
-                    <Box sx={boxstyle}>
+                <SwiperSlide key={idx} style={{width:"100%"}}>
+                    <Box sx={{px:"35px"}}>
                         <Box>
                           <Typography variant="p" component="div" sx={{color:"#fff",fontSize:"12px"}}>
                              {item.text}
@@ -83,7 +79,14 @@ export default function SignLayout({children}) {
               ))}
             </Swiper>
             </Box>
-
+            <Box className="container d-flex justify-content-center" sx={{pl:'5%',pb:"5%"}}>
+              <MobileStepper
+                sx={mobstepstyle}
+                  position='static'
+                  steps={3}
+                  activeStep={active}
+                /> 
+            </Box>
            </div>
            
          

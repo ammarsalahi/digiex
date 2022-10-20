@@ -31,7 +31,7 @@ export default function DigiAlert({open,close,message}) {
              horizontal:"center" 
           }}
         >
-        <Box className="d-flex justify-content-between" sx={{width:"100%",px:"15px",textAlign:"left"}}>
+        <Box className="d-flex justify-content-between" sx={{width:"100%",px:"10px",textAlign:"left"}}>
             <Box
              sx={{width:"48px",height:"48px" ,borderRadius:"8px",backgroundColor:"rgba(252, 139, 71, 1)",mt:"38px",pt:"10px"}}
              className="text-center"

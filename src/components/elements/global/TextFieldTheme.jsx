@@ -21,7 +21,7 @@ const  textTheme = createTheme({
           root: {
               "& fieldset": {
                 border: "1px solid #a4a6b4",
-                borderRadius:"8px"
+                borderRadius:"8px",
               },
               
           },
@@ -32,7 +32,9 @@ const  textTheme = createTheme({
           root: {
               "& fieldset": {
                 border: "1px solid #a4a6b4",
-                borderRadius:"8px"
+                borderRadius:"8px",
+                minHeight:"63px",
+                maxHeight:"63px"
               },
           }
         }
@@ -41,7 +43,7 @@ const  textTheme = createTheme({
         styleOverrides: {
           root: {
               "& fieldset": {
-                borderRadius:"8px"
+                borderRadius:"8px",
               },
           }
         }

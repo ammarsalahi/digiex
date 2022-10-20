@@ -36,30 +36,26 @@ export default function SecureCodePage({send}) {
                <TextField
                  color="digi"
                  variant="outlined"
-                 type="tel"
+                 type="number"
                  sx={textfieldstyle}
-                 inputProps={{ maxLength: 1 ,disableUnderline: true}}
                  />
                 <TextField
                 color="digi"
                  variant="outlined"
-                 type="tel"
+                 type="number"
                  sx={textfieldstyle}
-                 inputProps={{ maxLength: 1 ,disableUnderline: true}}
                  />
                  <TextField
                  color="digi"
                  variant="outlined"
-                 type="tel"
+                 type="number"
                  sx={textfieldstyle}
-                 inputProps={{ maxLength: 1 ,disableUnderline: true}}
                  />
                  <TextField
                  color="digi"
                  variant="outlined"
-                 type="tel"
+                 type="number"
                  sx={textfieldstyle}
-                 inputProps={{ maxLength: 1 ,disableUnderline: true}}
                  />
                </Box>
                
