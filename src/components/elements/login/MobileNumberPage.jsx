@@ -21,7 +21,7 @@ export default function MobileNumberPage({send}) {
           if(regex.test(event.target.value)===false){
             setErrortext("شماره وارد شده قابل قبول نیست");
           }else{
-            setPhone(event.target.value);
+            setphone(event.target.value);
             setErrortext("");
           }
         }
@@ -51,7 +51,7 @@ export default function MobileNumberPage({send}) {
                  value={phone}
                  onChange={handlePhone}
                  helperText={errortext}
-                 inputProps={{ maxLength: 11,disableUnderline: true}}
+                 inputProps={{disableUnderline: true}}
                />
              </FormGroup>
              <Box sx={{px:"6%"}}>

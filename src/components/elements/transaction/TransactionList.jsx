@@ -112,7 +112,12 @@ export default function TransactionList({rows}) {
           </TableContainer>
           </Box>
         <div className='d-flex justify-content-center' dir="ltr">
-            <SpacialPagination PageCount={6} PageNumber={1}/>
+            <SpacialPagination 
+              data={rows} 
+              buttonConst={3}
+              contentPerPage={1}
+              siblingCount={1}
+            />
         </div>
       </Box>
     </div>

@@ -7,7 +7,6 @@ const range = (start, end) => {
 
 export const usePaginationRange = ({
   totalPageCount,
-  dataLimit,
   buttonConst,
   siblingCount,
   currentPage,
@@ -42,14 +41,14 @@ export const usePaginationRange = ({
     const lastPageIndex = totalPageCount;
 
     if (!shouldShowLeftDots && shouldShowRightDots) {
-      let leftItemCount = 3  * siblingCount;
+      let leftItemCount = 3 + 1  * siblingCount;
       let leftRange = range(1, leftItemCount);
 
       return [...leftRange, DOTS, totalPageCount];
     }
 
     if (shouldShowLeftDots && !shouldShowRightDots) {
-      let rightItemCount = 3  * siblingCount;
+      let rightItemCount = 3 + 1 * siblingCount;
       let rightRange = range(
         totalPageCount - rightItemCount + 1,
         totalPageCount

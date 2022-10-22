@@ -1,65 +1,89 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import {Box,IconButton} from '@mui/material';
+import { usePaginationRange, DOTS } from "./usePaginationRange";
 
-export default function SpacialPagination({PageCount,PageNumber}) {
-   const [activebtn, setactivebtn] = React.useState(PageNumber)
-    const pagebtnactive={
-        height: "35px",
-        width: "35px",
-        borderRadius:"8px",
-        fontSize:'14px',
-        color:"#fff",
-        backgroundColor:"#0f1628",
-        '&:hover': {
-          backgroundColor: "#0f1628",
-          color:"#fff"
-       },
-      }
-      const pagebtn={
-        height: "30px",
-        width: "30px",
-        borderRadius:"7px",
-        fontSize:'14px',
-        my:"3px",
-        color:"#000",
-      }
-      const boxpagetyle={
-        border:"1px solid #a4a6b4",
-        borderRadius:"8px",
-        height:"48px",
-        width:"165px",
-        px:"5px",
-        py:"5px",
-        display:"flex",
-        my:"10px"
-      }
+const pagebtnactive={
+  height: "35px",
+  width: "35px",
+  borderRadius:"8px",
+  fontSize:'14px',
+  color:"#fff",
+  backgroundColor:"#0f1628",
+  '&:hover': {
+    backgroundColor: "#0f1628",
+    color:"#fff"
+ },
+}
+const pagebtn={
+  height: "30px",
+  width: "30px",
+  borderRadius:"7px",
+  fontSize:'14px',
+  my:"3px",
+  color:"#000",
+}
+const boxpagetyle={
+  border:"1px solid #a4a6b4",
+  borderRadius:"8px",
+  height:"48px",
+  width:"auto",
+  px:"5px",
+  py:"5px",
+  display:"flex",
+  my:"10px"
+}
 
-    const handlePageClick=(props)=>(event)=>{
-        setactivebtn(props)
-    }  
+
+export default function SpacialPagination({
+  data,
+  buttonConst,
+  contentPerPage,
+  siblingCount
+}) {
+  const [totalPageCount] = useState(Math.ceil(data.length / contentPerPage));
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const paginationRange = usePaginationRange({
+    totalPageCount,
+    buttonConst,
+    siblingCount,
+    currentPage,
+  });
+
+  useEffect(() => {
+    window.scrollTo({
+      behavior: "smooth",
+      top: "0px",
+    });
+  }, [currentPage]);
+
+  function changePage(event) {
+    const pageNumber = Number(event.target.textContent);
+    setCurrentPage(pageNumber);
+  }
+  
+
+
   return (
     <Box sx={boxpagetyle}>
-              <IconButton
-                sx={activebtn===1?pagebtnactive:pagebtn}
-                onClick={handlePageClick(1)}
-              >1</IconButton>
+          {paginationRange.map((item, index) => {
+
+              if (item === DOTS) {
+                return (
+                  <IconButton key={index} disabled={true} sx={pagebtn}>
+                    &#8230;
+                  </IconButton>
+                );
+              }
+          return (
               <IconButton 
-                sx={activebtn===2?pagebtnactive:pagebtn}
-                onClick={handlePageClick(2)}
-              >2</IconButton>
-              <IconButton
-                sx={activebtn===3?pagebtnactive:pagebtn}
-                onClick={handlePageClick(3)}
-              >3</IconButton>
-              <IconButton 
-                disabled={true}
-                sx={activebtn===4?pagebtnactive:pagebtn}
-                onClick={handlePageClick(4)}
-              >...</IconButton>
-                <IconButton 
-                sx={activebtn===6?pagebtnactive:pagebtn}
-                onClick={handlePageClick(6)}
-              >6</IconButton>
+              sx={ currentPage === item?pagebtnactive:pagebtn} 
+              key={index} onClick={changePage}
+              >
+                  {item}
+              </IconButton>          
+            );
+          })}
     </Box>
   )
 }
