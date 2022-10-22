@@ -19,10 +19,6 @@ import {ReactComponent as copyicon} from '../../../img/icons/copy-clipboard.svg'
 import Svg from '../../utils/Svgs';
 
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="right" ref={ref} {...props} />;
-});
-
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
       padding: theme.spacing(2),
@@ -63,10 +59,10 @@ BootstrapDialogTitle.propTypes = {
 
 
 const boxselected={
-  border:"1.5px solid #424BFB",borderRadius:"8px",my:"1%",height:"50px",pl:"2%",backgroundColor:"rgb(211, 245, 255)",
+  border:"1.5px solid #424BFB",borderRadius:"8px",mx:".5%",my:"1%",height:"50px",pl:"1%",backgroundColor:"rgb(211, 245, 255)",
 }
 const boxunselected={
-  border:"1.5px solid #a4a6b4",borderRadius:"8px",my:"1%",height:"50px",pl:"2%",
+  border:"1.5px solid #a4a6b4",borderRadius:"8px",mx:".5%",my:"1%",height:"50px",pl:"1%",
 }
 
 const walletboxstyle={
@@ -124,12 +120,12 @@ export default function ShopStep({open,close}) {
                 انتخاب شبکه پرداخت
            </Typography>
          </Box>
-         <Box className="d-flex justify-content-between" sx={{pb:"2%"}}>
+         <Box className="d-flex" sx={{pb:"2%"}}>
          <Box sx={coin==="erc-20"?boxselected:boxunselected}>
             <FormGroup>
               <FormControlLabel 
                 control={<Checkbox checked={coin==="erc-20"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
-                onClick={()=>setCoin("erc-20")} label="ERC-20"
+                onClick={()=>setCoin("erc-20")} label={<Typography fontSize={14}>ERC-20</Typography>}
               />
             </FormGroup>
           </Box>
@@ -137,7 +133,7 @@ export default function ShopStep({open,close}) {
             <FormGroup>
             <FormControlLabel 
               control={<Checkbox checked={coin==="trc-20"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
-              onClick={()=>setCoin("trc-20")} label="TRC-20" 
+              onClick={()=>setCoin("trc-20")} label={<Typography fontSize={14}>TRC-20</Typography>}
             />
             </FormGroup>
           </Box>
@@ -145,7 +141,7 @@ export default function ShopStep({open,close}) {
             <FormGroup>
             <FormControlLabel 
               control={<Checkbox checked={coin==="bep-20"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
-              onClick={()=>setCoin("bep-20")} label="BEP-20" 
+              onClick={()=>setCoin("bep-20")} label={<Typography fontSize={14}>BEP-20</Typography>}
             />
             </FormGroup>
           </Box>
@@ -153,7 +149,7 @@ export default function ShopStep({open,close}) {
             <FormGroup>
             <FormControlLabel 
               control={<Checkbox checked={coin==="bep-2"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
-              onClick={()=>setCoin("bep-2")} label="BEP-2" 
+              onClick={()=>setCoin("bep-2")} label={<Typography fontSize={14}>BEP-2</Typography>} 
             />
             </FormGroup>
           </Box>

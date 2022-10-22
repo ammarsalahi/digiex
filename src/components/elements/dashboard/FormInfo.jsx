@@ -47,7 +47,7 @@ export default function FormInfo({ listdata, title,description,finalvalue,option
           </div>
         </Box>
       </div>
-          <div className="d-lg-none d-md-none d-sm-block d-block" style={{paddingTop:'89px',paddingBottom:"16%"}}>
+          <div className="d-lg-none d-md-none d-sm-block d-block" style={{paddingTop:'89px',paddingBottom:"22%"}}>
           <Box sx={{ backgroundColor: 'rgba(243, 244, 249, 1)', borderRadius: "8px" ,height:"55px"}}>
           <div className='d-flex justify-content-between py-3 px-3'>
             <Typography variant="p" component="div">

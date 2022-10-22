@@ -10,14 +10,8 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Slide from '@mui/material/Slide';
-import {  Box ,Checkbox,FormGroup,FormControlLabel,InputAdornment,TextField} from '@mui/material'
-import { ContentCopy, QrCode} from '@mui/icons-material';
-import { CheckCircle,RadioButtonUnchecked } from '@mui/icons-material';
+import {  Box ,FormGroup,FormLabel,InputAdornment,TextField} from '@mui/material'
 import DigiSelect from '../global/DigiSelect';
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="right" ref={ref} {...props} />;
-});
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -83,13 +77,15 @@ export default function WalletDesposit({open,close,options}) {
   return (
       <BootstrapDialog
         fullScreen
-        sx={issmall?{direction:"ltr"}:{direction:"ltr",width:"500px"}}
+        sx={issmall?{}:{width:"500px"}}
+        PaperProps={{
+          sx:issmall?{}:{right:0,position:"fixed",width:'500px'}
+        }}
         onClose={close}
         aria-labelledby="customized-dialog-title"
         open={open}
-        TransitionComponent={Transition}
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom-bold">
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
             واریز ارز به کیف پول
         </BootstrapDialogTitle>
         
@@ -115,7 +111,9 @@ export default function WalletDesposit({open,close,options}) {
          <FormGroup sx={{my:"2%"}}>
             <FormLabel className="mb-2">تعداد</FormLabel>
             <TextField
+            color='digi'
              sx={textfieldstyle}
+             type="number"
              fullWidth variant='outlined' placeholder='۰.۰۰'
               InputProps={{
                 endAdornment: <InputAdornment position="end">BUSD</InputAdornment>,

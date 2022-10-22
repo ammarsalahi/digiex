@@ -10,15 +10,11 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Slide from '@mui/material/Slide';
-import {  Box ,List,ListItem,ListItemIcon,ListItemText, TextField} from '@mui/material'
-import { ContentCopy, QrCode, WalletOutlined} from '@mui/icons-material';
+import {Box ,List,ListItem,ListItemIcon,ListItemText, TextField,Checkbox,InputAdornment} from '@mui/material'
+import {WalletOutlined} from '@mui/icons-material';
 import { CheckCircle,RadioButtonUnchecked } from '@mui/icons-material';
-import DigiSelect from '../global/DigiSelect';
 import CardID from '../global/CardID';
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="right" ref={ref} {...props} />;
-});
+import CardsBank from '../global/CardsBank';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -60,10 +56,10 @@ BootstrapDialogTitle.propTypes = {
 
 
 const boxselected={
-  border:"1.5px solid #424BFB",borderRadius:"8px",my:"1%",height:"50px",mx:"2%",pl:"2%",backgroundColor:"rgb(211, 245, 255)",
+  border:"1.5px solid #424BFB",borderRadius:"8px",my:"1%",height:"50px",pl:"2%",backgroundColor:"rgb(211, 245, 255)",
 }
 const boxunselected={
-  border:"1.5px solid #a4a6b4",borderRadius:"8px",my:"1%",height:"50px",mx:"2%",pl:"2%",
+  border:"1.5px solid #a4a6b4",borderRadius:"8px",my:"1%",height:"50px",pl:"2%",
 }
 const textfieldstyle={
   "& .MuiOutlinedInput-root.Mui-disabled":{
@@ -77,7 +73,7 @@ const subbtnstyle={
 export default function WalletCharge({open,close}) {
 
   const [issmall, setissmall] = React.useState(false);
-  const [payment,setpayment]=React.useState("bank");
+  const [payment,setpayment]=React.useState("id");
   const [price,setprice]=React.useState();
 
   const listsdataBank=[
@@ -106,18 +102,20 @@ export default function WalletCharge({open,close}) {
   return (
       <BootstrapDialog
         fullScreen
-        sx={issmall?{direction:"ltr"}:{direction:"ltr",width:"500px"}}
+        sx={issmall?{}:{width:"500px"}}
+        PaperProps={{
+          sx:issmall?{}:{right:0,position:"fixed",width:'500px'}
+        }}
         onClose={close}
         aria-labelledby="customized-dialog-title"
         open={open}
-        TransitionComponent={Transition}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
              شارژ کیف پول تومانی
         </BootstrapDialogTitle>
         
         <DialogContent>
-        <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"3%"}}>
+        <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"2%"}}>
            <Typography variant="p" component="div" fontSize="13px">
                 روش شارژ کیف پول 
            </Typography>
@@ -136,7 +134,7 @@ export default function WalletCharge({open,close}) {
                         </div>
                     }/>
                 </ListItem>
-                <ListItem button sx={payment==="id"?boxselected:boxunselected} onClick={()=>{setpayment("bank")}}>
+                <ListItem button sx={payment==="id"?boxselected:boxunselected} onClick={()=>{setpayment("id")}}>
                     <ListItemIcon>
                         <Checkbox checked={payment==="id"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />
                     </ListItemIcon>
@@ -154,7 +152,7 @@ export default function WalletCharge({open,close}) {
          </Box>
 
        {payment==="bank" &&
-            <Box>
+            <Box sx={{px:"2%"}}>
                 <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"3%"}}>
                  <Typography variant="p" component="div" fontSize="13px">
                       انتخاب کارت بانکی برای پرداخت
@@ -177,19 +175,19 @@ export default function WalletCharge({open,close}) {
                 endAdornment: <InputAdornment position="end">تومان</InputAdornment>,
               }}
             />
-            <Box className="d-flex justify-content-between">
-               <Box sx={price==='5'?boxselected:boxunselected} onClick={()=>setprice('5')}>
+            <Box className="d-flex justify-content-between mt-2">
+               <Box sx={price==='5'?boxselected:boxunselected} onClick={()=>setprice('5')} style={{paddingTop:"3%"}}>
                  5,000,000 تومان
                </Box>
-               <Box sx={price==='10'?boxselected:boxunselected} onClick={()=>setprice('10')}>
+               <Box sx={price==='10'?boxselected:boxunselected} onClick={()=>setprice('10')} style={{paddingTop:"3%"}}>
                  10,000,000 تومان 
                </Box>
-               <Box sx={price==='25'?boxselected:boxunselected} onClick={()=>setprice('25')}>
+               <Box sx={price==='25'?boxselected:boxunselected} onClick={()=>setprice('25')} style={{paddingTop:"3%"}}>
                   25,000,000 تومان
                </Box>
             </Box>
            </Box>
-           <Box className="bg-light" sx={{borderRadius:"8px",p:"3%",width:"500px",mt:"3%"}}>
+           <Box className="bg-light" sx={{borderRadius:"8px",p:"3%",width:"100%",mt:"3%"}}>
             {listsdataBank.map((item, idx) => (
                 <div className='d-flex justify-content-between info-list' key={idx}>
                 <Typography variant="p" component="div" sx={{fontSize : "14px"}}>

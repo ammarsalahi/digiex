@@ -9,8 +9,26 @@ import {ReactComponent as UpIcon} from '../../../img/icons/coin/up arrow.svg';
 import {ReactComponent as DownRed} from '../../../img/icons/coin/down arrow - red.svg';
 import {ReactComponent as UpGreen} from '../../../img/icons/coin/up arrow - green.svg';
 import {ReactComponent as LogoEN} from '../../../img/icons/logo-fa-white.svg';
+import WalletCharge from '../dialogs/WalletCharge';
+import WalletDesposit from '../dialogs/WalletDeposit';
+import WalletWithdraw from '../dialogs/WalletWithdraw';
 
-export default function WalletInfo({ infos, opendialogw }) {
+export default function WalletInfo({ infos,options }) {
+  const [open,setOpen]=React.useState({
+    charge:false,
+    deposit:false,
+    withdraw:false,
+  });
+
+  const handleOpen=(props)=>(event)=>{
+    setOpen({...open,[props]:true});
+  }
+
+  const handleClose=(props)=>(event)=>{
+    setOpen({...open,[props]:false});
+  }
+
+
   const cardstyle = {
     borderRadius: '8px',
     height: "230px",
@@ -65,13 +83,25 @@ export default function WalletInfo({ infos, opendialogw }) {
             </Box>
           
             <Box className="d-flex align-items-end" dir="ltr">
-              <IconButton sx={{ border: "1px solid #fff", borderRadius: '8px', mx: 1, color: "#fff" }} fontSize="large">
+              <IconButton 
+                sx={{ border: "1px solid #fff", borderRadius: '8px', mx: 1, color: "#fff" }} 
+                fontSize="large"
+                onClick={handleOpen('withdraw')}
+              >
                 <NorthEast />
               </IconButton>
-              <IconButton onClick={opendialogw} sx={{ border: "1px solid #fff", borderRadius: '8px', color: "#fff" }} fontSize="large">
+              <IconButton 
+                sx={{ border: "1px solid #fff", borderRadius: '8px', color: "#fff" }} 
+                fontSize="large"
+                onClick={handleOpen('deposit')}
+              >
                 <SouthWest />
               </IconButton>
-              <IconButton sx={{ border: "1px dashed #fff", borderRadius: '8px', mx: 1, color: "#fff" }} fontSize="large">
+              <IconButton 
+                sx={{ border: "1px dashed #fff", borderRadius: '8px', mx: 1, color: "#fff" }} 
+                fontSize="large"
+                onClick={handleOpen('charge')}
+              >
                 <Add />
               </IconButton>
             </Box>
@@ -155,6 +185,9 @@ export default function WalletInfo({ infos, opendialogw }) {
 
         </List>
       </Box>
+      <WalletCharge open={open.charge} close={handleClose('charge')}/>
+      <WalletDesposit open={open.deposit} close={handleClose('deposit')} options={options} />
+      <WalletWithdraw open={open.withdraw} close={handleClose('withdraw')} options={options} />
       </Box>
   )
 }

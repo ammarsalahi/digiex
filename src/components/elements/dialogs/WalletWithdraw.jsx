@@ -11,17 +11,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Slide from '@mui/material/Slide';
 import {Box,Checkbox,FormGroup,FormControlLabel} from '@mui/material'
-import { ContentCopy} from '@mui/icons-material';
 import { CheckCircle,RadioButtonUnchecked } from '@mui/icons-material';
 import DigiSelect from '../global/DigiSelect';
 import {ReactComponent as qrcode} from '../../../img/icons/qr.svg';
 import {ReactComponent as copyicon} from '../../../img/icons/copy-clipboard.svg';
-
 import Svg from '../../utils/Svgs';
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="right" ref={ref} {...props} />;
-});
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -94,6 +89,7 @@ export default function WalletWithdraw({open,close,options}) {
   const [coin,setCoin]=React.useState("")
   
    React.useEffect(() => {
+    console.log(options)
     if (window.innerWidth < 700) {
       setissmall(true)
     }
@@ -106,19 +102,21 @@ export default function WalletWithdraw({open,close,options}) {
   return (
       <BootstrapDialog
         fullScreen
-        sx={issmall?{direction:"ltr"}:{direction:"ltr",width:"500px"}}
+        sx={issmall?{}:{width:"500px"}}
+        PaperProps={{
+          sx:issmall?{}:{right:0,position:"fixed",width:'500px'}
+        }}
         onClose={close}
         aria-labelledby="customized-dialog-title"
         open={open}
-        TransitionComponent={Transition}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
-            واریز ارز به کیف پول
+            برداشت از کیف پول
         </BootstrapDialogTitle>
         
         <DialogContent>
         
-        <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"3%"}}>
+        <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"2%"}}>
            <Typography variant="p" component="div" fontSize="13px">
                 انتخاب  ارز
            </Typography>

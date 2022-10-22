@@ -60,14 +60,16 @@ const minibtnstyle={
 const btnstyle={
   fontSize: 21, height: "55px",borderRadius:"8px",boxShadow:"none"
 }
-export default function FormTabs({options,tabvalue,handleChange}) {
+export default function FormTabs({options,tabvalue,handleChange,openprop}) {
 
 
-  const [open,setopen]=React.useState({
-    buy:false,
-    shop:false,
-    bank:false
-  });
+  const [open,setopen]=React.useState(openprop);
+
+  React.useEffect(() => {
+      setopen(openprop)
+  }, [openprop])
+  
+
   const [btnshop, setbtnshop] = React.useState({
     btn25:"primary",
     btn50:"digi",
