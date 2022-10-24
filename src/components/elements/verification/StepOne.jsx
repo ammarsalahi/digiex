@@ -177,7 +177,7 @@ export default function StepOne({onNext}) {
             </FormGroup>
             <FormGroup className="col-lg-6 col-12" sx={{mb:"32px"}}>
               <FormLabel>تاریخ تولد</FormLabel>
-               <div className="d-flex boxdate" style={isfucosed? {border:"2px solid #a4a6b4"}:{}}
+               <div className="d-flex boxdate" style={isfucosed? {border:"2px solid #cbe4eb"}:{}}
                onFocus={()=>{setisfucosed(true)}} onBlur={()=>setisfucosed(false)}
                >
                  <TextField variant='standard'

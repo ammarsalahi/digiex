@@ -9,11 +9,11 @@ export default function DashboardInfo() {
     border: "1px solid #a4a6b4",
     borderRadius: "8px",
     height: "43px",
-    fontSize:"13px",
+    fontSize:"12px",
   }
   return (
     <div className='row bg-light align-items-end info-content'>
-      <div className='col-lg-6 col-md-6 col-12'>
+      <div className='col-lg-6  col-12'>
      <Box className='d-flex'sx={{pl:"6%",textAlign:"left"}}>
        <Box>
          <Typography variant='p' fontSize={14} component="div">
@@ -31,7 +31,7 @@ export default function DashboardInfo() {
         </Box>
       </Box>
       </div>
-      <div className='col-lg-6 col-12'>
+      <Box className='col-lg-6 col-12 p-info'>
         <div className='row'>
           <div className='col-lg-3 col-md-3 col-6 py-2'>
             <Button variant="outlined" className='justify-content-evenly' style={btnStyle} fullWidth color="inherit" ><SouthWest style={{ fill: 'rgba(164, 166, 180, 1)' }} />واریزپول</Button>
@@ -43,7 +43,7 @@ export default function DashboardInfo() {
             <Button variant="outlined" className='justify-content-evenly' style={btnStyle} fullWidth color="inherit"  ><Menu style={{ fill: 'rgba(164, 166, 180, 1)' }} />تاریخچه‌تراکنش‌ها</Button>
           </div>
         </div>
-      </div>
+      </Box>
     </div>
   )
 }

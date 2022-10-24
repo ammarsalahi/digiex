@@ -44,10 +44,10 @@ export default function CardsBank() {
         height: '57px',
         borderRadius: '0px 0px 8px 8px',
         bottom:"0px",
-        backgroundColor:'#e8ebef',
+        backgroundColor:'#f1f3fa',
         color: "#000",
         '&:hover': {
-          backgroundColor:'#e8ebef',
+          backgroundColor:'#f1f3fa',
           color: "#000",
        },
       }

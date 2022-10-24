@@ -44,7 +44,7 @@ function a11yProps(index) {
  
 const formbtnstyle={
   textAlign:'left',
-  marginBottom:'40px',
+  marginBottom:'24px',
 }
 const minibtnstyle={
   borderRadius:'30px',
@@ -60,6 +60,10 @@ const minibtnstyle={
 const btnstyle={
   fontSize: 21, height: "55px",borderRadius:"8px",boxShadow:"none"
 }
+const btnbg={
+  backgroundColor:"#eef1ff",
+  borderRadius:"8px"
+}
 export default function FormTabs({options,tabvalue,handleChange,openprop}) {
 
 
@@ -72,27 +76,27 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
 
   const [btnshop, setbtnshop] = React.useState({
     btn25:"primary",
-    btn50:"digi",
-    btn75:"digi",
-    btn100:"digi"
+    btn50:"digigrey",
+    btn75:"digigrey",
+    btn100:"digigrey"
   });
   const [btnsale, setbtnsale] = React.useState({
     btn25:"primary",
-    btn50:"digi",
-    btn75:"digi",
-    btn100:"digi"
+    btn50:"digigrey",
+    btn75:"digigrey",
+    btn100:"digigrey"
   })
   const [btnwal, setbtnwal] = React.useState(false)
    
    const handleBtnShop=(props)=>(event)=>{
      if(props==='25'){
-      setbtnshop({btn25:"primary",btn50:"digi",btn75:"digi", btn100:"digi"});
+      setbtnshop({btn25:"primary",btn50:"digigrey",btn75:"digigrey", btn100:"digigrey"});
      } if(props==='50'){
-      setbtnshop({btn25:"digi",btn50:"primary",btn75:"digi", btn100:"digi"});
+      setbtnshop({btn25:"digigrey",btn50:"primary",btn75:"digigrey", btn100:"digigrey"});
      } if(props==='75'){
-      setbtnshop({btn25:"digi",btn50:"digi",btn75:"primary", btn100:"digi"});
+      setbtnshop({btn25:"digigrey",btn50:"digigrey",btn75:"primary", btn100:"digigrey"});
      } if(props==='100'){
-      setbtnshop({btn25:"digi",btn50:"digi",btn75:"digi", btn100:"primary"});
+      setbtnshop({btn25:"digigrey",btn50:"digigrey",btn75:"digigrey", btn100:"primary"});
      }
    }
    const handleBtnSale=(props)=>(event)=>{
@@ -143,7 +147,9 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
           </Box>
           <FormGroup sx={formbtnstyle}>
             <FormLabel className="mb-2">مبلغ خرید(تومان)</FormLabel>
-            <TextField color="digi" variant="outlined" fullWidth placeholder='۰.۰۰'
+            <TextField color="digi" type="number"
+            sx={{'& :focus':btnbg}} 
+             fullWidth placeholder='۰.۰۰'
              InputProps={{
               endAdornment: <InputAdornment position="end">تومان</InputAdornment>,
             }}
@@ -161,14 +167,16 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
            </FormGroup>
           <FormGroup sx={formbtnstyle}>
             <FormLabel className="mb-2">تعداد بایننس کوین</FormLabel>
-            <TextField color="digi" fullWidth variant='outlined'  placeholder='۰.۰۰'
+            <TextField color="digi" 
+              sx={{'& :focus':btnbg}} 
+              fullWidth variant='outlined' type="number"  placeholder='۰.۰۰'
               InputProps={{
-                endAdornment: <InputAdornment position="end">BUSD</InputAdornment>,
+                endAdornment: <InputAdornment position="end" style={{btnbg}}>BUSD</InputAdornment>,
               }}
             />
             <div className="d-flex justify-content-between pt-1">
-              <p className='text-muted helper-fontsize'>موجودی ۰ بایننس</p>
-               <Button variant="outlined"  onClick={handleWal} sx={{minHeight:"31px",maxHeight:"31px",borderRadius:"30px"}}>
+              <p className='text-muted helper-fontsize mt-1'>موجودی ۰ بایننس</p>
+               <Button color="digigrey" variant="outlined"  onClick={handleWal} sx={{minHeight:"31px",maxHeight:"31px",borderRadius:"30px"}}>
               واریز‌ به‌کیف‌ پول
               </Button>
             </div>
@@ -189,7 +197,9 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
           </FormGroup>
           <FormGroup sx={formbtnstyle}>
             <FormLabel className="mb-2">مبلغ فروش(تومان)</FormLabel>
-            <TextField color="digi" fullWidth variant='outlined' placeholder='۰.۰۰'
+            <TextField color="digi"
+                sx={{'& :focus':btnbg}}
+               fullWidth variant='outlined' placeholder='۰.۰۰'
                InputProps={{
                  endAdornment: <InputAdornment position="end">تومان</InputAdornment>,
                }}
@@ -207,9 +217,13 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
           </FormGroup>
           <FormGroup sx={formbtnstyle}>
             <FormLabel className="mb-2">تعداد بایننس کوین</FormLabel>
-            <TextField color="digi" fullWidth variant='outlined' placeholder='۰.۰۰'
+            <TextField color="digi" 
+              sx={{'& :focus':btnbg}}
+              fullWidth variant='outlined' placeholder='۰.۰۰'
               InputProps={{
-                endAdornment: <InputAdornment position="end">BUSD</InputAdornment>,
+                endAdornment: <InputAdornment position="end">
+                  BUSD
+                </InputAdornment>,
               }}
             />
             <div className="d-flex justify-content-between pt-1 px-2">

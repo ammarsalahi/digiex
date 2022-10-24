@@ -10,13 +10,13 @@ export default function TransactionList({rows}) {
     borderTop:"1px solid #a4a6b4",
   }
   const headstyle={
-    py:"15px",
+    py:"24px",
     fontSize: "14px !important",
     textAlign:"center",
     color: "rgba(164, 166, 180, 1)",
   }
   const cellstyle={
-    py:"16px",
+    py:"28px",
     fontSize: "14px !important",
     textAlign:"center"
   }
@@ -28,7 +28,7 @@ export default function TransactionList({rows}) {
     px:"5px",
     py:"5px",
     display:"flex",
-    my:"10px"
+    my:"25px"
   }
  
   const darkbtnstyle={
@@ -53,7 +53,7 @@ export default function TransactionList({rows}) {
   return (
     <div>
       <Box>
-        <div className='d-flex justify-content-between'>
+        <Box className='d-flex justify-content-between' sx={{px:"32px"}}>
           <Typography component="div" variant="p" className='transaction-header'>
            تراکنش های مالی
           </Typography>
@@ -71,9 +71,9 @@ export default function TransactionList({rows}) {
           </Box>
           </ThemeProvider>
           
-        </div>
+        </Box>
         <Box className='row maincontent'>
-          <TableContainer sx={{px:"15px"}}>
+          <TableContainer sx={{px:"24px"}}>
             <Table sx={{ minWidth: 500}} size="small" aria-label="a dense table">
               <TableHead>
                 <TableRow>

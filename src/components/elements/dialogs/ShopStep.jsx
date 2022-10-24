@@ -201,21 +201,21 @@ export default function ShopStep({open,close}) {
                     <ListItemIcon>
                         <Checkbox checked={withdraw==="type1"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />
                     </ListItemIcon>
-                    <ListItemText primaryTypographyProps={withdraw==='type1'?{color:"#424BFB",fontSize:"15px"}:{color:"#a4a6b4",fontSize:"15px"}}   
+                    <ListItemText primaryTypographyProps={withdraw==='type1'?{color:"#424BFB",fontSize:"15px"}:{color:"grey",fontSize:"15px"}}   
                      primary={
                         <div className="d-flex mt-3">
                         <WalletOutlined/>
                          <p>واریز به کیف پول ارزی در دیجیکس 24</p>
                         </div>
                     }/>
-                    <ListItemText primary="0BUSD" primaryTypographyProps={withdraw==='type1'?{color:"#424BFB",fontSize:"11px"}:{color:"#a4a6b4",fontSize:"11px"}} />
+                    <ListItemText primary="0BUSD" primaryTypographyProps={withdraw==='type1'?{color:"#424BFB",fontSize:"11px"}:{color:"grey",fontSize:"11px"}} />
                 </ListItem>
 
                 <ListItem button sx={withdraw==="type2"?boxselected:boxunselected} onClick={()=>{setWithdraw("type2")}}>
                     <ListItemIcon>
                         <Checkbox checked={withdraw==="type2"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />
                     </ListItemIcon>
-                    <ListItemText primaryTypographyProps={withdraw==='type2'?{color:"#424BFB",fontSize:"15px"}:{color:"#a4a6b4",fontSize:"15px"}} 
+                    <ListItemText primaryTypographyProps={withdraw==='type2'?{color:"#424BFB",fontSize:"15px"}:{color:"grey",fontSize:"15px"}} 
                      primary={
                         <div className="d-flex mt-3">
                         <WalletOutlined/>

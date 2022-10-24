@@ -49,12 +49,12 @@ export default function PrivateRoute({children}) {
              <Box style={{ marginTop: '58px' }}>
               <div className="container-fluid">
                 <div className="row" dir="rtl">
-                  {isSide && <div className='col-lg-3 col-md-5 col-12 border-left'>
-                    <div className="sticky-top d-none d-sm-none d-md-block d-lg-block" style={{ top: '110px' }}>
-                      <Sidebar />
+                  {isSide && <div className='col-lg-3 col-md-5 border-left-d' style={{minWidth:"auto",maxWidth:"312px",height:"100%",position:"fixed" }}>
+                    <div className="d-none d-sm-none d-md-block d-lg-block ">
+                      <Sidebar/>
                     </div>
                   </div>}
-                <div className={colClass + " col-12"}>
+                <div className={colClass + " col-12"} style={{minWidth:"calc(100% - 312px)",maxWidth:"100%",marginRight:"auto"}}>
                   {children}
                 </div>
               </div>

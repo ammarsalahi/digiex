@@ -27,7 +27,7 @@ export default function TransactionHead() {
     textAlign:"center"
   }
   return (
-    <Box className='row d-flex justify-content-start bg-light' sx={{py:"32px",px:"5%"}}>
+    <Box className='row d-flex justify-content-start bg-light' sx={{py:"32px",px:"32px"}}>
           <div className='col-lg-5 col-12 d-flex justify-content-start'>
              <DatePicker 
                 style={selectstyle}

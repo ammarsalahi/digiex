@@ -102,7 +102,7 @@ div.boxdate{
   margin-top: 12px;
 }
 div.boxdate:active,div.boxdate:focus{
-  border: 2px solid #a4a6b4;
+  border: 2px solid #cbe4eb;
   padding-top : 10px;
   padding-bottom : 10px;
   border-radius: 8px;
@@ -114,4 +114,21 @@ div.boxdate:hover{
   padding-bottom : 10px;
   border-radius: 8px;
   margin-top: 12px;
+}
+
+@media only screen and (min-width:768px){
+  .border-left-d{
+    border-left: 1px solid #a4a6b4;
+    }
+    .p-info{
+      padding-left: 24px;
+      padding-right: 24px;
+    }  
+}
+@media only screen and (max-width:768px){
+    .p-info{
+      padding-left: 32px;
+      padding-right: 32px;
+    }  
+    
 }

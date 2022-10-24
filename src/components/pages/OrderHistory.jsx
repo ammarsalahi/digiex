@@ -158,8 +158,13 @@ export default function Transaction() {
             </TableContainer>
           </Box>
           <div className='d-flex justify-content-center' dir="ltr">
-            <SpacialPagination PageCount={6} PageNumber={1} />
-          </div>
+            <SpacialPagination 
+              data={rows} 
+              buttonConst={3}
+              contentPerPage={1}
+              siblingCount={1}
+            />
+        </div>
         </Box>
       </Box>
     </div>
