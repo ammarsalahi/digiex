@@ -1,11 +1,11 @@
 import {createTheme} from '@mui/material/styles';
+
 const  textTheme = createTheme({
     direction:'rtl',
     palette:{
       digi: {
         main: '#cbe4eb',
         dark: '#cbe4eb',
-        contrastText: '#cbe4eb',
         light:'#cbe4eb',
       },
       digigrey:{
@@ -15,7 +15,9 @@ const  textTheme = createTheme({
         light:'#a4a6b4s',
       },
       primary:{
-        main:"#424BFB"
+        main:"#424BFB",
+        dark: '#424BFB',
+        light:'#424BFB',
       },
       whiteNo:{
         light: '#fff',
@@ -29,10 +31,9 @@ const  textTheme = createTheme({
         styleOverrides: {
           root: {
               "& fieldset": {
-                border: "1px solid #a4a6b4",
+                border: "1px solid #cbe4eb",
                 borderRadius:"8px",
               },
-              
           },
         }
       },
@@ -40,7 +41,7 @@ const  textTheme = createTheme({
         styleOverrides: {
           root: {
               "& fieldset": {
-                border: "1px solid #a4a6b4",
+                border: "1px solid #cbe4eb",
                 borderRadius:"8px",
                 minHeight:"63px",
                 maxHeight:"63px"

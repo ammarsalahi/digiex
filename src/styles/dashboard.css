@@ -27,23 +27,23 @@ padding-bottom: 30px;
 @media only screen and (min-width:992px){
   .form-button{
     padding-top: 10px;
-    padding-bottom: 32px;
+    padding-bottom: 20px;
   }
   .info-card{
-    padding-top: 79px;
-    padding-bottom: 32px;
+    padding-top: 85px;
+    padding-bottom: 20px;
 
   }
 }
 
 @media only screen and (min-width:600px){
   .form-button{
-    padding-top: 20px;
-    padding-bottom: 24px;
+    padding-top: 21px;
+    padding-bottom: 20px;
   }
   .info-card{
-    padding-top: 71px;
-    padding-bottom: 24px;
+    padding-top: 75px;
+    padding-bottom: 20px;
 
   }
  

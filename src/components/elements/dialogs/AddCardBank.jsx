@@ -63,7 +63,23 @@ export default function AddCardBank({open,close}) {
     mt:"12px",
     fontSize:"13px",
     mx:"2%",
+    '& :focus':{
+      backgroundColor:"#eef1ff",
+      borderRadius:"8px"
+    }
    }
+   const btnbg={
+    backgroundColor:"#eef1ff",
+    borderRadius:"8px"
+  }
+  const adornmentstyle={
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'center',
+    marginLeft:-10,
+    paddingLeft:4,
+  }
+
    React.useEffect(() => {
     if (window.innerWidth < 700) {
       setissmall(true)
@@ -138,10 +154,14 @@ export default function AddCardBank({open,close}) {
                     <TextField 
                       color="digi"
                       fullWidth
-                      type="tel"
+                      sx={{'& :focus':btnbg}} 
+                      type="number"
                       InputProps={{
-                        maxLength:16,disableUnderline:true,
-                        endAdornment: <InputAdornment position="end">IR</InputAdornment>,
+                        endAdornment:( 
+                          <Box sx={adornmentstyle}>
+                             <InputAdornment position="end">IR</InputAdornment>
+                          </Box>
+                        ),
                       }}
                     />
                </FormGroup>

@@ -58,11 +58,17 @@ const minibtnstyle={
 }
 
 const btnstyle={
-  fontSize: 21, height: "55px",borderRadius:"8px",boxShadow:"none"
+  fontSize: 21, height: "55px",borderRadius:"8px"
 }
 const btnbg={
   backgroundColor:"#eef1ff",
   borderRadius:"8px"
+}
+const adornmentstyle={
+  display:'flex',
+  flexDirection:'column',
+  justifyContent:'center',
+  marginLeft:-8,
 }
 export default function FormTabs({options,tabvalue,handleChange,openprop}) {
 
@@ -101,13 +107,13 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
    }
    const handleBtnSale=(props)=>(event)=>{
     if(props==='25'){
-      setbtnsale({btn25:"primary",btn50:"digi",btn75:"digi", btn100:"digi"});
+      setbtnsale({btn25:"primary",btn50:"digigrey",btn75:"digigrey", btn100:"digigrey"});
     } if(props==='50'){
-      setbtnsale({btn25:"digi",btn50:"primary",btn75:"digi", btn100:"digi"});
+      setbtnsale({btn25:"digigrey",btn50:"primary",btn75:"digigrey", btn100:"digigrey"});
     } if(props==='75'){
-      setbtnsale({btn25:"digi",btn50:"digi",btn75:"primary", btn100:"digi"});
+      setbtnsale({btn25:"digigrey",btn50:"digigrey",btn75:"primary", btn100:"digigrey"});
     } if(props==='100'){
-      setbtnsale({btn25:"digi",btn50:"digi",btn75:"digi", btn100:"primary"});
+      setbtnsale({btn25:"digigrey",btn50:"digigrey",btn75:"digigrey", btn100:"primary"});
     }
   }
    const handleWal=(event)=>{
@@ -148,10 +154,14 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
           <FormGroup sx={formbtnstyle}>
             <FormLabel className="mb-2">مبلغ خرید(تومان)</FormLabel>
             <TextField color="digi" type="number"
-            sx={{'& :focus':btnbg}} 
+             sx={{'& :focus':btnbg}} 
              fullWidth placeholder='۰.۰۰'
              InputProps={{
-              endAdornment: <InputAdornment position="end">تومان</InputAdornment>,
+              endAdornment:( 
+                <Box sx={adornmentstyle}>
+                  <InputAdornment position="end">تومان</InputAdornment>
+                </Box>
+              ),
             }}
              />
               <Box className="d-flex justify-content-between" sx={{p:"1%"}}>
@@ -171,10 +181,14 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
               sx={{'& :focus':btnbg}} 
               fullWidth variant='outlined' type="number"  placeholder='۰.۰۰'
               InputProps={{
-                endAdornment: <InputAdornment position="end" style={{btnbg}}>BUSD</InputAdornment>,
+                endAdornment:( 
+                  <Box sx={adornmentstyle}>
+                  <InputAdornment position="end">BUSD</InputAdornment>
+                  </Box>
+                ),
               }}
             />
-            <div className="d-flex justify-content-between pt-1">
+            <div className="d-flex justify-content-between pt-1 px-2">
               <p className='text-muted helper-fontsize mt-1'>موجودی ۰ بایننس</p>
                <Button color="digigrey" variant="outlined"  onClick={handleWal} sx={{minHeight:"31px",maxHeight:"31px",borderRadius:"30px"}}>
               واریز‌ به‌کیف‌ پول
@@ -198,10 +212,14 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
           <FormGroup sx={formbtnstyle}>
             <FormLabel className="mb-2">مبلغ فروش(تومان)</FormLabel>
             <TextField color="digi"
-                sx={{'& :focus':btnbg}}
+                sx={{'& :focus':btnbg}} 
                fullWidth variant='outlined' placeholder='۰.۰۰'
                InputProps={{
-                 endAdornment: <InputAdornment position="end">تومان</InputAdornment>,
+                endAdornment:( 
+                  <Box sx={adornmentstyle}>
+                    <InputAdornment position="end">تومان</InputAdornment>
+                  </Box>
+                ),
                }}
              
             />
@@ -221,19 +239,21 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
               sx={{'& :focus':btnbg}}
               fullWidth variant='outlined' placeholder='۰.۰۰'
               InputProps={{
-                endAdornment: <InputAdornment position="end">
-                  BUSD
-                </InputAdornment>,
+                endAdornment:( 
+                  <Box sx={adornmentstyle}>
+                  <InputAdornment position="end">BUSD</InputAdornment>
+                  </Box>
+                ),
               }}
             />
             <div className="d-flex justify-content-between pt-1 px-2">
-              <p className='text-muted helper-fontsize'>موجودی ۰ بایننس</p>
+              <p className='text-muted helper-fontsize pt-1'>موجودی ۰ بایننس</p>
               <Button variant="outlined"  sx={{minHeight:"31px",maxHeight:"31px",borderRadius:"30px"}}>
               واریز‌ به‌کیف‌پول
               </Button>
             </div>
           </FormGroup>
-          <Box className='d-lg-block d-md-block d-sm-none d-none form-button'>
+          <Box className='d-lg-block d-md-block d-sm-none d-none form-button' sx={{mt:"2%"}}>
             <Button  variant="contained" onClick={handleOpen('shop')} sx={btnstyle} fullWidth>
               فروش بایننس کوین
             </Button>

@@ -10,7 +10,7 @@ export default function TransactionHead() {
   const [open,setOpen]=React.useState(false);
   const [selectedDay, setSelectedDay] = React.useState(new Date());
   const [textval,setTextval]=React.useState("");
-
+  const [isfocus,setIsfocus]=React.useState(false);
   const dates = [
     {"value":1,"label":"انتخاب تاریخ"},
   ]
@@ -24,7 +24,8 @@ export default function TransactionHead() {
     height:"56px",
     marginTop:"32px",
     backgroundColor:'#fff',
-    textAlign:"center"
+    textAlign:"center",
+    borderColor:"#cbe4eb"
   }
   return (
     <Box className='row d-flex justify-content-start bg-light' sx={{py:"32px",px:"32px"}}>

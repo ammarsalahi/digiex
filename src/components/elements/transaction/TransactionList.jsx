@@ -16,7 +16,8 @@ export default function TransactionList({rows}) {
     color: "rgba(164, 166, 180, 1)",
   }
   const cellstyle={
-    py:"28px",
+    py:"32px",
+    px:"32px",
     fontSize: "14px !important",
     textAlign:"center"
   }
@@ -73,7 +74,7 @@ export default function TransactionList({rows}) {
           
         </Box>
         <Box className='row maincontent'>
-          <TableContainer sx={{px:"24px"}}>
+          <TableContainer>
             <Table sx={{ minWidth: 500}} size="small" aria-label="a dense table">
               <TableHead>
                 <TableRow>

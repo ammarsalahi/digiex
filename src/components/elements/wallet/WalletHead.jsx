@@ -5,7 +5,7 @@ import {ReactComponent as UpGreen} from '../../../img/icons/coin/up - green.svg'
 import Svg from '../../utils/Svgs';
 export default function WalletHead() {
   return (
-    <div className='row bg-light align-items-end info-content'>
+    <div className='row align-items-end info-content' style={{backgroundColor:"#fafbff"}}>
     <div className='col-lg-6 col-md-6 col-12'>
      <Box className='d-flex'sx={{pl:"6%"}}>
        <Box>

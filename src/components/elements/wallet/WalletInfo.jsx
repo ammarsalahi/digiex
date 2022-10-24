@@ -61,10 +61,10 @@ export default function WalletInfo({ infos,options }) {
     backgroundColor:"#fbf4c6"
   }
   return (
-    <Box className="row" >
-     <Box className="col-lg-6 col-md-12 col-12" sx={{ px: "3%", pt: "33px" }}>
+    <Box className="row" sx={{ px: "32px" }}>
+     <Box className="col-lg-6 col-md-12 col-12" >
         
-       <Box className="d-flex justify-content-center">
+       <Box className="d-flex justify-content-center" sx={{pt:"42px"}}>
          <Card sx={cardstyle} className="bg-card-img">
           <CardContent>
             <Box sx={{pb: "50px",px: "3%"}} className="d-flex justify-content-between">
@@ -109,7 +109,7 @@ export default function WalletInfo({ infos,options }) {
         </Card>
 
         </Box>
-               <Box className="d-flex justify-content-start px-2">
+               <Box className="d-flex justify-content-start px-2" >
                  <Box sx={{pb: "50px" }} >
                    <Typography variant='p' sx={{ py: 2 ,px:1,color:"#a4a6b4"}} fontSize={14} component="div">
                       مجموع واریز
@@ -140,7 +140,7 @@ export default function WalletInfo({ infos,options }) {
             </Box> 
        </Box>
        
-      <Box className="col-lg-6 col-md-12 col-12 d-flex justify-content-center">
+      <Box className="col-lg-6 col-md-12 col-12 d-flex justify-content-center" sx={{pt:"20px"}}>
         <List sx={{minWidth:"392px",maxWidth:"420px"}}>
           {infos.map((item, idx) => (
             <ListItem key={idx}>

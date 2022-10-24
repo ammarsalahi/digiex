@@ -106,7 +106,11 @@ export default function StepOne({onNext}) {
 
   
   const textfieldstyle={
-    pt:"12px"
+    pt:"12px",
+      "& :focus": {
+        backgroundColor: "#eef1ff",
+        borderRadius:'8px'
+      }
   }
 
   return (
@@ -177,7 +181,7 @@ export default function StepOne({onNext}) {
             </FormGroup>
             <FormGroup className="col-lg-6 col-12" sx={{mb:"32px"}}>
               <FormLabel>تاریخ تولد</FormLabel>
-               <div className="d-flex boxdate" style={isfucosed? {border:"2px solid #cbe4eb"}:{}}
+               <div className="d-flex boxdate" style={isfucosed? {border:"2px solid #cbe4eb",backgroundColor:"#eef1ff"}:{}}
                onFocus={()=>{setisfucosed(true)}} onBlur={()=>setisfucosed(false)}
                >
                  <TextField variant='standard'

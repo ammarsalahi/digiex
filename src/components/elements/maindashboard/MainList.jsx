@@ -15,25 +15,11 @@ export default function MainList({rows}) {
     color: "rgba(164, 166, 180, 1)",
   }
   const cellstyle={
-    py:"18px",
+    py:"24px",
     fontSize: "14px !important",
     textAlign:"center"
   }
-  const darkbtnstyle={
-    height: "35px",
-    width: "77px",
-    borderRadius:"7px",
-  }
-  const boxbtnstyle={
-    border:"1px solid #a4a6b4",
-    borderRadius:"8px",
-    height:"48px",
-    width:"153px",
-    px:"5px",
-    py:"5px",
-    display:"flex",
-    my:"2%"
-  }
+
   
   const theme = createTheme({
     palette: {
@@ -49,7 +35,7 @@ export default function MainList({rows}) {
   }
   return (
     <Box sx={{pt:"18px"}}>
-      <div className='d-flex justify-content-between p-2'>
+      <Box className='d-flex justify-content-between' sx={{p:"32px"}} >
         <Typography component="div" variant="p">
              لیست معاملات    
          </Typography>
@@ -61,7 +47,7 @@ export default function MainList({rows}) {
         </Box>
         </ThemeProvider>
         
-      </div>
+      </Box>
     <Box className='row maincontent'>
     <TableContainer sx={{px:"15px",pb:"14px"}}>
       <Table sx={{ minWidth: 500}} size="small" aria-label="a dense table">
