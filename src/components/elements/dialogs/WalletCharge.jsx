@@ -70,6 +70,17 @@ const textfieldstyle={
 const subbtnstyle={
   fontSize:"16px", backgroundColor: "#424BFB", height: "55px",borderRadius:'8px'
 }
+const btnbg={
+  backgroundColor:"#eef1ff",
+  borderRadius:"8px"
+}
+const adornmentstyle={
+  display:'flex',
+  flexDirection:'column',
+  justifyContent:'center',
+  marginLeft:-14,
+  paddingLeft:4,
+}
 export default function WalletCharge({open,close}) {
 
   const [issmall, setissmall] = React.useState(false);
@@ -158,21 +169,26 @@ export default function WalletCharge({open,close}) {
                       انتخاب کارت بانکی برای پرداخت
                 </Typography>
                  </Box>
-             <Box sx={{pb:"1%"}}>
+             <Box sx={{py:"5px"}}>
             <CardsBank/>
              </Box>
-            <Box sx={{px:"1%"}}>
+            <Box sx={{px:"1%",pt:"14px",pb:"5px"}}>
            <Typography variant="p" component="div" fontSize="13px">
                   مبلغ دلخواه(تومان)
            </Typography>
          </Box>
-         <Box sx={{pb:"2%",px:"1%"}}>
+         <Box sx={{pb:"2%"}}>
             <TextField 
+            color="digi"
               fullWidth
-              sx={textfieldstyle}
+              sx={{"& :focus":btnbg}}
               placeholder='50,000,000'
               InputProps={{
-                endAdornment: <InputAdornment position="end">تومان</InputAdornment>,
+                endAdornment:(
+                  <Box sx={adornmentstyle}>
+                    <InputAdornment position="end">تومان</InputAdornment>
+                  </Box>
+                ),
               }}
             />
             <Box className="d-flex justify-content-between mt-2">

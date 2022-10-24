@@ -51,11 +51,17 @@ BootstrapDialogTitle.propTypes = {
     onClose: PropTypes.func.isRequired,
   };
 
-const textfieldstyle={
-    "& .MuiOutlinedInput-root.Mui-disabled":{
-      "& > fieldset": {border: '1px solid #a4a6b4',borderRadius:'8px'},
-    }
-}
+  const btnbg={
+    backgroundColor:"#eef1ff",
+    borderRadius:"8px"
+  }
+  const adornmentstyle={
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'center',
+    marginLeft:-14,
+    paddingLeft:4,
+  }
 const subbtnstyle={
   fontSize:"16px", backgroundColor: "#424BFB", height: "55px",borderRadius:"8px"
 }
@@ -112,11 +118,15 @@ export default function WalletDesposit({open,close,options}) {
             <FormLabel className="mb-2">تعداد</FormLabel>
             <TextField
             color='digi'
-             sx={textfieldstyle}
              type="number"
+             sx={{"& :focus":btnbg}}
              fullWidth variant='outlined' placeholder='۰.۰۰'
               InputProps={{
-                endAdornment: <InputAdornment position="end">BUSD</InputAdornment>,
+                endAdornment:(
+                  <Box sx={adornmentstyle}>
+                      <InputAdornment position="end">BUSD</InputAdornment>
+                  </Box>
+                ),
               }}
               
             />

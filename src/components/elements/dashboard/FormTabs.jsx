@@ -60,16 +60,8 @@ const minibtnstyle={
 const btnstyle={
   fontSize: 21, height: "55px",borderRadius:"8px"
 }
-const btnbg={
-  backgroundColor:"#eef1ff",
-  borderRadius:"8px"
-}
-const adornmentstyle={
-  display:'flex',
-  flexDirection:'column',
-  justifyContent:'center',
-  marginLeft:-8,
-}
+
+
 export default function FormTabs({options,tabvalue,handleChange,openprop}) {
 
 
@@ -154,13 +146,10 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
           <FormGroup sx={formbtnstyle}>
             <FormLabel className="mb-2">مبلغ خرید(تومان)</FormLabel>
             <TextField color="digi" type="number"
-             sx={{'& :focus':btnbg}} 
              fullWidth placeholder='۰.۰۰'
              InputProps={{
               endAdornment:( 
-                <Box sx={adornmentstyle}>
                   <InputAdornment position="end">تومان</InputAdornment>
-                </Box>
               ),
             }}
              />
@@ -178,13 +167,10 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
           <FormGroup sx={formbtnstyle}>
             <FormLabel className="mb-2">تعداد بایننس کوین</FormLabel>
             <TextField color="digi" 
-              sx={{'& :focus':btnbg}} 
               fullWidth variant='outlined' type="number"  placeholder='۰.۰۰'
               InputProps={{
                 endAdornment:( 
-                  <Box sx={adornmentstyle}>
                   <InputAdornment position="end">BUSD</InputAdornment>
-                  </Box>
                 ),
               }}
             />
@@ -212,13 +198,10 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
           <FormGroup sx={formbtnstyle}>
             <FormLabel className="mb-2">مبلغ فروش(تومان)</FormLabel>
             <TextField color="digi"
-                sx={{'& :focus':btnbg}} 
                fullWidth variant='outlined' placeholder='۰.۰۰'
                InputProps={{
                 endAdornment:( 
-                  <Box sx={adornmentstyle}>
                     <InputAdornment position="end">تومان</InputAdornment>
-                  </Box>
                 ),
                }}
              
@@ -236,13 +219,10 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
           <FormGroup sx={formbtnstyle}>
             <FormLabel className="mb-2">تعداد بایننس کوین</FormLabel>
             <TextField color="digi" 
-              sx={{'& :focus':btnbg}}
               fullWidth variant='outlined' placeholder='۰.۰۰'
               InputProps={{
                 endAdornment:( 
-                  <Box sx={adornmentstyle}>
                   <InputAdornment position="end">BUSD</InputAdornment>
-                  </Box>
                 ),
               }}
             />

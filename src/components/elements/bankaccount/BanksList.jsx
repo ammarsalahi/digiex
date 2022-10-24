@@ -25,12 +25,12 @@ export default function BanksList({rows,opendialog}) {
     textAlign:"center"
   }
   const cardbtnstyle={
-    backgroundColor:'#e8ebef',
+    backgroundColor:'#f1f3fa',
     fontSize:"13px",
     color: "#000",
     borderRadius:'8px',
     '&:hover': {
-      backgroundColor:'#e8ebef',
+      backgroundColor:'#f1f3fa',
       color: "#000",
    },
    px:"90px",
