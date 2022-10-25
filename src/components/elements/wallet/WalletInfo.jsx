@@ -10,9 +10,8 @@ import {ReactComponent as DownRed} from '../../../img/icons/coin/down arrow - re
 import {ReactComponent as UpGreen} from '../../../img/icons/coin/up arrow - green.svg';
 import {ReactComponent as LogoEN} from '../../../img/icons/logo-fa-white.svg';
 import WalletCharge from '../dialogs/WalletCharge';
-import WalletDesposit from '../dialogs/WalletDeposit';
 import WalletWithdraw from '../dialogs/WalletWithdraw';
-
+import WalletDesposit from '../dialogs/WalletDesposit';
 export default function WalletInfo({ infos,options }) {
   const [open,setOpen]=React.useState({
     charge:false,

@@ -62,11 +62,12 @@ const formbtnstyle={
 }
 
 const boxselected={
-  border:"2px solid blue",borderRadius:"10px",px:"2%",py:"1%",mx:"1%"
+  border:"2px solid blue",borderRadius:"10px",px:"2%",py:"1%",mx:"1%",
 }
 const boxunselected={
   border:"2px solid grey",borderRadius:"10px",px:"2%",py:"1%",mx:"1%"
 }
+
 export default function BuyFee({open,close,optionsdata}) {
 
   const [issmall, setissmall] = React.useState(false);

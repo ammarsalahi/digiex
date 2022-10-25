@@ -56,16 +56,12 @@ BootstrapDialogTitle.propTypes = {
 
 
 const boxselected={
-  border:"1.5px solid #424BFB",borderRadius:"8px",my:"1%",height:"50px",pl:"2%",backgroundColor:"rgb(211, 245, 255)",
+  border:"1.5px solid #424BFB",borderRadius:"8px",my:"1%",height:"50px",pl:"2%",backgroundColor:"#eef1ff",
 }
 const boxunselected={
   border:"1.5px solid #a4a6b4",borderRadius:"8px",my:"1%",height:"50px",pl:"2%",
 }
-const textfieldstyle={
-  "& .MuiOutlinedInput-root.Mui-disabled":{
-    "& > fieldset": {border: '1px solid #a4a6b4',borderRadius:'8px'},
-  }
-}
+
 
 const subbtnstyle={
   fontSize:"16px", backgroundColor: "#424BFB", height: "55px",borderRadius:'8px'
@@ -137,7 +133,7 @@ export default function WalletCharge({open,close}) {
                     <ListItemIcon>
                         <Checkbox checked={payment==="bank"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />
                     </ListItemIcon>
-                    <ListItemText primaryTypographyProps={payment==='bank'?{color:"#424BFB",fontSize:"15px"}:{color:"#a4a6b4",fontSize:"15px"}}   
+                    <ListItemText primaryTypographyProps={payment==='bank'?{color:"#424BFB",fontSize:"15px"}:{color:"#5f5f62",fontSize:"15px"}}   
                      primary={
                         <div className="d-flex mt-3">
                         <WalletOutlined/>
@@ -149,14 +145,14 @@ export default function WalletCharge({open,close}) {
                     <ListItemIcon>
                         <Checkbox checked={payment==="id"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />
                     </ListItemIcon>
-                    <ListItemText primaryTypographyProps={payment==='id'?{color:"#424BFB",fontSize:"15px"}:{color:"#a4a6b4",fontSize:"15px"}}   
+                    <ListItemText primaryTypographyProps={payment==='id'?{color:"#424BFB",fontSize:"15px"}:{color:"#5f5f62",fontSize:"15px"}}   
                      primary={
                         <div className="d-flex mt-3">
                         <WalletOutlined/>
                          <p>پرداخت با شناسه</p>
                         </div>
                     }/>
-                    <ListItemText primaryTypographyProps={payment==='id'?{color:"#424BFB",fontSize:"11px"}:{color:"#a4a6b4",fontSize:"11px"}}  
+                    <ListItemText primaryTypographyProps={payment==='id'?{color:"#424BFB",fontSize:"11px"}:{color:"#5f5f62",fontSize:"11px"}}  
                         primary="مناسب واریز بالای 50 میلیون تومان"/>     
                </ListItem>
             </List>
@@ -192,13 +188,13 @@ export default function WalletCharge({open,close}) {
               }}
             />
             <Box className="d-flex justify-content-between mt-2">
-               <Box sx={price==='5'?boxselected:boxunselected} onClick={()=>setprice('5')} style={{paddingTop:"3%"}}>
+               <Box sx={price==='5'?boxselected:boxunselected} onClick={()=>setprice('5')} style={{padding:"3%",fontSize:"14px"}}>
                  5,000,000 تومان
                </Box>
-               <Box sx={price==='10'?boxselected:boxunselected} onClick={()=>setprice('10')} style={{paddingTop:"3%"}}>
+               <Box sx={price==='10'?boxselected:boxunselected} onClick={()=>setprice('10')} style={{padding:"3%",fontSize:"14px"}}>
                  10,000,000 تومان 
                </Box>
-               <Box sx={price==='25'?boxselected:boxunselected} onClick={()=>setprice('25')} style={{paddingTop:"3%"}}>
+               <Box sx={price==='25'?boxselected:boxunselected} onClick={()=>setprice('25')} style={{padding:"3%",fontSize:"14px"}}>
                   25,000,000 تومان
                </Box>
             </Box>

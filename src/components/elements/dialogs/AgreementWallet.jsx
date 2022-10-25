@@ -58,13 +58,14 @@ export default function AgreementWallet({open,close}) {
 
   const [issmall, setissmall] = React.useState(false);
 
-    const textfieldstyle={
-    "& .MuiOutlinedInput-root.Mui-disabled":{
-      "& > fieldset": {border: '1px solid #a4a6b4',borderRadius:'8px'},
-    },
+  const textfieldstyle={
     mt:"12px",
     fontSize:"13px",
     mx:"2%",
+    '& :focus':{
+      backgroundColor:"#eef1ff",
+      borderRadius:"8px"
+    }
    }
    React.useEffect(() => {
     if (window.innerWidth < 700) {
@@ -77,6 +78,7 @@ export default function AgreementWallet({open,close}) {
    
   return (
       <BootstrapDialog
+        fullScreen={issmall?true:false}
         sx={{direction:"ltr"}}
         onClose={close}
         aria-labelledby="customized-dialog-title"
@@ -102,26 +104,32 @@ export default function AgreementWallet({open,close}) {
             <FormGroup sx={{mb:"4%"}}>
                <Box className="d-flex">
                        <TextField
+                        color="digi"
                         variant="outlined"
                         sx={textfieldstyle}
                         />
                         <TextField
+                        color="digi"
                         variant="outlined"
                         sx={textfieldstyle}
                         />
                         <TextField
+                        color="digi"
                         variant="outlined"
                         sx={textfieldstyle}
                         />
                         <TextField
+                        color="digi"
                         variant="outlined"
                         sx={textfieldstyle}
                         />
                         <TextField
+                        color="digi"
                         variant="outlined"
                         sx={textfieldstyle}
                         />
                         <TextField
+                        color="digi"
                         variant="outlined"
                         sx={textfieldstyle}
                         />

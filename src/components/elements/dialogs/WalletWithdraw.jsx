@@ -10,13 +10,9 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Slide from '@mui/material/Slide';
-import {Box,Checkbox,FormGroup,FormControlLabel} from '@mui/material'
-import { CheckCircle,RadioButtonUnchecked } from '@mui/icons-material';
+import {  Box ,FormGroup,FormLabel,InputAdornment,TextField} from '@mui/material'
 import DigiSelect from '../global/DigiSelect';
-import {ReactComponent as qrcode} from '../../../img/icons/qr.svg';
-import {ReactComponent as copyicon} from '../../../img/icons/copy-clipboard.svg';
-import Svg from '../../utils/Svgs';
-
+import CardWallet from '../global/CardWallet';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -56,40 +52,26 @@ BootstrapDialogTitle.propTypes = {
     onClose: PropTypes.func.isRequired,
   };
 
-
-const boxselected={
-  border:"1.5px solid #424BFB",borderRadius:"8px",my:"1%",height:"50px",mx:"2%",pl:"2%",backgroundColor:"rgb(211, 245, 255)",
-}
-const boxunselected={
-  border:"1.5px solid #A6A6A6",borderRadius:"8px",my:"1%",height:"50px",mx:"2%",pl:"2%",
-}
-
-const walletboxstyle={
-  height: '57px',
-  backgroundColor:"lightgrey",
-  border:"1px solid #a4a6b4",
-  borderRadius:"8px",
-  p:"3%",
-  my:"2%"
-}
-const codeboxstyle={
-    height: '57px',
-    border:"1px solid #a4a6b4",
-    borderRadius:"8px",
-    p:"3%",
-    my:"2%"
+  const btnbg={
+    backgroundColor:"#eef1ff",
+    borderRadius:"8px"
   }
-
+  const adornmentstyle={
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'center',
+    marginLeft:-14,
+    paddingLeft:4,
+  }
 const subbtnstyle={
-  fontSize:"16px", backgroundColor: "#424BFB", height: "55px",borderRadius:'8px'
+  fontSize:"16px", backgroundColor: "#424BFB", height: "55px",borderRadius:"8px"
 }
 export default function WalletWithdraw({open,close,options}) {
 
   const [issmall, setissmall] = React.useState(false);
-  const [coin,setCoin]=React.useState("")
+
   
    React.useEffect(() => {
-    console.log(options)
     if (window.innerWidth < 700) {
       setissmall(true)
     }
@@ -111,12 +93,12 @@ export default function WalletWithdraw({open,close,options}) {
         open={open}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
-            برداشت از کیف پول
+           برداشت ارز از  کیف پول
         </BootstrapDialogTitle>
         
         <DialogContent>
         
-        <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"2%"}}>
+        <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"3%"}}>
            <Typography variant="p" component="div" fontSize="13px">
                 انتخاب  ارز
            </Typography>
@@ -126,76 +108,36 @@ export default function WalletWithdraw({open,close,options}) {
         </Box>
          <Box className="border-right-marginboldblue" sx={{px:"1%"}}>
            <Typography variant="p" component="div" fontSize="13px">
-                انتخاب شبکه پرداخت
+                انتخاب آدرس کیف پول
            </Typography>
          </Box>
-         <Box className="d-flex justify-content-start" sx={{pb:"2%"}}>
-         <Box sx={coin==="erc-20"?boxselected:boxunselected}>
-            <FormGroup>
-              <FormControlLabel 
-                control={<Checkbox checked={coin==="erc-20"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
-                onClick={()=>setCoin("erc-20")} label="ERC-20"
-              />
-            </FormGroup>
-          </Box>
-          <Box sx={coin==="trc-20"?boxselected:boxunselected}>
-            <FormGroup>
-            <FormControlLabel 
-              control={<Checkbox checked={coin==="trc-20"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
-              onClick={()=>setCoin("trc-20")} label="TRC-20" 
+         <Box>
+          <CardWallet options={options} />
+         </Box>
+         <Box>
+         <FormGroup sx={{my:"2%"}}>
+            <FormLabel className="mb-2">تعداد</FormLabel>
+            <TextField
+            color='digi'
+             type="number"
+             sx={{"& :focus":btnbg}}
+             fullWidth variant='outlined' placeholder='۰.۰۰'
+              InputProps={{
+                endAdornment:(
+                  <Box sx={adornmentstyle}>
+                      <InputAdornment position="end">BUSD</InputAdornment>
+                  </Box>
+                ),
+              }}
+              
             />
             </FormGroup>
-          </Box>
-          <Box sx={coin==="bep-20"?boxselected:boxunselected}>
-            <FormGroup>
-            <FormControlLabel 
-              control={<Checkbox checked={coin==="bep-20"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
-              onClick={()=>setCoin("bep-20")} label="BEP-20" 
-            />
-            </FormGroup>
-          </Box>
          </Box>
-         <Box className="border-right-marginboldblue" sx={{px:"1%"}}>
-           <Typography variant="p" component="div" fontSize="13px">
-                مقدار 250تتر به آدرس ولت زیر ارسال کنید
-           </Typography>
-         </Box>
-         <Box sx={{pb:"2%",px:"1%"}}>
-          <Box className="d-flex justify-content-between" sx={walletboxstyle}>
-            <Typography variant="p" component="div">
-                TPNFDKDJDMrjgkdnskfk763mfkdhgjd83h
-            </Typography>
-            <Box className="d-flex">
-                <IconButton sx={{mx:"1%"}}>
-                <Svg Component={copyicon} />
-                </IconButton>
-                <IconButton sx={{mx:"1%"}}>
-                  <Svg Component={qrcode} />
-                </IconButton>
-            </Box>
-          </Box>
-         </Box>
-
-         <Box sx={{px:"1%"}}>
-           <Typography variant="p" component="div" fontSize="13px">
-                ارز موردنظر را به آدرس ولت زیر ارسال کنید
-           </Typography>
-         </Box>
-         <Box sx={{pb:"2%",px:"1%"}}>
-          <Box sx={codeboxstyle}>
-            <Typography variant="p" component="div">
-                6725562285654124445853216498461548454
-            </Typography>
-         </Box>
-         </Box>
-         
-         
-        
-
+    
         </DialogContent>
         <DialogActions sx={{p:"2%"}}>
                 <Button variant="contained" sx={subbtnstyle} fullWidth>
-                    ثبت سفارش 
+                    ثبت درخواست برداشت 
                 </Button>
          </DialogActions>
       </BootstrapDialog>

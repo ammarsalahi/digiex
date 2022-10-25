@@ -91,7 +91,7 @@ export default function AddCardBank({open,close}) {
    
   return (
       <BootstrapDialog
-       fullScreen={issmall?true:false}
+        fullScreen={issmall?true:false}
         sx={{direction:"ltr"}}
         onClose={close}
         aria-labelledby="customized-dialog-title"
