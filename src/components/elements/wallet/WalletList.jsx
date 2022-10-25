@@ -47,7 +47,7 @@ export default function WalletList({rows}) {
      setbtntext(props);
   }
   return (
-    <Box sx={{pt:"18px"}}>
+    <Box sx={{pt:"18px",px:"24px"}}>
       <div className='d-flex justify-content-between'>
         <Typography component="div" variant="p" className='transaction-header'>
           واریز و برداشت های اخیر
