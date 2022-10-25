@@ -125,15 +125,27 @@ div.boxdate:hover{
       padding-left: 24px;
       padding-right: 24px;
     }  
+    .slidbox{
+      margin-top: 90px;
+    }
 }
 @media only screen and (max-width:768px){
     .p-info{
       padding-left: 32px;
       padding-right: 32px;
     }  
+    .slidbox{
+      margin-top: 250px;
+    }
     
 }
 
 .bgw .bgw:hover{
   background-color: #fff;
 }
+
+.MuiButtonBase-root.MuiMenuItem-root {
+  min-height: auto;
+  direction: rtl;
+}
+

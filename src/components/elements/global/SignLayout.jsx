@@ -40,9 +40,9 @@ export default function SignLayout({children}) {
     <div className='container-fluid ' >
     <Box className="row" dir="rtl">
       
-      <Box className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-none" sx={{backgroundColor:"#424BFB",pt:"5%",height:"100vh"}}>
-           <Box sx={{pr:"48px"}}>
-           <Svg  Component={Logo} />
+      <Box className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-none" sx={{backgroundColor:"#424BFB",pt:"5%"}}>
+           <Box sx={{pl:"48px"}}>
+              <Svg  Component={Logo} />
             </Box> 
            <Box sx={{pl:"7%"}}>
            <Typography variant="p" compoent="div" sx={{color:"#fff",textAlign:"center",fontSize:"42px"}}>
@@ -55,7 +55,7 @@ export default function SignLayout({children}) {
              </Typography>
            </Box>
            <div>
-            <Box className="container d-flex justify-content-center" sx={{pt:"100px",px:"15%"}}>
+            <Box className="container d-flex justify-content-center slidbox" sx={{px:"15%"}}>
             <Swiper
               style={boxstyle}
               effect="fade"
