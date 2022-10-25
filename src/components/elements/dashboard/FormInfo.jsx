@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Box, Typography } from '@mui/material'
-import {  Info } from '@mui/icons-material';
+import {  InfoOutlined } from '@mui/icons-material';
 import BuyFee from '../dialogs/BuyFee';
 
 export default function FormInfo({ listdata, title,description,finalvalue,options}) {
@@ -10,6 +10,9 @@ export default function FormInfo({ listdata, title,description,finalvalue,option
   }
   const handleClose=(event)=>{
     setopen(false);
+  }
+  const btnstyle={
+    height: '72px' , backgroundColor: "#EAEEFF" , border: "1px solid #cbe4eb" , borderRadius : "8px",color:"#000"
   }
   return (
     <Box component="div" sx={{ textAlign: 'left' }}>
@@ -30,7 +33,7 @@ export default function FormInfo({ listdata, title,description,finalvalue,option
       ))}
       {description?<div>
         <div style={{paddingTop:'32px'}}>
-        <Button startIcon={<Info />} onClick={handleOpenDialog} sx={{ height: '72px' , backgroundColor: "#EAEEFF" , border: "1px solid rgba(163, 174, 228,1)" , borderRadius : "8px"}} variant="outlined" fullWidth size="large" >
+        <Button startIcon={<InfoOutlined sx={{height:"30px",width:"30px"}} color="primary" />} onClick={handleOpenDialog} sx={btnstyle} variant="outlined" fullWidth size="large" >
           توضیح کامل در خصوص کارمزد
         </Button>
       </div>

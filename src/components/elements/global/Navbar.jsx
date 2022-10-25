@@ -14,10 +14,10 @@ export default function Navbar({isSide,LoadSide,LoadMobile}) {
   let navigate =useNavigate()
   const appbarstyle={
     backgroundColor:"rgba(255, 255, 255, 1)",
-    maxHeight:'83px',
-    minHeight:'83px',
-    borderBottom: "1px solid #a4a6b4",
-    pt:"10px"
+    maxHeight:'73px',
+    minHeight:'73px',
+    borderBottom: "1px solid #cbe4eb",
+    pt:"5px"
   }
  
   const goLogin=(event)=>{
@@ -53,25 +53,28 @@ export default function Navbar({isSide,LoadSide,LoadMobile}) {
         </div>   
         
        <Typography  component={Link} to='/' sx={{ flexGrow: 1 }}>
-       <Svg Component={LOGO} />
+        
+       <Svg Component={LOGO} style={{height:"28px"}}/>
        </Typography> 
-       <IconButton dir='rtl'>
-        <Badge color='primary' badgeContent={5} anchorOrigin={{vertical: 'top',horizontal: 'left',}}>
-         <Svg Component={Notify} />
-        </Badge>
-        </IconButton>
-        <div className='d-none d-sm-none d-md-none d-lg-block text-dark'>
-            <MenuItem onClick={goLogin} sx={{mt:"14px",borderRadius:"8px"}}>
+          <Box dir='rtl' className=" d-flex align-items-center" sx={{mx:"7px",mt:"7px"}}>
+            <Badge color='primary' badgeContent={5} anchorOrigin={{vertical: 'top',horizontal: 'left',}}>
+              <Svg Component={Notify} />
+              </Badge>
+          </Box>
+        <div className='d-none d-sm-none d-md-none d-lg-block text-dark mx-1'>
+            <Box onClick={goLogin} sx={{mt:"10px",borderRadius:"8px",width:"165px"}}>
               <Box className="d-flex justify-content-between" >
-              <Svg Component={USER}/>
+                <Box sx={{mr:"7px"}} className=" d-flex align-items-center">
+                <Svg Component={USER} />
+                </Box>
                <ListItemText sx={{mx:"2px"}} primary="حسین اسدزاده" secondary="کاربر طلایی" 
                 primaryTypographyProps={{pb:"3px"}} secondaryTypographyProps={{fontSize:"11px",color:"gold"}}
                />
-               <ExpandMore style={{color:"#a4a6b4"}}/>
+               <ExpandMore style={{color:"#a4a6b4",marginTop:"7px"}}/>
               </Box> 
-            </MenuItem>
+            </Box>
         </div>
-        <div className='d-lg-none d-flex'>
+        <div className='d-lg-none d-flex  align-items-center mt-2' >
           <IconButton  size="small" onClick={goLogin}><Svg Component={USER} /></IconButton>
         </div>
         </Toolbar>

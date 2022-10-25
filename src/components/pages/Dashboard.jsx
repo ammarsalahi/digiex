@@ -66,7 +66,7 @@ export default function Dashboard() {
            {tabvalue===1 && (  
               <Button  
                 variant="contained" 
-                sx={{ fontSize: 21, height: "55px" ,borderRadius:"8px"}}
+                sx={{ fontSize: 21, height: "55px" ,borderRadius:"8px",BoxShadow:"unset",}}
                 fullWidth
                 onClick={handleOpen('shop')}
                >
@@ -76,7 +76,7 @@ export default function Dashboard() {
             {tabvalue===0 && (  
               <Button 
                 variant="contained"  
-                sx={{ fontSize: 21, height: "55px",borderRadius:"8px" }} 
+                sx={{ fontSize: 21, height: "55px",borderRadius:"8px" ,BoxShadow:"unset",}} 
                 fullWidth
                 onClick={handleOpen('buy')}
               >

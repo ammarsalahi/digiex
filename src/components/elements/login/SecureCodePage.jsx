@@ -5,19 +5,19 @@ import { ArrowBackIos } from '@mui/icons-material'
 export default function SecureCodePage({send}) {
 
     const labelStyle={
-        fontSize:"13px"
+        fontSize:"13px",
        }
        
        const textfieldstyle={
         fontSize:"40px",
-        mx:"5px",
+        width:"103px",
+        height:"48px",
         mt:"32px",
         textAlign:"center",
-        px:"32px"
        }
   return (
-    <Box sx={{pt:"10.3%"}}>
-              <Box className="d-flex justify-content-between" sx={{py:"27px",px:"6%"}}>
+    <Box sx={{pt:"10.3%",px:"48px"}}>
+              <Box className="d-flex justify-content-between" sx={{py:"27px"}}>
                 <Typography variant="h5" component="div" sx={{fontSize:"20px"}}>
                 کد تایید شماره موبایل
                 </Typography>
@@ -27,11 +27,11 @@ export default function SecureCodePage({send}) {
               </Box>
      
           <form>
-             <FormGroup sx={{mb:"32px",px:"4%"}}>
+             <FormGroup>
                <FormLabel sx={labelStyle}>
                کد تایید به شماره موبایل ۰۹۱۲۵۷۷۶۵۹۸ ارسال شد.
                </FormLabel>
-               <Box className="d-flex">
+               <Box className="d-flex justify-content-between">
 
                <TextField
                  color="digi"
@@ -60,8 +60,8 @@ export default function SecureCodePage({send}) {
                </Box>
                
              </FormGroup>
-             <Box sx={{px:"6%"}}>
-              <Box className='d-flex justify-content-between' sx={{py:"2%",px:"3%"}}>
+             <Box>
+              <Box className='d-flex justify-content-between' sx={{py:"23px"}}>
                   <FormLabel sx={labelStyle} className="mt-2">
                     مهلت استفاده کد: ۰۰:۴۸
                     </FormLabel>

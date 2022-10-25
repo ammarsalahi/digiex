@@ -16,6 +16,10 @@ import CardsBank from '../global/CardsBank';
 import CardID from '../global/CardID';
 import { CheckCircle,RadioButtonUnchecked } from '@mui/icons-material';
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="right" ref={ref} {...props} />;
+});
+
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
       padding: theme.spacing(2),
@@ -88,12 +92,13 @@ export default function BuyStepTwo({open,close,opendialogd}) {
         fullScreen
         sx={issmall?{}:{width:"500px"}}
         PaperProps={{
-          sx:issmall?{}:{right:0,position:"fixed",width:'500px'}
+          sx:issmall?{}:{position:"fixed",width:'500px'}
         }}
         onClose={close}
         aria-labelledby="customized-dialog-title"
         open={open}
-      >
+        TransitionComponent={Transition}
+        >
          <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
         انتخاب نحوه دریافت و شبکه      
          </BootstrapDialogTitle>

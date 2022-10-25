@@ -2,7 +2,8 @@ import React from 'react'
 import { Box, Typography ,MobileStepper} from '@mui/material'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination,EffectFlip,Autoplay } from 'swiper';
-
+import Svg from '../../utils/Svgs'
+import { ReactComponent as Logo} from '../../../img/icons/logo-fa-white.svg';
 
 import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
@@ -40,6 +41,9 @@ export default function SignLayout({children}) {
     <Box className="row" dir="rtl">
       
       <Box className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-none" sx={{backgroundColor:"#424BFB",pt:"5%",height:"100vh"}}>
+           <Box sx={{pr:"48px"}}>
+           <Svg  Component={Logo} />
+            </Box> 
            <Box sx={{pl:"7%"}}>
            <Typography variant="p" compoent="div" sx={{color:"#fff",textAlign:"center",fontSize:"42px"}}>
            با بهترین قیمت و سرعت بالا معامله کنید

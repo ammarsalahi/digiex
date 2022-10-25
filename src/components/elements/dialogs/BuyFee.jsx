@@ -91,13 +91,14 @@ export default function BuyFee({open,close,optionsdata}) {
   return (
       <BootstrapDialog
         fullScreen
-        sx={issmall?{}:{left:0,width:"500px"}}
+        sx={issmall?{direction:"ltr"}:{direction:"ltr",left:0,width:"500px"}}
         PaperProps={{
           sx:issmall?{}:{right:0,position:"fixed",width:'500px'}
         }}
         onClose={close}
         aria-labelledby="customized-dialog-title"
         open={open}
+        TransitionComponent={Transition}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
           کارمزد ارسال و دریافت       

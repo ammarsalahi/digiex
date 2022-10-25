@@ -25,7 +25,7 @@ export default function HeaderInfo({ userdata, svgsDash }) {
     <div className="row d-flex justify-content-center bg-light" style={{ padding: "32px", paddingTop: "52px" }} >
       <Box sx={infobox} className="row justify-content-between">
         <Box className="col-lg-3 col-12" sx={minibox}>
-          <div className='d-flex justify-content-center'>
+          <div className='d-flex justify-content-center align-items-center'>
             {svgsDash ? <div className='ms-2'>
               <img src={svgsicon} alt="star-icon" />
             </div> : <div></div>}

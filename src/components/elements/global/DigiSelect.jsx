@@ -19,6 +19,12 @@ const textfieldstyle={
   width:"96%",ml:"2%",my:"2%"
 }
 
+const muilist={
+  '& ..MuiMenuItem-root':{
+    direction:'rtl',
+  }
+}
+
 export default function DigiSelect({options}) {
    const [optionstate, setoptionstate] = React.useState(options);
    const [open, setopen] = React.useState(false)
@@ -78,7 +84,7 @@ export default function DigiSelect({options}) {
             {optionstate.length 
             ? 
             (optionstate.map((item,idx)=>(
-                 <MenuItem button key={idx} value={item.label} sx={{textAlign:"left"}}>
+                 <MenuItem button key={idx} sx={muilist} value={item.label}>
                     <div className="d-flex justify-content-start">
                         <Box className="text-center" 
                          sx={ item.label==="تتر" || item.label==="یو اس دی کوین" ? tetstyle : daistyle }

@@ -6,7 +6,7 @@ import Svg from '../../utils/Svgs';
 export default function DashboardInfo() {
   const btnStyle = {
     backgroundColor: "rgba(255, 255, 255, 1)",
-    border: "1px solid #a4a6b4",
+    border: "1px solid #cbe4eb",
     borderRadius: "8px",
     height: "43px",
     fontSize:"12px",

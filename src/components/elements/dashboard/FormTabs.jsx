@@ -58,7 +58,7 @@ const minibtnstyle={
 }
 
 const btnstyle={
-  fontSize: 21, height: "55px",borderRadius:"8px"
+  fontSize: 21, height: "55px",borderRadius:"8px",BoxShadow:"unset",
 }
 
 
