@@ -1,16 +1,19 @@
 html,body{
-  font-family: "IRANYekan" !important;
-  font-weight: lighter !important;
+  font-family: "PeydaWeb" !important;
+  font-weight: normal !important;
 }
 [class^="Mui"],
 [class^="Mui"] * {
-font-family: "IRANYekan"  !important;
+font-family: "PeydaWeb"  !important;
 
 }
 [class*="Mui"],
 [class*="Mui"] * {
-font-family: "IRANYekan"  !important;
+font-family: "PeydaWeb"  !important;
 
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: "PeydaWeb-Bold" !important;
 }
 
 hr{
@@ -135,7 +138,7 @@ div.boxdate:hover{
       padding-right: 32px;
     }  
     .slidbox{
-      margin-top: 250px;
+      margin-top: 150px;
     }
     
 }

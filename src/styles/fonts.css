@@ -1,14 +1,25 @@
 @font-face {
-  font-family: "IRANYekan";
-  font-style: normal;
-  font-weight: normal;
-  src: url(../fonts/eot/iranyekanwebbold.eot);
+  font-family: "PeydaWeb";
+  font-style: lighter;
+  font-weight: lighter;
+  src: url(../fonts/eot/PeydaWeb-Regular.eot);
   /* src:url(../fonts/eot/iranyekanwebboldfanum.eot); */
-  src: url(../fonts/eot/iranyekanwebboldfanum.eot?#iefix)
+  src: url(../fonts/eot/PeydaWeb-Regular.eot)
       format("embedded-opentype"),
-    url(../fonts/woff/iranyekanwebboldfanum.woff) format("woff"),
-    url(../fonts/ttf/iranyekanwebboldfanum.ttf) format("truetype");
+    url(../fonts/woff/PeydaWeb-Bold.woff) format("woff"),
+    url(../fonts/ttf/PeydaWeb-Bold.ttf) format("truetype");
 }
+@font-face {
+    font-family: "PeydaWeb-Bold";
+    font-style: normal;
+    font-weight: normal;
+    src: url(../fonts/eot/PeydaWeb-Bold.eot);
+    /* src:url(../fonts/eot/iranyekanwebboldfanum.eot); */
+    src: url(../fonts/eot/PeydaWeb-Bold.eot)
+        format("embedded-opentype"),
+      url(../fonts/woff/PeydaWeb-Bold.woff) format("woff"),
+      url(../fonts/ttf/PeydaWeb-Bold.ttf) format("truetype");
+  }
 /* @font-face{
     font-family:IRANYekan;
     font-style:normal;
