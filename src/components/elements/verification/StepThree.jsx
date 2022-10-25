@@ -18,7 +18,7 @@ export default function StepThree({onNext}) {
   return (
     <div className='maincontent'>
         <Box className="d-flex justify-content-start">
-            <Typography variant="h6" component="div">
+            <Typography variant="h6" component="div" className="boldfont">
             بارگذاری مدارک
             </Typography>
         </Box>

@@ -16,7 +16,7 @@ export default function FormInfo({ listdata, title,description,finalvalue,option
   }
   return (
     <Box component="div" sx={{ textAlign: 'left' }}>
-     {title? <Typography variant="h5" component="div">
+     {title? <Typography variant="h5" component="div" className='boldfont'>
       {title}
       </Typography>:<div></div>}
      

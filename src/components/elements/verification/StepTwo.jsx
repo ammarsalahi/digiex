@@ -9,8 +9,8 @@ export default function StepTwo({onNext}) {
   return (
     <div className='maincontent'>
         <form>
-        <Box className="d-flex justify-content-start">
-        <Typography variant="h6" component="div">
+        <Box className="d-flex justify-content-start" >
+        <Typography variant="h6" component="div" className="boldfont">
             قبول قوانین
         </Typography>
        </Box>

@@ -1,16 +1,16 @@
 @font-face {
   font-family: "PeydaWeb";
-  font-style: lighter;
-  font-weight: lighter;
+  font-style: bolder;
+  font-weight: bolder;
   src: url(../fonts/eot/PeydaWeb-Regular.eot);
   /* src:url(../fonts/eot/iranyekanwebboldfanum.eot); */
   src: url(../fonts/eot/PeydaWeb-Regular.eot)
       format("embedded-opentype"),
-    url(../fonts/woff/PeydaWeb-Bold.woff) format("woff"),
+    url(../fonts/woff/PeydaWeb-SemiBold.woff) format("woff"),
     url(../fonts/ttf/PeydaWeb-Bold.ttf) format("truetype");
 }
 @font-face {
-    font-family: "PeydaWeb-Bold";
+    font-family: "PeydaWebBold";
     font-style: normal;
     font-weight: normal;
     src: url(../fonts/eot/PeydaWeb-Bold.eot);

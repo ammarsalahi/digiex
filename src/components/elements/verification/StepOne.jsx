@@ -112,7 +112,7 @@ export default function StepOne({onNext}) {
   return (
     <div className='maincontent'>
        <Box className="d-flex justify-content-start">
-        <Typography variant="h6" component="div">
+        <Typography variant="h6" component="div" className="boldfont">
           تطبیق اطلاعات هویتی
         </Typography>
        </Box>

@@ -54,8 +54,8 @@ export default function TransactionList({rows}) {
   return (
     <div>
       <Box>
-        <Box className='d-flex justify-content-between' sx={{padding: "20px 0"}}>
-          <Typography component="div" variant="p" className='transaction-header'>
+        <Box className='d-flex justify-content-between px-3' sx={{padding: "20px 0"}}>
+          <Typography component="div" variant="p" className='transaction-header boldfont'>
            تراکنش های مالی
           </Typography>
           <ThemeProvider theme={theme}>

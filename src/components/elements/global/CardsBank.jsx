@@ -5,6 +5,7 @@ import AddCardBank from '../dialogs/AddCardBank';
 import {ReactComponent as AddCircle} from '../../../img/icons/circle-add.svg';
 import {ReactComponent as Trash} from '../../../img/icons/trash.svg';
 import Svg from '../../utils/Svgs';
+import {ReactComponent as Saman} from '../../../img/icons/bank-saman.svg';
 
 export default function CardsBank() {
 
@@ -55,6 +56,9 @@ export default function CardsBank() {
     <Box sx={cardstyle}>
          <List sx={{p:"1%"}}>
             <ListItem onClick={handleArrow} button>
+                <ListItemIcon>
+                  <Svg Component={Saman} />
+                </ListItemIcon>
                 <ListItemText primary="بانک سامان"/>
                 <ListItemText primary="6104 3373 9150 8790" />
                     <ListItemIcon>
@@ -63,6 +67,9 @@ export default function CardsBank() {
             </ListItem>
            {show? listdata.map((item,idx)=>(
             <ListItem key={idx} className="bordertop">
+              <ListItemIcon>
+                  <Svg Component={Saman} />
+                </ListItemIcon>
                 <ListItemText primary={item.bank}/>
                 <ListItemText primary={item.number} />
                     <ListItemIcon>

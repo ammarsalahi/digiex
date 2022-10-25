@@ -152,3 +152,7 @@ div.boxdate:hover{
   direction: rtl;
 }
 
+.boldfont{
+  font-family: "PeydaWebBold" !important;
+  font-weight: bold !important;
+}
