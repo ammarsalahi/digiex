@@ -16,7 +16,7 @@ export default function TransactionList({rows}) {
     color: "rgba(164, 166, 180, 1)",
   }
   const cellstyle={
-    py:"32px",
+    py:"20px",
     px:"32px",
     fontSize: "14px !important",
     textAlign:"center"

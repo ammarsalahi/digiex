@@ -16,7 +16,7 @@ const daistyle={
 }
 
 const textfieldstyle={
-  width:"96%",ml:"2%",my:"2%"
+  width:"96%",mr:"2%",my:"2%"
 }
 
 const muilist={
@@ -74,8 +74,8 @@ export default function DigiSelect({options}) {
             onBlur={()=>setisSearch(false)}  
             value={search} onChange={handleSearch}
              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
+                endAdornment: (
+                  <InputAdornment position="end">
                      <Search/>
                   </InputAdornment>
                 ),
@@ -84,8 +84,9 @@ export default function DigiSelect({options}) {
             {optionstate.length 
             ? 
             (optionstate.map((item,idx)=>(
-                 <MenuItem button key={idx} sx={muilist} value={item.label}>
-                    <div className="d-flex justify-content-start">
+                <MenuItem button key={idx} sx={muilist} value={item.label}>
+                  <div  dir="rtl">
+                  <div className="d-flex justify-content-start">
                         <Box className="text-center" 
                          sx={ item.label==="تتر" || item.label==="یو اس دی کوین" ? tetstyle : daistyle }
                         >
@@ -93,7 +94,8 @@ export default function DigiSelect({options}) {
                         </Box>
                         <div className="mx-2 mt-1">{item.label}</div>
                      </div>
-                 </MenuItem>
+                  </div>
+                 </MenuItem>                
             )))
             :<Box sx={{py:"2%",textAlign:"center",fontWeight:"bold",fontSize:"14px"}}> 
              <p>هیچ آیتمی وجود ندارد</p>
