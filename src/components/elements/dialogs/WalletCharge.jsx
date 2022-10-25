@@ -191,13 +191,13 @@ export default function WalletCharge({open,close}) {
               }}
             />
             <Box className="d-flex justify-content-between mt-2">
-               <Box sx={price==='5'?boxselected:boxunselected} onClick={()=>setprice('5')} style={{padding:"3%",fontSize:"14px"}}>
+               <Box sx={price==='5'?boxselected:boxunselected} onClick={()=>setprice('5')} style={{padding:"3%",fontSize:"14px", cursor:"pointer"}}>
                  5,000,000 تومان
                </Box>
-               <Box sx={price==='10'?boxselected:boxunselected} onClick={()=>setprice('10')} style={{padding:"3%",fontSize:"14px"}}>
+               <Box sx={price==='10'?boxselected:boxunselected} onClick={()=>setprice('10')} style={{padding:"3%",fontSize:"14px", cursor:"pointer"}}>
                  10,000,000 تومان 
                </Box>
-               <Box sx={price==='25'?boxselected:boxunselected} onClick={()=>setprice('25')} style={{padding:"3%",fontSize:"14px"}}>
+               <Box sx={price==='25'?boxselected:boxunselected} onClick={()=>setprice('25')} style={{padding:"3%",fontSize:"14px", cursor:"pointer"}}>
                   25,000,000 تومان
                </Box>
             </Box>

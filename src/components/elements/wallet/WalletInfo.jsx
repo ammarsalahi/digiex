@@ -139,7 +139,7 @@ export default function WalletInfo({ infos,options }) {
             </Box> 
        </Box>
        
-      <Box className="col-lg-6 col-md-12 col-12 d-flex justify-content-center" sx={{pt:"20px"}}>
+      <Box className="col-lg-6 col-md-12 col-12 d-flex justify-content-start" sx={{pt:"20px"}}>
         <List sx={{minWidth:"392px",maxWidth:"420px"}}>
           {infos.map((item, idx) => (
             <ListItem key={idx}>
@@ -151,11 +151,12 @@ export default function WalletInfo({ infos,options }) {
                 </Box>
               </ListItemIcon>
               <ListItemText id={idx} primary={item.name}  primaryTypographyProps={{fontSize:"14px"}} />
-              <ButtonGroup
+              <ButtonGroup 
                 disableElevation
                 size="small"
                 variant="contained"
                 aria-label="Disabled elevation buttons"
+                sx={{marginLeft: "70px"}}
               >
                 <Box sx={{pr:"5%"}}>
                   <ListItemText id={idx} sx={listbtntextstyle} 

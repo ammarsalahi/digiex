@@ -16,8 +16,8 @@ export default function TransactionList({rows}) {
     color: "rgba(164, 166, 180, 1)",
   }
   const cellstyle={
-    py:"20px",
-    px:"32px",
+    py:"14px",
+    px:"14px",
     fontSize: "14px !important",
     textAlign:"center"
   }
@@ -54,7 +54,7 @@ export default function TransactionList({rows}) {
   return (
     <div>
       <Box>
-        <Box className='d-flex justify-content-between' sx={{px:"32px"}}>
+        <Box className='d-flex justify-content-between' sx={{padding: "20px 0"}}>
           <Typography component="div" variant="p" className='transaction-header'>
            تراکنش های مالی
           </Typography>
