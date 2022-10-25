@@ -66,7 +66,7 @@ export default function DigiSelect({options}) {
             defaultValue={optionstate[0].label}
             onChange={(e)=>console.log(e.target.value)}
             >
-            {options.length >=4 && <TextField 
+            {options.length >=5 && <TextField 
             color="digi"
             sx={textfieldstyle}
             size="small"

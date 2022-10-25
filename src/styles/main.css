@@ -137,3 +137,8 @@ div.boxdate:hover{
 .bgw .bgw:hover{
   background-color: #fff;
 }
+
+.MuiButtonBase-root.MuiMenuItem-root {
+  min-height: auto;
+  direction: rtl;
+}
