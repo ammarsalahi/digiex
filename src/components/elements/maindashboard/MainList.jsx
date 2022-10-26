@@ -35,7 +35,7 @@ export default function MainList({rows}) {
   }
   return (
     <Box sx={{pt:"18px"}}>
-      <Box className='d-flex justify-content-between' sx={{p:"32px"}} >
+      <Box className='d-flex justify-content-between boldfont' sx={{p:"32px"}} >
         <Typography component="div" variant="p">
              لیست معاملات    
          </Typography>

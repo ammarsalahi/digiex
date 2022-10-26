@@ -93,7 +93,7 @@ export default function BuyStepTwo({open,close,opendialogd}) {
   return (
       <BootstrapDialog
         fullScreen
-        sx={issmall?{}:{width:"500px"}}
+        sx={issmall?{direction:"ltr"}:{direction:"ltr",left:0,width:"500px"}}
         PaperProps={{
           sx:issmall?{}:{position:"fixed",width:'500px'}
         }}

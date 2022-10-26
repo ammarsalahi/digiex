@@ -8,7 +8,7 @@ import {ReactComponent as DownIcon} from '../../../img/icons/coin/down arrow.svg
 import {ReactComponent as UpIcon} from '../../../img/icons/coin/up arrow.svg';
 import {ReactComponent as DownRed} from '../../../img/icons/coin/down arrow - red.svg';
 import {ReactComponent as UpGreen} from '../../../img/icons/coin/up arrow - green.svg';
-import {ReactComponent as LogoEN} from '../../../img/icons/logo-fa-white.svg';
+import {ReactComponent as LogoEN} from '../../../img/icons/logo-en-white.svg';
 import WalletCharge from '../dialogs/WalletCharge';
 import WalletWithdraw from '../dialogs/WalletWithdraw';
 import WalletDesposit from '../dialogs/WalletDesposit';

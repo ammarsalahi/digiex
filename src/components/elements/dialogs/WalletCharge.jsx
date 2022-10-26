@@ -15,7 +15,9 @@ import {WalletOutlined} from '@mui/icons-material';
 import { CheckCircle,RadioButtonUnchecked } from '@mui/icons-material';
 import CardID from '../global/CardID';
 import CardsBank from '../global/CardsBank';
-
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="right" ref={ref} {...props} />;
+});
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
       padding: theme.spacing(2),
@@ -109,13 +111,14 @@ export default function WalletCharge({open,close}) {
   return (
       <BootstrapDialog
         fullScreen
-        sx={issmall?{}:{width:"500px"}}
+        sx={issmall?{direction:"ltr"}:{direction:"ltr",left:0,width:"500px"}}
         PaperProps={{
           sx:issmall?{}:{right:0,position:"fixed",width:'500px'}
         }}
         onClose={close}
         aria-labelledby="customized-dialog-title"
         open={open}
+        TransitionComponent={Transition}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
              شارژ کیف پول تومانی
