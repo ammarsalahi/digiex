@@ -38,7 +38,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: 8,
+              right: '20px',
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -71,26 +71,26 @@ const subbtnstyle={
 }
 export default function WalletWithdraw({open,close,options}) {
 
-  const [issmall, setissmall] = React.useState(false);
 
+  const [sizewidth, setSizewidth] = React.useState('auto');
   
-   React.useEffect(() => {
+  React.useEffect(() => {
     if (window.innerWidth < 700) {
-      setissmall(true)
+      setSizewidth('auto')
     }
-   else {
-    setissmall(false)
-   }
-   });
+    else if(window.innerWidth >= 1281) {
+      setSizewidth('650px')
+    }
+    else{
+      setSizewidth('500px')
+    }
+  },[sizewidth,window.innerWidth]);
    
  
   return (
       <BootstrapDialog
         fullScreen
-        sx={issmall?{direction:"ltr"}:{direction:"ltr",left:0,width:"500px"}}
-        PaperProps={{
-          sx:issmall?{}:{right:0,position:"fixed",width:'500px'}
-        }}
+        sx={{direction:"ltr",left:0,width:sizewidth}}
         onClose={close}
         aria-labelledby="customized-dialog-title"
         open={open}
@@ -100,7 +100,7 @@ export default function WalletWithdraw({open,close,options}) {
            برداشت ارز از  کیف پول
         </BootstrapDialogTitle>
         
-        <DialogContent>
+        <DialogContent className='px-32'>
         
         <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"3%"}}>
            <Typography variant="p" component="div" fontSize="13px">

@@ -40,7 +40,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: 8,
+              right: '20px',
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -94,7 +94,7 @@ export default function AddWalletAddress({open,close,options}) {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
             افزودن آدرس کیف پول
         </BootstrapDialogTitle>
-        <DialogContent sx={{width:"100%",px:"3%"}}>
+        <DialogContent sx={{width:"100%"}} className='px-32' >
           <FormGroup sx={{pb:"4%"}}>
             <FormLabel sx={{my:"1%",fontSize:"12px"}}>نام آدرس</FormLabel>
             <TextField 

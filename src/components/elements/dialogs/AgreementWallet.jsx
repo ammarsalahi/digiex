@@ -36,7 +36,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: 8,
+              right: '20px',
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -88,7 +88,7 @@ export default function AgreementWallet({open,close}) {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
         تایید برداشت از کیف پول تومانی
          </BootstrapDialogTitle>
-        <DialogContent dividers sx={{width:"520px"}}>
+        <DialogContent sx={{width:"520px"}} className='px-32'>
             <Box sx={{px:"2%"}}>
             <Box sx={{height:"150px",width:"100%",borderRadius:"8px"}} className="bg-light">
             </Box>

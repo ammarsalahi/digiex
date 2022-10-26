@@ -1,0 +1,13 @@
+
+@media only screen and (max-width:1280px){
+    .dialog-width{
+        width: 500px !important;
+        direction: rtl !important;
+    }
+}
+@media only screen and (min-width:1281px){
+    .dialog-width{
+        width: 650px !important;
+        direction: rtl !important;
+    }
+}

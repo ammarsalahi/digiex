@@ -38,7 +38,7 @@ const BootstrapDialogTitle = (props) => {
           onClick={onClose}
           sx={{
             position: 'absolute',
-            right: 8,
+            right: '20px',
             top: 8,
             color: (theme) => theme.palette.grey[500],
           }}
@@ -70,7 +70,8 @@ const boxunselected = {
 
 export default function BuyFee({ open, close, optionsdata }) {
 
-  const [issmall, setissmall] = React.useState(false);
+  const [sizewidth, setSizewidth] = React.useState('auto');
+  
   const [bep, setbep] = React.useState("bep-20");
 
   const data = [
@@ -81,25 +82,24 @@ export default function BuyFee({ open, close, optionsdata }) {
   ]
   React.useEffect(() => {
     if (window.innerWidth < 700) {
-      setissmall(true)
+      setSizewidth('auto')
     }
-    else {
-      setissmall(false)
+    else if(window.innerWidth >= 1281) {
+      setSizewidth('650px')
     }
-  });
+    else{
+      setSizewidth('500px')
+    }
+  },[sizewidth,window.innerWidth]);
 
   return (
     <BootstrapDialog
-      fullScreen
-      sx={issmall ? { direction: "ltr" } : { direction: "ltr", left: 0, width: "500px" }}
-      PaperProps={{
-        sx: issmall ? {} : { right: 0, position: "fixed", width: '500px' }
-      }}
-      onClose={close}
-      aria-labelledby="customized-dialog-title"
-      open={open}
-      TransitionComponent={Transition}
-      className="p-3"
+    fullScreen
+    sx={{direction:"ltr",left:0,width:sizewidth}}
+    onClose={close}
+    aria-labelledby="customized-dialog-title"
+    open={open}
+    TransitionComponent={Transition}
     >
       <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom px-32" sx={{ fontSize: "14px" }}>
         کارمزد ارسال و دریافت

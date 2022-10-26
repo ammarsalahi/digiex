@@ -37,7 +37,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: 8,
+              right: '20px',
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -101,7 +101,7 @@ export default function AddCardBank({open,close}) {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
         افزودن کارت بانکی جدید
                  </BootstrapDialogTitle>
-        <DialogContent  sx={{width:"100%"}}>
+        <DialogContent  sx={{width:"100%"}} className='px-32'>
             <Typography variant="p" component="div" sx={{my:"3%",fontSize:"13px"}}>
             حتما کارت بانکی ای را ثبت کنید که به نام صاحب حساب کاربری (خودتان) باشد، در غیر اینصورت بصورت اتوماتیک رد خواهد شد.
             </Typography>

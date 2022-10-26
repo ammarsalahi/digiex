@@ -131,11 +131,11 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
       <Box sx={{ borderBottom: 0, borderColor: 'divider', paddingBlock: .85 }}>
         <Tabs value={tabvalue} onChange={handleChange} fontSize="large" aria-label="basic tabs example"
           TabIndicatorProps={{
-            style: { background: "rgba(255, 196, 0, 0.952)", height: 3 }
+            style: tabvalue===0?{ background: "#f2b107", height: 3 }:{ background: "#de07f2", height: 3 }
           }}
         >
           <Tab label={<span className={tabvalue === 0 ? "tab-color" : ""}>خرید‌ از‌ ما </span>} {...a11yProps(0)} />
-          <Tab label={<span className={tabvalue === 1 ? "tab-color" : ""}>فروش به ما </span>} {...a11yProps(1)} />
+          <Tab label={<span className={tabvalue === 1 ? "tab-color2" : ""}>فروش به ما </span>} {...a11yProps(1)} />
         </Tabs>
       </Box>
       <TabPanel value={tabvalue} index={0}>
@@ -198,7 +198,7 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
           <FormGroup sx={formbtnstyle}>
             <FormLabel className="mb-2">مبلغ فروش(تومان)</FormLabel>
             <TextField color="digi"
-               fullWidth variant='outlined' placeholder='۰.۰۰'
+              fullWidth placeholder='0.00'
                InputProps={{
                 endAdornment:( 
                     <InputAdornment position="end">تومان</InputAdornment>
@@ -207,7 +207,7 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
              
             />
             <Box className="d-flex justify-content-between align-items-center" sx={{py:"12px"}}>
-              <p className='text-muted helper-fontsize m-0'>موجودی کیف ۳۰۰,۰۰۰ تومان</p>
+             <p className='text-muted helper-fontsize m-0'>موجودی کیف 300,000 تومان</p>
                     <Box className="d-flex" >
                       <Button variant="outlined" color={btnsale.btn100}  onClick={handleBtnSale('100')} style={minibtnstyle}> %100</Button>
                       <Button variant="outlined"color={btnsale.btn75}  onClick={handleBtnSale('75')} style={minibtnstyle}> %75</Button>
@@ -219,7 +219,7 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
           <FormGroup sx={formbtnstyle}>
             <FormLabel className="mb-2">تعداد بایننس کوین</FormLabel>
             <TextField color="digi" 
-              fullWidth variant='outlined' placeholder='۰.۰۰'
+              fullWidth placeholder='0.00'
               InputProps={{
                 endAdornment:( 
                   <InputAdornment position="end">BUSD</InputAdornment>
@@ -227,14 +227,14 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
               }}
             />
             <Box className="d-flex justify-content-between align-items-center" sx={{py:"12px"}}>
-              <p className='text-muted helper-fontsize mt-1 m-0'>موجودی ۰ بایننس</p>
+            <p className='text-muted helper-fontsize mt-1 m-0'>موجودی 0 بایننس</p>
                <Button color="digigrey" variant="outlined"  onClick={handleWal} sx={{minHeight:"25px",maxHeight:"25px",borderRadius:"30px" , fontSize: "10px"}}>
               واریز‌ به‌کیف‌ پول
               </Button>
             </Box>
           </FormGroup>
-          <Box className='d-lg-block d-md-block d-sm-none d-none form-button p-0' >
-            <Button  variant="contained" className='boxShadowUnset' onClick={handleOpen('shop')} sx={btnstyle} fullWidth>
+          <Box className='d-lg-block d-md-block d-sm-none d-none form-button p-0'  >
+            <Button  variant="contained" className='boxShadowUnset' style={{marginTop:"20px"}} onClick={handleOpen('shop')} sx={btnstyle} fullWidth>
               فروش بایننس کوین
             </Button>
           </Box>

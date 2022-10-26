@@ -36,7 +36,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: 8,
+              right: '20px',
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -86,7 +86,7 @@ export default function IndentityBuy({open,close}) {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
            پرداخت با شناسه       
          </BootstrapDialogTitle>
-        <DialogContent sx={{width:"100%"}}>
+        <DialogContent sx={{width:"100%"}} className='px-32'>
           <Box className="bg-light" sx={{borderRadius:"8px",p:"2%",mt:"3%"}}>
             {listsdata.map((item, idx) => (
                 <div className='d-flex justify-content-between info-list' key={idx}>

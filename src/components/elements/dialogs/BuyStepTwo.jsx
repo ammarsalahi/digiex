@@ -44,7 +44,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: 8,
+              right: '20px',
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -75,28 +75,27 @@ const subbtnstyle={
 
 export default function BuyStepTwo({open,close,opendialogd}) {
 
-  const [issmall, setissmall] = React.useState(false);
+  const [sizewidth, setSizewidth] = React.useState('auto');
 
   const [deposit, setDeposit] = React.useState("");
   const [withdraw,setWithdraw]=React.useState("");
-  
-   React.useEffect(() => {
+  React.useEffect(() => {
     if (window.innerWidth < 700) {
-      setissmall(true)
+      setSizewidth('auto')
     }
-   else {
-    setissmall(false)
-   }
-   });
+    else if(window.innerWidth >= 1281) {
+      setSizewidth('650px')
+    }
+    else{
+      setSizewidth('500px')
+    }
+  },[sizewidth,window.innerWidth]);
    
  
   return (
       <BootstrapDialog
         fullScreen
-        sx={issmall?{direction:"ltr"}:{direction:"ltr",left:0,width:"500px"}}
-        PaperProps={{
-          sx:issmall?{}:{position:"fixed",width:'500px'}
-        }}
+        sx={{direction:"ltr",left:0,width:sizewidth}}
         onClose={close}
         aria-labelledby="customized-dialog-title"
         open={open}
@@ -105,8 +104,8 @@ export default function BuyStepTwo({open,close,opendialogd}) {
          <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom" sx={{ fontSize: "14px" }}>
         انتخاب نحوه دریافت و شبکه      
          </BootstrapDialogTitle>
-        <DialogContent>
-         <Box className="border-right-marginboldblue"sx={{px:"1%",mt:"8px", mb: "16px"}}>
+        <DialogContent className='px-32 px-24'>
+         <Box className="border-right-marginboldblue"sx={{px:"1%", mb: "16px"}}>
            <Typography variant="p" component="div" fontSize="13px">
               روش دریافت ارز
            </Typography>

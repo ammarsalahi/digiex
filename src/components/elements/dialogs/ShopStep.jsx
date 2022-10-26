@@ -17,7 +17,9 @@ import { CheckCircle,RadioButtonUnchecked } from '@mui/icons-material';
 import {ReactComponent as qrcode} from '../../../img/icons/qr.svg';
 import {ReactComponent as copyicon} from '../../../img/icons/copy-clipboard.svg';
 import Svg from '../../utils/Svgs';
-
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="right" ref={ref} {...props} />;
+});
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -40,7 +42,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: 8,
+              right: '20px',
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -86,35 +88,36 @@ const subbtnstyle={
 }
 export default function ShopStep({open,close}) {
 
-  const [issmall, setissmall] = React.useState(false);
+  const [sizewidth, setSizewidth] = React.useState('auto');
+
   const [withdraw,setWithdraw]=React.useState("")
   const [coin,setCoin]=React.useState("")
   
-   React.useEffect(() => {
+  React.useEffect(() => {
     if (window.innerWidth < 700) {
-      setissmall(true)
+      setSizewidth('auto')
     }
-   else {
-    setissmall(false)
-   }
-   });
-   
+    else if(window.innerWidth >= 1281) {
+      setSizewidth('650px')
+    }
+    else{
+      setSizewidth('500px')
+    }
+  },[sizewidth,window.innerWidth]);
  
   return (
       <BootstrapDialog
         fullScreen
-        sx={issmall?{direction:"ltr"}:{direction:"ltr",left:0,width:"500px"}}
-        PaperProps={{
-          sx:issmall?{}:{right:0,position:"fixed",width:'500px'}
-        }}
+        sx={{direction:"ltr",left:0,width:sizewidth}}       
         onClose={close}
         aria-labelledby="customized-dialog-title"
         open={open}
+        TransitionComponent={Transition}
       >
        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
         انتخاب نحوه دریافت و شبکه      
          </BootstrapDialogTitle>
-        <DialogContent >
+        <DialogContent className='px-32'>
          <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"3%"}}>
            <Typography variant="p" component="div" fontSize="13px">
                 انتخاب شبکه پرداخت
