@@ -69,22 +69,14 @@ BootstrapDialogTitle.propTypes = {
 const subbtnstyle={
   fontSize:"16px", backgroundColor: "#424BFB", height: "55px",borderRadius:"8px"
 }
-export default function WalletWithdraw({open,close,options}) {
+export default function WalletWithdraw({open,close,options,sizewidth}) {
 
 
-  const [sizewidth, setSizewidth] = React.useState('auto');
   
+  const [sizew, setSizew] = React.useState(sizewidth);
   React.useEffect(() => {
-    if (window.innerWidth < 700) {
-      setSizewidth('auto')
-    }
-    else if(window.innerWidth >= 1281) {
-      setSizewidth('650px')
-    }
-    else{
-      setSizewidth('500px')
-    }
-  },[sizewidth,window.innerWidth]);
+    setSizew(sizewidth)
+  }, [sizewidth]);
    
  
   return (

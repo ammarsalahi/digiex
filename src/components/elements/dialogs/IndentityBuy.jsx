@@ -66,14 +66,18 @@ export default function IndentityBuy({open,close}) {
      {'name':"کارمزد واریز ریالی به ازای هر 1 میلیون تومان",'price':"5,000 تومان"},
 
    ]
-   React.useEffect(() => {
+   const sizeDialog=()=>{
     if (window.innerWidth < 700) {
       setissmall(true)
     }
    else {
     setissmall(false)
    }
-   });
+  }
+   React.useEffect(() => {
+      sizeDialog();
+      window.addEventListener('resize',sizeDialog,false);
+   },[issmall]);
    
   return (
       <BootstrapDialog

@@ -79,9 +79,8 @@ const adornmentstyle={
   marginLeft:-14,
   paddingLeft:4,
 }
-export default function WalletCharge({open,close}) {
+export default function WalletCharge({open,close,sizewidth}) {
 
-  const [sizewidth, setSizewidth] = React.useState('auto');
   
   const [payment,setpayment]=React.useState("id");
   const [price,setprice]=React.useState();
@@ -99,17 +98,10 @@ export default function WalletCharge({open,close}) {
 
   ]
   
+  const [sizew, setSizew] = React.useState(sizewidth);
   React.useEffect(() => {
-    if (window.innerWidth < 700) {
-      setSizewidth('auto')
-    }
-    else if(window.innerWidth >= 1281) {
-      setSizewidth('650px')
-    }
-    else{
-      setSizewidth('500px')
-    }
-  },[sizewidth,window.innerWidth]);
+    setSizew(sizewidth)
+  }, [sizewidth]);
  
   return (
       <BootstrapDialog

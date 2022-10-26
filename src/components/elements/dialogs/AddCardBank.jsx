@@ -79,15 +79,19 @@ export default function AddCardBank({open,close}) {
     marginLeft:-10,
     paddingLeft:4,
   }
-
-   React.useEffect(() => {
+   
+  const sizeDialog=()=>{
     if (window.innerWidth < 700) {
       setissmall(true)
     }
    else {
     setissmall(false)
    }
-   });
+  }
+   React.useEffect(() => {
+      sizeDialog();
+      window.addEventListener('resize',sizeDialog,false);
+   },[issmall]);
    
   return (
       <BootstrapDialog

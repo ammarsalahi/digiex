@@ -5,12 +5,34 @@ import BuyFee from '../dialogs/BuyFee';
 
 export default function FormInfo({ listdata, title,description,finalvalue,options}) {
   const [open, setopen] = React.useState(false);
+  const [sizewidth, setSizewidth] = React.useState('auto');
+
+
   const handleOpenDialog=(event)=>{
    setopen(true);
   }
   const handleClose=(event)=>{
     setopen(false);
   }
+
+  const sizeDialog =()=>{
+    if (window.innerWidth < 700) {
+      setSizewidth('auto')
+    }
+    else if(window.innerWidth >= 1281) {
+      setSizewidth('650px')
+    }
+    else{
+      setSizewidth('500px')
+      
+    }
+  }
+
+  React.useEffect(() => {
+    sizeDialog();
+    window.addEventListener('resize',sizeDialog,false);
+  },[sizewidth]);
+
 
   const liststyle={
     height: '72px' ,fontSize: "14px" ,px:"24px", backgroundColor: "#EAEEFF" , border: "1px solid #424BFB" , borderRadius : "8px",color:"#000"
@@ -75,7 +97,7 @@ export default function FormInfo({ listdata, title,description,finalvalue,option
       :null}
 
       </div>:null}
-        <BuyFee open={open} close={handleClose} listdata={listdata} optionsdata={options}/> 
+        <BuyFee open={open} close={handleClose} listdata={listdata} optionsdata={options} sizewidth={sizewidth}/> 
     </Box >
   )
 }

@@ -64,13 +64,27 @@ const btnstyle={
 
 export default function FormTabs({options,tabvalue,handleChange,openprop}) {
 
-
+  const [sizewidth, setSizewidth] = React.useState('auto');
   const [open,setopen]=React.useState(openprop);
 
+
+  const sizeDialog =()=>{
+    if (window.innerWidth < 700) {
+      setSizewidth('auto')
+    }
+    else if(window.innerWidth >= 1281) {
+      setSizewidth('650px')
+    }
+    else{
+      setSizewidth('500px')
+      
+    }
+  }
+
   React.useEffect(() => {
-      setopen(openprop)
-  }, [openprop])
-  
+    sizeDialog();
+    window.addEventListener('resize',sizeDialog,false);
+  },[sizewidth]);
 
   const [btnshop, setbtnshop] = React.useState({
     btn25:"primary",
@@ -242,9 +256,9 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
         </form>
 
       </TabPanel>
-      <BuyStepTwo open={open.buy} close={handleClose('buy')} opendialogd={handleOpen('bank')}/>     
-      <BankLimit open={open.bank} close={handleClose('bank')}/>
-      <ShopStep open={open.shop} close={handleClose('shop')}/>       
+      <BuyStepTwo open={open.buy} close={handleClose('buy')} sizewidth={sizewidth} opendialogd={handleOpen('bank')}/>     
+      <BankLimit open={open.bank} close={handleClose('bank')}  sizewidth={sizewidth}/>
+      <ShopStep open={open.shop} close={handleClose('shop')} sizewidth={sizewidth}/>       
      
        
     </Box>

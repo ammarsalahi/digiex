@@ -66,14 +66,18 @@ export default function BankLimit({open,close}) {
     {'name':"کارمزد واریز ریالی",'price':"رایگان"},
 
   ]
-   React.useEffect(() => {
+  const sizeDialog=()=>{
     if (window.innerWidth < 700) {
       setissmall(true)
     }
    else {
     setissmall(false)
    }
-   });
+  }
+   React.useEffect(() => {
+      sizeDialog();
+      window.addEventListener('resize',sizeDialog,false);
+   },[issmall]);
    
   return (
       <BootstrapDialog

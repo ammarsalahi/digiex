@@ -73,23 +73,15 @@ const subbtnstyle={
   fontSize:"16px", backgroundColor: "#424BFB", height: "55px",borderRadius:'8px'
 }
 
-export default function BuyStepTwo({open,close,opendialogd}) {
-
-  const [sizewidth, setSizewidth] = React.useState('auto');
+export default function BuyStepTwo({open,close,opendialogd,sizewidth}) {
 
   const [deposit, setDeposit] = React.useState("");
   const [withdraw,setWithdraw]=React.useState("");
-  React.useEffect(() => {
-    if (window.innerWidth < 700) {
-      setSizewidth('auto')
-    }
-    else if(window.innerWidth >= 1281) {
-      setSizewidth('650px')
-    }
-    else{
-      setSizewidth('500px')
-    }
-  },[sizewidth,window.innerWidth]);
+  const [sizew, setSizew] = React.useState(sizewidth);
+
+   React.useEffect(() => {
+     setSizew(sizewidth)
+   }, [sizewidth])
    
  
   return (

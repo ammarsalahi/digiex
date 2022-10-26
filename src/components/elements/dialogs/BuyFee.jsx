@@ -68,9 +68,8 @@ const boxunselected = {
   border: "1px solid grey",height:"56px", borderRadius: "10px", px: "16px", py: "4px", mx: "1%"
 }
 
-export default function BuyFee({ open, close, optionsdata }) {
+export default function BuyFee({ open, close, optionsdata,sizewidth }) {
 
-  const [sizewidth, setSizewidth] = React.useState('auto');
   
   const [bep, setbep] = React.useState("bep-20");
 
@@ -80,17 +79,11 @@ export default function BuyFee({ open, close, optionsdata }) {
     { "name": "کارمزد دریافت ارز در کیف پول digiex24", "price": "۰تومان" },
     { "name": "زمان انتقال", "price": "2 دقیقه" },
   ]
+
+  const [sizew, setSizew] = React.useState(sizewidth);
   React.useEffect(() => {
-    if (window.innerWidth < 700) {
-      setSizewidth('auto')
-    }
-    else if(window.innerWidth >= 1281) {
-      setSizewidth('650px')
-    }
-    else{
-      setSizewidth('500px')
-    }
-  },[sizewidth,window.innerWidth]);
+    setSizew(sizewidth)
+  }, [sizewidth]);
 
   return (
     <BootstrapDialog

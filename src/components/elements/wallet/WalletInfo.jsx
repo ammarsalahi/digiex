@@ -12,12 +12,14 @@ import {ReactComponent as LogoEN} from '../../../img/icons/logo-en-white.svg';
 import WalletCharge from '../dialogs/WalletCharge';
 import WalletWithdraw from '../dialogs/WalletWithdraw';
 import WalletDesposit from '../dialogs/WalletDesposit';
+import AccountDesposit from '../dialogs/AccountDesposit'
 export default function WalletInfo({ infos,options }) {
   const [open,setOpen]=React.useState({
     charge:false,
     deposit:false,
     withdraw:false,
   });
+  const [sizewidth, setSizewidth] = React.useState('auto');
 
   const handleOpen=(props)=>(event)=>{
     setOpen({...open,[props]:true});
@@ -27,6 +29,22 @@ export default function WalletInfo({ infos,options }) {
     setOpen({...open,[props]:false});
   }
 
+  const sizeDialog =()=>{
+    if (window.innerWidth < 700) {
+      setSizewidth('auto')
+    }
+    else if(window.innerWidth >= 1281) {
+      setSizewidth('650px')
+    }
+    else{
+      setSizewidth('500px')
+      
+    }
+  }
+  React.useEffect(() => {
+    sizeDialog();
+    window.addEventListener('resize',sizeDialog,false);
+  },[sizewidth]);
 
   const cardstyle = {
     borderRadius: '8px',
@@ -185,9 +203,10 @@ export default function WalletInfo({ infos,options }) {
 
         </List>
       </Box>
-      <WalletCharge open={open.charge} close={handleClose('charge')}/>
-      <WalletDesposit open={open.deposit} close={handleClose('deposit')} options={options} />
-      <WalletWithdraw open={open.withdraw} close={handleClose('withdraw')} options={options} />
+      <WalletCharge open={open.charge} close={handleClose('charge')} sizewidth={sizewidth}/>
+      <WalletDesposit open={open.deposit} close={handleClose('deposit')} options={options} sizewidth={sizewidth} />
+      {/* <WalletWithdraw open={open.withdraw} close={handleClose('withdraw')} options={options} sizewidth={sizewidth}/> */}
+      <AccountDesposit  open={open.withdraw} close={handleClose('withdraw')} sizewidth={sizewidth}/>
       </Box>
   )
 }

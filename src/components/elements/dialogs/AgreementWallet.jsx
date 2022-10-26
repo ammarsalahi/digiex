@@ -67,14 +67,18 @@ export default function AgreementWallet({open,close}) {
       borderRadius:"8px"
     }
    }
-   React.useEffect(() => {
+   const sizeDialog=()=>{
     if (window.innerWidth < 700) {
       setissmall(true)
     }
    else {
     setissmall(false)
    }
-   });
+  }
+   React.useEffect(() => {
+      sizeDialog();
+      window.addEventListener('resize',sizeDialog,false);
+   },[issmall]);
    
   return (
       <BootstrapDialog
