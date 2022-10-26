@@ -57,8 +57,8 @@ export default function Dashboard() {
             openprop={open}
           />
         </div>
-        <div className='col-lg-6 col-12 content-dashboard  border-right-margin' style={{height:"100vh"}}>
-          <FormInfo listdata={data} description={true} finalvalue={value} title="جزئیات سفارش" options={options}/>
+        <div className='col-lg-6 col-12 content-dashboard mb-3 border-right-margin' style={{height:"100vh" }}>
+          <FormInfo listdata={data} description={true} finalvalue={value}  title="جزئیات سفارش" options={options}/>
         </div>
       </div>
           <div className='d-lg-none d-md-none d-sm-block d-block'>

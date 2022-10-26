@@ -108,14 +108,14 @@ export default function WalletInfo({ infos,options }) {
         </Card>
 
         </Box>
-               <Box className="d-flex justify-content-start px-2" >
+               <Box className="d-flex justify-content-start" >
                  <Box sx={{pb: "50px" }} >
-                   <Typography variant='p' sx={{ py: 2 ,px:1,color:"#a4a6b4"}} fontSize={14} component="div">
+                   <Typography variant='p' sx={{ py: 2,color:"#a4a6b4"}} fontSize={14} component="div">
                       مجموع واریز
                   </Typography>
                       
                     <Box className="d-flex">
-                      <Box className="mx-1 text-center"sx={{backgroundColor:"rgba(217, 243, 232, 1)",width:"24px",height:"24px",borderRadius:"8px"}}>
+                      <Box className="text-center"sx={{backgroundColor:"rgba(217, 243, 232, 1)",width:"24px",height:"24px",borderRadius:"8px"}}>
                       <Svg Component={UpGreen} /> 
                       </Box>
                     <Typography className="pt-1" variant="p" fontSize={12} component="div">

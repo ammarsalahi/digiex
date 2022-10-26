@@ -12,11 +12,16 @@ export default function FormInfo({ listdata, title,description,finalvalue,option
     setopen(false);
   }
   const btnstyle={
-    height: '72px' , backgroundColor: "#EAEEFF" , border: "1px solid #cbe4eb" , borderRadius : "8px",color:"#000"
+    height: '72px' ,fontSize: "14px" , backgroundColor: "#EAEEFF" , border: "1px solid #cbe4eb" , borderRadius : "8px",color:"#000"
   }
   return (
+<<<<<<< Updated upstream
     <Box component="div" sx={{ textAlign: 'left' }}>
      {title? <Typography variant="h5" component="div">
+=======
+    <Box component="div" sx={{ textAlign: 'left' , mb: "32px" }}>
+     {title? <Typography variant="h5" component="div" className='boldfont'>
+>>>>>>> Stashed changes
       {title}
       </Typography>:<div></div>}
      
@@ -33,7 +38,7 @@ export default function FormInfo({ listdata, title,description,finalvalue,option
       ))}
       {description?<div>
         <div style={{paddingTop:'32px'}}>
-        <Button startIcon={<InfoOutlined sx={{height:"30px",width:"30px"}} color="primary" />} onClick={handleOpenDialog} sx={btnstyle} variant="outlined" fullWidth size="large" >
+        <Button startIcon={<InfoOutlined sx={{height:"30px",width:"30px"}} className="justify-content-start" color="primary" />} onClick={handleOpenDialog} sx={btnstyle} variant="outlined" fullWidth size="large" >
           توضیح کامل در خصوص کارمزد
         </Button>
       </div>

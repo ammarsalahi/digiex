@@ -58,7 +58,7 @@ const minibtnstyle={
 }
 
 const btnstyle={
-  fontSize: 21, height: "55px",borderRadius:"8px",BoxShadow:"unset",
+  fontSize: "14", height: "56px",borderRadius:"8px",
 }
 
 
@@ -153,8 +153,8 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
               ),
             }}
              />
-              <Box className="d-flex justify-content-between" sx={{p:"1%"}}>
-              <p className='text-muted helper-fontsize'>موجودی کیف ۳۰۰,۰۰۰ تومان</p>
+              <Box className="d-flex justify-content-between align-items-center" sx={{py:"12px"}}>
+              <p className='text-muted helper-fontsize m-0'>موجودی کیف ۳۰۰,۰۰۰ تومان</p>
                   <Box className="d-flex" >
                       <Button variant="outlined" color={btnshop.btn100}  onClick={handleBtnShop('100')} style={minibtnstyle}> %100</Button>
                       <Button variant="outlined"color={btnshop.btn75}  onClick={handleBtnShop('75')} style={minibtnstyle}> %75</Button>
@@ -174,15 +174,15 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
                 ),
               }}
             />
-            <div className="d-flex justify-content-between pt-1 px-2">
-              <p className='text-muted helper-fontsize mt-1'>موجودی ۰ بایننس</p>
-               <Button color="digigrey" variant="outlined"  onClick={handleWal} sx={{minHeight:"31px",maxHeight:"31px",borderRadius:"30px"}}>
+            <Box className="d-flex justify-content-between align-items-center" sx={{py:"12px"}}>
+              <p className='text-muted helper-fontsize mt-1 m-0'>موجودی ۰ بایننس</p>
+               <Button color="digigrey" variant="outlined"  onClick={handleWal} sx={{minHeight:"31px",maxHeight:"31px",borderRadius:"30px" , fontSize: "10px"}}>
               واریز‌ به‌کیف‌ پول
               </Button>
-            </div>
+            </Box>
           </FormGroup>
           <Box className='d-lg-block d-md-block d-sm-none d-none form-button' >
-            <Button variant="contained" onClick={handleOpen('buy')}  sx={btnstyle} fullWidth>
+            <Button variant="contained" className='boxShadowUnset' onClick={handleOpen('buy')}  sx={btnstyle}  fullWidth>
               خرید بایننس کوین
             </Button>
           </Box>
@@ -206,8 +206,8 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
                }}
              
             />
-            <Box className="d-flex justify-content-between" sx={{p:"1%"}}>
-              <p className='text-muted helper-fontsize'>موجودی کیف ۳۰۰,۰۰۰ تومان</p>
+            <Box className="d-flex justify-content-between align-items-center" sx={{py:"12px"}}>
+              <p className='text-muted helper-fontsize m-0'>موجودی کیف ۳۰۰,۰۰۰ تومان</p>
                     <Box className="d-flex" >
                       <Button variant="outlined" color={btnsale.btn100}  onClick={handleBtnSale('100')} style={minibtnstyle}> %100</Button>
                       <Button variant="outlined"color={btnsale.btn75}  onClick={handleBtnSale('75')} style={minibtnstyle}> %75</Button>
@@ -226,15 +226,15 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
                 ),
               }}
             />
-            <div className="d-flex justify-content-between pt-1 px-2">
-              <p className='text-muted helper-fontsize pt-1'>موجودی ۰ بایننس</p>
-              <Button variant="outlined"  sx={{minHeight:"31px",maxHeight:"31px",borderRadius:"30px"}}>
-              واریز‌ به‌کیف‌پول
+            <Box className="d-flex justify-content-between align-items-center" sx={{py:"12px"}}>
+              <p className='text-muted helper-fontsize mt-1 m-0'>موجودی ۰ بایننس</p>
+               <Button color="digigrey" variant="outlined"  onClick={handleWal} sx={{minHeight:"31px",maxHeight:"31px",borderRadius:"30px" , fontSize: "10px"}}>
+              واریز‌ به‌کیف‌ پول
               </Button>
-            </div>
+            </Box>
           </FormGroup>
-          <Box className='d-lg-block d-md-block d-sm-none d-none form-button' sx={{mt:"2%"}}>
-            <Button  variant="contained" onClick={handleOpen('shop')} sx={btnstyle} fullWidth>
+          <Box className='d-lg-block d-md-block d-sm-none d-none form-button p-0' >
+            <Button  variant="contained" className='boxShadowUnset' onClick={handleOpen('shop')} sx={btnstyle} fullWidth>
               فروش بایننس کوین
             </Button>
           </Box>

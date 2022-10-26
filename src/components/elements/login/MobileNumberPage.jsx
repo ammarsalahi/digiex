@@ -55,7 +55,7 @@ export default function MobileNumberPage({send}) {
                />
              </FormGroup>
              <Box sx={{px:"6%"}}>
-             <Button  onClick={send}  variant="contained" sx={{height:"55px" ,backgroundColor:"#424BFB",borderRadius:"8px"}}  fullWidth >
+             <Button  onClick={send} className='boxShadowUnset'  variant="contained" sx={{height:"55px" ,backgroundColor:"#424BFB",borderRadius:"8px"}}  fullWidth >
                   ورود
              </Button>
              </Box>

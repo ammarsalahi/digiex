@@ -21,7 +21,7 @@ export default function Register() {
                 <Typography variant="h5" component="div" sx={{fontSize:"20px"}}>
                 ثبت نام
                 </Typography>
-                <Button onClick={()=> navigate('/login')} size="small" endIcon={<ArrowBackIos/>}>
+                <Button onClick={()=> navigate('/login')} className='boxShadowUnset' size="small" endIcon={<ArrowBackIos/>}>
                       بازگشت      
                 </Button>
             </Box>
@@ -68,7 +68,7 @@ export default function Register() {
                />
              </FormGroup>
              <Box sx={{px:"6%",pb:"20px"}}>
-             <Button variant="contained" sx={{height:"55px" ,backgroundColor:"#424BFB"}}  fullWidth>
+             <Button variant="contained" className='boxShadowUnset' sx={{height:"55px" ,backgroundColor:"#424BFB"}}  fullWidth>
                   ثبت نام
              </Button>
              </Box>
