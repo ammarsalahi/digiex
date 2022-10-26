@@ -1,21 +1,3 @@
-<<<<<<< Updated upstream
-html,body{
-  font-family: "IRANYekan" !important;
-  font-weight: lighter !important;
-}
-[class^="Mui"],
-[class^="Mui"] * {
-font-family: "IRANYekan"  !important;
-
-}
-[class*="Mui"],
-[class*="Mui"] * {
-font-family: "IRANYekan"  !important;
-
-}
-
-hr{
-=======
 html,
 body {
   font-family: "PeydaWeb" !important;
@@ -41,7 +23,6 @@ h6 {
   padding-inline: 32px !important;
 }
 hr {
->>>>>>> Stashed changes
   flex-grow: 1;
   margin-left: 16px;
   margin-right: 16px;
@@ -150,25 +131,6 @@ div.boxdate:hover {
 @media only screen and (min-width: 768px) {
   .border-left-d {
     border-left: 1px solid #cbe4eb;
-<<<<<<< Updated upstream
-    }
-    .p-info{
-      padding-left: 24px;
-      padding-right: 24px;
-    }  
-}
-@media only screen and (max-width:768px){
-    .p-info{
-      padding-left: 32px;
-      padding-right: 32px;
-    }  
-    
-}
-
-.bgw .bgw:hover{
-  background-color: #fff;
-}
-=======
   }
   .p-info {
     padding-left: 24px;
@@ -201,4 +163,3 @@ div.boxdate:hover {
   font-family: "PeydaWebBold" !important;
   font-weight: bold !important;
 }
->>>>>>> Stashed changes

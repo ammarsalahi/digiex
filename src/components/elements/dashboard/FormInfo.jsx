@@ -15,13 +15,8 @@ export default function FormInfo({ listdata, title,description,finalvalue,option
     height: '72px' ,fontSize: "14px" , backgroundColor: "#EAEEFF" , border: "1px solid #cbe4eb" , borderRadius : "8px",color:"#000"
   }
   return (
-<<<<<<< Updated upstream
     <Box component="div" sx={{ textAlign: 'left' }}>
      {title? <Typography variant="h5" component="div">
-=======
-    <Box component="div" sx={{ textAlign: 'left' , mb: "32px" }}>
-     {title? <Typography variant="h5" component="div" className='boldfont'>
->>>>>>> Stashed changes
       {title}
       </Typography>:<div></div>}
      
