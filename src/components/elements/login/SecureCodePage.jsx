@@ -69,7 +69,7 @@ export default function SecureCodePage({send}) {
                ارسال مجدد کد      
                 </Button>
               </Box>
-             <Button variant="contained" sx={{height:"55px" ,backgroundColor:"#424BFB"}}  fullWidth>
+             <Button variant="contained" className='boxShadowUnset' sx={{height:"55px" ,backgroundColor:"#424BFB"}}  fullWidth>
                   بررسی 
              </Button>
              </Box>

@@ -19,7 +19,10 @@ import { CheckCircle,RadioButtonUnchecked } from '@mui/icons-material';
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />;
 });
-
+const heighttt = {
+  height : "56px",
+  marginBottom : "16px"
+}
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
       padding: theme.spacing(2),
@@ -99,20 +102,20 @@ export default function BuyStepTwo({open,close,opendialogd}) {
         open={open}
         TransitionComponent={Transition}
         >
-         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
+         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom" sx={{ fontSize: "14px" }}>
         انتخاب نحوه دریافت و شبکه      
          </BootstrapDialogTitle>
         <DialogContent>
-         <Box className="border-right-marginboldblue"sx={{px:"1%",mt:"3%"}}>
+         <Box className="border-right-marginboldblue"sx={{px:"1%",mt:"8px", mb: "16px"}}>
            <Typography variant="p" component="div" fontSize="13px">
               روش دریافت ارز
            </Typography>
          </Box>
          <Box sx={{pb:"2%"}}>
-            <List>
-                <ListItem button sx={deposit==="type1"?boxselected:boxunselected} onClick={()=>{setDeposit("type1")}}>
+            <List sx={{padding: "0"}}>
+                <ListItem button sx={deposit==="type1"?boxselected:boxunselected} onClick={()=>{setDeposit("type1")}} style={heighttt}>
                     <ListItemIcon>
-                        <Checkbox checked={deposit==="type1"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />
+                        <Checkbox checked={deposit==="type1"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} sx={{padding: "0"}}/>
                     </ListItemIcon>
                     <ListItemText primaryTypographyProps={deposit==='type1'?{color:"#424BFB",fontSize:"15px"}:{color:"#5f5f62",fontSize:"15px"}}   
                      primary={
@@ -124,9 +127,9 @@ export default function BuyStepTwo({open,close,opendialogd}) {
                     <ListItemText primary="0BUSD" primaryTypographyProps={deposit==='type1'?{color:"#424BFB",fontSize:"11px"}:{color:"#5f5f62",fontSize:"11px"}} />
                 </ListItem>
 
-                <ListItem button sx={deposit==="type2"?boxselected:boxunselected} onClick={()=>{setDeposit("type2")}}>
+                <ListItem button sx={deposit==="type2"?boxselected:boxunselected} onClick={()=>{setDeposit("type2")}} style={heighttt}>
                     <ListItemIcon>
-                        <Checkbox checked={deposit==="type2"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />
+                        <Checkbox checked={deposit==="type2"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} sx={{padding: "0"}}/>
                     </ListItemIcon>
                     <ListItemText primaryTypographyProps={deposit==='type2'?{color:"#424BFB",fontSize:"15px"}:{color:"#5f5f62",fontSize:"15px"}} 
                      primary={
@@ -145,9 +148,9 @@ export default function BuyStepTwo({open,close,opendialogd}) {
          </Box>
          <Box sx={{pb:"2%"}}>
             <List>
-                <ListItem button sx={withdraw==="type1"?boxselected:boxunselected} onClick={()=>{setWithdraw("type1")}}>
+                <ListItem button sx={withdraw==="type1"?boxselected:boxunselected} onClick={()=>{setWithdraw("type1")}} style={heighttt}>
                     <ListItemIcon>
-                        <Checkbox checked={withdraw==="type1"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />
+                        <Checkbox checked={withdraw==="type1"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} sx={{padding: "0"}}/>
                     </ListItemIcon>
                     <ListItemText primaryTypographyProps={withdraw==='type1'?{color:"#424BFB",fontSize:"15px"}:{color:"#5f5f62",fontSize:"15px"}}  
                      primary={
@@ -159,9 +162,9 @@ export default function BuyStepTwo({open,close,opendialogd}) {
                     <ListItemText primaryTypographyProps={withdraw==='type1'?{color:"#424BFB",fontSize:"11px"}:{color:"#5f5f62",fontSize:"11px"}} 
                      primary="5,282,050 تومان" />
                 </ListItem>
-                <ListItem button sx={withdraw==="type2"?boxselected:boxunselected} onClick={()=>{setWithdraw("type2")}}>
+                <ListItem button sx={withdraw==="type2"?boxselected:boxunselected} onClick={()=>{setWithdraw("type2")}} style={heighttt}>
                     <ListItemIcon>
-                        <Checkbox checked={withdraw==="type2"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />
+                        <Checkbox checked={withdraw==="type2"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} sx={{padding: "0"}}/>
                     </ListItemIcon>
                     <ListItemText primaryTypographyProps={withdraw==='type2'?{color:"#424BFB",fontSize:"15px"}:{color:"#5f5f62",fontSize:"15px"}}
                       primary={
@@ -173,9 +176,9 @@ export default function BuyStepTwo({open,close,opendialogd}) {
                     <ListItemText primaryTypographyProps={withdraw==='type2'?{color:"#424BFB",fontSize:"11px"}:{color:"#5f5f62",fontSize:"11px"}}  
                      primary="0BUSD" />
                 </ListItem>
-                <ListItem button sx={withdraw==="type3"?boxselected:boxunselected} onClick={()=>{setWithdraw("type3")}}>
+                <ListItem button sx={withdraw==="type3"?boxselected:boxunselected} onClick={()=>{setWithdraw("type3")}} style={heighttt}>
                     <ListItemIcon>
-                        <Checkbox checked={withdraw==="type3"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />
+                        <Checkbox checked={withdraw==="type3"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} sx={{padding: "0"}}/>
                     </ListItemIcon>
                     <ListItemText primaryTypographyProps={withdraw==='type3'?{color:"#424BFB",fontSize:"15px"}:{color:"#5f5f62",fontSize:"15px"}}    
                     primary={

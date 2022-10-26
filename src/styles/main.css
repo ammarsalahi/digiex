@@ -1,85 +1,94 @@
-html,body{
+html,
+body {
   font-family: "PeydaWeb" !important;
   font-weight: normal !important;
 }
 [class^="Mui"],
 [class^="Mui"] * {
-font-family: "PeydaWeb"  !important;
-
+  font-family: "PeydaWeb" !important;
 }
 [class*="Mui"],
 [class*="Mui"] * {
-font-family: "PeydaWeb"  !important;
-
+  font-family: "PeydaWeb" !important;
 }
-h1,h2,h3,h4,h5,h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "PeydaWeb-Bold" !important;
 }
-
-hr{
+.px-32 {
+  padding-inline: 32px !important;
+}
+hr {
   flex-grow: 1;
-  margin-left: 1%;
-  margin-right: 1%;
-  border-top: 1px dashed #cbe4eb ;
+  margin-left: 16px;
+  margin-right: 16px;
+  border-top: 1px dashed #cbe4eb;
   opacity: 1;
 }
-
-.maincontent{
-  padding-top:'32px';
+.border-1px {
+  border: 1px solid #424bfb !important;
+}
+.boxShadowUnset {
+  box-shadow: none !important;
+}
+.maincontent {
+  padding-top: "32px";
 }
 
-
-.bordertop{
-border-top: 1px solid #cbe4eb;
+.bordertop {
+  border-top: 1px solid #cbe4eb;
 }
 
-.bordertop-bold{
-border-top: 2px solid #a4a6b4;
+.bordertop-bold {
+  border-top: 2px solid #a4a6b4;
 }
 
-.borderbottom{
-border-bottom: 1px solid #cbe4eb;
+.borderbottom {
+  border-bottom: 1px solid #cbe4eb;
 }
-.borderbottom-bold{
-border-bottom: 2px solid #a4a6b4;
-}
-
-.border-left{
-border-left: 1px solid #a4a6b4;
-}
-.border-left-bold{
-border-left: 2px solid #a4a6b4;
+.borderbottom-bold {
+  border-bottom: 2px solid #a4a6b4;
 }
 
-.border-right{
-border-right: 1px solid #a4a6b4;
+.border-left {
+  border-left: 1px solid #a4a6b4;
 }
-.border-right-bold{
-border-right: 1px solid #a4a6b4;
-}
-.border-right-marginbold{
-border-right: 2px solid #a4a6b4;
-margin-top: 1%;
-margin-bottom: 1%;
+.border-left-bold {
+  border-left: 2px solid #a4a6b4;
 }
 
-.border-right-marginboldblue{
-  border-right: 2px solid #424BFB;
+.border-right {
+  border-right: 1px solid #a4a6b4;
+}
+.border-right-bold {
+  border-right: 1px solid #a4a6b4;
+}
+.border-right-marginbold {
+  border-right: 2px solid #a4a6b4;
   margin-top: 1%;
   margin-bottom: 1%;
-  }
-.full-border{
-border: 1px solid #a4a6b4;
 }
 
-.full-border-active{
-    border: 1px solid #0642df;
+.border-right-marginboldblue {
+  border-right: 2px solid #424bfb;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+.full-border {
+  border: 1px solid #a4a6b4;
 }
 
-.infmargin{
+.full-border-active {
+  border: 1px solid #0642df;
+}
+
+.infmargin {
   padding-left: "10%";
 }
-
 
 .bg-card-img {
   background-image: url("../img//icons/cart-bg.svg");
@@ -87,63 +96,61 @@ border: 1px solid #a4a6b4;
   background-repeat: no-repeat;
 }
 
- input::-webkit-outer-spin-button,
+input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
-}  
+}
 
-
-
-div.boxdate{
+div.boxdate {
   border: 1px solid #cbe4eb;
-  padding-top : 10px;
-  padding-bottom : 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-radius: 8px;
   margin-top: 12px;
 }
-div.boxdate:active,div.boxdate:focus{
+div.boxdate:active,
+div.boxdate:focus {
   border: 2px solid #cbe4eb;
-  padding-top : 10px;
-  padding-bottom : 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-radius: 8px;
   margin-top: 12px;
 }
-div.boxdate:hover{
+div.boxdate:hover {
   border: 1px solid rgb(31, 31, 31);
-  padding-top : 10px;
-  padding-bottom : 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-radius: 8px;
   margin-top: 12px;
 }
 
-@media only screen and (min-width:768px){
-  .border-left-d{
+@media only screen and (min-width: 768px) {
+  .border-left-d {
     border-left: 1px solid #cbe4eb;
-    }
-    .p-info{
-      padding-left: 24px;
-      padding-right: 24px;
-    }  
-    .slidbox{
-      margin-top: 90px;
-    }
+  }
+  .p-info {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .slidbox {
+    margin-top: 90px;
+  }
 }
-@media only screen and (max-width:768px){
-    .p-info{
-      padding-left: 32px;
-      padding-right: 32px;
-    }  
-    .slidbox{
-      margin-top: 150px;
-    }
-    
+@media only screen and (max-width: 768px) {
+  .p-info {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .slidbox {
+    margin-top: 150px;
+  }
 }
 
-.bgw .bgw:hover{
+.bgw .bgw:hover {
   background-color: #fff;
 }
 
@@ -152,7 +159,7 @@ div.boxdate:hover{
   direction: rtl;
 }
 
-.boldfont{
+.boldfont {
   font-family: "PeydaWebBold" !important;
   font-weight: bold !important;
 }
