@@ -29,10 +29,10 @@ export default function Dashboard() {
     setTabvalue(newValue);
   };
    const data=[
-    {"name":"تعداد بایننس کوین","price":"۲۱۵۰BUSD"},
-    {"name":"قیمت هر واحد","price":"۳۰,۲۵۰تومان"},
-    {"name":"مبلغ","price":"۶۳,۵۷۰,۵۰۰تومان"},
-    {"name":"تخفیف","price":"۰ تومان"},
+    {"name":"تعداد بایننس کوین","price":"2150BUSD"},
+    {"name":"قیمت هر واحد","price":"30,250تومان"},
+    {"name":"مبلغ","price":"63,570,500تومان"},
+    {"name":"تخفیف","price":"0 تومان"},
     {"name":"کارمزد‌شبکه‌ارسال","price":"در‌انتظار‌محاسبه"},
    ]
 
@@ -42,7 +42,7 @@ export default function Dashboard() {
     { "label": 'دای', "icon": DAI },
     { "label": 'یو اس دی کوین', "icon": USD },
   ]
-   const value=" ۶۷,۹۷۳,۰۰۰ تومان"
+   const value=" 67,973,000 تومان"
   return (
     <div>
       <Box sx={{ textAlign: 'right' }}>

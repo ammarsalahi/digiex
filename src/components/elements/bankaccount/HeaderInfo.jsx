@@ -66,7 +66,7 @@ export default function HeaderInfo({ userdata, svgsDash }) {
             <Box className="row"  sx={{py:"3%"}}>
             <Box className="col-6">
               <Typography variant="p" component="div" sx={headtext}>
-                حجم معاملات (۳۰ روز)
+                حجم معاملات (30 روز)
               </Typography>
               <Typography variant="p" component="div" >
                 {userdata.values}

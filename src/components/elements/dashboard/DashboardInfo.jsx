@@ -21,12 +21,12 @@ export default function DashboardInfo() {
          </Typography>
          <br />
          <Typography variant="p" fontSize={20} component="div">
-           ۸۷۳,۰۸۳,۳۰۰ تومان
+           873,083,300 تومان
          </Typography>
 
        </Box>
        <Box sx={{pt:4,px:4}} className='green-color'>
-         <p style={{color:'#1ed184',fontSize:'12px'}}>٪۲۴ <Svg Component={UpGreen}/>
+         <p style={{color:'#1ed184',fontSize:'12px'}}>٪24 <Svg Component={UpGreen}/>
          <br/>نسبت به روز گدشته</p>
         </Box>
       </Box>

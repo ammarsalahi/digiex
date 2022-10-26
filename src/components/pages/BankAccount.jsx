@@ -27,10 +27,10 @@ export default function BankAccount() {
   const [userdata, setUserdata] = React.useState({
     name:"حسین اسدزاده",
     level:"سطح طلایی",
-    withdraw:"۱۰۰ میلیون تومان",
+    withdraw:"100 میلیون تومان",
     deposit:"نامحدود",
-    values:"کمتر از ۳،۰۰۰ تتر",
-    distance:"۱،۲۰۰ تتر",
+    values:"کمتر از 3,000 تتر",
+    distance:"1,200 تتر",
   });
   return (
     <div>

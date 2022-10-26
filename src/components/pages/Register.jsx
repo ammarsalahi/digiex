@@ -73,19 +73,7 @@ export default function Register() {
              </Button>
              </Box>
             </form>
-              {/* <div>
-                <Box className="d-lg-block d-md-block d-sm-none d-none text-center fixed-bottom" sx={{pb:"32px",pt:"36%",pl:"52%"}}>
-                  <Typography variant="p" component="div" fontSize="16px" >
-                  &#169; تمام حقوق این پلتفرم محفوظ میباشد 
-                  </Typography>
-                </Box>
-                <Box className="d-lg-none d-md-none d-sm-block d-block text-center fixed-bottom" sx={{pb:"32px",pt:"36%"}}>
-                  <Typography variant="p" component="div" fontSize="16px" >
-                  &#169; تمام حقوق این پلتفرم محفوظ میباشد 
-                  </Typography>
-                </Box>
-              </div> */}
-           
+              
            </Box>
     </SignLayout>
   )

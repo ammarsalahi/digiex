@@ -18,12 +18,12 @@ function createData(date, name, operation, count, address , txid,station)  {
 
 
 const rows = [
-  createData("۲۳ بهمن ۱۴۰۱", "تتر", "خرید", "875", "TKavR…RKkSjm", "avcads5646a5vcadsv56a4sdv", "تکمیل شده"),
-  createData("۲۳ بهمن ۱۴۰۱", "تتر", "فروش", "875","TKavR…RKkSjm", "avcads5646a5vcadsv56a4sdv",  "تکمیل شده"),
-  createData("۲۳ بهمن ۱۴۰۱", "تتر", "خرید", "875","TKavR…RKkSjm", "avcads5646a5vcadsv56a4sdv",  "تکمیل شده"),
-  createData("۲۳ بهمن ۱۴۰۱", "تتر", "فروش", "875", "TKavR…RKkSjm", "avcads5646a5vcadsv56a4sdv",  "ناموفق"),
-  createData("۲۳ بهمن ۱۴۰۱", "تتر", "خرید", "875","TKavR…RKkSjm", "avcads5646a5vcadsv56a4sdv",  "ناموفق"),
-  createData("۲۳ بهمن ۱۴۰۱", "تتر", "فروش", "875","TKavR…RKkSjm", "avcads5646a5vcadsv56a4sdv",  "ناموفق"),
+  createData("23 بهمن 1401", "تتر", "خرید", "875", "TKavR…RKkSjm", "avcads5646a5vcadsv56a4sdv", "تکمیل شده"),
+  createData("23 بهمن 1401", "تتر", "فروش", "875","TKavR…RKkSjm", "avcads5646a5vcadsv56a4sdv",  "تکمیل شده"),
+  createData("23 بهمن 1401", "تتر", "خرید", "875","TKavR…RKkSjm", "avcads5646a5vcadsv56a4sdv",  "تکمیل شده"),
+  createData("23 بهمن 1401", "تتر", "فروش", "875", "TKavR…RKkSjm", "avcads5646a5vcadsv56a4sdv",  "ناموفق"),
+  createData("23 بهمن 1401", "تتر", "خرید", "875","TKavR…RKkSjm", "avcads5646a5vcadsv56a4sdv",  "ناموفق"),
+  createData("23 بهمن 1401", "تتر", "فروش", "875","TKavR…RKkSjm", "avcads5646a5vcadsv56a4sdv",  "ناموفق"),
 
 ]
 

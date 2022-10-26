@@ -72,7 +72,7 @@ export default function WalletInfo({ infos,options }) {
                     موجودی کل حساب شما
                   </Typography>
                   <Typography variant="p" fontSize={18} component="div">
-                    ۸۷۳,۰۸۳,۳۰۰ تومان
+                    873,083,300 تومان
                   </Typography>
                 </Box>
                 <Box sx={{pt:"5%"}} style={{left:0}}>
@@ -119,7 +119,7 @@ export default function WalletInfo({ infos,options }) {
                       <Svg Component={UpGreen} /> 
                       </Box>
                     <Typography className="pt-1" variant="p" fontSize={12} component="div">
-                        ۳۶۳،۸۳۷،۹۰۰ تومان
+                        363,873,300 تومان
                     </Typography>
                     </Box>
                   </Box>
@@ -132,7 +132,7 @@ export default function WalletInfo({ infos,options }) {
                       <Svg Component={DownRed} /> 
                       </Box>
                     <Typography className="pt-1" variant="p" fontSize={12} component="div">
-                        ۲۷۲،۹۰۰،۲۸۰ تومان
+                        272,456,099 تومان
                     </Typography>
                     </Box>
                   </Box>

@@ -24,7 +24,7 @@ export default function Sidebar() {
     { name: 'تاریخچه معاملات', address: '/orderhistory', icon: HistoryIcon },
     { name: 'تراکنش‌های‌مالی', address: '/transactions', icon: TransactionsIcon },
     { name: 'کارت‌های‌بانکی', address: '/bankaccount', icon: BankCardIcon },
-    { name: 'همکاری‌در‌فروش', address: '/', icon: AssistIcon },
+    { name: 'همکاری‌در‌فروش', address: '/register', icon: AssistIcon },
     { name: 'احراز‌هویت', address: '/verification', icon: AuthIcon },
 
 
