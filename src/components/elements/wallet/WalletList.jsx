@@ -31,7 +31,6 @@ export default function WalletList({rows}) {
     px:"5px",
     py:"5px",
     display:"flex",
-    my:"2%"
   }
   
   const theme = createTheme({
@@ -47,9 +46,9 @@ export default function WalletList({rows}) {
      setbtntext(props);
   }
   return (
-    <Box sx={{pt:"18px",px:"24px"}}>
-      <div className='d-flex justify-content-between'>
-        <Typography component="div" variant="p" className='transaction-header'>
+    <Box>
+       <div className='d-flex justify-content-between header-title'>
+          <Typography className='boldfont' component="div" variant="p" sx={{pt:"10px"}}>
           واریز و برداشت های اخیر
         </Typography>
         <ThemeProvider theme={theme}>
