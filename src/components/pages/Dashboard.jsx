@@ -44,12 +44,12 @@ export default function Dashboard() {
   ]
    const value=" 67,973,000 تومان"
   return (
-    <div>
+    <div> 
       <Box sx={{ textAlign: 'right' }}>
         <DashboardInfo />
       </Box>
-      <div className='row ' style={{height:"100vh"}}>
-        <div className='col-lg-6 col-12 content-dashboard' style={{height:"100vh"}}>
+      <div className='row' style={{height:"100vh"}}>
+        <div className='col-lg-6 col-12 mycontainer'>
           <FormTabs 
             options={options} 
             tabvalue={tabvalue} 
@@ -57,16 +57,16 @@ export default function Dashboard() {
             openprop={open}
           />
         </div>
-        <div className='col-lg-6 col-12 content-dashboard mb-3 border-right-margin' style={{height:"100vh" }}>
+        <div className='col-lg-6 col-12 mycontainer'>
           <FormInfo listdata={data} description={true} finalvalue={value}  title="جزئیات سفارش" options={options}/>
         </div>
       </div>
           <div className='d-lg-none d-md-none d-sm-block d-block'>
-            <Box className='fixed-bottom' sx={{py:"2%",px:"3%"}}>
+            <Box className='fixed-bottom' sx={{pb:"16px",px:"16px"}}>
            {tabvalue===1 && (  
               <Button  
                 variant="contained" 
-                sx={{ fontSize: 21, height: "55px" ,borderRadius:"8px",BoxShadow:"unset",}}
+                sx={{ fontSize: "14px", height: "55px" ,borderRadius:"8px",BoxShadow:"unset",}}
                 fullWidth
                 onClick={handleOpen('shop')}
                >
@@ -76,7 +76,7 @@ export default function Dashboard() {
             {tabvalue===0 && (  
               <Button 
                 variant="contained"  
-                sx={{ fontSize: 21, height: "55px",borderRadius:"8px" ,BoxShadow:"unset",}} 
+                sx={{ fontSize: "14px", height: "55px",borderRadius:"8px" ,BoxShadow:"unset",}} 
                 fullWidth
                 onClick={handleOpen('buy')}
               >

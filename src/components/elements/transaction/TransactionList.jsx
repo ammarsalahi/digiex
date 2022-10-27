@@ -14,6 +14,8 @@ export default function TransactionList({rows}) {
     fontSize: "14px !important",
     textAlign:"center",
     color: "rgba(164, 166, 180, 1)",
+    minWidth:"120px",
+    maxWidth:"150px"
   }
   const cellstyle={
     py:"14px",
@@ -29,7 +31,6 @@ export default function TransactionList({rows}) {
     px:"5px",
     py:"5px",
     display:"flex",
-    my:"25px"
   }
  
   const darkbtnstyle={
@@ -54,8 +55,8 @@ export default function TransactionList({rows}) {
   return (
     <div>
       <Box>
-        <Box className='d-flex justify-content-between px-3' sx={{padding: "20px 0"}}>
-          <Typography component="div" variant="p" className='transaction-header boldfont'>
+        <Box className='d-flex justify-content-between header-title'>
+          <Typography className='boldfont' component="div" variant="p" sx={{pt:"10px"}}>
            تراکنش های مالی
           </Typography>
           <ThemeProvider theme={theme}>
@@ -73,9 +74,9 @@ export default function TransactionList({rows}) {
           </ThemeProvider>
           
         </Box>
-        <Box className='row maincontent'>
-          <TableContainer>
-            <Table sx={{ minWidth: 500}} size="small" aria-label="a dense table">
+        <Box className='row'>
+          <TableContainer class="table-cnt">
+            <Table size="small" >
               <TableHead>
                 <TableRow>
                   <TableCell sx={headstyle}>تاریخ</TableCell>
@@ -112,7 +113,7 @@ export default function TransactionList({rows}) {
             </Table>
           </TableContainer>
           </Box>
-        <div className='d-flex justify-content-center' dir="ltr">
+        <div className='d-flex justify-content-center mb-3' dir="ltr">
             <SpacialPagination 
               data={rows} 
               buttonConst={3}

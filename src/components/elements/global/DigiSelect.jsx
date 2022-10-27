@@ -6,23 +6,26 @@ import Svg from '../../utils/Svgs';
 const tetstyle={
   pt:"3px",height: "30px", width: "30px",
   borderRadius:"8px",
-  backgroundColor:"rgba(217, 243, 232, 1)"
+  backgroundColor:"rgba(217, 243, 232, 1)",
 }
 
 const daistyle={
   pt:"3px",height: "30px", width: "30px",
   borderRadius:"8px",
-  backgroundColor:"#fbf4c6"
+  backgroundColor:"#fbf4c6",
+ 
+}
+const fonsizes={
+  fontSize:"14px"
 }
 
 const textfieldstyle={
-  width:"96%",mr:"2%",my:"2%"
+  width:"96%",mr:"2%",my:"2%",fontSize:"14px",
+  boxShadow:"unset",
 }
 
 const muilist={
-  '& ..MuiMenuItem-root':{
-    direction:'rtl',
-  }
+  boxShadow:"unset",
 }
 
 export default function DigiSelect({options}) {
@@ -66,7 +69,7 @@ export default function DigiSelect({options}) {
             defaultValue={optionstate[0].label}
             onChange={(e)=>console.log(e.target.value)}
             >
-            {options.length >=5 && <TextField 
+            {options.length >=4 && <TextField 
             color="digi"
             sx={textfieldstyle}
             size="small"
@@ -79,6 +82,9 @@ export default function DigiSelect({options}) {
                      <Search/>
                   </InputAdornment>
                 ),
+                style:{
+                  direction:"rtl"
+                }
               }}
             />}
             {optionstate.length 
@@ -92,7 +98,7 @@ export default function DigiSelect({options}) {
                         >
                         <Svg Component={item.icon} style={{ height: "23px", width: "23px" }} />
                         </Box>
-                        <div className="mx-2 mt-1">{item.label}</div>
+                        <div className="mx-2 mt-1" style={fonsizes}>{item.label}</div>
                      </div>
                   </div>
                  </MenuItem>                

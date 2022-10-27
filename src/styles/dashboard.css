@@ -5,16 +5,8 @@
   border-radius: 25px;
 }
 
-.info-content{
-padding-top: 45px;
-padding-bottom: 30px;
-}
-.content-dashboard{
-  padding-top:32px;
-  padding-bottom:20px;
-  padding-left:32px;
-  padding-right:32px;
-}
+
+
 
 .info-list{
   margin-bottom: 16px;
@@ -25,26 +17,56 @@ padding-bottom: 30px;
 }
 
 @media only screen and (min-width:992px){
+  .content-dashboard{
+    padding-top:32px;
+    padding-bottom:20px;
+    padding-left:32px;
+    padding-right:32px;
+  }
   .form-button{
     padding-top: 10px;
     padding-bottom: 5% !important;
   }
-  .info-card{
-    padding-top: 55px;
-    padding-bottom: 24px !important;
-
-  }
+  
+  .info-content{
+    padding-top: 45px;
+    padding-bottom: 30px;
+    padding-left:32px;
+    padding-right:32px;
+   }
 }
 
-@media only screen and (min-width:600px){
+@media only screen and (min-width:700px){
   .form-button{
     padding-top: 21px;
     padding-bottom: 24px !important;
 
   }
-  .info-card{
-    padding-top: 65px;
-    padding-bottom: 24px !important;
-  }
  
+  .info-content{
+    padding-top: 45px;
+    padding-bottom: 30px;
+    padding-left:32px;
+    padding-right:32px;
+   }
+ 
+}
+
+@media only screen and (max-width:700px){
+  .borderbottom-margin {
+    border-bottom: 1px solid #cbe4eb;
+    margin-top: 32px;
+  }
+  .content-dashboard{
+    padding-top:32px;
+    padding-bottom:20px;
+    padding-left:16px;
+    padding-right:16px;
+  }
+  .info-content{
+    padding-top: 45px;
+    padding-bottom: 30px;
+    padding-left:16px;
+    padding-right:16px;  
+   }
 }

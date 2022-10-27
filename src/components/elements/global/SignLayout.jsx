@@ -40,16 +40,16 @@ export default function SignLayout({children}) {
     <div className='container-fluid ' >
     <Box className="row" dir="rtl">
       
-      <Box className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-none" sx={{backgroundColor:"#424BFB",pt:"5%"}}>
+      <Box className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-none" sx={{backgroundColor:"#424BFB",pt:"45px"}}>
            <Box sx={{pl:"48px"}}>
               <Svg  Component={Logo} />
             </Box> 
-           <Box sx={{pl:"7%"}}>
+           <Box sx={{px:"9%",pt:"27px"}}>
            <Typography variant="p" compoent="div" sx={{color:"#fff",textAlign:"center",fontSize:"42px"}}>
            با بهترین قیمت و سرعت بالا معامله کنید
            </Typography>
            </Box>
-           <Box sx={{pl:"7%",pr:"11%",pt:"48px"}}>
+           <Box sx={{pl:"9%",pr:"11%",pt:"45px"}}>
              <Typography variant="p" component="div" sx={{color:"#fff",fontSize:"13.4px"}}>
              با هر معامله، بخشی از معامله شما به کیف پولتان به عنوان هدیه (Cash Back) واریز میگردد که میتوانید در معاملات آتی از آن استفاده نمایید.
              </Typography>
@@ -62,7 +62,7 @@ export default function SignLayout({children}) {
               spaceBetween={8}
               slidesPerView={1}
               autoplay={{
-                delay: 3000,
+                delay: 4000,
                 disableOnInteraction: false,
               }}
               onSlideChange={(swiper) => setActive(swiper.activeIndex)}
@@ -95,10 +95,10 @@ export default function SignLayout({children}) {
            
          
     </Box>
-    <Box className="col-lg-6 col-md-6 col-12" sx={{height:"100vh"}}>
+    <Box className="col-lg-6 col-md-6 col-12" sx={{height:"100vh",pt:"90px"}}>
              {children}
              <div>
-                <Box className="d-lg-block d-md-block d-sm-none d-none text-center fixed-bottom" sx={{pb:"32px",pl:"52%"}}>
+                <Box className="d-lg-block d-md-block d-sm-none d-none text-center fixed-bottom" sx={{pb:"24px",pl:"52%"}}>
                   <Typography variant="p" component="div" fontSize="16px" >
                   &#169; تمام حقوق این پلتفرم محفوظ میباشد 
                   </Typography>

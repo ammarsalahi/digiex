@@ -28,8 +28,8 @@ export default function TransactionHead() {
     borderColor:"#cbe4eb"
   }
   return (
-    <Box className='row d-flex justify-content-start bg-light' sx={{py:"32px"}}>
-          <div className='col-lg-5 col-12 d-flex justify-content-start'>
+    <Box className='row d-flex justify-content-start mycontainer backgroundClr'>
+          <div className='col-lg-5 col-12 gx-0 d-flex justify-content-start'>
              <DatePicker 
                 style={selectstyle}
                 value={value}

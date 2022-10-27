@@ -35,8 +35,8 @@ export default function MobileNumberPage({send}) {
      
     }
   return (
-        <Box sx={{pt:"10.3%"}}>
-         <Typography variant="p" component="div" sx={{py:"48px",px:"55px",fontSize:"20px"}}>
+        <Box>
+         <Typography className='boldfont' variant="p" component="div" sx={{pb:"48px",pt:"25px",px:"55px",fontSize:"20px"}}>
           ورود | ثبت نام
           </Typography>
           <form>

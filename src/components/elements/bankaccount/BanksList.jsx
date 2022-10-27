@@ -14,13 +14,15 @@ export default function BanksList({rows,opendialog}) {
 
   }
   const headstyle={
-    py:"15px",
+    py:"16px",
     fontSize: "14px !important",
     textAlign:"center",
     color: "rgba(164, 166, 180, 1)",
+    minWidth:"200px",
+    maxWidth:"auto"
   }
   const cellstyle={
-    py:"15px",
+    py:"16px",
     fontSize: "14px !important",
     textAlign:"center"
   }
@@ -35,13 +37,12 @@ export default function BanksList({rows,opendialog}) {
    },
    px:"90px",
    py:"50px",
-   mb:"15%",
    mt:"20px",
   }
   return (
-    <Box className='row maincontent'>
-    <TableContainer sx={{px:"15px"}}>
-      <Table sx={{ minWidth: 500}} size="small" aria-label="a dense table">
+    <Box className='row'>
+    <TableContainer class="table-cnt">
+      <Table size="small" >
         <TableHead>
           <TableRow>
             <TableCell sx={headstyle}>بانک</TableCell>
@@ -72,12 +73,13 @@ export default function BanksList({rows,opendialog}) {
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
-     <Box sx={{px:'5%'}}>
+      <Box className='mt-3'>
         <Button fullWidth sx={cardbtnstyle} startIcon={<AddCircle />} onClick={opendialog}>
           افزودن کارت بانکی جدید 
         </Button>
      </Box>
+    </TableContainer>
+     
     </Box>
   )
 }

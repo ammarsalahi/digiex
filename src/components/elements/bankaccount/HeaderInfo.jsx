@@ -4,27 +4,26 @@ import svgsicon from '../../../img/logos/level-star.svg'
 
 export default function HeaderInfo({ userdata, svgsDash }) {
   const infobox = {
-    minHeight: "110px",
+    height: "auto",
     width: "100%",
     backgroundColor: '#e8ebef',
     borderRadius: "8px",
   }
   const minibox = {
-    padding: "32px",
+    padding: " 16px 0px",
     fontSize: "12px",
     textAlign: "center"
   }
   const headtext = {
     color: "rgba(164, 166, 180, 1)",
-    mb: 1,
     fontSize:"12px"
 
   }
 
   return (
-    <div className="row d-flex justify-content-center bg-light" style={{ padding: "32px", paddingTop: "52px" }} >
-      <Box sx={infobox} className="row justify-content-between">
-        <Box className="col-lg-3 col-12" sx={minibox}>
+    <div className="row d-flex justify-content-center mycontainer backgroundClr" >
+      <Box sx={infobox} className="row justify-content-between align-items-center">
+        <Box className="col-lg-2 col-12 g-0" sx={minibox}>
           <div className='d-flex justify-content-center align-items-center'>
             {svgsDash ? <div className='ms-2'>
               <img src={svgsicon} alt="star-icon" />
@@ -40,11 +39,11 @@ export default function HeaderInfo({ userdata, svgsDash }) {
           </div>
         </Box>
       
-        <Box className="col-lg-8 col-12" sx={minibox} >
+        <Box className="col-lg-8 col-12 g-0" sx={minibox} >
           <Box className="row">
             <Box className="col-lg-6 col-12">
-                <Box className="row" sx={{py:"3%"}}>
-                <Box className="col-6 ">
+                <Box className="row">
+                <Box className="col-6 box-data">
                   <Typography variant="p" component="div" sx={headtext}>
                     واریز ریال (روزانه)
                   </Typography>
@@ -52,7 +51,7 @@ export default function HeaderInfo({ userdata, svgsDash }) {
                     {userdata.withdraw}
                   </Typography>
                 </Box>
-                <Box className="col-6">
+                <Box className="col-6 box-data">
                   <Typography variant="p" component="div" sx={headtext}>
                     برداشت ریال (روزانه)
                   </Typography>
@@ -63,7 +62,7 @@ export default function HeaderInfo({ userdata, svgsDash }) {
                 </Box>
             </Box>
             <Box className="col-lg-6 col-12">
-            <Box className="row"  sx={{py:"3%"}}>
+            <Box className="row">
             <Box className="col-6">
               <Typography variant="p" component="div" sx={headtext}>
                 حجم معاملات (30 روز)

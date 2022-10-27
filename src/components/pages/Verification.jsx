@@ -9,10 +9,11 @@ import { styled } from '@mui/material/styles';
 
  const MyConnector = styled(StepConnector)(({ theme }) => ({
    [`&.${stepConnectorClasses.alternativeLabel}`]: {
-     top: 10,
-     left: 'calc(-50% + 16px)',
-     right: 'calc(50% + 16px)',
+     top: 15,
+     marginLeft:"16px",
+     marginRight:"16px",
    },
+   
    [`&.${stepConnectorClasses.active}`]: {
      [`& .${stepConnectorClasses.line}`]: {
        border:"1px dashed #424BFB",
@@ -45,13 +46,11 @@ const stepstyle={
       color: '#424BFB', // Just text label (ACTIVE)
     },
   '& .MuiStepLabel-root .MuiStepIcon-text': {
-    fontSize:"16px"
-
+    fontSize:"12px",
   },
   '& .MuiStepLabel-root .MuiStepIcon-root': {
-    width:"30px",
-    height:"30px"
-
+    width:"32px",
+    height:"32px",
   },
 }
 
@@ -73,7 +72,7 @@ export default function Verification() {
   return (
     <div>
       <div className='d-lg-block d-none'>
-      <Box  className="row d-flex justify-content-center stepcontent-desk bg-light">
+      <Box  className="row d-flex justify-content-center stepcontent-desk backgroundClr">
       <Stepper activeStep={activeStep} 
         connector={<MyConnector/>}
         
@@ -119,7 +118,7 @@ export default function Verification() {
       </div> 
       
             
-      <Box sx={{p:"32px"}}>
+      <Box className="mycontainer">
         {activeStep === 0 &&  <StepOne onNext={handleNext}/>}
         {activeStep === 1 &&  <StepTwo onNext={handleNext}/>}
         {activeStep === 2 &&  <StepThree onNext={handleNext}/>}

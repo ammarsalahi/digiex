@@ -10,7 +10,7 @@ export default function StepTwo({onNext}) {
     <div className='maincontent'>
         <form>
         <Box className="d-flex justify-content-start" >
-        <Typography variant="h6" component="div" className="boldfont">
+        <Typography variant="h6" component="div" sx={{fontWeight:"bold"}}>
             قبول قوانین
         </Typography>
        </Box>
@@ -38,8 +38,9 @@ export default function StepTwo({onNext}) {
         <div className='d-lg-none d-md-block d-sm-block d-block'>
            <Box className="d-flex justify-content-end">
             <Button 
-                variant="contained" 
-                sx={{ fontSize: 14, backgroundColor: "#424BFB", height: "55px" ,width:"100%",mt:"10%",mx:"3%",borderRadius:'8px'}}
+                 fullWidth
+                 variant="contained" 
+                 sx={{ fontSize: 14, backgroundColor: "#424BFB", height: "55px",mt:"10%",borderRadius:"8px"}}
                 onClick={onNext}  
             >
             قبول قوانین و مرحله بعد            

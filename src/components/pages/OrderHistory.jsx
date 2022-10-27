@@ -39,28 +39,17 @@ export default function Transaction() {
     // borderTop:"1px solid rgba(203, 228, 235, 1)",
   }
   const headstyle={
-    py:"15px",
+    py:"16px",
     fontSize: "14px !important",
     textAlign:"center",
     color: "rgba(164, 166, 180, 1)",
+    maxWidth:"200px",
+    minWidth:"120px",
   }
   const cellstyle={
     py:"24px",
     fontSize: "14px !important",
     textAlign:"center"
-  }
-  const cardbtnstyle={
-    backgroundColor:'#e8ebef',
-    color: "rgba(164, 166, 180, 1)",
-
-    '&:hover': {
-      backgroundColor:'#e8ebef',
-      color: "rgba(164, 166, 180, 1)",
-   },
-   px:"90px",
-   py:"50px",
-   mb:"162px",
-   mt:"10px"
   }
   const boxbtnstyle={
     border:"1px solid #afa6b4",
@@ -70,7 +59,6 @@ export default function Transaction() {
     px:"5px",
     py:"5px",
     display:"flex",
-    my:"10px"
   }
  
   const darkbtnstyle={
@@ -91,10 +79,10 @@ export default function Transaction() {
 
   return (
     <div>
-      <Box sx={{ textAlign: 'left' }}>
+      <Box>
         <TransactionHead />
-        <div className='d-flex justify-content-between'>
-          <Typography component="div" variant="p" className='transaction-header'>
+        <div className='d-flex justify-content-between header-title'>
+          <Typography className='boldfont' component="div" variant="p" sx={{pt:"10px"}}>
            تاریخچه معاملات
           </Typography>
           <ThemeProvider theme={theme}>
@@ -112,10 +100,9 @@ export default function Transaction() {
           </ThemeProvider>
           
         </div>
-        <Box sx={{ paddingInline: 4 }}>
-          <Box className='row maincontent'>
-            <TableContainer sx={{ px: "15px" }}>
-              <Table sx={{ minWidth: 500 }} size="small" aria-label="a dense table">
+          <Box className='row' >
+            <TableContainer className="table-cnt">
+              <Table size="small">
                 <TableHead>
                   <TableRow>
                   <TableCell sx={headstyle}>تاریخ</TableCell>
@@ -156,17 +143,18 @@ export default function Transaction() {
                 </TableBody>
               </Table>
             </TableContainer>
-          </Box>
-          <div className='d-flex justify-content-center' dir="ltr">
+
+            <div className='d-flex justify-content-center mb-3' dir="ltr">
             <SpacialPagination 
               data={rows} 
               buttonConst={3}
               contentPerPage={1}
               siblingCount={1}
             />
-        </div>
+          </div>
+          </Box>
+          
         </Box>
-      </Box>
     </div>
   )
 }

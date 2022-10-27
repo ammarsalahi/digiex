@@ -39,9 +39,7 @@ export default function BankAccount() {
          <Box>
             <BanksList rows={rows} opendialog={opendialog}/>
          </Box>
-         {/* <AgreementWallet open={open} close={closedialog} /> */}
          <AddCardBank open={open} close={closedialog}/> 
-         {/* <AddWalletAddress open={open} close={closedialog} /> */}
       </Box>
     </div>
   )

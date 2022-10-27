@@ -49,7 +49,8 @@ export default function WalletInfo({ infos,options }) {
   const cardstyle = {
     borderRadius: '8px',
     height: "230px",
-    width:"100%"
+    width:"100%",
+    padding:"8px 8px 0px 8px",
   }
   const listbtnstyle = {
     border: "1px solid #CBE4EB",
@@ -78,22 +79,22 @@ export default function WalletInfo({ infos,options }) {
     backgroundColor:"#fbf4c6"
   }
   return (
-    <Box className="row" sx={{ px: "32px" }}>
-     <Box className="col-lg-6 col-md-12 col-12" >
+    <Box className="row mycontainer">
+     <Box className="col-lg-6 col-md-12 col-12 gx-0" >
         
        <Box className="d-flex justify-content-center" sx={{pt:"42px"}}>
          <Card sx={cardstyle} className="bg-card-img">
           <CardContent>
-            <Box sx={{pb: "50px",px: "3%"}} className="d-flex justify-content-between">
-                <Box sx={{ color: "#fff" }}>
-                  <Typography variant='p' sx={{ py: 2 }} fontSize={14} component="div">
+            <Box className="d-flex justify-content-between">
+                <Box sx={{ color: "#fff" ,mt:"42px"}}>
+                  <Typography variant='p' fontSize={14} component="div" >
                     موجودی کل حساب شما
                   </Typography>
-                  <Typography variant="p" fontSize={18} component="div">
+                  <Typography variant="p" fontSize={18} component="div" sx={{mt:"12px"}}>
                     873,083,300 تومان
                   </Typography>
                 </Box>
-                <Box sx={{pt:"5%"}} style={{left:0}}>
+                <Box  style={{left:0}}>
                     <Svg Component={LogoEN} />
                 </Box>
                 
@@ -101,21 +102,21 @@ export default function WalletInfo({ infos,options }) {
           
             <Box className="d-flex align-items-end" dir="ltr">
               <IconButton 
-                sx={{ border: "1px solid #fff", borderRadius: '8px', mx: 1, color: "#fff" }} 
+                sx={{ border: "1px solid #fff", borderRadius: '8px', ml: 1, color: "#fff"}} 
                 fontSize="large"
                 onClick={handleOpen('withdraw')}
               >
                 <NorthEast />
               </IconButton>
               <IconButton 
-                sx={{ border: "1px solid #fff", borderRadius: '8px', color: "#fff" }} 
+                sx={{ border: "1px solid #fff", borderRadius: '8px', ml:1,color: "#fff" }} 
                 fontSize="large"
                 onClick={handleOpen('deposit')}
               >
                 <SouthWest />
               </IconButton>
               <IconButton 
-                sx={{ border: "1px dashed #fff", borderRadius: '8px', mx: 1, color: "#fff" }} 
+                sx={{ border: "1px dashed #fff", borderRadius: '8px', ml: 1, color: "#fff" }} 
                 fontSize="large"
                 onClick={handleOpen('charge')}
               >
@@ -127,13 +128,13 @@ export default function WalletInfo({ infos,options }) {
 
         </Box>
                <Box className="d-flex justify-content-start" >
-                 <Box sx={{pb: "50px" }} >
+                 <Box>
                    <Typography variant='p' sx={{ py: 2,color:"#a4a6b4"}} fontSize={14} component="div">
                       مجموع واریز
                   </Typography>
                       
                     <Box className="d-flex">
-                      <Box className="text-center"sx={{backgroundColor:"rgba(217, 243, 232, 1)",width:"24px",height:"24px",borderRadius:"8px"}}>
+                      <Box className="text-center"sx={{backgroundColor:"rgba(217, 243, 232, 1)",mr:"8px",width:"24px",height:"24px",borderRadius:"8px"}}>
                       <Svg Component={UpGreen} /> 
                       </Box>
                     <Typography className="pt-1" variant="p" fontSize={12} component="div">
@@ -141,12 +142,12 @@ export default function WalletInfo({ infos,options }) {
                     </Typography>
                     </Box>
                   </Box>
-                  <Box sx={{pb: "50px",mx:"2%" }} >
+                  <Box sx={{mr:"8px",ml:"16px" }} >
                     <Typography variant='p' sx={{ py: 2 ,px:1,color:"#a4a6b4"}} fontSize={14} component="div">
                         مجموع برداشت
                     </Typography>
                     <Box className="d-flex">
-                      <Box className="mx-1 text-center"sx={{backgroundColor:"rgba(247, 220, 220, 1)",width:"24px",height:"24px",borderRadius:"8px"}}>
+                      <Box className="text-center"sx={{backgroundColor:"rgba(247, 220, 220, 1)",mx:"8px",width:"24px",height:"24px",borderRadius:"8px"}}>
                       <Svg Component={DownRed} /> 
                       </Box>
                     <Typography className="pt-1" variant="p" fontSize={12} component="div">
@@ -157,10 +158,10 @@ export default function WalletInfo({ infos,options }) {
             </Box> 
        </Box>
        
-      <Box className="col-lg-6 col-md-12 col-12 d-flex justify-content-start" sx={{pt:"20px"}}>
-        <List sx={{minWidth:"392px",maxWidth:"420px"}}>
+      <Box className="col-lg-6 col-md-12 col-12 gx-0 d-flex justify-content-center ps-2" sx={{pt:"20px"}}>
+        <List sx={{width:"100%"}}>
           {infos.map((item, idx) => (
-            <ListItem key={idx}>
+            <ListItem key={idx} className="list-cnt" sx={{px:0}}>
               <ListItemIcon>
                 <Box className="text-center" 
                   sx={ item.name==='تتر' || item.name==="یو اس دی کوین" ? tetstyle : daistyle }
@@ -174,9 +175,9 @@ export default function WalletInfo({ infos,options }) {
                 size="small"
                 variant="contained"
                 aria-label="Disabled elevation buttons"
-                sx={{marginLeft: "70px"}}
+                sx={{marginLeft: "60px"}}
               >
-                <Box sx={{pr:"5%"}}>
+                <Box sx={{pr:"7%"}}>
                   <ListItemText id={idx} sx={listbtntextstyle} 
                     primary={item.number} secondary={item.percend} 
                     secondaryTypographyProps={{pt:"3px",fontSize:"12px"}} primaryTypographyProps={{fontSize:"14px"}}

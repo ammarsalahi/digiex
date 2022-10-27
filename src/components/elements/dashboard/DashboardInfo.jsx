@@ -1,6 +1,6 @@
 import React from 'react'
-import { Typography, Box, Button } from '@mui/material';
-import { Menu, SouthWest, ArrowUpwardOutlined } from '@mui/icons-material';
+import { Typography, Box, Button, ListItem, ListItemText } from '@mui/material';
+import { Menu, SouthWest, NorthEast } from '@mui/icons-material';
 import {ReactComponent as UpGreen} from '../../../img/icons/coin/up - green.svg'
 import Svg from '../../utils/Svgs';
 export default function DashboardInfo() {
@@ -9,37 +9,38 @@ export default function DashboardInfo() {
     border: "1px solid #cbe4eb",
     borderRadius: "8px",
     height: "43px",
-    fontSize:"12px",
+    fontSize:"14px",
+    padding:" 0px 16px 0px 20px",
   }
   return (
-    <div className='row align-items-end info-content' style={{backgroundColor:"#fafbff"}}>
-      <div className='col-lg-6  col-12'>
-     <Box className='d-flex'sx={{pl:"6%",textAlign:"left"}}>
+    <div className='mycontainer row align-items-end  backgroundClr'>
+    <div className='col-lg-5 col-12 gx-0'>
+     <Box className='d-flex'sx={{textAlign:"left"}}>
        <Box>
-         <Typography variant='p' fontSize={14} component="div">
+         <Typography variant='p' fontSize="14px" component="div">
            موجودی کل حساب شما
          </Typography>
          <br />
-         <Typography variant="p" fontSize={20} component="div">
+         <Typography variant="p" fontSize={20} component="div" sx={{fontWeight:"bold"}}>
            873,083,300 تومان
          </Typography>
 
        </Box>
-       <Box sx={{pt:4,px:4}} className='green-color'>
+       <Box sx={{pt:5,px:3}} className='green-color'>
          <p style={{color:'#1ed184',fontSize:'12px'}}>٪24 <Svg Component={UpGreen}/>
          <br/>نسبت به روز گدشته</p>
         </Box>
       </Box>
       </div>
-      <Box className='col-lg-6 col-12 p-info'>
+      <Box className='col-lg-7 col-12 '>
         <div className='row'>
-          <div className='col-lg-3 col-md-3 col-6 py-2'>
-            <Button variant="outlined" className='justify-content-evenly' style={btnStyle} fullWidth color="inherit" ><SouthWest style={{ fill: 'rgba(164, 166, 180, 1)' }} />واریزپول</Button>
+          <div className='col-lg-3 col-md-3 col-6 py-2 gx-0'>
+            <Button variant="outlined" className='justify-content-evenly' style={btnStyle} fullWidth color="inherit" ><NorthEast sx={{ fill: 'rgba(164, 166, 180, 1)' ,mr:"10px"}} />برداشت</Button>
           </div>
-          <div className='col-lg-4 col-md-4 col-6 py-2'>
-            <Button variant="outlined" className='justify-content-evenly' style={btnStyle} fullWidth color="inherit" ><SouthWest style={{ fill: 'rgba(164, 166, 180, 1)' }} />برداشت‌تومان</Button>
+          <div className='col-lg-4 col-md-4 col-6 py-2 col-pad'>
+            <Button variant="outlined" className='justify-content-evenly' style={btnStyle} fullWidth color="inherit" ><SouthWest sx={{ fill: 'rgba(164, 166, 180, 1)' ,mr:"10px"}} />برداشت</Button>
           </div>
-          <div className='col-lg-5 col-md-5 col-12 py-2'>
+          <div className='col-lg-5 col-md-5 col-12 py-2 gx-0'>
             <Button variant="outlined" className='justify-content-evenly' style={btnStyle} fullWidth color="inherit"  ><Menu style={{ fill: 'rgba(164, 166, 180, 1)' }} />تاریخچه‌تراکنش‌ها</Button>
           </div>
         </div>

@@ -16,8 +16,8 @@ export default function Register() {
   return (
     <SignLayout>
        
-        <Box sx={{pt:"6.4%"}}>
-            <Box className="d-flex justify-content-between" sx={{py:"27px",px:"6%"}}>
+        <Box>
+            <Box className="d-flex justify-content-between" sx={{pb:"32px",pt:"27px",px:"6%"}}>
                 <Typography variant="h5" component="div" sx={{fontSize:"20px"}}>
                 ثبت نام
                 </Typography>

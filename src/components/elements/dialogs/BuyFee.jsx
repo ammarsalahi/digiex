@@ -94,7 +94,7 @@ export default function BuyFee({ open, close, optionsdata,sizewidth }) {
     open={open}
     TransitionComponent={Transition}
     >
-      <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom px-32" sx={{ fontSize: "14px" }}>
+      <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom px-32" sx={{ fontSize: "14px",fontWeight:"bold" }}>
         کارمزد ارسال و دریافت
       </BootstrapDialogTitle>
       <DialogContent className='px-32'>

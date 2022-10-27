@@ -55,6 +55,7 @@ const minibtnstyle={
   minHeight:'20px',
   fontSize:'10px',
   marginLeft:'3px',
+  paddingTop:"10px",
 }
 
 const btnstyle={
@@ -84,7 +85,8 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
   React.useEffect(() => {
     sizeDialog();
     window.addEventListener('resize',sizeDialog,false);
-  },[sizewidth]);
+    setopen(openprop);
+  },[sizewidth,openprop]);
 
   const [btnshop, setbtnshop] = React.useState({
     btn25:"primary",
@@ -141,7 +143,7 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
  
  
   return (
-      <Box sx={{ width: '100%' }}>
+      <Box sx={{ width: '100%' }} >
       <Box sx={{ borderBottom: 0, borderColor: 'divider', paddingBlock: .85 }}>
         <Tabs value={tabvalue} onChange={handleChange} fontSize="large" aria-label="basic tabs example"
           TabIndicatorProps={{
@@ -190,7 +192,7 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
             />
             <Box className="d-flex justify-content-between align-items-center" sx={{py:"12px"}}>
               <p className='text-muted helper-fontsize mt-1 m-0'>موجودی 0 بایننس</p>
-               <Button color="digigrey" variant="outlined"  onClick={handleWal} sx={{minHeight:"25px",maxHeight:"25px",borderRadius:"30px" , fontSize: "10px"}}>
+               <Button color="digigrey" variant="outlined"  onClick={handleWal} sx={{minHeight:"25px",maxHeight:"25px",borderRadius:"30px",pt:"9px" , fontSize: "10px"}}>
               واریز‌ به‌کیف‌ پول
               </Button>
             </Box>
@@ -242,7 +244,7 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
             />
             <Box className="d-flex justify-content-between align-items-center" sx={{py:"12px"}}>
             <p className='text-muted helper-fontsize mt-1 m-0'>موجودی 0 بایننس</p>
-               <Button color="digigrey" variant="outlined"  onClick={handleWal} sx={{minHeight:"25px",maxHeight:"25px",borderRadius:"30px" , fontSize: "10px"}}>
+               <Button color="digigrey" variant="outlined"  onClick={handleWal} sx={{minHeight:"25px",maxHeight:"25px",borderRadius:"30px",pt:"9px" , fontSize: "10px"}}>
               واریز‌ به‌کیف‌ پول
               </Button>
             </Box>
@@ -260,7 +262,7 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
       <BankLimit open={open.bank} close={handleClose('bank')}  sizewidth={sizewidth}/>
       <ShopStep open={open.shop} close={handleClose('shop')} sizewidth={sizewidth}/>       
      
-       
+       <div className="borderbottom-margin"></div>
     </Box>
    
   )

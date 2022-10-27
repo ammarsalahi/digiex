@@ -35,11 +35,12 @@ export default function FormInfo({ listdata, title,description,finalvalue,option
 
 
   const liststyle={
-    height: '72px' ,fontSize: "14px" ,px:"24px", backgroundColor: "#EAEEFF" , border: "1px solid #424BFB" , borderRadius : "8px",color:"#000"
+    height: '72px' ,fontSize: "14px" ,px:"24px", backgroundColor: "#EAEEFF" , border: "1px solid #424BFB" , 
+    borderRadius : "8px",color:"#000", cursor: "pointer"
   }
   return (
     <Box component="div" sx={{ textAlign: 'left', }}>
-     {title? <Typography variant="h5" component="div" className='boldfont' sx={{mb:"32px",mt:'24px'}}>
+     {title? <Typography variant="h5" component="div" className='boldfont title-info'>
       {title}
       </Typography>:<div></div>}
      <div>
@@ -58,15 +59,12 @@ export default function FormInfo({ listdata, title,description,finalvalue,option
       
       {description?<div>
         <div style={{paddingTop:'32px'}} className="d-flex jsutify-content-start">
-          <ListItem button sx={liststyle} onClick={handleOpenDialog}>
+          <ListItem sx={liststyle} onClick={handleOpenDialog}>
             <InfoOutlined sx={{height:"30px",width:"30px",mr:"16px"}} color="primary"/>
             <ListItemText primary="توضیح کامل در خصوص کارمزد"
-             primaryTypographyProps={{textAlign:"left"}}
+             primaryTypographyProps={{textAlign:"left",fontSize:"14px"}}
             />
           </ListItem>
-        {/* <Button   onClick={handleOpenDialog} sx={btnstyle} variant="outlined" fullWidth size="large" >
-          توضیح کامل در خصوص کارمزد
-        </Button> */}
       </div>
        {finalvalue?<div>
         <div className="d-lg-block d-md-block d-sm-none d-none info-card">

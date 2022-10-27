@@ -49,13 +49,13 @@ export default function Wallet() {
         distance: "1,200 تتر",
     });
     return (
-        <div>
-            <HeaderInfo userdata={userdata} svgsDash={true}/>
-            <WalletInfo infos={infodata}  options={options} />
-            <div className='row bg-light'>
+        <div >
+              <HeaderInfo userdata={userdata} svgsDash={true}/>
+              <WalletInfo infos={infodata}  options={options} />            
+            <div className='row backgroundClr'>
                 <br />
             </div>
-            <MainList rows={rows} />
+            <MainList rows={rows} />           
         </div>
     )
 }

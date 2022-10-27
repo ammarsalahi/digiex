@@ -67,16 +67,17 @@ hr {
 }
 
 .border-right {
-  border-right: 1px solid #a4a6b4;
+  border-right: 1px solid #cbe4eb;
 }
 .border-right-bold {
   border-right: 1px solid #a4a6b4;
 }
-.border-right-marginbold {
-  border-right: 2px solid #a4a6b4;
+.border-right-margin {
+  border-right: 1px solid #cbe4eb;
   margin-top: 1%;
   margin-bottom: 1%;
 }
+
 
 .border-right-marginboldblue {
   border-right: 2px solid #424bfb;
@@ -162,9 +163,33 @@ div.boxdate:hover {
 .MuiButtonBase-root.MuiMenuItem-root {
   min-height: auto;
   direction: rtl;
+
 }
 
 .boldfont {
   font-family: "PeydaWebBold" !important;
-  font-weight: bold !important;
+  font-weight: normal !important;
+  font-size: 18px !important;
 }
+
+.MuiTabs-flexContainer{
+  border-bottom: 1px solid #cbe4eb;
+}
+
+/* .MuiList-root.MuiMenu-list{
+  box-shadow: unset !important;
+  border: 1px solid #cbe4eb;
+  border-radius: 8px;
+} */
+.MuiPaper-root.MuiMenu-paper.MuiPaper-root.MuiPopover-paper{
+  margin-top: 3px;
+  box-shadow: unset !important;
+  border: 2px solid #cbe4eb;
+  border-radius: 8px;
+}
+
+
+.MuiFormControlLabel-root .MuiFormControlLabel-label {
+  margin-top: 4px;
+}
+

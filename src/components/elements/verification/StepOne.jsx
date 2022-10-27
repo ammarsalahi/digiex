@@ -110,7 +110,7 @@ export default function StepOne({onNext}) {
   }
 
   return (
-    <div className='maincontent'>
+    <div>
        <Box className="d-flex justify-content-start">
         <Typography variant="h6" component="div" className="boldfont">
           تطبیق اطلاعات هویتی
@@ -233,8 +233,9 @@ export default function StepOne({onNext}) {
         <div className='d-lg-none d-md-block d-sm-block d-block'>
            <Box className="d-flex justify-content-end">
             <Button 
+                fullWidth
                 variant="contained" 
-                sx={{ fontSize: 14, backgroundColor: "#424BFB", height: "55px" ,width:"100%",mt:"10%",mx:"3%",borderRadius:"8px"}}
+                sx={{ fontSize: 14, backgroundColor: "#424BFB", height: "55px",mt:"10%",borderRadius:"8px"}}
                 onClick={onNext}  
             >
               ثبت و مرحله بعد

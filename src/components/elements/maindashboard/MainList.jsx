@@ -9,7 +9,7 @@ export default function MainList({rows}) {
     borderTop:"1px solid #a4a6b4",
   }
   const headstyle={
-    py:"15px",
+    py:"16px",
     fontSize: "14px !important",
     textAlign:"center",
     color: "rgba(164, 166, 180, 1)",
@@ -34,9 +34,9 @@ export default function MainList({rows}) {
      setbtntext(props);
   }
   return (
-    <Box sx={{pt:"18px"}}>
-      <Box className='d-flex justify-content-between boldfont' sx={{p:"32px"}} >
-        <Typography component="div" variant="p">
+    <div >
+      <Box className='d-flex justify-content-between alig-items-center boldfont header-title'>
+        <Typography className='boldfont' component="div" variant="p" sx={{pt:'10px'}}>
              لیست معاملات    
          </Typography>
         <ThemeProvider theme={theme}>
@@ -48,9 +48,9 @@ export default function MainList({rows}) {
         </ThemeProvider>
         
       </Box>
-    <Box className='row maincontent'>
-    <TableContainer sx={{px:"15px",pb:"14px"}}>
-      <Table sx={{ minWidth: 500}} size="small" aria-label="a dense table">
+    <Box className='row table-cnt'>
+    <TableContainer >
+      <Table size="small" >
         <TableHead>
           <TableRow>
             <TableCell sx={headstyle}>تاریخ</TableCell>
@@ -86,6 +86,6 @@ export default function MainList({rows}) {
       </Table>
     </TableContainer>
     </Box>
-    </Box>
+    </div>
   )
 }
