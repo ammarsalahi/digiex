@@ -31,7 +31,6 @@ export default function Navbar({ isSide, LoadSide, LoadMobile }) {
             <IconButton
               size="large"
               edge="start"
-              color="inherit"
               aria-label="menu"
               color="primary"
               sx={{ mr: 2, }}
@@ -44,7 +43,6 @@ export default function Navbar({ isSide, LoadSide, LoadMobile }) {
             <IconButton
               size="large"
               edge="start"
-              color="inherit"
               aria-label="menu"
               color="primary"
               sx={{ mr: 2 }}
