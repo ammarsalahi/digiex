@@ -151,9 +151,6 @@ div.boxdate:hover {
     padding-left: 32px;
     padding-right: 32px;
   }
-  .slidbox {
-    margin-top: 150px;
-  }
 }
 
 .bgw .bgw:hover {
@@ -169,7 +166,7 @@ div.boxdate:hover {
 .boldfont {
   font-family: "PeydaWebBold" !important;
   font-weight: normal !important;
-  font-size: 18px !important;
+  font-size: 18px ;
 }
 
 .MuiTabs-flexContainer{

@@ -28,7 +28,10 @@
     .header-title{
         padding: 16px 10px;
     }
-   
+    .signlayout{
+        padding-inline: 32px !important;
+        padding-top: 100px !important;
+    }
     
 }
 
@@ -66,11 +69,46 @@
         border-right: 1px solid #cbe4eb;
         padding-right: 32px;
     }
+    .signlayoutcnt{
+        padding-right: 48px !important;
+        padding-left: 98px !important;
+        padding-top: 68px !important;
+        padding-bottom: 24px !important;
+    }
+    .signlayout{
+        padding-inline: 48px !important;
+        padding-top: 160px !important;
+        padding-bottom: 24px !important;
+
+    }
+    .copyright{
+        position: absolute;
+        bottom: 15px;
+        height: 28px;
+        width: auto;
+        font-size: 16px;
+        font-weight: 200;
+        color: rgba(0, 0, 0, 1);
+        align-items: center;
+    }
+    .slidbox{
+        left: 0;
+        right: 0;
+        margin-top: 20%;
+    }
+    
 }
 
 @media  only screen and (max-width:991px) {
     .box-data{
         margin-bottom: 16px;
     }
-
+    .slidbox{
+        left: 0;
+        right: 0;
+        margin-top: 25%;
+    }
 }
+
+
+

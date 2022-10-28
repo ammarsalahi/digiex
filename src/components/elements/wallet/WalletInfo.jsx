@@ -51,6 +51,7 @@ export default function WalletInfo({ infos,options }) {
     height: "230px",
     width:"100%",
     padding:"8px 8px 0px 8px",
+    position:"relative"
   }
   const listbtnstyle = {
     border: "1px solid #CBE4EB",
@@ -101,6 +102,7 @@ export default function WalletInfo({ infos,options }) {
             </Box>
           
             <Box className="d-flex align-items-end" dir="ltr">
+              <div style={{position:"absolute",bottom:"16px"}}>
               <IconButton 
                 sx={{ border: "1px solid #fff", borderRadius: '8px', ml: 1, color: "#fff"}} 
                 fontSize="large"
@@ -122,6 +124,8 @@ export default function WalletInfo({ infos,options }) {
               >
                 <Add />
               </IconButton>
+              </div>
+             
             </Box>
           </CardContent>
         </Card>

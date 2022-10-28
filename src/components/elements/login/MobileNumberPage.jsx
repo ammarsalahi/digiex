@@ -36,11 +36,11 @@ export default function MobileNumberPage({send}) {
     }
   return (
         <Box>
-         <Typography className='boldfont' variant="p" component="div" sx={{pb:"48px",pt:"25px",px:"55px",fontSize:"20px"}}>
+         <Typography className='boldfont' variant="p" component="div" sx={{fontSize:"20px"}}>
           ورود | ثبت نام
           </Typography>
           <form>
-             <FormGroup sx={{mb:"32px",px:"6%"}}>
+             <FormGroup sx={{my:"32px"}}>
                <FormLabel sx={labelStyle}>شماره موبایل</FormLabel>
                <TextField
                  color="digi"
@@ -54,7 +54,7 @@ export default function MobileNumberPage({send}) {
                  inputProps={{disableUnderline: true}}
                />
              </FormGroup>
-             <Box sx={{px:"6%"}}>
+             <Box>
              <Button  onClick={send} className='boxShadowUnset'  variant="contained" sx={{height:"55px" ,backgroundColor:"#424BFB",borderRadius:"8px"}}  fullWidth >
                   ورود
              </Button>
