@@ -81,16 +81,7 @@
         padding-bottom: 24px !important;
 
     }
-    .copyright{
-        position: absolute;
-        bottom: 15px;
-        height: 28px;
-        width: auto;
-        font-size: 16px;
-        font-weight: 200;
-        color: rgba(0, 0, 0, 1);
-        align-items: center;
-    }
+   
     .slidbox{
         left: 0;
         right: 0;
@@ -110,5 +101,14 @@
     }
 }
 
-
+.copyright{
+    position: absolute;
+    bottom: 32px;
+    height: 28px;
+    width: auto;
+    font-size: 16px;
+    font-weight: 200;
+    color: rgba(0, 0, 0, 1);
+    align-items: center;
+}
 

@@ -38,7 +38,7 @@ export default function SignLayout({children}) {
      const [active, setActive] = React.useState(0)
   return (
     <div className='container-fluid ' >
-    <Box className="row" dir="rtl">
+    <Box className="row" dir="rtl" style={{height:"100vh"}}>
       
       <Box className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-none gx-0 signlayoutcnt" sx={{backgroundColor:"#424BFB"}}>
            <Box>
@@ -98,7 +98,7 @@ export default function SignLayout({children}) {
            
          
     </Box>
-    <Box className="col-lg-6 col-md-6 col-12 gx-0 signlayout position-relative" style={{height:"100vh"}}>
+    <Box className="col-lg-6 col-md-6 col-12 gx-0 signlayout position-relative" >
              
              {children}
 
