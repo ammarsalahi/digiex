@@ -33,10 +33,11 @@ export default function Navbar({ isSide, LoadSide, LoadMobile }) {
               edge="start"
               color="inherit"
               aria-label="menu"
-              sx={{ mr: 2, color: "#0642df" }}
+              color="primary"
+              sx={{ mr: 2, }}
               onClick={LoadMobile}
             >
-              <Menu sx={{ color: '#0642df' }} />
+              <Menu  fontSize="large" />
             </IconButton>
           </div>
           <div className='d-lg-block d-none d-sm-none d-md-block'>
@@ -45,10 +46,11 @@ export default function Navbar({ isSide, LoadSide, LoadMobile }) {
               edge="start"
               color="inherit"
               aria-label="menu"
+              color="primary"
               sx={{ mr: 2 }}
               onClick={LoadSide}
             >
-              {isSide ? <Close sx={{ color: "#0642df" }} /> : <Menu sx={{ color: '#0642df' }} />}
+              {isSide ? <Close fontSize="medium"  /> : <Menu fontSize="medium"/>}
             </IconButton>
           </div>
 

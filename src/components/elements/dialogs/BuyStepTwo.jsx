@@ -96,7 +96,7 @@ export default function BuyStepTwo({open,close,opendialogd,sizewidth}) {
          <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom" sx={{ fontSize: "14px" }}>
         انتخاب نحوه دریافت و شبکه      
          </BootstrapDialogTitle>
-        <DialogContent className='px-32 px-24'>
+        <DialogContent className='mycontainer'>
          <Box className="border-right-marginboldblue"sx={{px:"1%", mb: "16px"}}>
            <Typography variant="p" component="div" fontSize="13px">
               روش دریافت ارز

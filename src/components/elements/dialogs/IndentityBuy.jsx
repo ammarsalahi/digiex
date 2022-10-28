@@ -90,7 +90,7 @@ export default function IndentityBuy({open,close}) {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
            پرداخت با شناسه       
          </BootstrapDialogTitle>
-        <DialogContent sx={{width:"100%"}} className='px-32'>
+        <DialogContent sx={{width:"100%"}} className='mycontainer'>
           <Box className="bg-light" sx={{borderRadius:"8px",p:"2%",mt:"3%"}}>
             {listsdata.map((item, idx) => (
                 <div className='d-flex justify-content-between info-list' key={idx}>

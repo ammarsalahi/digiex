@@ -92,7 +92,7 @@ export default function AgreementWallet({open,close}) {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
         تایید برداشت از کیف پول تومانی
          </BootstrapDialogTitle>
-        <DialogContent sx={{width:"520px"}} className='px-32'>
+        <DialogContent sx={{width:"520px"}} className='mycontainer'>
             <Box sx={{px:"2%"}}>
             <Box sx={{height:"150px",width:"100%",borderRadius:"8px"}} className="bg-light">
             </Box>

@@ -110,7 +110,7 @@ export default function WalletDesposit({open,close,options,sizewidth}) {
          واریز ارز به کیف پول
         </BootstrapDialogTitle>
         
-        <DialogContent className='px-32'>
+        <DialogContent className='mycontainer'>
         
         <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"2%"}}>
            <Typography variant="p" component="div" fontSize="13px">

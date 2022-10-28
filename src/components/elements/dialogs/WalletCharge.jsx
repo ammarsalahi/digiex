@@ -116,7 +116,7 @@ export default function WalletCharge({open,close,sizewidth}) {
              شارژ کیف پول تومانی
         </BootstrapDialogTitle>
         
-        <DialogContent className='px-32'>
+        <DialogContent className='mycontainer'>
         <Box className="border-right-marginboldblue " sx={{px:"1%",mt:"2%"}}>
            <Typography variant="p" component="div" fontSize="13px">
                 روش شارژ کیف پول 

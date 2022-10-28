@@ -92,7 +92,7 @@ export default function WalletWithdraw({open,close,options,sizewidth}) {
            برداشت ارز از  کیف پول
         </BootstrapDialogTitle>
         
-        <DialogContent className='px-32'>
+        <DialogContent className='mycontainer'>
         
         <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"3%"}}>
            <Typography variant="p" component="div" fontSize="13px">

@@ -105,7 +105,7 @@ export default function AddCardBank({open,close}) {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
         افزودن کارت بانکی جدید
                  </BootstrapDialogTitle>
-        <DialogContent  sx={{width:"100%"}} className='px-32'>
+        <DialogContent  sx={{width:"100%"}} className='mycontainer'>
             <Typography variant="p" component="div" sx={{my:"3%",fontSize:"13px"}}>
             حتما کارت بانکی ای را ثبت کنید که به نام صاحب حساب کاربری (خودتان) باشد، در غیر اینصورت بصورت اتوماتیک رد خواهد شد.
             </Typography>

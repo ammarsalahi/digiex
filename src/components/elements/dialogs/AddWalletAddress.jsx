@@ -99,7 +99,7 @@ export default function AddWalletAddress({open,close,options}) {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
             افزودن آدرس کیف پول
         </BootstrapDialogTitle>
-        <DialogContent sx={{width:"100%"}} className='px-32' >
+        <DialogContent sx={{width:"100%"}} className='mycontainer' >
           <FormGroup sx={{pb:"4%"}}>
             <FormLabel sx={{my:"1%",fontSize:"12px"}}>نام آدرس</FormLabel>
             <TextField 

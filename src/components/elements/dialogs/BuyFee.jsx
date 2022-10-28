@@ -97,7 +97,7 @@ export default function BuyFee({ open, close, optionsdata,sizewidth }) {
       <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom px-32" sx={{ fontSize: "14px",fontWeight:"bold" }}>
         کارمزد ارسال و دریافت
       </BootstrapDialogTitle>
-      <DialogContent className='px-32'>
+      <DialogContent className='mycontainer'>
         <Typography variant="p" component="div" sx={{ fontSize: "14px", mt: "24px", px: "", lineHeight: "27px" , textAlign: "justify"}}>
           از آنجا که در صرافی دیجیکس ۲۴ ارزهای متنوعی معامله میشود،کارمزد ارسال و دریافت هر کدام از این ارزها مختلف میباشد. به کمک لیست زیر میتوانید با انتخاب هر ارز، اطلاعاتی مانند سقف واریز و برداشت، کارمزد نقل و انتقال و … را مشاهده کنید.
         </Typography>

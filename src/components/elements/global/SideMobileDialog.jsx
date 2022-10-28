@@ -47,11 +47,11 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             sx={{
               position: 'absolute',
               left: 8,
-              top: 8,
+              top: 10,
               color: (theme) => theme.palette.grey[500],
             }}
           >
-            <CloseIcon color="primary"/>
+            <CloseIcon color="primary" fontSize="large"/>
           </IconButton>
         ) : null}
       </DialogTitle>
@@ -82,7 +82,7 @@ export default function AddCardBank({open,close}) {
 
     ]
    React.useEffect(() => {
-    if (window.innerWidth < 700) {
+    if (window.innerWidth < 768) {
       setissmall(true)
     }
    else {
@@ -100,15 +100,15 @@ export default function AddCardBank({open,close}) {
         TransitionComponent={Transition}
       >
         <BootstrapDialogTitle  id="customized-dialog-title" onClose={close} className="borderbottom">
-          <Box className="d-flex justify-content-center">
-          <Typography  component={Link} to='/'>
-           <Svg Component={LOGO} />
+          <Box className="d-flex justify-content-start" sx={{ml:"70px"}}>
+          <Typography  component={Link} to='/' className="py-1">
+           <Svg Component={LOGO} style={{ height: "28px" }} />
           </Typography>
           </Box>
         </BootstrapDialogTitle>
-        <DialogContent  sx={{width:"100%"}}>
-            <Box sx={{ width: '100%' ,py:"2%"}}>
-                <List component="nav" sx={{marginTop:"5%",px:"4%"}} aria-label="main mailbox folders">
+        <DialogContent  sx={{width:"100%"}} className='mycontainer'>
+            <Box sx={{ width: '100%' ,pt:"40px"}}>
+                <List component="nav" aria-label="main mailbox folders" sx={{py:"16px"}}>
                     {menuItems.map((item, idx) => (
                     <ListItem
                         button 
