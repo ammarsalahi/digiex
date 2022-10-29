@@ -61,10 +61,10 @@ BootstrapDialogTitle.propTypes = {
 
 
 const boxselected={
-  border:"1.5px solid #424BFB",borderRadius:"8px",height:"56px",px:"16px"
+  border:"1.5px solid #424BFB",borderRadius:"8px",height:"56px",px:"16px",minWidth:"130px",pt: "4px"
 }
 const boxunselected={
-  border:"1.5px solid #a4a6b4",borderRadius:"8px",height:"56px",px:"16px"
+  border:"1.5px solid #a4a6b4",borderRadius:"8px",height:"56px",px:"16px",minWidth:"130px",pt: "4px"
 }
 
 const walletboxstyle={
@@ -115,9 +115,9 @@ export default function ShopStep({open,close,sizewidth}) {
             </Typography>
           </Box>
           </div>
-         <Box className="d-flex" sx={{mb:"24px"}}>
-         <Box sx={coin==="erc-20"?boxselected:boxunselected} style={{marginLeft:"16px"}}>
-            <FormGroup>
+         <Box className="d-flex overflow-auto" sx={{mb:"10px",pb:"14px"}}>
+         <Box sx={coin==="erc-20"?boxselected:boxunselected}  style={{marginLeft:"16px"}}>
+            <FormGroup sx={{height:"100%" , justifyContent: "center"}}>
               <FormControlLabel 
                 control={<Checkbox checked={coin==="erc-20"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
                 onClick={()=>setCoin("erc-20")} label={<Typography fontSize={14}>ERC-20</Typography>}
@@ -125,15 +125,15 @@ export default function ShopStep({open,close,sizewidth}) {
             </FormGroup>
           </Box>
           <Box sx={coin==="trc-20"?boxselected:boxunselected}style={{marginLeft:"16px"}} >
-            <FormGroup>
+            <FormGroup sx={{height:"100%" , justifyContent: "center"}}>
             <FormControlLabel 
               control={<Checkbox checked={coin==="trc-20"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
               onClick={()=>setCoin("trc-20")} label={<Typography fontSize={14}>TRC-20</Typography>}
             />
             </FormGroup>
           </Box>
-          <Box sx={coin==="bep-20"?boxselected:boxunselected}style={{marginLeft:"16px"}}>
-            <FormGroup>
+          <Box sx={coin==="bep-20"?boxselected:boxunselected}style={{marginLeft:"16px"}} >
+            <FormGroup sx={{height:"100%" , justifyContent: "center"}} >
             <FormControlLabel 
               control={<Checkbox checked={coin==="bep-20"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
               onClick={()=>setCoin("bep-20")} label={<Typography fontSize={14}>BEP-20</Typography>}
@@ -141,7 +141,7 @@ export default function ShopStep({open,close,sizewidth}) {
             </FormGroup>
           </Box>
           <Box sx={coin==="bep-2"?boxselected:boxunselected}>
-            <FormGroup>
+            <FormGroup sx={{height:"100%" , justifyContent: "center"}}>
             <FormControlLabel 
               control={<Checkbox checked={coin==="bep-2"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
               onClick={()=>setCoin("bep-2")} label={<Typography fontSize={14}>BEP-2</Typography>} 
@@ -169,7 +169,7 @@ export default function ShopStep({open,close,sizewidth}) {
          </Box>
 
          <FormGroup sx={{mb:"24px"}}>
-          <FormLabel>
+          <FormLabel sx={{color:"#000"}}>
             کد پیگیری (TXID) را وارد کنید
           </FormLabel>
             <TextField
@@ -223,13 +223,13 @@ export default function ShopStep({open,close,sizewidth}) {
                 </ListItem>
             </List>
          </Box>
-          <Box sx={{my:"2%",px:"1%"}}>
+          <Box sx={{my:"24px"}}>
           {withdraw==="type2" && <CardsBank />}
           </Box>
         
 
         </DialogContent>
-        <DialogActions sx={{p:"2%"}}>
+        <DialogActions>
         <Button variant="contained" sx={subbtnstyle} fullWidth>
                ثبت سفارش 
           </Button>

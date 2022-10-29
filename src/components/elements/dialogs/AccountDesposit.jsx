@@ -133,7 +133,7 @@ export default function AccountDesposit({open,close,sizewidth}) {
              </Box>
 
          <Box sx={{mb:"24px"}}>
-            <FormLabel>
+            <FormLabel sx={{color:"#000"}}>
               مبلغ (تومان)
             </FormLabel>
             <TextField 
@@ -151,7 +151,7 @@ export default function AccountDesposit({open,close,sizewidth}) {
             />
 
            </Box>
-           <Box className="d-flex" sx={{mb:"24px"}}>
+           <Box className="d-flex overflow-auto" sx={{mb:"24px"}}>
                <Box className="d-flex justify-content-center align-items-center"  sx={inventory==='25'?boxselected:boxunselected} onClick={()=>setInventory("25")} 
                style={{fontSize:"14px", cursor:"pointer"}}>
                 <Typography color={inventory==='25' && 'primary'}>

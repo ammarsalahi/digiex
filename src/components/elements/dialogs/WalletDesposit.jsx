@@ -132,7 +132,7 @@ export default function WalletDesposit({open,close,options,sizewidth}) {
             </Box>
           </div>
          
-         <Box className="d-flex" sx={{mb:"24px"}}>
+         <Box className="d-flex overflow-auto" sx={{mb:"10px",pb:"14px"}}>
          <Box sx={coin==="erc-20"?boxselected:boxunselected} className="d-flex justify-content-start">
             <FormGroup className='d-flex align-items-start mt-2'>
               <FormControlLabel 
@@ -180,7 +180,7 @@ export default function WalletDesposit({open,close,options,sizewidth}) {
           </Box>
          </Box>
          <FormGroup>
-          <FormLabel>
+          <FormLabel sx={{color:"#000"}}>
             کد پیگیری (TXID) را وارد کنید
           </FormLabel>
             <TextField

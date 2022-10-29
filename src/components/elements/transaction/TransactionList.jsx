@@ -75,7 +75,7 @@ export default function TransactionList({rows}) {
           
         </Box>
         <Box className='row'>
-          <TableContainer class="table-cnt">
+          <TableContainer class="table-cnt overflow-auto" sx={{px:"24px"}}>
             <Table size="small" >
               <TableHead>
                 <TableRow>

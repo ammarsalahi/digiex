@@ -99,7 +99,7 @@ export default function WalletWithdraw({open,close,options,sizewidth}) {
                 انتخاب  ارز
            </Typography>
          </Box>
-        <Box sx={{pb:"1%"}}>
+        <Box sx={{pb:"24px"}}>
             <DigiSelect options={options}/>
         </Box>
          <Box className="border-right-marginboldblue">
@@ -112,7 +112,7 @@ export default function WalletWithdraw({open,close,options,sizewidth}) {
          </Box>
          <Box>
          <FormGroup sx={{my:"2%"}}>
-            <FormLabel className="mb-2">تعداد</FormLabel>
+            <FormLabel sx={{color:"#000"}}>تعداد</FormLabel>
             <TextField
             color='digi'
              type="number"

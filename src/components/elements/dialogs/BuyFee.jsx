@@ -62,10 +62,10 @@ const formbtnstyle = {
 }
 
 const boxselected = {
-  border: "1px solid blue",height: "56px" , borderRadius: "10px", px: "16px", py: "4px",
+  border: "1px solid blue",height: "56px" , borderRadius: "10px", px: "16px", py: "4px",minWidth:"130px"
 }
 const boxunselected = {
-  border: "1px solid grey",height:"56px", borderRadius: "10px", px: "16px", py: "4px",
+  border: "1px solid grey",height:"56px", borderRadius: "10px", px: "16px", py: "4px",minWidth:"130px"
 }
 
 export default function BuyFee({ open, close, optionsdata,sizewidth }) {

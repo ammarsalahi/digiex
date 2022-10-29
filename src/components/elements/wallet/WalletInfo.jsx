@@ -136,7 +136,7 @@ export default function WalletInfo({ infos,options }) {
         </Card>
 
         </Box>
-               <Box className="d-flex justify-content-start" >
+               <Box className="d-flex justify-content-start mb-24" >
                  <Box>
                    <Typography variant='p' sx={{ py: 2,color:"#a4a6b4"}} fontSize={14} component="div">
                       مجموع واریز

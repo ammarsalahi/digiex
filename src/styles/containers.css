@@ -35,7 +35,9 @@
     .MuiDialogActions-root{
         padding: 16px !important;
     }
-    
+    .mb-24{
+        margin-bottom: 24px ;
+    }
 }
 
 @media  only screen and (min-width:769px) {

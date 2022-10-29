@@ -41,8 +41,8 @@ export default function BanksList({rows,opendialog}) {
   }
   return (
     <Box className='row'>
-    <TableContainer class="table-cnt">
-      <Table size="small" >
+    <TableContainer class="table-cnt overflow-auto" sx={{mb:"0px"}}>
+      <Table size="small" className="">
         <TableHead>
           <TableRow>
             <TableCell sx={headstyle}>بانک</TableCell>
@@ -73,13 +73,13 @@ export default function BanksList({rows,opendialog}) {
           ))}
         </TableBody>
       </Table>
-      <Box className='mt-3'>
+     
+    </TableContainer>
+    <Box className='mt-3'>
         <Button fullWidth sx={cardbtnstyle} startIcon={<AddCircle />} onClick={opendialog}>
           افزودن کارت بانکی جدید 
         </Button>
      </Box>
-    </TableContainer>
-     
     </Box>
   )
 }

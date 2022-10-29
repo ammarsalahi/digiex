@@ -181,7 +181,7 @@ export default function WalletCharge({open,close,sizewidth}) {
             <Box>
          </Box>
          <Box sx={{mb:"24px"}}>
-            <FormLabel>
+            <FormLabel sx={{color:"#000"}}>
             مبلغ دلخواه(تومان)
             </FormLabel>
             <TextField 
@@ -198,7 +198,7 @@ export default function WalletCharge({open,close,sizewidth}) {
               }}
             />
             </Box>
-            <Box className="d-flex" sx={{mb:"24px"}}>
+            <Box className="d-flex overflow-auto" sx={{mb:"10px",pb:"14px"}}>
                <Box className="d-flex justify-content-center align-items-center"
                   sx={price==='5'?boxselected:boxunselected} onClick={()=>setprice('5')} 
                   style={{fontSize:"14px", cursor:"pointer"}}>
