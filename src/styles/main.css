@@ -85,7 +85,7 @@ hr {
   margin-bottom: 1%;
 }
 .full-border {
-  border: 1px solid #a4a6b4;
+  border: 1px solid #cbe4eb;
 }
 
 .full-border-active {
@@ -137,6 +137,7 @@ div.boxdate:hover {
 @media only screen and (min-width: 768px) {
   .border-left-d {
     border-left: 1px solid #cbe4eb;
+    height:auto;
   }
   .p-info {
     padding-left: 24px;
@@ -190,3 +191,18 @@ div.boxdate:hover {
   margin-top: 4px;
 }
 
+.MuiList-root{
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.titlemindialog{
+  padding-right: 12px;
+}
+
+.titlemini{
+  margin-bottom: 16px;
+}
+.MuiFormLabel-root{
+  margin-bottom: 12px;
+}

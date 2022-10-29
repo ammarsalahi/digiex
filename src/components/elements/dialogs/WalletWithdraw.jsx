@@ -94,7 +94,7 @@ export default function WalletWithdraw({open,close,options,sizewidth}) {
         
         <DialogContent className='mycontainer'>
         
-        <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"3%"}}>
+        <Box className="border-right-marginboldblue titlemindialog">
            <Typography variant="p" component="div" fontSize="13px">
                 انتخاب  ارز
            </Typography>
@@ -102,7 +102,7 @@ export default function WalletWithdraw({open,close,options,sizewidth}) {
         <Box sx={{pb:"1%"}}>
             <DigiSelect options={options}/>
         </Box>
-         <Box className="border-right-marginboldblue" sx={{px:"1%"}}>
+         <Box className="border-right-marginboldblue">
            <Typography variant="p" component="div" fontSize="13px">
                 انتخاب آدرس کیف پول
            </Typography>
@@ -131,7 +131,7 @@ export default function WalletWithdraw({open,close,options,sizewidth}) {
          </Box>
     
         </DialogContent>
-        <DialogActions sx={{p:"2%"}}>
+        <DialogActions >
                 <Button variant="contained" sx={subbtnstyle} fullWidth>
                     ثبت درخواست برداشت 
                 </Button>

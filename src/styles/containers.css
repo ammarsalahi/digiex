@@ -32,15 +32,18 @@
         padding-inline: 32px !important;
         padding-top: 100px !important;
     }
+    .MuiDialogActions-root{
+        padding: 16px !important;
+    }
     
 }
 
 @media  only screen and (min-width:769px) {
     .mycontainer{
-        padding: 32px !important;
+        padding: 32px  24px !important;
     }
     .mycontainercol{
-        padding: 20px !important;
+        padding: 18px !important;
         padding-top: 42px !important;
     }
     .title-info{
@@ -81,7 +84,9 @@
         padding-bottom: 24px !important;
 
     }
-   
+    .MuiDialogActions-root{
+        padding: 24px !important;
+    }
     .slidbox{
         left: 0;
         right: 0;

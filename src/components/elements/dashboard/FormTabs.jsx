@@ -160,7 +160,7 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
               <DigiSelect options={options}/>
           </Box>
           <FormGroup sx={formbtnstyle}>
-            <FormLabel className="mb-2">مبلغ خرید(تومان)</FormLabel>
+            <FormLabel>مبلغ خرید(تومان)</FormLabel>
             <TextField color="digi" type="number"
              fullWidth placeholder='0.00'
              InputProps={{
@@ -181,7 +181,7 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
             
            </FormGroup>
           <FormGroup sx={formbtnstyle}>
-            <FormLabel className="mb-2">تعداد بایننس کوین</FormLabel>
+            <FormLabel>تعداد بایننس کوین</FormLabel>
             <TextField color="digi" 
               fullWidth variant='outlined' type="number"  placeholder='0.00'
               InputProps={{
@@ -212,8 +212,8 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
             <DigiSelect options={options}/>
           </FormGroup>
           <FormGroup sx={formbtnstyle}>
-            <FormLabel className="mb-2">مبلغ فروش(تومان)</FormLabel>
-            <TextField color="digi"
+            <FormLabel>مبلغ فروش(تومان)</FormLabel>
+            <TextField color="digi" type="number"
               fullWidth placeholder='0.00'
                InputProps={{
                 endAdornment:( 
@@ -233,8 +233,8 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
               </Box>
           </FormGroup>
           <FormGroup sx={formbtnstyle}>
-            <FormLabel className="mb-2">تعداد بایننس کوین</FormLabel>
-            <TextField color="digi" 
+            <FormLabel>تعداد بایننس کوین</FormLabel>
+            <TextField color="digi" type="number"
               fullWidth placeholder='0.00'
               InputProps={{
                 endAdornment:( 

@@ -21,7 +21,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 const heighttt = {
   height : "56px",
-  marginBottom : "16px"
+  marginBottom : "16px",
+  cursor:"pointer"
 }
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -63,10 +64,10 @@ BootstrapDialogTitle.propTypes = {
 
 
 const boxselected={
-  border:"1.5px solid #424BFB",borderRadius:"8px",my:"1%",height:"50px",
+  border:"1.5px solid #424BFB",borderRadius:"8px",height:"50px",backgroundColor:"rgba(238,241,255,1)",
 }
 const boxunselected={
-  border:"1.5px solid #a4a6b4",borderRadius:"8px",my:"1%",height:"50px",
+  border:"1.5px solid #cbe4eb",borderRadius:"8px",height:"50px",
 }
 
 const subbtnstyle={
@@ -97,14 +98,17 @@ export default function BuyStepTwo({open,close,opendialogd,sizewidth}) {
         انتخاب نحوه دریافت و شبکه      
          </BootstrapDialogTitle>
         <DialogContent className='mycontainer'>
-         <Box className="border-right-marginboldblue"sx={{px:"1%", mb: "16px"}}>
-           <Typography variant="p" component="div" fontSize="13px">
-              روش دریافت ارز
-           </Typography>
-         </Box>
+          <div className='titlemini'>
+            <Box className="border-right-marginboldblue titlemindialog">
+            <Typography variant="p" component="div" fontSize="13px">
+                 روش دریافت ارز
+            </Typography>
+          </Box>
+          </div>
+       
          <Box sx={{pb:"2%"}}>
             <List sx={{padding: "0"}}>
-                <ListItem button sx={deposit==="type1"?boxselected:boxunselected} onClick={()=>{setDeposit("type1")}} style={heighttt}>
+                <ListItem sx={deposit==="type1"?boxselected:boxunselected} onClick={()=>{setDeposit("type1")}} style={heighttt}>
                     <ListItemIcon>
                         <Checkbox checked={deposit==="type1"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} sx={{padding: "0"}}/>
                     </ListItemIcon>
@@ -118,7 +122,7 @@ export default function BuyStepTwo({open,close,opendialogd,sizewidth}) {
                     <ListItemText primary="0BUSD" primaryTypographyProps={deposit==='type1'?{color:"#424BFB",fontSize:"11px"}:{color:"#5f5f62",fontSize:"11px"}} />
                 </ListItem>
 
-                <ListItem button sx={deposit==="type2"?boxselected:boxunselected} onClick={()=>{setDeposit("type2")}} style={heighttt}>
+                <ListItem sx={deposit==="type2"?boxselected:boxunselected} onClick={()=>{setDeposit("type2")}} style={heighttt}>
                     <ListItemIcon>
                         <Checkbox checked={deposit==="type2"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} sx={{padding: "0"}}/>
                     </ListItemIcon>
@@ -132,14 +136,16 @@ export default function BuyStepTwo({open,close,opendialogd,sizewidth}) {
                 </ListItem>
             </List>
          </Box>
-         <Box className="border-right-marginboldblue px-1">
-           <Typography variant="p" component="div" fontSize="13px">
-              روش پرداخت
-           </Typography>
-         </Box>
+         <div className='titlemini'>
+            <Box className="border-right-marginboldblue titlemindialog">
+            <Typography variant="p" component="div" fontSize="13px">
+                 روش پرداخت
+            </Typography>
+          </Box>
+          </div>
          <Box sx={{pb:"2%"}}>
             <List>
-                <ListItem button sx={withdraw==="type1"?boxselected:boxunselected} onClick={()=>{setWithdraw("type1")}} style={heighttt}>
+                <ListItem sx={withdraw==="type1"?boxselected:boxunselected} onClick={()=>{setWithdraw("type1")}} style={heighttt}>
                     <ListItemIcon>
                         <Checkbox checked={withdraw==="type1"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} sx={{padding: "0"}}/>
                     </ListItemIcon>
@@ -153,7 +159,7 @@ export default function BuyStepTwo({open,close,opendialogd,sizewidth}) {
                     <ListItemText primaryTypographyProps={withdraw==='type1'?{color:"#424BFB",fontSize:"11px"}:{color:"#5f5f62",fontSize:"11px"}} 
                      primary="5,282,050 تومان" />
                 </ListItem>
-                <ListItem button sx={withdraw==="type2"?boxselected:boxunselected} onClick={()=>{setWithdraw("type2")}} style={heighttt}>
+                <ListItem sx={withdraw==="type2"?boxselected:boxunselected} onClick={()=>{setWithdraw("type2")}} style={heighttt}>
                     <ListItemIcon>
                         <Checkbox checked={withdraw==="type2"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} sx={{padding: "0"}}/>
                     </ListItemIcon>
@@ -167,7 +173,7 @@ export default function BuyStepTwo({open,close,opendialogd,sizewidth}) {
                     <ListItemText primaryTypographyProps={withdraw==='type2'?{color:"#424BFB",fontSize:"11px"}:{color:"#5f5f62",fontSize:"11px"}}  
                      primary="0BUSD" />
                 </ListItem>
-                <ListItem button sx={withdraw==="type3"?boxselected:boxunselected} onClick={()=>{setWithdraw("type3")}} style={heighttt}>
+                <ListItem sx={withdraw==="type3"?boxselected:boxunselected} onClick={()=>{setWithdraw("type3")}} style={heighttt}>
                     <ListItemIcon>
                         <Checkbox checked={withdraw==="type3"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} sx={{padding: "0"}}/>
                     </ListItemIcon>
@@ -184,7 +190,7 @@ export default function BuyStepTwo({open,close,opendialogd,sizewidth}) {
             </List>
          </Box>
         
-          <Box sx={{my:"2%",px:"1%"}}>
+          <Box>
           {withdraw==='type2' &&<Box>
               <Box className="border-right-marginboldblue" sx={{px:"1%",my:"2%"}}>
                 <Typography variant="p" component="div" fontSize="13px">

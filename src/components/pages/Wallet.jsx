@@ -37,7 +37,7 @@ export default function Wallet() {
     <div>
         <WalletHead/>
         <WalletInfo infos={infodata} options={options}/>
-        <div className='row bg-light'>
+        <div className='row backgroundClr'>
           <br/>
         </div>
         <WalletList rows={rows}/>

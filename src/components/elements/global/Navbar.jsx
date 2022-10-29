@@ -1,13 +1,11 @@
 import React from 'react'
-import { Button, Box, Typography, Toolbar, AppBar, IconButton, Badge, List, ListItem, ListItemText, MenuItem } from '@mui/material'
-import AlarmIcon from '@mui/icons-material/Notifications'
-import { Person, Menu, Close, ExpandMore } from '@mui/icons-material';
-import Grid from '@mui/material/Grid';
-import SidebarMobileMenu from './SidebarMobileMenu';
+import { Box, Typography, Toolbar, AppBar, IconButton, Badge,ListItemText, MenuItem, Menu } from '@mui/material'
+import { Close, ExpandMore } from '@mui/icons-material';
 import { useNavigate, Link } from 'react-router-dom';
 import { ReactComponent as Notify } from '../../../img/icons/notification.svg';
 import { ReactComponent as LOGO } from '../../../img/icons/logo-fa.svg';
 import { ReactComponent as USER } from '../../../img/icons/Group 7.svg';
+import MenuIcon from '@mui/icons-material/menu'
 import Svg from '../../utils/Svgs';
 
 export default function Navbar({ isSide, LoadSide, LoadMobile }) {
@@ -19,6 +17,14 @@ export default function Navbar({ isSide, LoadSide, LoadMobile }) {
     borderBottom: "1px solid #cbe4eb",
     pt: "5px"
   }
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const goLogin = (event) => {
     navigate('/login')
@@ -36,7 +42,7 @@ export default function Navbar({ isSide, LoadSide, LoadMobile }) {
               sx={{ mr: 2, }}
               onClick={LoadMobile}
             >
-              <Menu  fontSize="large" />
+              <MenuIcon  fontSize="large" />
             </IconButton>
           </div>
           <div className='d-lg-block d-none d-sm-none d-md-block'>
@@ -48,7 +54,7 @@ export default function Navbar({ isSide, LoadSide, LoadMobile }) {
               sx={{ mr: 2 }}
               onClick={LoadSide}
             >
-              {isSide ? <Close fontSize="medium"  /> : <Menu fontSize="medium"/>}
+              {isSide ? <Close fontSize="medium"  /> : <MenuIcon fontSize="medium"/>}
             </IconButton>
           </div>
 
@@ -62,7 +68,7 @@ export default function Navbar({ isSide, LoadSide, LoadMobile }) {
             </Badge>
           </Box>
           <div className='d-none d-sm-none d-md-none d-lg-block text-dark mx-1'>
-            <Box onClick={goLogin} sx={{ mt: "10px", borderRadius: "8px", width: "165px", cursor: "pointer" }}>
+            <Box onClick={handleClick} sx={{ mt: "10px", borderRadius: "8px", width: "165px", cursor: "pointer" }}>
               <Box className="d-flex justify-content-between" >
                 <Box sx={{ mr: "7px" }} className=" d-flex align-items-center">
                   <Svg Component={USER} />
@@ -77,11 +83,19 @@ export default function Navbar({ isSide, LoadSide, LoadMobile }) {
           <div className='d-lg-none d-flex  align-items-center mt-2' >
             <IconButton size="small" onClick={goLogin}><Svg Component={USER} /></IconButton>
           </div>
+          <Menu
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+                sx:{width:"167px",padding:'8px 0px'}
+              }}
+            >
+              <MenuItem onClick={goLogin}>خروج</MenuItem>
+            </Menu>
+            
         </Toolbar>
-        {/* {isload && 
-          <SidebarMobileMenu heightSize={LoadNavMobile}/>
-        } */}
-
       </AppBar>
     </Box>
   )

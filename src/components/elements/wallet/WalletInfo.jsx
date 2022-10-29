@@ -9,6 +9,9 @@ import {ReactComponent as UpIcon} from '../../../img/icons/coin/up arrow.svg';
 import {ReactComponent as DownRed} from '../../../img/icons/coin/down arrow - red.svg';
 import {ReactComponent as UpGreen} from '../../../img/icons/coin/up arrow - green.svg';
 import {ReactComponent as LogoEN} from '../../../img/icons/logo-en-white.svg';
+import logoEng2 from '../../../img/logos/logoEng-2x.png';
+
+
 import WalletCharge from '../dialogs/WalletCharge';
 import WalletWithdraw from '../dialogs/WalletWithdraw';
 import WalletDesposit from '../dialogs/WalletDesposit';
@@ -47,9 +50,10 @@ export default function WalletInfo({ infos,options }) {
   },[sizewidth]);
 
   const cardstyle = {
-    borderRadius: '8px',
+    borderRadius: '12px',
     height: "230px",
     width:"100%",
+    boxShadow:"unset",
     padding:"8px 8px 0px 8px",
     position:"relative"
   }
@@ -57,8 +61,8 @@ export default function WalletInfo({ infos,options }) {
     border: "1px solid #CBE4EB",
     borderRadius: '8px',
     color: "rgba(164, 166, 180, 1)",
-    width: "37px",
-    height: "37px",
+    width: "42px",
+    height: "42px",
     mr: "2.5%",
     my: "10px",
     fontSize: "11px",
@@ -70,12 +74,12 @@ export default function WalletInfo({ infos,options }) {
     }
   }
   const tetstyle={
-    pt:"5px",height: "45px", width: "45px",
+    p:"10px",height: "42px", width: "42px",
     borderRadius:"8px",
     backgroundColor:"rgba(217, 243, 232, 1)"
   }
   const daistyle={
-    pt:"5px",height: "45px", width: "45px",
+    p:"10px",height: "42px", width: "42px",
     borderRadius:"8px",
     backgroundColor:"#fbf4c6"
   }
@@ -83,7 +87,7 @@ export default function WalletInfo({ infos,options }) {
     <Box className="row mycontainer">
      <Box className="col-lg-6 col-md-12 col-12 gx-0" >
         
-       <Box className="d-flex justify-content-center" sx={{pt:"42px"}}>
+       <Box className="d-flex justify-content-center">
          <Card sx={cardstyle} className="bg-card-img">
           <CardContent>
             <Box className="d-flex justify-content-between">
@@ -96,13 +100,14 @@ export default function WalletInfo({ infos,options }) {
                   </Typography>
                 </Box>
                 <Box  style={{left:0}}>
-                    <Svg Component={LogoEN} />
+                    {/* <Svg Component={LogoEN} /> */}
+                    <img src={logoEng2} height="18px" width="auto" alt='logoEng'/>
                 </Box>
                 
             </Box>
           
             <Box className="d-flex align-items-end" dir="ltr">
-              <div style={{position:"absolute",bottom:"16px"}}>
+              <div style={{position:"absolute",bottom:"24px"}}>
               <IconButton 
                 sx={{ border: "1px solid #fff", borderRadius: '8px', ml: 1, color: "#fff"}} 
                 fontSize="large"
@@ -162,15 +167,15 @@ export default function WalletInfo({ infos,options }) {
             </Box> 
        </Box>
        
-      <Box className="col-lg-6 col-md-12 col-12 gx-0 d-flex justify-content-center ps-2" sx={{pt:"20px"}}>
-        <List sx={{width:"100%"}}>
+      <Box className="col-lg-6 col-md-12 col-12 gx-0 d-flex justify-content-center ps-2">
+        <List sx={{width:"100%"}} className="mylist">
           {infos.map((item, idx) => (
-            <ListItem key={idx} className="list-cnt" sx={{px:0}}>
+            <ListItem key={idx} className="list-cnt" sx={{px:0,py:0,pb:"8px"}}>
               <ListItemIcon>
                 <Box className="text-center" 
                   sx={ item.name==='تتر' || item.name==="یو اس دی کوین" ? tetstyle : daistyle }
                 >
-                <Svg Component={item.icon} style={{ height: "35px", width: "35px" }} />
+                <Svg Component={item.icon} style={{ height: "auto", width: "24px" }} />
                 </Box>
               </ListItemIcon>
               <ListItemText id={idx} primary={item.name}  primaryTypographyProps={{fontSize:"14px"}} />

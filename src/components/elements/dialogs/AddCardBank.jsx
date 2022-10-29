@@ -60,9 +60,7 @@ export default function AddCardBank({open,close}) {
   const [issmall, setissmall] = React.useState(false);
 
   const textfieldstyle={
-    mt:"12px",
     fontSize:"13px",
-    mx:"2%",
     '& :focus':{
       backgroundColor:"#eef1ff",
       borderRadius:"8px"
@@ -102,21 +100,21 @@ export default function AddCardBank({open,close}) {
         open={open}
         TransitionComponent={Transition}
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
-        افزودن کارت بانکی جدید
-                 </BootstrapDialogTitle>
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom boldfont">
+             افزودن کارت بانکی جدید
+        </BootstrapDialogTitle>
         <DialogContent  sx={{width:"100%"}} className='mycontainer'>
-            <Typography variant="p" component="div" sx={{my:"3%",fontSize:"13px"}}>
+            <Typography variant="p" component="div" sx={{mb:"24px",fontSize:"13px"}}>
             حتما کارت بانکی ای را ثبت کنید که به نام صاحب حساب کاربری (خودتان) باشد، در غیر اینصورت بصورت اتوماتیک رد خواهد شد.
             </Typography>
-          <Box sx={{borderRadius:"14px"}}>
-           <Box className="border-right-marginboldblue px-1">
-                <Typography variant="p" component="div" fontSize="13px">
-                      شماره کارت بانکی
-                </Typography>
-                </Box>
-            <Box>
-            <FormGroup sx={{mb:"6%"}}>
+                <div className='titlemini'>
+                  <Box className="border-right-marginboldblue titlemindialog">
+                    <Typography variant="p" component="div" fontSize="13px">
+                       شماره کارت بانکی
+                    </Typography>
+                  </Box>
+                </div>
+            <FormGroup sx={{mb:"24px"}}>
                <Box className="d-flex">
                        <TextField
                         color="digi"
@@ -124,6 +122,7 @@ export default function AddCardBank({open,close}) {
                         type="tel"
                         inputProps={{ maxLength: 4,disableUnderline: true}}
                         sx={textfieldstyle}
+                        style={{marginLeft:"16px"}}
                         />
                         <TextField
                         color="digi"
@@ -131,6 +130,7 @@ export default function AddCardBank({open,close}) {
                         type="tel"
                         inputProps={{ maxLength: 4,disableUnderline: true}}
                         sx={textfieldstyle}
+                        style={{marginLeft:"16px"}}
                         />
                         <TextField
                         color="digi"
@@ -138,6 +138,7 @@ export default function AddCardBank({open,close}) {
                         type="tel"
                         inputProps={{ maxLength: 4,disableUnderline: true}}
                         sx={textfieldstyle}
+                        style={{marginLeft:"16px"}}
                         />
                         <TextField
                         color="digi"
@@ -149,12 +150,14 @@ export default function AddCardBank({open,close}) {
                </Box>
              </FormGroup>
 
-             <Box className="border-right-marginboldblue px-1 py-1">
-               <Typography variant="p" component="div" fontSize="13px">
-                  شماره‌شبا 
-              </Typography>
-               </Box>
-               <FormGroup sx={{pt:"2%",px:"2%"}}>
+               <div className='titlemini'>
+                  <Box className="border-right-marginboldblue titlemindialog">
+                    <Typography variant="p" component="div" fontSize="13px">
+                       شماره‌شبا 
+                    </Typography>
+                  </Box>
+                </div>
+               <FormGroup sx={{mb:"24px"}}>
                     <TextField 
                       color="digi"
                       fullWidth
@@ -169,14 +172,12 @@ export default function AddCardBank({open,close}) {
                       }}
                     />
                </FormGroup>
-            </Box>    
-             <Box sx={{px:"2%",pt:"35px"}}>
+             <Box sx={{pt:"24px"}}>
              <Button variant="contained" sx={{ fontSize: "16px", height: "55px" ,borderRadius:"8px"}} fullWidth>
                 ثبت کارت بانکی جدید
              </Button>
              </Box>
              
-          </Box>
         </DialogContent>
       </BootstrapDialog>
   )

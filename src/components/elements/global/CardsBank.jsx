@@ -28,15 +28,20 @@ export default function CardsBank() {
     }
   }
   const listdata=[
-    {'bank':"بانک سامان",'number':"6104 3373 9150 8790"},
-    {'bank':"بانک سامان",'number':"6104 3373 9150 8790"},
+    {'bank':"بانک سامان",'number':"6104337391508790"},
+    {'bank':"بانک سامان",'number':"6104337391508790"},
 
-  ]
-  
+  ] 
+  const StrToArray=(text)=>{
+    let strarray=[]
+     for(let i=0; i<=text.length;i++){
+        strarray.push(text[i])
+     }
+     return strarray 
+  } 
     const cardstyle={
         width: '100%',
         height: '100%',
-        border: '1px solid #a4a6b4',
         backgroundColor: '#fff',
         borderRadius: '8px'
       }
@@ -53,30 +58,25 @@ export default function CardsBank() {
        },
       }
   return (
-    <Box sx={cardstyle}>
-         <List sx={{p:"1%"}}>
-            <ListItem onClick={handleArrow} button>
-                <ListItemIcon>
+    <Box sx={cardstyle} className="full-border">
+         <List>
+            <ListItem onClick={handleArrow} sx={{cursor:"pointer",py:"16px"}}>
                   <Svg Component={Saman} />
-                </ListItemIcon>
-                <ListItemText primary="بانک سامان"/>
-                <ListItemText primary="6104 3373 9150 8790" />
-                    <ListItemIcon>
-                     {show?<KeyboardArrowUp/>:<KeyboardArrowDown/>}
-                    </ListItemIcon>
+                <ListItemText primary="بانک سامان" sx={{ml:'16px'}}/>
+                <ListItemText primary="6104337391508790" />
+                <div style={{paddingLeft:"5px"}}>
+                  {show?<KeyboardArrowUp/>:<KeyboardArrowDown/>}
+                </div>
             </ListItem>
            {show? listdata.map((item,idx)=>(
-            <ListItem key={idx} className="bordertop">
-              <ListItemIcon>
+            <ListItem key={idx} className="bordertop" sx={{cursor:"pointer",py:"16px"}}>
                   <Svg Component={Saman} />
-                </ListItemIcon>
-                <ListItemText primary={item.bank}/>
-                <ListItemText primary={item.number} />
-                    <ListItemIcon>
-                      <IconButton>
+                
+                <ListItemText primary={item.bank} sx={{ml:'16px'}}/>
+                <ListItemText primary={`${StrToArray(item.number).slice(0,4)}`} />
+                    <IconButton>
                       <Svg Component={Trash} />
-                        </IconButton>
-                    </ListItemIcon>
+                    </IconButton>
             </ListItem>
            )):null}
         </List>

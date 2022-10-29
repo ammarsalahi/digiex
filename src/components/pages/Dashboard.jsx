@@ -49,7 +49,7 @@ export default function Dashboard() {
         <DashboardInfo />
       </Box>
       <div className='row' style={{height:"100vh"}}>
-        <div className='col-lg-6 col-12 mycontainer'>
+        <div className='col-lg-6 col-12 mycontainer '>
           <FormTabs 
             options={options} 
             tabvalue={tabvalue} 

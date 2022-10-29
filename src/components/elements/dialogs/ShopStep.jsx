@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Slide from '@mui/material/Slide';
-import {  Box ,Checkbox,FormGroup,FormControlLabel,List,ListItem,ListItemText,ListItemIcon} from '@mui/material'
+import {  Box ,Checkbox,FormGroup,FormControlLabel,FormLabel,TextField,List,ListItem,ListItemText,ListItemIcon} from '@mui/material'
 import { WalletOutlined} from '@mui/icons-material';
 import CardsBank from '../global/CardsBank';
 import { CheckCircle,RadioButtonUnchecked } from '@mui/icons-material';
@@ -61,27 +61,25 @@ BootstrapDialogTitle.propTypes = {
 
 
 const boxselected={
-  border:"1.5px solid #424BFB",borderRadius:"8px",mx:".5%",my:"1%",height:"50px",pl:"1%",
+  border:"1.5px solid #424BFB",borderRadius:"8px",height:"56px",px:"16px"
 }
 const boxunselected={
-  border:"1.5px solid #a4a6b4",borderRadius:"8px",mx:".5%",my:"1%",height:"50px",pl:"1%",
+  border:"1.5px solid #a4a6b4",borderRadius:"8px",height:"56px",px:"16px"
 }
 
 const walletboxstyle={
-  height: '57px',
-  backgroundColor:"lightgrey",
-  border:"1px solid #a4a6b4",
+  height: '55px',
+  backgroundColor:"#f1f3fa",
+  border:"1px solid #cbe4eb",
   borderRadius:"8px",
-  p:"3%",
-  my:"2%"
+  px:"16px",
+  width:"auto"
 }
-const codeboxstyle={
-    height: '57px',
-    border:"1px solid #cbe4eb",
-    borderRadius:"8px",
-    p:"3%",
-    my:"2%"
-  }
+const heighttt = {
+  height : "56px",
+  marginBottom : "16px",
+  cursor:"pointer"
+}
 
 const subbtnstyle={
   fontSize:"16px", backgroundColor: "#424BFB", height: "55px"
@@ -110,13 +108,15 @@ export default function ShopStep({open,close,sizewidth}) {
         انتخاب نحوه دریافت و شبکه      
          </BootstrapDialogTitle>
         <DialogContent className='mycontainer'>
-         <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"3%"}}>
-           <Typography variant="p" component="div" fontSize="13px">
-                انتخاب شبکه پرداخت
-           </Typography>
-         </Box>
-         <Box className="d-flex" sx={{pb:"2%"}}>
-         <Box sx={coin==="erc-20"?boxselected:boxunselected}>
+        <div className='titlemini'>
+            <Box className="border-right-marginboldblue titlemindialog">
+            <Typography variant="p" component="div" fontSize="13px">
+            انتخاب شبکه پرداخت
+            </Typography>
+          </Box>
+          </div>
+         <Box className="d-flex" sx={{mb:"24px"}}>
+         <Box sx={coin==="erc-20"?boxselected:boxunselected} style={{marginLeft:"16px"}}>
             <FormGroup>
               <FormControlLabel 
                 control={<Checkbox checked={coin==="erc-20"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
@@ -124,7 +124,7 @@ export default function ShopStep({open,close,sizewidth}) {
               />
             </FormGroup>
           </Box>
-          <Box sx={coin==="trc-20"?boxselected:boxunselected}>
+          <Box sx={coin==="trc-20"?boxselected:boxunselected}style={{marginLeft:"16px"}} >
             <FormGroup>
             <FormControlLabel 
               control={<Checkbox checked={coin==="trc-20"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
@@ -132,7 +132,7 @@ export default function ShopStep({open,close,sizewidth}) {
             />
             </FormGroup>
           </Box>
-          <Box sx={coin==="bep-20"?boxselected:boxunselected}>
+          <Box sx={coin==="bep-20"?boxselected:boxunselected}style={{marginLeft:"16px"}}>
             <FormGroup>
             <FormControlLabel 
               control={<Checkbox checked={coin==="bep-20"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
@@ -149,50 +149,53 @@ export default function ShopStep({open,close,sizewidth}) {
             </FormGroup>
           </Box>
          </Box>
-         <Box className="border-right-marginboldblue" sx={{px:"1%"}}>
-           <Typography variant="p" component="div" fontSize="13px">
-                مقدار 250تتر به آدرس ولت زیر ارسال کنید
-           </Typography>
-         </Box>
-         <Box sx={{pb:"2%"}}>
-          <Box className="d-flex justify-content-between" sx={walletboxstyle}>
+         <div className='titlemini'>
+            <Box className="border-right-marginboldblue titlemindialog">
+            <Typography variant="p" component="div" fontSize="13px">
+            مقدار 250تتر به آدرس ولت زیر ارسال کنید
+            </Typography>
+          </Box>
+          </div>
+         <Box sx={{mb:"24px"}}>
+          <Box className="d-flex justify-content-between align-items-center" sx={walletboxstyle}>
             <Typography variant="p" component="div">
-                TPNFDKDJDMrjgkdnskfk763mfkdhgjd83h
+                TPNFDKDJDMrjgkdnskfk763jd83h
             </Typography>
             <Box className="d-flex">
-              <IconButton>
-              <Svg Component={copyicon}/>
-              </IconButton>
-              <IconButton>
-              <Svg Component={qrcode}/>
-              </IconButton>
+                <Svg Component={copyicon} style={{cursor:"pointer"}}/>
+                <Svg Component={qrcode} style={{marginRight:"16px",cursor:"pointer"}}/>
             </Box>
           </Box>
          </Box>
 
-         <Box sx={{px:"1%"}}>
-           <Typography variant="p" component="div" fontSize="13px">
-                مقدار 250تتر به آدرس ولت زیر ارسال کنید
-           </Typography>
-         </Box>
-         <Box sx={{pb:"2%"}}>
-          <Box sx={codeboxstyle}>
-            <Typography variant="p" component="div">
-                6725562285654124445853216498461548454
-            </Typography>
-         </Box>
-         </Box>
+         <FormGroup sx={{mb:"24px"}}>
+          <FormLabel>
+            کد پیگیری (TXID) را وارد کنید
+          </FormLabel>
+            <TextField
+              color="digi"
+              fullWidth
+              sx={{
+                '& :focus':{
+                  backgroundColor:"#eef1ff",
+                  borderRadius:"8px"
+                }
+
+              }}
+            />
+         </FormGroup>  
         
+         <div className='titlemini'>
+            <Box className="border-right-marginboldblue titlemindialog">
+            <Typography variant="p" component="div" fontSize="13px">
+            روش واریز مبلغ سفارش
+            </Typography>
+          </Box>
+          </div>
          
-         <Box className="border-right-marginboldblue"sx={{px:"1%"}} >
-           <Typography variant="p" component="div" fontSize="13px">
-              روش واریز مبلغ سفارش
-           </Typography>
-         </Box>
-         
-         <Box sx={{pb:"2%"}}>
+         <Box>
             <List>
-                <ListItem button sx={withdraw==="type1"?boxselected:boxunselected} onClick={()=>{setWithdraw("type1")}}>
+                <ListItem sx={withdraw==="type1"?boxselected:boxunselected} onClick={()=>{setWithdraw("type1")}} style={heighttt} >
                     <ListItemIcon>
                         <Checkbox checked={withdraw==="type1"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />
                     </ListItemIcon>
@@ -206,7 +209,7 @@ export default function ShopStep({open,close,sizewidth}) {
                     <ListItemText primary="0BUSD" primaryTypographyProps={withdraw==='type1'?{color:"#424BFB",fontSize:"11px"}:{color:"#5f5f62",fontSize:"11px"}} />
                 </ListItem>
 
-                <ListItem button sx={withdraw==="type2"?boxselected:boxunselected} onClick={()=>{setWithdraw("type2")}}>
+                <ListItem sx={withdraw==="type2"?boxselected:boxunselected} onClick={()=>{setWithdraw("type2")}}>
                     <ListItemIcon>
                         <Checkbox checked={withdraw==="type2"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />
                     </ListItemIcon>

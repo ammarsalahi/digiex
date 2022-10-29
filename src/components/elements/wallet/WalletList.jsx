@@ -12,9 +12,10 @@ export default function WalletList({rows}) {
     fontSize: "14px !important",
     textAlign:"center",
     color: "rgba(164, 166, 180, 1)",
+    
   }
   const cellstyle={
-    py:"18px",
+    py:"20px",
     fontSize: "14px !important",
     textAlign:"center"
   }
@@ -66,9 +67,9 @@ export default function WalletList({rows}) {
         </ThemeProvider>
         
       </div>
-    <Box className='row maincontent'>
-    <TableContainer sx={{px:"15px",pb:"14px"}}>
-      <Table sx={{ minWidth: 500}} size="small" aria-label="a dense table">
+    <Box className='row'>
+    <TableContainer className="table-cnt">
+      <Table size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
             <TableCell sx={headstyle}>تاریخ</TableCell>

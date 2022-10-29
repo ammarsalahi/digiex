@@ -89,23 +89,23 @@ export default function AgreementWallet({open,close}) {
         open={open}
         TransitionComponent={Transition}
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom boldfont">
         تایید برداشت از کیف پول تومانی
          </BootstrapDialogTitle>
         <DialogContent sx={{width:"520px"}} className='mycontainer'>
-            <Box sx={{px:"2%"}}>
-            <Box sx={{height:"150px",width:"100%",borderRadius:"8px"}} className="bg-light">
-            </Box>
+            <Box>
+              <Box sx={{height:"150px",width:"100%",borderRadius:"8px"}} className="backgroundClr">
+              </Box>
             </Box>
           
-          <Box sx={{borderRadius:"14px",py:"3%",px:"2%"}}>
-           <Box className="border-right-marginboldblue px-1">
+            <div className='titlemini'>
+              <Box className="border-right-marginboldblue titlemindialog">
                 <Typography variant="p" component="div" fontSize="13px">
-                       کد 6 رقمی نموایش داده شده در گوگل آتنتیکیتور را وارد کنید 
+                    کد 6 رقمی نموایش داده شده در گوگل آتنتیکیتور را وارد کنید 
                 </Typography>
-                </Box>
-            <Box>
-            <FormGroup sx={{mb:"4%"}}>
+              </Box>
+            </div>
+            <FormGroup sx={{mb:"24px"}}>
                <Box className="d-flex">
                        <TextField
                         color="digi"
@@ -139,14 +139,12 @@ export default function AgreementWallet({open,close}) {
                         />
                </Box>
              </FormGroup>
-            </Box>    
-             <Box sx={{px:"2%"}}>
-             <Button variant="contained" sx={{ fontSize: "16px", backgroundColor: "#424BFB", height: "55px",borderRadius:"8px" }} fullWidth>
+             <Box>
+             <Button variant="contained" sx={{ fontSize: "16px", height: "55px",borderRadius:"8px" }} fullWidth>
                 تایید برداشت
              </Button>
              </Box>
              
-          </Box>
         </DialogContent>
       </BootstrapDialog>
   )

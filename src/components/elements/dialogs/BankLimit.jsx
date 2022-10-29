@@ -92,7 +92,7 @@ export default function BankLimit({open,close}) {
         محدودیت های پرداخت از طریق درگاه بانکی
          </BootstrapDialogTitle>
         <DialogContent className='mycontainer'>
-          <Box className="bg-light" sx={{borderRadius:"8px",p:"3%",width:"500px",mt:"3%"}}>
+          <Box className="backgroundClr" sx={{borderRadius:"14px",p:"16px"}}>
             {listsdata.map((item, idx) => (
                 <div className='d-flex justify-content-between info-list' key={idx}>
                 <Typography variant="p" component="div" sx={{fontSize : "14px"}}>

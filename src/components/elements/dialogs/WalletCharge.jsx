@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Slide from '@mui/material/Slide';
-import {Box ,List,ListItem,ListItemIcon,ListItemText, TextField,Checkbox,InputAdornment} from '@mui/material'
+import {Box ,List,ListItem,ListItemIcon,ListItemText,FormLabel, TextField,Checkbox,InputAdornment} from '@mui/material'
 import {WalletOutlined} from '@mui/icons-material';
 import { CheckCircle,RadioButtonUnchecked } from '@mui/icons-material';
 import CardID from '../global/CardID';
@@ -57,12 +57,23 @@ BootstrapDialogTitle.propTypes = {
   };
 
 
-const boxselected={
-  border:"1.5px solid #424BFB",borderRadius:"8px",my:"1%",height:"50px",pl:"2%",backgroundColor:"#eef1ff",
-}
-const boxunselected={
-  border:"1.5px solid #a4a6b4",borderRadius:"8px",my:"1%",height:"50px",pl:"2%",
-}
+  const boxselected={
+    border:"1px solid #424BFB",borderRadius:"8px",
+    height:"56px",backgroundColor:"rgba(238,241,255,1)",
+    minWidth:"137px",
+    textAlign:"center",
+    width:"100%",
+
+  }
+  const boxunselected={
+    border:"1px solid #cbe4eb",borderRadius:"8px",
+    height:"56px",
+    minWidth:"137px",
+    textAlign:"center",
+    width:"100%",
+
+
+  }
 
 
 const subbtnstyle={
@@ -117,14 +128,16 @@ export default function WalletCharge({open,close,sizewidth}) {
         </BootstrapDialogTitle>
         
         <DialogContent className='mycontainer'>
-        <Box className="border-right-marginboldblue " sx={{px:"1%",mt:"2%"}}>
-           <Typography variant="p" component="div" fontSize="13px">
-                روش شارژ کیف پول 
-           </Typography>
-         </Box>
-         <Box sx={{pb:"1%"}}>
+                <div className='titlemini'>
+                  <Box className="border-right-marginboldblue titlemindialog">
+                    <Typography variant="p" component="div" fontSize="13px">
+                    روش شارژ کیف پول 
+                    </Typography>
+                  </Box>
+                </div>
+         <Box sx={{mb:"24px"}}>
             <List>
-                <ListItem button sx={payment==="bank"?boxselected:boxunselected} onClick={()=>{setpayment("bank")}}>
+                <ListItem style={{cursor:"pointer",marginBottom:"12px"}} sx={payment==="bank"?boxselected:boxunselected} onClick={()=>{setpayment("bank")}}>
                     <ListItemIcon>
                         <Checkbox checked={payment==="bank"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />
                     </ListItemIcon>
@@ -136,7 +149,7 @@ export default function WalletCharge({open,close,sizewidth}) {
                         </div>
                     }/>
                 </ListItem>
-                <ListItem button sx={payment==="id"?boxselected:boxunselected} onClick={()=>{setpayment("id")}}>
+                <ListItem style={{cursor:"pointer",marginBottom:"12px"}} sx={payment==="id"?boxselected:boxunselected} onClick={()=>{setpayment("id")}}>
                     <ListItemIcon>
                         <Checkbox checked={payment==="id"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />
                     </ListItemIcon>
@@ -154,21 +167,23 @@ export default function WalletCharge({open,close,sizewidth}) {
          </Box>
 
        {payment==="bank" &&
-            <Box sx={{px:"2%"}}>
-                <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"3%"}}>
-                 <Typography variant="p" component="div" fontSize="13px">
-                      انتخاب کارت بانکی برای پرداخت
-                </Typography>
-                 </Box>
-             <Box sx={{py:"5px"}}>
-            <CardsBank/>
+            <Box>
+                <div className='titlemini'>
+                  <Box className="border-right-marginboldblue titlemindialog">
+                    <Typography variant="p" component="div" fontSize="13px">
+                    انتخاب کارت بانکی برای پرداخت
+                    </Typography>
+                  </Box>
+                </div>
+             <Box sx={{mb:"24px"}}>
+              <CardsBank/>
              </Box>
-            <Box sx={{px:"1%",pt:"14px",pb:"5px"}}>
-           <Typography variant="p" component="div" fontSize="13px">
-                  مبلغ دلخواه(تومان)
-           </Typography>
+            <Box>
          </Box>
-         <Box sx={{pb:"2%"}}>
+         <Box sx={{mb:"24px"}}>
+            <FormLabel>
+            مبلغ دلخواه(تومان)
+            </FormLabel>
             <TextField 
             color="digi"
               fullWidth
@@ -182,17 +197,32 @@ export default function WalletCharge({open,close,sizewidth}) {
                 ),
               }}
             />
-            <Box className="d-flex justify-content-between mt-2">
-               <Box sx={price==='5'?boxselected:boxunselected} onClick={()=>setprice('5')} style={{padding:"3%",fontSize:"14px", cursor:"pointer"}}>
-                 5,000,000 تومان
-               </Box>
-               <Box sx={price==='10'?boxselected:boxunselected} onClick={()=>setprice('10')} style={{padding:"3%",fontSize:"14px", cursor:"pointer"}}>
-                 10,000,000 تومان 
-               </Box>
-               <Box sx={price==='25'?boxselected:boxunselected} onClick={()=>setprice('25')} style={{padding:"3%",fontSize:"14px", cursor:"pointer"}}>
-                  25,000,000 تومان
-               </Box>
             </Box>
+            <Box className="d-flex" sx={{mb:"24px"}}>
+               <Box className="d-flex justify-content-center align-items-center"
+                  sx={price==='5'?boxselected:boxunselected} onClick={()=>setprice('5')} 
+                  style={{fontSize:"14px", cursor:"pointer"}}>
+                     <Typography color={price==='5' && 'primary'}>
+                     5,000,000 تومان
+                      </Typography>
+               </Box>
+               <Box className="d-flex justify-content-center align-items-center"
+                  sx={price==='10'?boxselected:boxunselected} onClick={()=>setprice('10')} 
+                  style={{fontSize:"14px", cursor:"pointer",marginInline:"16px"}}
+                  >
+                    <Typography color={price==='10' && 'primary'}>
+                    10,000,000 تومان 
+                    </Typography>
+                 
+               </Box>
+               <Box className="d-flex justify-content-center align-items-center"
+                  sx={price==='25'?boxselected:boxunselected} onClick={()=>setprice('25')} 
+                  style={{fontSize:"14px", cursor:"pointer"}}>
+                  <Typography color={price==='25' && 'primary'}>
+                  25,000,000 تومان                 
+                  </Typography>
+                 
+               </Box>
            </Box>
            <Box className="bg-light" sx={{borderRadius:"8px",p:"3%",width:"100%",mt:"3%"}}>
             {listsdataBank.map((item, idx) => (

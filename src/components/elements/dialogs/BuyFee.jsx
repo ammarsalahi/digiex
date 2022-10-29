@@ -62,10 +62,10 @@ const formbtnstyle = {
 }
 
 const boxselected = {
-  border: "1px solid blue",height: "56px" , borderRadius: "10px", px: "16px", py: "4px", mx: "1%",
+  border: "1px solid blue",height: "56px" , borderRadius: "10px", px: "16px", py: "4px",
 }
 const boxunselected = {
-  border: "1px solid grey",height:"56px", borderRadius: "10px", px: "16px", py: "4px", mx: "1%"
+  border: "1px solid grey",height:"56px", borderRadius: "10px", px: "16px", py: "4px",
 }
 
 export default function BuyFee({ open, close, optionsdata,sizewidth }) {
@@ -98,13 +98,13 @@ export default function BuyFee({ open, close, optionsdata,sizewidth }) {
         کارمزد ارسال و دریافت
       </BootstrapDialogTitle>
       <DialogContent className='mycontainer'>
-        <Typography variant="p" component="div" sx={{ fontSize: "14px", mt: "24px", px: "", lineHeight: "27px" , textAlign: "justify"}}>
+        <Typography variant="p" component="div" sx={{ fontSize: "14px", mt: "24px", lineHeight: "27px" , textAlign: "justify"}}>
           از آنجا که در صرافی دیجیکس ۲۴ ارزهای متنوعی معامله میشود،کارمزد ارسال و دریافت هر کدام از این ارزها مختلف میباشد. به کمک لیست زیر میتوانید با انتخاب هر ارز، اطلاعاتی مانند سقف واریز و برداشت، کارمزد نقل و انتقال و … را مشاهده کنید.
         </Typography>
         <FormGroup className="pt-3" sx={formbtnstyle}>
           <DigiSelect options={optionsdata} />
         </FormGroup>
-        <Box className="d-flex justify-content-start">
+        <Box className="d-flex justify-content-start" sx={{mb:"24px"}}>
           <Box sx={ bep === "bep-20" ? boxselected : boxunselected} className="border-1px">
             <FormGroup sx={{height:"100%" , justifyContent: "center"}}>
               <FormControlLabel
@@ -113,7 +113,7 @@ export default function BuyFee({ open, close, optionsdata,sizewidth }) {
               />
             </FormGroup>
           </Box>
-          <Box sx={bep === "bep-2" ? boxselected : boxunselected} className="border-1px">
+          <Box sx={bep === "bep-2" ? boxselected : boxunselected} className="border-1px" style={{marginRight:"16px"}}>
             <FormGroup sx={{height:"100%" , justifyContent: "center" }}>
               <FormControlLabel
                 control={<Checkbox checked={bep === "bep-2"} icon={<RadioButtonUnchecked />} checkedIcon={<CheckCircle />} />}
@@ -123,9 +123,9 @@ export default function BuyFee({ open, close, optionsdata,sizewidth }) {
           </Box>
         </Box>
 
-        <Box sx={{ py: "24px" }}>
+        <Box className="backgroundClr" sx={{borderRadius:"14px",p:"16px"}}>
           {data.map((item, idx) => (
-            <Box sx={{pt:"16px"}} className='d-flex justify-content-between align-items-center'>
+            <Box sx={{mt:"8px"}} className='d-flex justify-content-between align-items-center'>
               <Typography variant="p" component="div" sx={{ fontSize: "14px" }}>
                 {item.name}
               </Typography>

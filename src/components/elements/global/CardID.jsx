@@ -3,13 +3,14 @@ import { Typography, Table, TableRow, TableCell, TableContainer,Box, IconButton}
 import { InfoOutlined } from '@mui/icons-material';
 export default function CardID() {
   const rowstyle={
-    borderTop:"1px solid #a4a6b4",
+    borderTop:"1px solid #cbe4eb",
   }
   const borderstyle={
-    border:"1px solid #a4a6b4"
+    borderBottom:"1px solid #cbe4eb",
+    borderRight:"1px solid #cbe4eb"
   }
   return (
-    <TableContainer sx={{border:"1px solid #a4a6b4",borderRadius:"8px"}}>
+    <TableContainer sx={{border:"1px solid #cbe4eb",borderRadius:"8px"}}>
       <Table >
         <TableRow sx={rowstyle}>
           <TableCell sx={borderstyle}>

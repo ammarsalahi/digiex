@@ -59,16 +59,13 @@ const  textTheme = createTheme({
         }
       },
       
-      //   MuiStepIcon: {
-      //     styleOverrides: {
-      //       root: {
-      //          color: 'red',
-      //       },
-      //       active:{
-      //          color:"green"
-      //       }
-      //   } 
-      //  }
+      MuiDialogActions:{
+        styleOverrides: {
+          root: {
+              paddingTop: '20px',
+          },
+        },
+      }
       }
   });
 

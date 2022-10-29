@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Slide from '@mui/material/Slide';
-import {Box,Checkbox,FormGroup,FormControlLabel} from '@mui/material'
+import {Box,Checkbox,FormGroup,FormControlLabel, TextField, FormLabel} from '@mui/material'
 import { CheckCircle,RadioButtonUnchecked } from '@mui/icons-material';
 import DigiSelect from '../global/DigiSelect';
 import {ReactComponent as qrcode} from '../../../img/icons/qr.svg';
@@ -60,28 +60,30 @@ BootstrapDialogTitle.propTypes = {
   };
 
 
-const boxselected={
-  border:"1.5px solid #424BFB",borderRadius:"8px",my:"1%",height:"50px",mx:"2%",pl:"2%",
-}
-const boxunselected={
-  border:"1.5px solid #A6A6A6",borderRadius:"8px",my:"1%",height:"50px",mx:"2%",pl:"2%",
-}
+  const boxselected={
+    border:"1px solid #424BFB",borderRadius:"8px",
+    height:"56px",backgroundColor:"rgba(238,241,255,1)",
+    minWidth:"137px",
+    textAlign:"center",
+    width:"100%",
+
+  }
+  const boxunselected={
+    border:"1px solid #cbe4eb",borderRadius:"8px",
+    height:"56px",
+    minWidth:"137px",
+    textAlign:"center",
+    width:"100%",
+  }
 
 const walletboxstyle={
-  height: '57px',
-  backgroundColor:"lightgrey",
-  border:"1px solid #a4a6b4",
+  height: '55px',
+  backgroundColor:"#f1f3fa",
+  border:"1px solid #cbe4eb",
   borderRadius:"8px",
-  p:"3%",
-  my:"2%"
+  px:"16px",
+  width:"auto"
 }
-const codeboxstyle={
-    height: '57px',
-    border:"1px solid #cbe4eb",
-    borderRadius:"8px",
-    p:"3%",
-    my:"2%"
-  }
 
 const subbtnstyle={
   fontSize:"16px", backgroundColor: "#424BFB", height: "55px",borderRadius:'8px'
@@ -112,84 +114,89 @@ export default function WalletDesposit({open,close,options,sizewidth}) {
         
         <DialogContent className='mycontainer'>
         
-        <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"2%"}}>
-           <Typography variant="p" component="div" fontSize="13px">
-                انتخاب  ارز
-           </Typography>
-         </Box>
-        <Box sx={{pb:"1%"}}>
+         <div className='titlemini'>
+            <Box className="border-right-marginboldblue titlemindialog">
+            <Typography variant="p" component="div" fontSize="13px">
+               انتخاب  ارز   
+            </Typography>
+          </Box>
+          </div>
+        <Box sx={{mb:"24px"}}>
             <DigiSelect options={options}/>
         </Box>
-         <Box className="border-right-marginboldblue" sx={{px:"1%"}}>
-           <Typography variant="p" component="div" fontSize="13px">
-                انتخاب شبکه پرداخت
-           </Typography>
-         </Box>
-         <Box className="d-flex justify-content-start" sx={{pb:"2%"}}>
-         <Box sx={coin==="erc-20"?boxselected:boxunselected}>
-            <FormGroup>
+          <div className='titlemini'>
+            <Box className="border-right-marginboldblue titlemindialog">
+            <Typography variant="p" component="div" fontSize="13px">
+            انتخاب شبکه پرداخت
+            </Typography>
+            </Box>
+          </div>
+         
+         <Box className="d-flex" sx={{mb:"24px"}}>
+         <Box sx={coin==="erc-20"?boxselected:boxunselected} className="d-flex justify-content-start">
+            <FormGroup className='d-flex align-items-start mt-2'>
               <FormControlLabel 
+                sx={{ml:'8px'}}
                 control={<Checkbox checked={coin==="erc-20"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
                 onClick={()=>setCoin("erc-20")} label="ERC-20"
               />
             </FormGroup>
           </Box>
-          <Box sx={coin==="trc-20"?boxselected:boxunselected}>
-            <FormGroup>
-            <FormControlLabel 
+          <Box sx={coin==="trc-20"?boxselected:boxunselected} className="d-flex justify-content-start" style={{marginInline:"16px"}}>
+          <FormGroup className='d-flex align-items-start mt-2'>
+              <FormControlLabel 
+                sx={{mx:'8px'}}
               control={<Checkbox checked={coin==="trc-20"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
               onClick={()=>setCoin("trc-20")} label="TRC-20" 
             />
             </FormGroup>
           </Box>
-          <Box sx={coin==="bep-20"?boxselected:boxunselected}>
-            <FormGroup>
-            <FormControlLabel 
+          <Box sx={coin==="bep-20"?boxselected:boxunselected} className="d-flex justify-content-start">
+            <FormGroup className='d-flex align-items-start mt-2'>
+              <FormControlLabel 
+                sx={{mx:'8px'}}
               control={<Checkbox checked={coin==="bep-20"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} />} 
               onClick={()=>setCoin("bep-20")} label="BEP-20" 
             />
             </FormGroup>
           </Box>
          </Box>
-         <Box className="border-right-marginboldblue" sx={{px:"1%"}}>
-           <Typography variant="p" component="div" fontSize="13px">
-                مقدار 250تتر به آدرس ولت زیر ارسال کنید
-           </Typography>
-         </Box>
-         <Box sx={{pb:"2%",px:"1%"}}>
-          <Box className="d-flex justify-content-between" sx={walletboxstyle}>
+         <div className='titlemini'>
+            <Box className="border-right-marginboldblue titlemindialog">
+            <Typography variant="p" component="div" fontSize="13px">
+            مقدار 250تتر به آدرس ولت زیر ارسال کنید
+            </Typography>
+          </Box>
+          </div>
+         <Box sx={{mb:"24px"}}>
+          <Box className="d-flex justify-content-between align-items-center" sx={walletboxstyle}>
             <Typography variant="p" component="div">
-                TPNFDKDJDMrjgkdnskfk763mfkdhgjd83h
+                TPNFDKDJDMrjgkdnskfk763jd83h
             </Typography>
             <Box className="d-flex">
-                <IconButton sx={{mx:"1%"}}>
-                <Svg Component={copyicon} />
-                </IconButton>
-                <IconButton sx={{mx:"1%"}}>
-                  <Svg Component={qrcode} />
-                </IconButton>
+                <Svg Component={copyicon} style={{cursor:"pointer"}}/>
+                <Svg Component={qrcode} style={{marginRight:"16px",cursor:"pointer"}}/>
             </Box>
           </Box>
          </Box>
+         <FormGroup>
+          <FormLabel>
+            کد پیگیری (TXID) را وارد کنید
+          </FormLabel>
+            <TextField
+              color="digi"
+              fullWidth
+              sx={{
+                '& :focus':{
+                  backgroundColor:"#eef1ff",
+                  borderRadius:"8px"
+                }
 
-         <Box sx={{px:"1%"}}>
-           <Typography variant="p" component="div" fontSize="13px">
-                ارز موردنظر را به آدرس ولت زیر ارسال کنید
-           </Typography>
-         </Box>
-         <Box sx={{pb:"2%",px:"1%"}}>
-          <Box sx={codeboxstyle}>
-            <Typography variant="p" component="div">
-                6725562285654124445853216498461548454
-            </Typography>
-         </Box>
-         </Box>
-         
-         
-        
-
+              }}
+            />
+         </FormGroup>         
         </DialogContent>
-        <DialogActions sx={{p:"2%"}}>
+        <DialogActions>
                 <Button variant="contained" sx={subbtnstyle} fullWidth>
                     ثبت سفارش 
                 </Button>

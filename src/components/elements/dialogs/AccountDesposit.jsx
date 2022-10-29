@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Slide from '@mui/material/Slide';
-import {  Box ,InputAdornment, TextField} from '@mui/material'
+import {  Box ,FormControlLabel,FormLabel,InputAdornment, TextField} from '@mui/material'
 import { InfoOutlined} from '@mui/icons-material';
 
 import CardsBank from '../global/CardsBank'
@@ -59,11 +59,20 @@ BootstrapDialogTitle.propTypes = {
 
 
   const boxselected={
-    border:"1.5px solid #424BFB",borderRadius:"8px",my:"1%",height:"50px",pl:"2%",backgroundColor:"#eef1ff",
+    border:"1px solid #424BFB",borderRadius:"8px",
+    height:"56px",backgroundColor:"rgba(238,241,255,1)",
+    minWidth:"137px",
+    textAlign:"center",
+    width:"100%",
+
   }
   const boxunselected={
-    border:"1.5px solid #a4a6b4",borderRadius:"8px",my:"1%",height:"50px",pl:"2%",
-  }
+    border:"1px solid #cbe4eb",borderRadius:"8px",
+    height:"56px",
+    minWidth:"137px",
+    textAlign:"center",
+    width:"100%",
+    }
 
 
 const subbtnstyle={
@@ -111,20 +120,22 @@ export default function AccountDesposit({open,close,sizewidth}) {
         </BootstrapDialogTitle>
         
         <DialogContent className='mycontainer'>
-        <Box className="border-right-marginboldblue" sx={{px:"1%",mt:"3%"}}>
-           <Typography variant="p" component="div" fontSize="13px">
-                انتخاب حساب بانکی
-           </Typography>
-         </Box>
-             <Box sx={{pb:"1%"}}>
-            <CardsBank/>
+          <div className='titlemini'>
+            <Box className="border-right-marginboldblue titlemindialog">
+            <Typography variant="p" component="div" fontSize="13px">
+                  انتخاب حساب بانکی
+            </Typography>
+          </Box>
+          </div>
+        
+             <Box sx={{mb:"24px"}}>
+               <CardsBank/>
              </Box>
-            <Box sx={{px:"1%"}}>
-           <Typography variant="p" component="div" fontSize="13px">
-                  مبلغ (تومان)
-           </Typography>
-         </Box>
-         <Box sx={{pb:"2%",px:"1%"}}>
+
+         <Box sx={{mb:"24px"}}>
+            <FormLabel>
+              مبلغ (تومان)
+            </FormLabel>
             <TextField 
               fullWidth
               color="digi"
@@ -138,22 +149,33 @@ export default function AccountDesposit({open,close,sizewidth}) {
                 ),
               }}
             />
-            <Box className="d-flex justify-content-between mt-2">
-               <Box  sx={inventory==='25'?boxselected:boxunselected} onClick={()=>setInventory("25")} style={{padding:"3%",fontSize:"14px", cursor:"pointer"}}>
-                 25% موجودی
+
+           </Box>
+           <Box className="d-flex" sx={{mb:"24px"}}>
+               <Box className="d-flex justify-content-center align-items-center"  sx={inventory==='25'?boxselected:boxunselected} onClick={()=>setInventory("25")} 
+               style={{fontSize:"14px", cursor:"pointer"}}>
+                <Typography color={inventory==='25' && 'primary'}>
+                25% موجودی
+                </Typography>
                </Box>
-               <Box sx={inventory==='50'?boxselected:boxunselected} onClick={()=>setInventory("50")} style={{padding:"3%",fontSize:"14px", cursor:"pointer"}}>
-                    50% موجودی
+               <Box className="d-flex justify-content-center align-items-center" sx={inventory==='50'?boxselected:boxunselected} 
+               onClick={()=>setInventory("50")} style={{fontSize:"14px", cursor:"pointer",marginInline:"16px"}}>
+                  <Typography color={inventory==='50' && 'primary'}>
+                     50% موجودی
+                  </Typography>
                </Box>
-               <Box sx={inventory==='100'?boxselected:boxunselected} onClick={()=>setInventory("100")} style={{padding:"3%",fontSize:"14px", cursor:"pointer"}}>
-                  کل موجودی 
+               <Box className="d-flex justify-content-center align-items-center" sx={inventory==='100'?boxselected:boxunselected} onClick={()=>setInventory("100")} 
+                  style={{fontSize:"14px", cursor:"pointer"}}>
+                     <Typography color={inventory==='100' && 'primary'}>
+                     کل موجودی 
+
+                     </Typography>
                </Box>
             </Box>
-           </Box>
           <Box>
-            <Box className="bg-light" sx={{borderRadius:"14px",p:"2%",mt:"3%"}}>
+            <Box className="backgroundClr" sx={{borderRadius:"14px",p:"16px"}}>
                 {listsdataID.map((item, idx) => (
-                    <div className='d-flex justify-content-between info-list' key={idx}>
+                    <div className='d-flex justify-content-between' key={idx} style={{marginTop:"8px"}}>
                     <Typography variant="p" component="div" sx={{fontSize : "14px"}}>
                         {item.name}
                     </Typography>
@@ -175,7 +197,7 @@ export default function AccountDesposit({open,close,sizewidth}) {
         
 
         </DialogContent>
-        <DialogActions sx={{p:"2%"}}>
+        <DialogActions>
                 <Button variant="contained" sx={subbtnstyle} fullWidth>
                     ثبت درخواست برداشت
                 </Button>
