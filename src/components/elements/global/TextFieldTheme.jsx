@@ -33,6 +33,7 @@ const  textTheme = createTheme({
               "& fieldset": {
                 border: "1px solid #cbe4eb",
                 borderRadius:"8px",
+                fontSize:'84px',
               },
           },
         }
@@ -58,16 +59,8 @@ const  textTheme = createTheme({
           }
         }
       },
-      MuiStepIcon:{
-        styleOverrides: {
-          root: {
-              '& .MuiStepIcon-text':{
-                color:"#000"
-              }
-          }
-        }
-      }
-      }
+     
+    }
   });
 
 export default textTheme;  

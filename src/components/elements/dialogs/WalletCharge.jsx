@@ -15,6 +15,8 @@ import {WalletOutlined} from '@mui/icons-material';
 import { CheckCircle,RadioButtonUnchecked } from '@mui/icons-material';
 import CardID from '../global/CardID';
 import CardsBank from '../global/CardsBank';
+import inputFontSize from '../global/inputFontSize';
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />;
 });
@@ -39,7 +41,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: '20px',
+              right: 10,
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -77,7 +79,7 @@ BootstrapDialogTitle.propTypes = {
 
 
 const subbtnstyle={
-  fontSize:"16px", backgroundColor: "#424BFB", height: "55px",borderRadius:'8px'
+  fontSize:"16px", height: "55px",borderRadius:'8px'
 }
 const btnbg={
   backgroundColor:"#eef1ff",
@@ -123,14 +125,14 @@ export default function WalletCharge({open,close,sizewidth}) {
         open={open}
         TransitionComponent={Transition}
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom dialog-title-container boldfont-dialog">
              شارژ کیف پول تومانی
         </BootstrapDialogTitle>
         
         <DialogContent className='mycontainer'>
                 <div className='titlemini'>
                   <Box className="border-right-marginboldblue titlemindialog">
-                    <Typography variant="p" component="div" fontSize="13px">
+                    <Typography variant="p" component="div">
                     روش شارژ کیف پول 
                     </Typography>
                   </Box>
@@ -144,7 +146,7 @@ export default function WalletCharge({open,close,sizewidth}) {
                     <ListItemText primaryTypographyProps={payment==='bank'?{color:"#424BFB",fontSize:"15px"}:{color:"#5f5f62",fontSize:"15px"}}   
                      primary={
                         <div className="d-flex mt-3">
-                        <WalletOutlined/>
+                         <WalletOutlined sx={{mr:"12px"}}/>
                          <p>واریز از طریق درگاه بانکی</p>
                         </div>
                     }/>
@@ -156,11 +158,16 @@ export default function WalletCharge({open,close,sizewidth}) {
                     <ListItemText primaryTypographyProps={payment==='id'?{color:"#424BFB",fontSize:"15px"}:{color:"#5f5f62",fontSize:"15px"}}   
                      primary={
                         <div className="d-flex mt-3">
-                        <WalletOutlined/>
+                        <WalletOutlined sx={{mr:"12px"}}/>
                          <p>پرداخت با شناسه</p>
                         </div>
                     }/>
-                    <ListItemText primaryTypographyProps={payment==='id'?{color:"#424BFB",fontSize:"11px"}:{color:"#5f5f62",fontSize:"11px"}}  
+                    <ListItemText 
+                        primaryTypographyProps={
+                          payment==='id'
+                          ?{color:"#424BFB",fontSize:"11px",textAlign:'right',mr:'10px'}
+                          :{color:"#5f5f62",fontSize:"11px",textAlign:'right',mr:'10px'}
+                        }  
                         primary="مناسب واریز بالای 50 میلیون تومان"/>     
                </ListItem>
             </List>
@@ -170,7 +177,7 @@ export default function WalletCharge({open,close,sizewidth}) {
             <Box>
                 <div className='titlemini'>
                   <Box className="border-right-marginboldblue titlemindialog">
-                    <Typography variant="p" component="div" fontSize="13px">
+                    <Typography variant="p" component="div">
                     انتخاب کارت بانکی برای پرداخت
                     </Typography>
                   </Box>
@@ -195,20 +202,21 @@ export default function WalletCharge({open,close,sizewidth}) {
                     <InputAdornment position="end">تومان</InputAdornment>
                   </Box>
                 ),
+                style:inputFontSize,
               }}
             />
             </Box>
             <Box className="d-flex overflow-auto" sx={{mb:"10px",pb:"14px"}}>
                <Box className="d-flex justify-content-center align-items-center"
                   sx={price==='5'?boxselected:boxunselected} onClick={()=>setprice('5')} 
-                  style={{fontSize:"14px", cursor:"pointer"}}>
+                  style={{fontSize:"13px", cursor:"pointer"}}>
                      <Typography color={price==='5' && 'primary'}>
                      5,000,000 تومان
                       </Typography>
                </Box>
                <Box className="d-flex justify-content-center align-items-center"
                   sx={price==='10'?boxselected:boxunselected} onClick={()=>setprice('10')} 
-                  style={{fontSize:"14px", cursor:"pointer",marginInline:"16px"}}
+                  style={{fontSize:"13px", cursor:"pointer",marginInline:"16px"}}
                   >
                     <Typography color={price==='10' && 'primary'}>
                     10,000,000 تومان 
@@ -217,7 +225,7 @@ export default function WalletCharge({open,close,sizewidth}) {
                </Box>
                <Box className="d-flex justify-content-center align-items-center"
                   sx={price==='25'?boxselected:boxunselected} onClick={()=>setprice('25')} 
-                  style={{fontSize:"14px", cursor:"pointer"}}>
+                  style={{fontSize:"12px", cursor:"pointer"}}>
                   <Typography color={price==='25' && 'primary'}>
                   25,000,000 تومان                 
                   </Typography>

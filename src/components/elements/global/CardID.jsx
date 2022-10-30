@@ -12,13 +12,13 @@ export default function CardID() {
   return (
     <TableContainer sx={{border:"1px solid #cbe4eb",borderRadius:"8px"}}>
       <Table >
-        <TableRow sx={rowstyle}>
+        <TableRow>
           <TableCell sx={borderstyle}>
             <Typography variant="p" component="div">
                 مبدا        
             </Typography>
           </TableCell>
-          <TableCell sx={borderstyle} className="d-flex justify-content-between">
+          <TableCell sx={{borderBottom:"1px solid #cbe4eb"}} className="d-flex justify-content-between">
               <Typography variant="p" component="div">
                 حسین اسدزاده
               </Typography>
@@ -27,13 +27,13 @@ export default function CardID() {
               </Typography>
           </TableCell>
         </TableRow>
-        <TableRow sx={rowstyle}>
-          <TableCell sx={borderstyle}>
+        <TableRow>
+          <TableCell sx={{borderRight:"1px solid #cbe4eb"}}>
             <Typography variant="p" component="div">
               مقصد        
             </Typography>
           </TableCell>
-          <TableCell sx={borderstyle}>
+          <TableCell >
                 <Box className='d-flex justify-content-between'>
                   <Typography variant="p" component="div">
                       حسین اسدزاده
@@ -43,13 +43,13 @@ export default function CardID() {
                     </Typography>
                     </Box>
                     <Box className='d-flex justify-content-between'>
-                      <Box className="d-flex" sx={{py:"3%"}}>
+                      <Box className="d-flex" sx={{pt:"3%"}}>
                       <Typography variant="p" component="div" sx={{color:'#1ed184',fontSize:'12px',mt:'3px'}}>
                           شناسه واریز
                       </Typography>
-                      <InfoOutlined fontSize='small' sx={{color:"#1ed184"}}/>
+                      <InfoOutlined fontSize='small' sx={{color:"#1ed184",ml:"8px"}}/>
                       </Box>
-                      <Box sx={{py:"3%"}}>
+                      <Box sx={{pt:"3%"}}>
                       <Typography variant="p" component="div" style={{color:'#1ed184',fontSize:'12px'}}>
                         9900082134458828
                       </Typography>
@@ -60,5 +60,6 @@ export default function CardID() {
         </TableRow>
        </Table>
       </TableContainer>
-  )
+
+    )
 }

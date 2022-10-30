@@ -43,9 +43,6 @@ const stepstyle={
   '& .MuiStepLabel-root .Mui-active': {
     color: '#424BFB', // circle color (ACTIVE)
   },
-  '& .MuiStepLabel-root .Mui-disabled': {
-    color: '#000', // circle color (ACTIVE)
-  },
   '& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel': {
       color: '#424BFB', // Just text label (ACTIVE)
     },

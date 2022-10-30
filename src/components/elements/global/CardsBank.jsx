@@ -60,7 +60,7 @@ export default function CardsBank() {
   return (
     <Box sx={cardstyle} className="full-border">
          <List>
-            <Box onClick={handleArrow} className="bordertop d-flex justify-content-between" sx={{cursor:"pointer",pt:2,px:"16px"}}>
+            <Box onClick={handleArrow} className="d-flex justify-content-between" sx={{cursor:"pointer",pt:2,px:"16px"}}>
                 <div className="d-flex">
                 <Svg Component={Saman} style={{marginTop:"2px"}}/>
                 <ListItemText primary="بانک سامان" sx={{ml:'16px'}}/>

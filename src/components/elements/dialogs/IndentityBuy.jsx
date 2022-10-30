@@ -36,7 +36,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: '20px',
+              right: 10,
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -87,7 +87,7 @@ export default function IndentityBuy({open,close}) {
         open={open}
         TransitionComponent={Transition}
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom boldfont-dialog dialog-title-container ">
            پرداخت با شناسه       
          </BootstrapDialogTitle>
         <DialogContent sx={{width:"100%"}} className='mycontainer'>

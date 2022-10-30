@@ -18,10 +18,7 @@ export default function Navbar({ isSide, LoadSide, LoadMobile}) {
     pt: "5px"
   }
   const menistyle={
-    mt: "10px", borderRadius: "8px", width: "165px", cursor: "pointer" ,
-    display:{
-      xs:'none',md:"block",lg:"block",xl:"block",
-    }
+    mt: "4px", borderRadius: "8px", width: "165px", cursor: "pointer" ,
   }
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -38,26 +35,11 @@ export default function Navbar({ isSide, LoadSide, LoadMobile}) {
     navigate('/login')
   }
 
-  const showMenuIcon=()=>{
-    if(window.innerWidth < 993 && window.innerWidth > 768){
-       setIsmobilemenu(false);
-    }else{
-      setIsmobilemenu(true);
-    }
-  }
-  React.useEffect(()=>{
-    showMenuIcon()
-    window.addEventListener('resize',showMenuIcon,false);
-
-  },[ismoblemenu]);
-
-
   return (
     <Box sx={{ flexGrow: 1, direction: 'ltr', width: '100%' }}>
       <AppBar position='fixed' elevation={0} sx={appbarstyle}>
         <Toolbar>
-          {ismoblemenu?
-             <div className="d-lg-none"> 
+             <div className="mobile-icon"> 
               <IconButton
               size="large"
               edge="start"
@@ -69,16 +51,18 @@ export default function Navbar({ isSide, LoadSide, LoadMobile}) {
               <MenuIcon  fontSize="large" />
             </IconButton>
             </div>
-            :<IconButton
+            <div className='menu-icon'>
+            <IconButton
               size="large"
               edge="start"
               aria-label="menu"
               color="primary"
-              sx={{ mr: 2,display:{xs:'none',md:"block",lg:"none",xl:"none"} }}
+              sx={{ mr: 2}}
               onClick={LoadSide}
             >
               {isSide ? <Close fontSize="medium"  /> : <MenuIcon fontSize="medium"/>}
-            </IconButton>}
+            </IconButton>
+            </div>
           <Typography component={Link} to='/' sx={{ flexGrow: 1 }} className="textcenter">
             <Svg Component={LOGO} className="logosize"/>
           </Typography>
@@ -87,7 +71,7 @@ export default function Navbar({ isSide, LoadSide, LoadMobile}) {
               <Svg Component={Notify} />
             </Badge>
           </Box>
-            <Box className='text-dark mx-1' onClick={handleClick} sx={menistyle}>
+            <Box className=' d-lg-block d-md-block d-sm-none d-none text-dark mx-1' onClick={handleClick} sx={menistyle}>
               <Box className="d-flex justify-content-between" >
                 <Box sx={{ mr: "7px" }} className=" d-flex align-items-center">
                   <Svg Component={USER} />
@@ -98,7 +82,7 @@ export default function Navbar({ isSide, LoadSide, LoadMobile}) {
                 <ExpandMore style={{ color: "#a4a6b4", marginTop: "7px" }} />
               </Box>
             </Box>
-          <div className='d-lg-none d-md-none d-flex  align-items-center mt-2' >
+          <div className='d-lg-none d-md-none d-sm-block d-block d-flex  align-items-center mt-2' >
             <IconButton size="small" onClick={goLogin}><Svg Component={USER} /></IconButton>
           </div>
           <Menu

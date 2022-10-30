@@ -2,6 +2,7 @@ import React from 'react'
 import { TextField,InputAdornment ,MenuItem,Box,Select,ListItem,ListItemText} from '@mui/material';
 import {Search} from '@mui/icons-material'
 import Svg from '../../utils/Svgs';
+import inputFontSize from './inputFontSize';
 
 const tetstyle={
   pt:"3px",height: "30px", width: "30px",
@@ -83,7 +84,8 @@ export default function DigiSelect({options}) {
                   </InputAdornment>
                 ),
                 style:{
-                  direction:"rtl"
+                  direction:"rtl",
+                  fontSize:inputFontSize
                 }
               }}
             />}

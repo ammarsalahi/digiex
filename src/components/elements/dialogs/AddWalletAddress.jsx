@@ -14,6 +14,7 @@ import {  Box ,Checkbox, FormControlLabel, FormGroup, FormLabel, TextField} from
 import Svg from '../../utils/Svgs';
 import { CheckCircle,RadioButtonUnchecked } from '@mui/icons-material';
 import DigiSelect from '../global/DigiSelect';
+import inputFontSize from '../global/inputFontSize';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />;
@@ -40,7 +41,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: '20px',
+              right: 10,
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -96,7 +97,7 @@ export default function AddWalletAddress({open,close,options}) {
         open={open}
         TransitionComponent={Transition}
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom boldfont">
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom boldfont-dialog dialog-title-container ">
             افزودن آدرس کیف پول
         </BootstrapDialogTitle>
         <DialogContent sx={{width:"100%"}} className='mycontainer' >
@@ -107,14 +108,17 @@ export default function AddWalletAddress({open,close,options}) {
              fullWidth
              sx={textfieldstyle}
              placeholder='wallet1'
+             inputProps={{
+              style:inputFontSize
+             }}
             />
            </FormGroup>
-           <FormGroup sx={{pb:"24px"}}>
+           <FormGroup sx={{mb:"24px"}}>
             <DigiSelect options={options} />           
            </FormGroup>
             <div className='titlemini'>
               <Box className="border-right-marginboldblue titlemindialog">
-              <Typography variant="p" component="div" fontSize="13px">
+              <Typography variant="p" component="div">
                 انتخاب شبکه پرداخت           
               </Typography>
               </Box>

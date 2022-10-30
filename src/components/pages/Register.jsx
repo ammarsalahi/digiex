@@ -6,19 +6,18 @@ import { ArrowBackIos } from '@mui/icons-material'
 export default function Register() {
    let navigate=useNavigate();
    const labelStyle={
-    fontSize:"13px"
+    fontSize:"14px"
    }
    const textfieldstyle={
-    pt:"12px",
-    height:"56px",
-    fontSize:"13px",
+    mb:"24px",
+    fontSize:"14px",
+
    }
   return (
     <SignLayout>
-       
         <Box>
-            <Box className="d-flex justify-content-between" sx={{pb:"32px",pt:"27px",px:"6%"}}>
-                <Typography variant="h5" component="div" sx={{fontSize:"20px"}}>
+            <Box className="d-flex justify-content-between" sx={{mb:"32px"}}>
+                <Typography variant="h5" component="div" className='boldfont' sx={{fontSize:"20px"}}>
                 ثبت نام
                 </Typography>
                 <Button onClick={()=> navigate('/login')} className='boxShadowUnset' size="small" endIcon={<ArrowBackIos/>}>
@@ -27,7 +26,7 @@ export default function Register() {
             </Box>
          
           <form>
-             <FormGroup sx={{mb:"35px",px:"6%",fontSize:"12px"}}>
+             <FormGroup>
                <FormLabel sx={labelStyle}>شماره موبایل</FormLabel>
                <TextField
                  variant="outlined"
@@ -38,8 +37,8 @@ export default function Register() {
                  inputProps={{ maxLength: 11,disableUnderline: true }}
                />
              </FormGroup>
-             <Box className="row" sx={{px:"6%"}}>
-             <FormGroup sx={{mb:"35px"}} className="col-lg-6 col-12">
+             <Box className="row">
+             <FormGroup className="col-lg-6 col-12">
                <FormLabel sx={labelStyle}>نام</FormLabel>
                <TextField
                  variant="outlined"
@@ -48,7 +47,7 @@ export default function Register() {
                  sx={textfieldstyle}
                />
              </FormGroup>
-             <FormGroup sx={{mb:"35px"}} className="col-lg-6 col-12">
+             <FormGroup className="col-lg-6 col-12">
                <FormLabel sx={labelStyle}>نام خانوادگی</FormLabel>
                <TextField
                  variant="outlined"
@@ -58,7 +57,7 @@ export default function Register() {
                />
              </FormGroup>
              </Box>
-             <FormGroup sx={{mb:"30px",px:"6%"}}>
+             <FormGroup>
                <FormLabel sx={labelStyle}>کد معرف</FormLabel>
                <TextField
                  variant="outlined"
@@ -67,7 +66,7 @@ export default function Register() {
                  sx={textfieldstyle}
                />
              </FormGroup>
-             <Box sx={{px:"6%",pb:"20px"}}>
+             <Box>
              <Button variant="contained" className='boxShadowUnset' sx={{height:"55px" ,backgroundColor:"#424BFB"}}  fullWidth>
                   ثبت نام
              </Button>

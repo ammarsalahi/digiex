@@ -16,6 +16,8 @@ import DigiSelect from '../global/DigiSelect';
 import {ReactComponent as qrcode} from '../../../img/icons/qr.svg';
 import {ReactComponent as copyicon} from '../../../img/icons/copy-clipboard.svg';
 import Svg from '../../utils/Svgs';
+import inputFontSize from '../global/inputFontSize';
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />;
@@ -42,7 +44,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: '20px',
+              right: 10,
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -86,7 +88,7 @@ const walletboxstyle={
 }
 
 const subbtnstyle={
-  fontSize:"16px", backgroundColor: "#424BFB", height: "55px",borderRadius:'8px'
+  fontSize:"16px", height: "55px",borderRadius:'8px'
 }
 export default function WalletDesposit({open,close,options,sizewidth}) {
 
@@ -108,7 +110,7 @@ export default function WalletDesposit({open,close,options,sizewidth}) {
         open={open}
         TransitionComponent={Transition}
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom boldfont-dialog dialog-title-container">
          واریز ارز به کیف پول
         </BootstrapDialogTitle>
         
@@ -116,7 +118,7 @@ export default function WalletDesposit({open,close,options,sizewidth}) {
         
          <div className='titlemini'>
             <Box className="border-right-marginboldblue titlemindialog">
-            <Typography variant="p" component="div" fontSize="13px">
+            <Typography variant="p" component="div">
                انتخاب  ارز   
             </Typography>
           </Box>
@@ -126,7 +128,7 @@ export default function WalletDesposit({open,close,options,sizewidth}) {
         </Box>
           <div className='titlemini'>
             <Box className="border-right-marginboldblue titlemindialog">
-            <Typography variant="p" component="div" fontSize="13px">
+            <Typography variant="p" component="div">
             انتخاب شبکه پرداخت
             </Typography>
             </Box>
@@ -163,7 +165,7 @@ export default function WalletDesposit({open,close,options,sizewidth}) {
          </Box>
          <div className='titlemini'>
             <Box className="border-right-marginboldblue titlemindialog">
-            <Typography variant="p" component="div" fontSize="13px">
+            <Typography variant="p" component="div" >
             مقدار 250تتر به آدرس ولت زیر ارسال کنید
             </Typography>
           </Box>
@@ -192,6 +194,9 @@ export default function WalletDesposit({open,close,options,sizewidth}) {
                   borderRadius:"8px"
                 }
 
+              }}
+              InputProps={{
+                  style:inputFontSize,
               }}
             />
          </FormGroup>         

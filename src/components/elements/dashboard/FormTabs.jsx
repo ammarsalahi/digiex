@@ -7,6 +7,7 @@ import BankLimit from '../dialogs/BankLimit';
 import DigiSelect from '../global/DigiSelect';
 import BuyStepTwo from '../dialogs/BuyStepTwo';
 import ShopStep from '../dialogs/ShopStep';
+import inputFontSize from '../global/inputFontSize';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -59,7 +60,7 @@ const minibtnstyle={
 }
 
 const btnstyle={
-  fontSize: "14", height: "56px",borderRadius:"8px",
+  fontSize: "14px", height: "56px",borderRadius:"8px",
 }
 
 
@@ -147,11 +148,11 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
       <Box sx={{ borderBottom: 0, borderColor: 'divider', paddingBlock: .85 }}>
         <Tabs value={tabvalue} onChange={handleChange} fontSize="large" aria-label="basic tabs example"
           TabIndicatorProps={{
-            style: tabvalue===0?{ background: "#f2b107", height: 3 }:{ background: "#de07f2", height: 3 }
+            style:{ background: "#f2b107", height: 3 }
           }}
         >
           <Tab label={<span className={tabvalue === 0 ? "tab-color" : ""}>خرید‌ از‌ ما </span>} {...a11yProps(0)} />
-          <Tab label={<span className={tabvalue === 1 ? "tab-color2" : ""}>فروش به ما </span>} {...a11yProps(1)} />
+          <Tab label={<span className={tabvalue === 1 ? "tab-color" : ""}>فروش به ما </span>} {...a11yProps(1)} />
         </Tabs>
       </Box>
       <TabPanel value={tabvalue} index={0}>
@@ -159,14 +160,15 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
           <Box className="pt-3" sx={formbtnstyle}>
               <DigiSelect options={options}/>
           </Box>
-          <FormGroup sx={formbtnstyle}>
-            <FormLabel>مبلغ خرید(تومان)</FormLabel>
+          <FormGroup sx={formbtnstyle} >
+            <FormLabel className="inputfont">مبلغ خرید(تومان)</FormLabel>
             <TextField color="digi" type="number"
              fullWidth placeholder='0.00'
              InputProps={{
               endAdornment:( 
                   <InputAdornment position="end">تومان</InputAdornment>
               ),
+              style:inputFontSize,
             }}
              />
               <Box className="d-flex justify-content-between align-items-center" sx={{py:"12px"}}>
@@ -181,13 +183,14 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
             
            </FormGroup>
           <FormGroup sx={formbtnstyle}>
-            <FormLabel>تعداد بایننس کوین</FormLabel>
+            <FormLabel className="inputfont">تعداد بایننس کوین</FormLabel>
             <TextField color="digi" 
               fullWidth variant='outlined' type="number"  placeholder='0.00'
               InputProps={{
                 endAdornment:( 
                   <InputAdornment position="end">BUSD</InputAdornment>
                 ),
+                style:inputFontSize,
               }}
             />
             <Box className="d-flex justify-content-between align-items-center" sx={{py:"12px"}}>
@@ -212,13 +215,14 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
             <DigiSelect options={options}/>
           </FormGroup>
           <FormGroup sx={formbtnstyle}>
-            <FormLabel>مبلغ فروش(تومان)</FormLabel>
+            <FormLabel className="inputfont">مبلغ فروش(تومان)</FormLabel>
             <TextField color="digi" type="number"
               fullWidth placeholder='0.00'
                InputProps={{
                 endAdornment:( 
                     <InputAdornment position="end">تومان</InputAdornment>
                 ),
+                style:inputFontSize,
                }}
              
             />
@@ -233,13 +237,14 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
               </Box>
           </FormGroup>
           <FormGroup sx={formbtnstyle}>
-            <FormLabel>تعداد بایننس کوین</FormLabel>
+            <FormLabel className="inputfont">تعداد بایننس کوین</FormLabel>
             <TextField color="digi" type="number"
               fullWidth placeholder='0.00'
               InputProps={{
                 endAdornment:( 
                   <InputAdornment position="end">BUSD</InputAdornment>
                 ),
+                style:inputFontSize,
               }}
             />
             <Box className="d-flex justify-content-between align-items-center" sx={{py:"12px"}}>

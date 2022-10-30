@@ -189,6 +189,7 @@ div.boxdate:hover {
 
 .MuiFormControlLabel-root .MuiFormControlLabel-label {
   margin-top: 4px;
+  font-size: 14px;
 }
 
 .MuiList-root{
@@ -198,6 +199,9 @@ div.boxdate:hover {
 
 .titlemindialog{
   padding-right: 12px;
+  font-size: 14 !important;
+  font-family: "PeydaWebBold" !important;
+  font-weight: bold !important;
 }
 
 .titlemini{
@@ -205,4 +209,19 @@ div.boxdate:hover {
 }
 .MuiFormLabel-root{
   margin-bottom: 12px;
+}
+
+
+.boldfont-dialog{
+  font-family: "PeydaWebBold" !important;
+  font-weight: normal !important;
+  font-size: 16px !important;
+
+}
+.dialog-title-container{
+  padding-inline: 24px!important;
+}
+
+.inputfont{
+  font-size: 14px !important;
 }

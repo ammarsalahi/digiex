@@ -9,7 +9,7 @@ export default function PrivateRoute({children}) {
   const [auth, setauth] = React.useState(true);
   const [isSide, setisSide] = React.useState(false);
   const [colClass, setcolClass] = React.useState("");
-  const [isSideClick,setisSideClick]=React.useState(true);
+  const [isSideClick,setisSideClick]=React.useState(false);
   const [isMobile,setIsMobile]=React.useState(false);
   const LoadNavMobile=(event)=>{
     setIsMobile(true);
@@ -19,15 +19,19 @@ export default function PrivateRoute({children}) {
   }
   
   const loadingSideScreen=()=>{
-    if(window.innerWidth>992){
+    if(window.innerWidth>993){
       setisSide(true);
       setcolClass("col-lg-9 col-md-7");
   }
   else{
     if(isSideClick){
-      setisSide(isSide);
-      setcolClass(colClass);
-    } 
+      setisSide(true);
+      setcolClass("col-lg-9 col-md-7");
+    }else{
+      setisSide(false);
+      setcolClass('');
+    }
+      
   }
   }
    React.useEffect(() => {
@@ -36,14 +40,16 @@ export default function PrivateRoute({children}) {
    }, [isSide,colClass]);
   
   const LoadSideDesk = (event) => {
-    setisSideClick(false);
     if (isSide) {
       setcolClass("");
       setisSide(false);
+      setisSideClick(false)
     }
     else {
       setcolClass("col-lg-9 col-md-7");
       setisSide(true)
+      setisSideClick(true)
+
     }
   }
   return (auth?

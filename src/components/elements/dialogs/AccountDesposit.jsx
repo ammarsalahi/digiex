@@ -40,7 +40,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: '20px',
+              right: 10,
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -115,14 +115,14 @@ export default function AccountDesposit({open,close,sizewidth}) {
         open={open}
         TransitionComponent={Transition}
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom boldfont-dialog dialog-title-container ">
               برداشت وجه از حساب
         </BootstrapDialogTitle>
         
         <DialogContent className='mycontainer'>
           <div className='titlemini'>
             <Box className="border-right-marginboldblue titlemindialog">
-            <Typography variant="p" component="div" fontSize="13px">
+            <Typography variant="p" component="div">
                   انتخاب حساب بانکی
             </Typography>
           </Box>
@@ -133,7 +133,7 @@ export default function AccountDesposit({open,close,sizewidth}) {
              </Box>
 
          <Box sx={{mb:"24px"}}>
-            <FormLabel sx={{color:"#000"}}>
+            <FormLabel className="inputfont" sx={{color:"#000"}}>
               مبلغ (تومان)
             </FormLabel>
             <TextField 

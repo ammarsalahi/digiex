@@ -1,15 +1,13 @@
 import React from 'react'
 import { Box, Typography ,FormGroup,FormLabel,TextField,Button} from '@mui/material'
-
+import inputFontSize from '../global/inputFontSize'
 
 const labelStyle={
   fontSize:"13px"
  }
 
 const textfieldstyle={
- pt:"12px",
- fontSize:"16px",
- textAlign:"center"
+ mb:"24px",
 }
 
 export default function MobileNumberPage({send}) {
@@ -40,7 +38,7 @@ export default function MobileNumberPage({send}) {
           ورود | ثبت نام
           </Typography>
           <form>
-             <FormGroup sx={{my:"32px"}}>
+             <FormGroup sx={{mt:"32px"}}>
                <FormLabel sx={labelStyle}>شماره موبایل</FormLabel>
                <TextField
                  color="digi"
@@ -51,7 +49,7 @@ export default function MobileNumberPage({send}) {
                  value={phone}
                  onChange={handlePhone}
                  helperText={errortext}
-                 inputProps={{disableUnderline: true}}
+                 inputProps={{disableUnderline: true,style:inputFontSize}}
                />
              </FormGroup>
              <Box>

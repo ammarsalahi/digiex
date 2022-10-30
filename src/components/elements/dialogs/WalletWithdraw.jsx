@@ -13,6 +13,7 @@ import Slide from '@mui/material/Slide';
 import {  Box ,FormGroup,FormLabel,InputAdornment,TextField} from '@mui/material'
 import DigiSelect from '../global/DigiSelect';
 import CardWallet from '../global/CardWallet';
+import inputFontSize from '../global/inputFontSize';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />;
@@ -38,7 +39,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: '20px',
+              right: 10,
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -67,7 +68,7 @@ BootstrapDialogTitle.propTypes = {
     paddingLeft:4,
   }
 const subbtnstyle={
-  fontSize:"16px", backgroundColor: "#424BFB", height: "55px",borderRadius:"8px"
+  fontSize:"16px", height: "55px",borderRadius:"8px"
 }
 export default function WalletWithdraw({open,close,options,sizewidth}) {
 
@@ -88,14 +89,14 @@ export default function WalletWithdraw({open,close,options,sizewidth}) {
         open={open}
         TransitionComponent={Transition}
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom">
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom boldfont-dialog dialog-title-container">
            برداشت ارز از  کیف پول
         </BootstrapDialogTitle>
         
         <DialogContent className='mycontainer'>
         
         <Box className="border-right-marginboldblue titlemindialog">
-           <Typography variant="p" component="div" fontSize="13px">
+           <Typography variant="p" component="div">
                 انتخاب  ارز
            </Typography>
          </Box>
@@ -103,7 +104,7 @@ export default function WalletWithdraw({open,close,options,sizewidth}) {
             <DigiSelect options={options}/>
         </Box>
          <Box className="border-right-marginboldblue">
-           <Typography variant="p" component="div" fontSize="13px">
+           <Typography variant="p" component="div" >
                 انتخاب آدرس کیف پول
            </Typography>
          </Box>
@@ -124,6 +125,7 @@ export default function WalletWithdraw({open,close,options,sizewidth}) {
                       <InputAdornment position="end">BUSD</InputAdornment>
                   </Box>
                 ),
+                style:inputFontSize,
               }}
               
             />

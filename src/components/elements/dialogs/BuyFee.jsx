@@ -38,7 +38,7 @@ const BootstrapDialogTitle = (props) => {
           onClick={onClose}
           sx={{
             position: 'absolute',
-            right: '20px',
+            right: 10,
             top: 8,
             color: (theme) => theme.palette.grey[500],
           }}
@@ -94,7 +94,7 @@ export default function BuyFee({ open, close, optionsdata,sizewidth }) {
     open={open}
     TransitionComponent={Transition}
     >
-      <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom px-32" sx={{ fontSize: "14px",fontWeight:"bold" }}>
+      <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom boldfont-dialog dialog-title-container ">
         کارمزد ارسال و دریافت
       </BootstrapDialogTitle>
       <DialogContent className='mycontainer'>

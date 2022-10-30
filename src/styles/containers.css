@@ -62,7 +62,7 @@
         padding-bottom: 24px !important;
     }
     .list-cnt{
-        padding-right: 10px !important;
+        padding-right: 20px !important;
         padding-left: 35px !important;
     }
     .table-cnt{
@@ -112,7 +112,7 @@
 
 .copyright{
     position: absolute;
-    bottom: 32px;
+    bottom: 25px;
     height: 28px;
     width: auto;
     font-size: 16px;
@@ -121,3 +121,7 @@
     align-items: center;
 }
 
+.table-bordering{
+    border-color: #cbe4eb;
+    border-radius: 8px !important;
+}

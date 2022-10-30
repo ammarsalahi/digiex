@@ -14,8 +14,8 @@ export default function StepTwo({onNext}) {
             قبول قوانین
         </Typography>
        </Box>
-       <Box sx={{py:"32px",fontSize:"14px"}}>
-        <Typography variant="p" component="div" sx={{lineHeight:"28px"}}>
+       <Box sx={{py:"32px"}}>
+        <Typography variant="p" component="div" sx={{lineHeight:"27px",fontSize:14}}>
         صرافی آنلاین دیجیکس ۲۴، مرجعی برای خرید تتر و فروش تتر ، خرید بیت کوین و فروش بیت کوین و خرید ارز دیجیتال با دلار میباشد و بستری امن را برای شما ایجاد نموده تا در سریع ترین زمان و بهترین قیمت، اقدام به خرید و فروش ارز دیجیتال نمایید. صرافی آنلاین دیجیکس ۲۴، مرجعی برای خرید تتر و فروش تتر ، خرید بیت کوین و فروش بیت کوین و خرید ارز دیجیتال با دلار میباشد و بستری امن را برای شما ایجاد نموده تا در سریع ترین زمان و بهترین قیمت، اقدام به خرید و فروش ارز دیجیتال نمایید.
         </Typography>
         <FormGroup sx={{py:"32px",px:"4px"}}>
@@ -40,7 +40,7 @@ export default function StepTwo({onNext}) {
             <Button 
                  fullWidth
                  variant="contained" 
-                 sx={{ fontSize: 14, backgroundColor: "#424BFB", height: "55px",mt:"10%",borderRadius:"8px"}}
+                 sx={{ fontSize: 14, height: "55px",mt:"10%",borderRadius:"8px"}}
                 onClick={onNext}  
             >
             قبول قوانین و مرحله بعد            

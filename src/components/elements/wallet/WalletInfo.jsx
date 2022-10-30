@@ -118,14 +118,14 @@ export default function WalletInfo({ infos,options }) {
               <IconButton 
                 sx={{ border: "1px solid #fff", borderRadius: '8px', ml:1,color: "#fff" }} 
                 fontSize="large"
-                onClick={handleOpen('deposit')}
+                onClick={handleOpen('charge')}
               >
                 <SouthWest />
               </IconButton>
               <IconButton 
                 sx={{ border: "1px dashed #fff", borderRadius: '8px', ml: 1, color: "#fff" }} 
                 fontSize="large"
-                onClick={handleOpen('charge')}
+                onClick={handleOpen('hh')}
               >
                 <Add />
               </IconButton>

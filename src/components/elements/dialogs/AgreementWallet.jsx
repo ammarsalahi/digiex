@@ -10,6 +10,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Slide from '@mui/material/Slide';
 import {  Box ,FormGroup, TextField} from '@mui/material';
+import inputFontSize from '../global/inputFontSize';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />;
@@ -36,7 +37,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: '20px',
+              right: 10,
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -60,8 +61,6 @@ export default function AgreementWallet({open,close}) {
 
   const textfieldstyle={
     mt:"12px",
-    fontSize:"13px",
-    mx:"2%",
     '& :focus':{
       backgroundColor:"#eef1ff",
       borderRadius:"8px"
@@ -89,7 +88,7 @@ export default function AgreementWallet({open,close}) {
         open={open}
         TransitionComponent={Transition}
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom boldfont">
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom boldfont-dialog dialog-title-container ">
         تایید برداشت از کیف پول تومانی
          </BootstrapDialogTitle>
         <DialogContent sx={{width:"520px"}} className='mycontainer'>
@@ -100,7 +99,7 @@ export default function AgreementWallet({open,close}) {
           
             <div className='titlemini'>
               <Box className="border-right-marginboldblue titlemindialog">
-                <Typography variant="p" component="div" fontSize="13px">
+                <Typography variant="p" component="div">
                     کد 6 رقمی نموایش داده شده در گوگل آتنتیکیتور را وارد کنید 
                 </Typography>
               </Box>
@@ -121,21 +120,33 @@ export default function AgreementWallet({open,close}) {
                         color="digi"
                         variant="outlined"
                         sx={textfieldstyle}
+                        inputProps={{
+                          style:inputFontSize
+                         }}
                         />
                         <TextField
                         color="digi"
                         variant="outlined"
                         sx={textfieldstyle}
+                        inputProps={{
+                          style:inputFontSize
+                         }}
                         />
                         <TextField
                         color="digi"
                         variant="outlined"
                         sx={textfieldstyle}
+                        inputProps={{
+                          style:inputFontSize
+                         }}
                         />
                         <TextField
                         color="digi"
                         variant="outlined"
                         sx={textfieldstyle}
+                         inputProps={{
+                          style:inputFontSize
+                         }}
                         />
                </Box>
              </FormGroup>

@@ -37,7 +37,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: '20px',
+              right: 10,
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -100,7 +100,7 @@ export default function AddCardBank({open,close}) {
         open={open}
         TransitionComponent={Transition}
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom boldfont">
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom boldfont-dialog dialog-title-container">
              افزودن کارت بانکی جدید
         </BootstrapDialogTitle>
         <DialogContent  sx={{width:"100%"}} className='mycontainer'>
@@ -109,7 +109,7 @@ export default function AddCardBank({open,close}) {
             </Typography>
                 <div className='titlemini'>
                   <Box className="border-right-marginboldblue titlemindialog">
-                    <Typography variant="p" component="div" fontSize="13px">
+                    <Typography variant="p" component="div">
                        شماره کارت بانکی
                     </Typography>
                   </Box>
@@ -152,7 +152,7 @@ export default function AddCardBank({open,close}) {
 
                <div className='titlemini'>
                   <Box className="border-right-marginboldblue titlemindialog">
-                    <Typography variant="p" component="div" fontSize="13px">
+                    <Typography variant="p" component="div">
                        شماره‌شبا 
                     </Typography>
                   </Box>

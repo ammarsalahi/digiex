@@ -3,8 +3,7 @@ import { Button, FormGroup, FormLabel, Typography ,TextField,Snackbar} from '@mu
 import { Box ,InputAdornment} from '@mui/material'
 import React from 'react';
 import DigiAlert from '../global/DigiAlert';
-
-
+import inputFontSize from '../global/inputFontSize';
 
 
 export default function StepOne({onNext}) {
@@ -106,7 +105,7 @@ export default function StepOne({onNext}) {
 
   
   const textfieldstyle={
-    pt:"12px",
+    mb:"24",
   }
 
   return (
@@ -130,6 +129,9 @@ export default function StepOne({onNext}) {
                 helperText={errortext.phone}
                 value={formdata.phone}
                 onChange={handlePhone}
+                InputProps={{
+                  style:inputFontSize,
+                }}
                />
             </FormGroup>
             <FormGroup className="col-lg-3 col-12" sx={{mb:"32px"}}>
@@ -142,6 +144,9 @@ export default function StepOne({onNext}) {
                 FormHelperTextProps={{color:"red"}}
                 helperText={errortext.firstname}
                 onChange={handleChnageFormData('firstname')}
+                InputProps={{
+                  style:inputFontSize,
+                }}
                />
             </FormGroup>
             <FormGroup className="col-lg-3 col-12" sx={{mb:"32px"}}>
@@ -154,6 +159,9 @@ export default function StepOne({onNext}) {
                 FormHelperTextProps={{color:"red"}}
                 helperText={errortext.lastname}
                 onChange={handleChnageFormData('lastname')}
+                InputProps={{
+                  style:inputFontSize,
+                }}
                />
             </FormGroup>
           </Box>
@@ -168,6 +176,7 @@ export default function StepOne({onNext}) {
                 inputProps={{
                   maxLength:10,
                   disableUnderline: true,
+                  style:inputFontSize,
                 }}
                 FormHelperTextProps={{color:"#a4a6b4"}}
                 helperText={errortext.personalid}
@@ -187,6 +196,7 @@ export default function StepOne({onNext}) {
                  InputProps={{
                   disableUnderline:true,
                   endAdornment: <InputAdornment position="end"> / </InputAdornment>,
+                  style:inputFontSize,
                  }}
                   value={formdata.year}
                   onChange={handleDate('year')}
@@ -198,6 +208,7 @@ export default function StepOne({onNext}) {
                   InputProps={{
                     disableUnderline:true,
                     endAdornment: <InputAdornment position="end"> / </InputAdornment>,
+                    style:inputFontSize,
                    }} 
                     value={formdata.month}
                    onChange={handleDate('month')}
@@ -208,6 +219,7 @@ export default function StepOne({onNext}) {
                    sx={{textAlign:"center",mx:"3%"}}  
                    InputProps={{
                     disableUnderline:true,
+                    style:inputFontSize,
                    }}  
                   value={formdata.day}
                   onChange={handleDate('day')}               
@@ -223,7 +235,7 @@ export default function StepOne({onNext}) {
           <Box className="d-flex justify-content-end">
             <Button 
               variant="contained" 
-              sx={{ fontSize: 14, backgroundColor: "#424BFB", height: "55px" ,width:"183px",mt:"95px",borderRadius:'8px'}}
+              sx={{ fontSize: 14, backgroundColor: "#424BFB", height: "55px" ,width:"183px",mt:"50px",borderRadius:'8px'}}
               onClick={onNext}  
             >
               ثبت و مرحله بعد

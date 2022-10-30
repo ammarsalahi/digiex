@@ -45,7 +45,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             onClick={onClose}
             sx={{
               position: 'absolute',
-              right: '20px',
+              right: 10,
               top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
@@ -71,7 +71,7 @@ const boxunselected={
 }
 
 const subbtnstyle={
-  fontSize:"16px", backgroundColor: "#424BFB", height: "55px",borderRadius:'8px'
+  fontSize:"16px", height: "55px",borderRadius:'8px'
 }
 
 export default function BuyStepTwo({open,close,opendialogd,sizewidth}) {
@@ -94,13 +94,13 @@ export default function BuyStepTwo({open,close,opendialogd,sizewidth}) {
         open={open}
         TransitionComponent={Transition}
         >
-         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom" sx={{ fontSize: "14px" }}>
+         <BootstrapDialogTitle id="customized-dialog-title" onClose={close} className="borderbottom boldfont-dialog dialog-title-container ">
         انتخاب نحوه دریافت و شبکه      
          </BootstrapDialogTitle>
         <DialogContent className='mycontainer'>
           <div className='titlemini'>
             <Box className="border-right-marginboldblue titlemindialog">
-            <Typography variant="p" component="div" fontSize="13px">
+            <Typography variant="p" component="div" >
                  روش دریافت ارز
             </Typography>
           </Box>
@@ -138,7 +138,7 @@ export default function BuyStepTwo({open,close,opendialogd,sizewidth}) {
          </Box>
          <div className='titlemini'>
             <Box className="border-right-marginboldblue titlemindialog">
-            <Typography variant="p" component="div" fontSize="13px">
+            <Typography variant="p" component="div">
                  روش پرداخت
             </Typography>
           </Box>
@@ -192,11 +192,13 @@ export default function BuyStepTwo({open,close,opendialogd,sizewidth}) {
         
           <Box>
           {withdraw==='type2' &&<Box>
-              <Box className="border-right-marginboldblue" sx={{px:"1%",my:"2%"}}>
-                <Typography variant="p" component="div" fontSize="13px">
-                      انتخاب کارت بانکی برای پرداخت
-                </Typography>
-              </Box>
+                <div className='titlemini'>
+                  <Box className="border-right-marginboldblue titlemindialog">
+                  <Typography variant="p" component="div">
+                  انتخاب کارت بانکی برای پرداخت
+                  </Typography>
+                </Box>
+                </div>
               <CardsBank />
           </Box>
           }
@@ -205,7 +207,7 @@ export default function BuyStepTwo({open,close,opendialogd,sizewidth}) {
         
 
         </DialogContent>
-        <DialogActions sx={{px:"2%"}}>
+        <DialogActions>
           <Button variant="contained" onClick={opendialogd} sx={subbtnstyle} fullWidth>
               ثبت و پرداخت
           </Button>

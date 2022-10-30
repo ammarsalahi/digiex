@@ -13,7 +13,7 @@ export default function SecureCodePage({send}) {
     const inref =React.useRef([])
     
       const labelStyle={
-        fontSize:"13px",
+        fontSize:"14px",
         mt:"30px",
         mb:'20px'
        }

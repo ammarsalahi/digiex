@@ -4,7 +4,7 @@ import UploadButton from './UploadButton'
 
 export default function StepThree({onNext}) {
     const cardstyle={
-        border:"1px dashed #a4a6b4",
+        border:"1px dashed #cbe4eb",
         borderRadius:"8px",
         width:"440px",
         height:"322px",
@@ -22,7 +22,7 @@ export default function StepThree({onNext}) {
             بارگذاری مدارک
             </Typography>
         </Box>
-        <Box className="row d-flex justify-content-center" sx={{py:"32px"}}>
+        <Box className="row d-flex justify-content-center" sx={{my:"10px"}}>
           <Box sx={cardstyle} className="col-lg-6 col-12">
               <Box className="d-flex">
                 <Box sx={{borderRadius:"15px",width:"72px",height:"72px",backgroundColor:"rgba(236, 237, 247, 1)"}}/>
@@ -59,7 +59,7 @@ export default function StepThree({onNext}) {
                 </Box>
               
               </Box>
-              <Box className='d-flex justify-content-center ' sx={{pt:"30px",pb:"16px"}}>
+              <Box className='d-flex justify-content-center ' sx={{pt:"50px",pb:"16px"}}>
                     <UploadButton text="آپلود ویدیو"/>
               </Box>
               <Box className='d-flex justify-content-center'>
@@ -76,10 +76,10 @@ export default function StepThree({onNext}) {
            <Box className="d-flex justify-content-end" sx={{py:"2%"}}>
             <Button 
                 variant="contained" 
-                sx={{ fontSize: 14, backgroundColor: "#424BFB", height: "55px" ,width:"205px",mt:"85px",borderRadius:"8px"}}
+                sx={{ fontSize: 14, backgroundColor: "#424BFB", height: "55px" ,width:"205px",mt:"45px",borderRadius:"8px"}}
                 onClick={onNext}  
             >
-            قبول قوانین و مرحله بعد            
+            ارسال مدارک           
             </Button>
           </Box>
         </div>
@@ -91,7 +91,7 @@ export default function StepThree({onNext}) {
                  sx={{ fontSize: 14, backgroundColor: "#424BFB", height: "55px",mt:"10%",borderRadius:"8px"}}
                 onClick={onNext}  
             >
-            قبول قوانین و مرحله بعد            
+            ارسال مدارک           
             </Button>
           </Box>
         </div>

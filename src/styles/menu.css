@@ -1,4 +1,4 @@
-@media only screen and (max-width:768px){
+@media all and (min-width:0px) and (max-width:767px){
     .logosize{
         height:20px !important;
         width:auto;
@@ -10,10 +10,49 @@
         justify-content: center;
         margin-top: 4px;
     }
+    .menu-icon{
+        display: none;
+    }
+    .mobile-icon{
+        display: block;
+    }
+    
 }
-@media only screen and (min-width:768px){
+@media all and (min-width:992px){
+    .menu-icon{
+        display: none;
+    }
+    .mobile-icon{
+        display: none;
+    }
+}
+
+@media all and (min-width:768px) and (max-width:992px){
+    .menu-icon{
+        display: block;
+    }
+    .mobile-icon{
+        display: none;
+    }
     .logosize{
         height:24px !important;
         width:auto;
     }
 }
+
+@media only screen and (min-width:768px){
+    .logosize{
+        height:24px !important;
+        width:auto;
+    }
+  
+}
+@media only screen and (min-width:992px){
+    .logosize{
+        height:24px !important;
+        width:auto;
+        padding-right: 24px;
+    }
+  
+}
+

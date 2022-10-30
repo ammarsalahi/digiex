@@ -81,19 +81,11 @@ export default function AddCardBank({open,close}) {
 
 
     ]
-   React.useEffect(() => {
-    if (window.innerWidth < 768) {
-      setissmall(true)
-    }
-   else {
-    setissmall(false)
-   }
-   });
    
   return (
       <BootstrapDialog
        fullScreen
-       sx={issmall?{direction:"ltr"}:{direction:"ltr",width:"500px"}}
+        sx={{direction:'ltr'}}
         onClose={close}
         aria-labelledby="customized-dialog-title"
         open={open}
