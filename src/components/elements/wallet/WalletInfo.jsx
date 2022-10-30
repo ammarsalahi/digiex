@@ -10,17 +10,17 @@ import {ReactComponent as DownRed} from '../../../img/icons/coin/down arrow - re
 import {ReactComponent as UpGreen} from '../../../img/icons/coin/up arrow - green.svg';
 import {ReactComponent as LogoEN} from '../../../img/icons/logo-en-white.svg';
 import logoEng2 from '../../../img/logos/logoEng-2x.png';
-
-
 import WalletCharge from '../dialogs/WalletCharge';
 import WalletWithdraw from '../dialogs/WalletWithdraw';
 import WalletDesposit from '../dialogs/WalletDesposit';
 import AccountDesposit from '../dialogs/AccountDesposit'
+import AddCardBank from '../dialogs/AddCardBank';
 export default function WalletInfo({ infos,options }) {
   const [open,setOpen]=React.useState({
     charge:false,
     deposit:false,
     withdraw:false,
+    add:false
   });
   const [sizewidth, setSizewidth] = React.useState('auto');
 
@@ -125,7 +125,7 @@ export default function WalletInfo({ infos,options }) {
               <IconButton 
                 sx={{ border: "1px dashed #fff", borderRadius: '8px', ml: 1, color: "#fff" }} 
                 fontSize="large"
-                onClick={handleOpen('hh')}
+                onClick={handleOpen('add')}
               >
                 <Add />
               </IconButton>
@@ -213,10 +213,11 @@ export default function WalletInfo({ infos,options }) {
 
         </List>
       </Box>
-      <WalletCharge open={open.charge} close={handleClose('charge')} sizewidth={sizewidth}/>
+       <WalletCharge open={open.charge} close={handleClose('charge')} sizewidth={sizewidth}/> 
       <WalletDesposit open={open.deposit} close={handleClose('deposit')} options={options} sizewidth={sizewidth} />
       {/* <WalletWithdraw open={open.withdraw} close={handleClose('withdraw')} options={options} sizewidth={sizewidth}/> */}
       <AccountDesposit  open={open.withdraw} close={handleClose('withdraw')} sizewidth={sizewidth}/>
+      <AddCardBank open={open.add} close={handleClose('add')} fulling={true}  sizewidth={sizewidth} />
       </Box>
   )
 }

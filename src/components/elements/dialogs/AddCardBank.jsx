@@ -55,9 +55,9 @@ BootstrapDialogTitle.propTypes = {
   };
 
 
-export default function AddCardBank({open,close}) {
+export default function AddCardBank({open,close,fulling ,sizewidth}) {
 
-  const [issmall, setissmall] = React.useState(false);
+  const [issmall, setissmall] = React.useState(fulling);
 
   const textfieldstyle={
     fontSize:"13px",
@@ -79,12 +79,15 @@ export default function AddCardBank({open,close}) {
   }
    
   const sizeDialog=()=>{
-    if (window.innerWidth < 700) {
-      setissmall(true)
+    if(fulling==false){
+      if (window.innerWidth < 768) {
+        setissmall(true)
+      }
+     else {
+      setissmall(false)
+     }
     }
-   else {
-    setissmall(false)
-   }
+    
   }
    React.useEffect(() => {
       sizeDialog();
@@ -94,7 +97,7 @@ export default function AddCardBank({open,close}) {
   return (
       <BootstrapDialog
         fullScreen={issmall?true:false}
-        sx={{direction:"ltr"}}
+        sx={{direction:"ltr",left:0,width:sizewidth}}
         onClose={close}
         aria-labelledby="customized-dialog-title"
         open={open}
@@ -104,7 +107,7 @@ export default function AddCardBank({open,close}) {
              افزودن کارت بانکی جدید
         </BootstrapDialogTitle>
         <DialogContent  sx={{width:"100%"}} className='mycontainer'>
-            <Typography variant="p" component="div" sx={{mb:"24px",fontSize:"13px"}}>
+            <Typography variant="p" component="div" sx={{mb:"24px",fontSize:14}}>
             حتما کارت بانکی ای را ثبت کنید که به نام صاحب حساب کاربری (خودتان) باشد، در غیر اینصورت بصورت اتوماتیک رد خواهد شد.
             </Typography>
                 <div className='titlemini'>
@@ -172,13 +175,19 @@ export default function AddCardBank({open,close}) {
                       }}
                     />
                </FormGroup>
-             <Box sx={{pt:"24px"}}>
-             <Button variant="contained" sx={{ fontSize: "16px", height: "55px" ,borderRadius:"8px"}} fullWidth>
+               {fulling===false &&<Box sx={{pt:"24px"}}>
+
+           <Button variant="contained" sx={{ fontSize: "16px", height: "55px" ,borderRadius:"8px"}} fullWidth>
                 ثبت کارت بانکی جدید
              </Button>
-             </Box>
+             </Box>}
              
         </DialogContent>
+        {fulling===true && <DialogActions>
+          <Button variant="contained" sx={{ fontSize: "16px", height: "55px" ,borderRadius:"8px"}} fullWidth>
+                ثبت کارت بانکی جدید
+             </Button>
+        </DialogActions>}
       </BootstrapDialog>
   )
 }

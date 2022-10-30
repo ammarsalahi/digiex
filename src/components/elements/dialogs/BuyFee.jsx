@@ -105,7 +105,7 @@ export default function BuyFee({ open, close, optionsdata,sizewidth }) {
           <DigiSelect options={optionsdata} />
         </FormGroup>
         <Box className="d-flex justify-content-start" sx={{mb:"24px"}}>
-          <Box sx={ bep === "bep-20" ? boxselected : boxunselected} className="border-1px">
+          <Box sx={ bep === "bep-20" ? boxselected : boxunselected}>
             <FormGroup sx={{height:"100%" , justifyContent: "center"}}>
               <FormControlLabel
                 control={<Checkbox checked={bep === "bep-20"} icon={<RadioButtonUnchecked />} checkedIcon={<CheckCircle />} />}
@@ -113,7 +113,7 @@ export default function BuyFee({ open, close, optionsdata,sizewidth }) {
               />
             </FormGroup>
           </Box>
-          <Box sx={bep === "bep-2" ? boxselected : boxunselected} className="border-1px" style={{marginRight:"16px"}}>
+          <Box sx={bep === "bep-2" ? boxselected : boxunselected} style={{marginRight:"16px"}}>
             <FormGroup sx={{height:"100%" , justifyContent: "center" }}>
               <FormControlLabel
                 control={<Checkbox checked={bep === "bep-2"} icon={<RadioButtonUnchecked />} checkedIcon={<CheckCircle />} />}

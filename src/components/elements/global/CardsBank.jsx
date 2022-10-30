@@ -102,7 +102,7 @@ export default function CardsBank() {
         <Button sx={btnstyle} startIcon={<AddCircle/>} onClick={opendialog}>
             افزودن کارت بانکی
         </Button>
-        <AddCardBank open={open} close={closedialog}/>
+        <AddCardBank open={open} close={closedialog} fulling={false} sizewidth='auto'/>
     </Box>
   )
 }
