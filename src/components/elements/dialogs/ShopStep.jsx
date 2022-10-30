@@ -62,10 +62,10 @@ BootstrapDialogTitle.propTypes = {
 
 
 const boxselected={
-  border:"1.5px solid #424BFB",borderRadius:"8px",height:"56px",px:"16px",minWidth:"130px",pt: "4px"
+  border:"1.5px solid #424BFB",borderRadius:"8px",height:"56px",px:"16px",minWidth:"130px",backgroundColor:"rgba(238,241,255,1)"
 }
 const boxunselected={
-  border:"1.5px solid #a4a6b4",borderRadius:"8px",height:"56px",px:"16px",minWidth:"130px",pt: "4px"
+  border:"1.5px solid #a4a6b4",borderRadius:"8px",height:"56px",px:"16px",minWidth:"130px"
 }
 
 const walletboxstyle={
@@ -205,11 +205,15 @@ export default function ShopStep({open,close,sizewidth}) {
                     <ListItemText primaryTypographyProps={withdraw==='type1'?{color:"#424BFB",fontSize:"15px"}:{color:"#5f5f62",fontSize:"15px"}}   
                      primary={
                         <div className="d-flex mt-3">
-                        <WalletOutlined/>
+                        <WalletOutlined sx={{mr:"12px"}}/>
                          <p>واریز به کیف پول ارزی در دیجیکس 24</p>
                         </div>
                     }/>
-                    <ListItemText primary="0BUSD" primaryTypographyProps={withdraw==='type1'?{color:"#424BFB",fontSize:"11px"}:{color:"#5f5f62",fontSize:"11px"}} />
+                    <ListItemText primary="0BUSD" 
+                    primaryTypographyProps={
+                      withdraw==='type1'?{color:"#424BFB",fontSize:"11px",textAlign:'right',mr:'10px'}:{color:"#5f5f62",fontSize:"11px",textAlign:'right',mr:'10px'}
+                    }
+                     />
                 </ListItem>
 
                 <ListItem sx={withdraw==="type2"?boxselected:boxunselected} onClick={()=>{setWithdraw("type2")}}>
@@ -219,7 +223,7 @@ export default function ShopStep({open,close,sizewidth}) {
                     <ListItemText primaryTypographyProps={withdraw==='type2'?{color:"#424BFB",fontSize:"15px"}:{color:"#5f5f62",fontSize:"15px"}} 
                      primary={
                         <div className="d-flex mt-3">
-                        <WalletOutlined/>
+                        <WalletOutlined sx={{mr:"12px"}}/>
                          <p>واریز به کیف پول خودم</p>
                         </div>
                     }/>

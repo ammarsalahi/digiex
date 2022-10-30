@@ -107,29 +107,32 @@ export default function BuyStepTwo({open,close,opendialogd,sizewidth}) {
           </div>
        
          <Box sx={{pb:"2%"}}>
-            <List sx={{padding: "0"}}>
+            <List>
                 <ListItem sx={deposit==="type1"?boxselected:boxunselected} onClick={()=>{setDeposit("type1")}} style={heighttt}>
                     <ListItemIcon>
-                        <Checkbox checked={deposit==="type1"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} sx={{padding: "0"}}/>
+                        <Checkbox checked={deposit==="type1"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>}/>
                     </ListItemIcon>
                     <ListItemText primaryTypographyProps={deposit==='type1'?{color:"#424BFB",fontSize:"15px"}:{color:"#5f5f62",fontSize:"15px"}}   
                      primary={
                         <div className="d-flex mt-3">
-                        <Wallet/>
+                        <Wallet sx={{mr:"12px"}}/>
                          <p>واریز به کیف پول ارزی در دیجیکس 24</p>
                         </div>
                     }/>
-                    <ListItemText primary="0BUSD" primaryTypographyProps={deposit==='type1'?{color:"#424BFB",fontSize:"11px"}:{color:"#5f5f62",fontSize:"11px"}} />
+                    <ListItemText primary="0BUSD" 
+                      primaryTypographyProps={
+                        withdraw==='type1'?{color:"#424BFB",fontSize:"11px",textAlign:'right',mr:'10px'}:{color:"#5f5f62",fontSize:"11px",textAlign:'right',mr:'10px'}
+                      }/>
                 </ListItem>
 
                 <ListItem sx={deposit==="type2"?boxselected:boxunselected} onClick={()=>{setDeposit("type2")}} style={heighttt}>
                     <ListItemIcon>
-                        <Checkbox checked={deposit==="type2"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} sx={{padding: "0"}}/>
+                        <Checkbox checked={deposit==="type2"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>}/>
                     </ListItemIcon>
                     <ListItemText primaryTypographyProps={deposit==='type2'?{color:"#424BFB",fontSize:"15px"}:{color:"#5f5f62",fontSize:"15px"}} 
                      primary={
                         <div className="d-flex mt-3">
-                        <Wallet/>
+                        <Wallet sx={{mr:"12px"}}/>
                          <p>واریز به کیف پول خودم</p>
                         </div>
                     }/>
@@ -161,30 +164,34 @@ export default function BuyStepTwo({open,close,opendialogd,sizewidth}) {
                 </ListItem>
                 <ListItem sx={withdraw==="type2"?boxselected:boxunselected} onClick={()=>{setWithdraw("type2")}} style={heighttt}>
                     <ListItemIcon>
-                        <Checkbox checked={withdraw==="type2"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} sx={{padding: "0"}}/>
+                        <Checkbox checked={withdraw==="type2"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>}/>
                     </ListItemIcon>
                     <ListItemText primaryTypographyProps={withdraw==='type2'?{color:"#424BFB",fontSize:"15px"}:{color:"#5f5f62",fontSize:"15px"}}
                       primary={
                         <div className="d-flex mt-3">
-                        <Wallet/>
+                        <Wallet sx={{mr:"12px"}}/>
                          <p>پرداخت از طریق درگاه بانکی</p>
                         </div>
                     }/>
-                    <ListItemText primaryTypographyProps={withdraw==='type2'?{color:"#424BFB",fontSize:"11px"}:{color:"#5f5f62",fontSize:"11px"}}  
-                     primary="0BUSD" />
+                    <ListItemText 
+                     primary="0BUSD" 
+                     primaryTypographyProps={
+                      withdraw==='type2'?{color:"#424BFB",fontSize:"11px",textAlign:'right',mr:'10px'}:{color:"#5f5f62",fontSize:"11px",textAlign:'right',mr:'10px'}
+                    }/>
                 </ListItem>
                 <ListItem sx={withdraw==="type3"?boxselected:boxunselected} onClick={()=>{setWithdraw("type3")}} style={heighttt}>
                     <ListItemIcon>
-                        <Checkbox checked={withdraw==="type3"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>} sx={{padding: "0"}}/>
+                        <Checkbox checked={withdraw==="type3"} icon={<RadioButtonUnchecked/>} checkedIcon={<CheckCircle/>}/>
                     </ListItemIcon>
                     <ListItemText primaryTypographyProps={withdraw==='type3'?{color:"#424BFB",fontSize:"15px"}:{color:"#5f5f62",fontSize:"15px"}}    
                     primary={
                         <div className="d-flex mt-3">
-                        <Wallet/>
+                        <Wallet sx={{mr:"12px"}}/>
                          <p>پرداخت با شناسه</p>
                         </div>
                     }/>
-                    <ListItemText primaryTypographyProps={withdraw==='type3'?{color:"#424BFB",fontSize:"11px"}:{color:"#5f5f62",fontSize:"11px"}}  
+                    <ListItemText 
+                    primaryTypographyProps={withdraw==='type3'?{color:"#424BFB",fontSize:"11px",textAlign:'right',mr:'10px'}:{color:"#5f5f62",fontSize:"11px",textAlign:'right',mr:'10px'}}  
                      primary="مناسب واریز بالای 50 میلیون تومان"/>
                 </ListItem>
             </List>

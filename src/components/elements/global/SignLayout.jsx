@@ -50,7 +50,7 @@ export default function SignLayout({children}) {
            </Typography>
            </Box>
            <Box>
-             <Typography variant="p" component="div" sx={{color:"#fff",fontSize:"13.4px",mt:"32px"}}>
+             <Typography variant="p" component="div" sx={{color:"#fff",fontSize:"14px",lineHeight:'27px',mt:"32px"}}>
              با هر معامله، بخشی از معامله شما به کیف پولتان به عنوان هدیه (Cash Back) واریز میگردد که میتوانید در معاملات آتی از آن استفاده نمایید.
              </Typography>
            </Box>

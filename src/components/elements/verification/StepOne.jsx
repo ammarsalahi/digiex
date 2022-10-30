@@ -190,7 +190,7 @@ export default function StepOne({onNext}) {
                onFocus={()=>{setisfucosed(true)}} onBlur={()=>setisfucosed(false)}
                >
                  <TextField variant='standard'
-                 placeholder='سال'
+                 placeholder='روز'
                  sx={{textAlign:"center",mx:"3%"}}  
                  type="number"           
                  InputProps={{
@@ -214,7 +214,7 @@ export default function StepOne({onNext}) {
                    onChange={handleDate('month')}
                  />    
                 <TextField variant='standard'
-                  placeholder='روز'
+                  placeholder='سال'
                   type="number"                       
                    sx={{textAlign:"center",mx:"3%"}}  
                    InputProps={{
