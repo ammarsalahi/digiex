@@ -11,7 +11,7 @@ export default function CardsBank() {
 
   const [open,setOpen]=React.useState(false);
   const [show,setShow]=React.useState(false);
-
+  const numbercrd="6104337391508790";
 
   const opendialog=(event)=>{
     setOpen(true);
@@ -32,12 +32,12 @@ export default function CardsBank() {
     {'bank':"بانک سامان",'number':"6104337391508790"},
 
   ] 
-  const StrToArray=(text)=>{
+  const StrToArray=(text,sidx,eidx)=>{
     let strarray=[]
      for(let i=0; i<=text.length;i++){
         strarray.push(text[i])
      }
-     return strarray 
+     return strarray.slice(sidx,eidx).join('')
   } 
     const cardstyle={
         width: '100%',
@@ -60,24 +60,43 @@ export default function CardsBank() {
   return (
     <Box sx={cardstyle} className="full-border">
          <List>
-            <ListItem onClick={handleArrow} sx={{cursor:"pointer",py:"16px"}}>
-                  <Svg Component={Saman} />
+            <Box onClick={handleArrow} className="bordertop d-flex justify-content-between" sx={{cursor:"pointer",pt:2,px:"16px"}}>
+                <div className="d-flex">
+                <Svg Component={Saman} style={{marginTop:"2px"}}/>
                 <ListItemText primary="بانک سامان" sx={{ml:'16px'}}/>
-                <ListItemText primary="6104337391508790" />
-                <div style={{paddingLeft:"5px"}}>
+                </div>
+                <div className="d-flex">
+                <ListItemText 
+                    primary={
+                      <div>
+                      <pre>{StrToArray(numbercrd,4,8)}    {StrToArray(numbercrd,0,4)}   {StrToArray(numbercrd,4,8)}    {StrToArray(numbercrd,0,4)}</pre> 
+                      </div>
+                    }
+                    primaryTypographyProps={{fontSize:"17px"}} 
+                />
+                <div style={{marginRight:"17px"}}>
                   {show?<KeyboardArrowUp/>:<KeyboardArrowDown/>}
                 </div>
-            </ListItem>
-           {show? listdata.map((item,idx)=>(
-            <ListItem key={idx} className="bordertop" sx={{cursor:"pointer",py:"16px"}}>
-                  <Svg Component={Saman} />
+                </div>
                 
+            </Box>
+           {show? listdata.map((item,idx)=>(
+            <Box key={idx} className="bordertop d-flex justify-content-between" sx={{cursor:"pointer",pt:2,px:"16px"}} >
+               <div className="d-flex">
+                <Svg Component={Saman} style={{marginTop:"2px"}}/>
                 <ListItemText primary={item.bank} sx={{ml:'16px'}}/>
-                <ListItemText primary={`${StrToArray(item.number).slice(0,4)}`} />
-                    <IconButton>
-                      <Svg Component={Trash} />
-                    </IconButton>
-            </ListItem>
+               </div>
+                <div className="d-flex">
+                <ListItemText primary={
+                   <div>
+                  <pre>{StrToArray(item.number,12,16)}    {StrToArray(item.number,8,12)}   {StrToArray(item.number,4,8)}    {StrToArray(item.number,0,4)}</pre> 
+                   </div>
+                }
+                primaryTypographyProps={{fontSize:"17px"}} />
+                <Svg Component={Trash} style={{marginRight:'20px',marginLeft:"3px",marginTop:"2px"}} />
+                </div>
+                
+            </Box>
            )):null}
         </List>
         <Button sx={btnstyle} startIcon={<AddCircle/>} onClick={opendialog}>

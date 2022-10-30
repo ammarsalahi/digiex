@@ -7,6 +7,8 @@ import "./styles/fonts.css";
 import "./styles/colors.css";
 import "./styles/stepper.css";
 import "./styles/containers.css";
+import "./styles/menu.css";
+
 
 import rtlPlugin from 'stylis-plugin-rtl';
 import { CacheProvider, ThemeProvider } from '@emotion/react';

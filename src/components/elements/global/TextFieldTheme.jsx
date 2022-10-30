@@ -58,13 +58,14 @@ const  textTheme = createTheme({
           }
         }
       },
-      
-      MuiDialogActions:{
+      MuiStepIcon:{
         styleOverrides: {
           root: {
-              paddingTop: '20px',
-          },
-        },
+              '& .MuiStepIcon-text':{
+                color:"#000"
+              }
+          }
+        }
       }
       }
   });

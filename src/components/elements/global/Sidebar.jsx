@@ -38,7 +38,7 @@ export default function Sidebar() {
             component={Link}
             to={item.address}
             key={idx}
-            sx={{borderRadius:"8px",my:"1%"}}
+            sx={{borderRadius:"8px",my:"8px",height:"56px"}}
             selected={location.pathname === item.address}
           >
             <ListItemIcon>

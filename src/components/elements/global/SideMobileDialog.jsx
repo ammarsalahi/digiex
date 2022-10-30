@@ -47,7 +47,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
             sx={{
               position: 'absolute',
               left: 8,
-              top: 10,
+              top: 8,
               color: (theme) => theme.palette.grey[500],
             }}
           >
@@ -100,14 +100,14 @@ export default function AddCardBank({open,close}) {
         TransitionComponent={Transition}
       >
         <BootstrapDialogTitle  id="customized-dialog-title" onClose={close} className="borderbottom">
-          <Box className="d-flex justify-content-start" sx={{ml:"70px"}}>
-          <Typography  component={Link} to='/' className="py-1">
-           <Svg Component={LOGO} style={{ height: "28px" }} />
+          <Box className="d-flex justify-content-center align-items-center">
+            <Typography  component={Link} to='/' className="textcenter pt-1 pb-2">
+           <Svg Component={LOGO} style={{ height: "20px",textAlign:'center',marginTop:'5px' }} />
           </Typography>
           </Box>
         </BootstrapDialogTitle>
         <DialogContent  sx={{width:"100%"}} className='mycontainer'>
-            <Box sx={{ width: '100%' ,pt:"40px"}}>
+            <Box sx={{ width: '100%'}}>
                 <List component="nav" aria-label="main mailbox folders" sx={{py:"16px"}}>
                     {menuItems.map((item, idx) => (
                     <ListItem

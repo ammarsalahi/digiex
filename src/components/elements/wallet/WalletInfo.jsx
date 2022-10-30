@@ -167,8 +167,8 @@ export default function WalletInfo({ infos,options }) {
             </Box> 
        </Box>
        
-      <Box className="col-lg-6 col-md-12 col-12 gx-0 d-flex justify-content-center ps-2">
-        <List sx={{width:"100%"}} className="mylist">
+      <Box className="col-lg-6 col-md-12 col-12 gx-0">
+        <List className="overflow-auto">
           {infos.map((item, idx) => (
             <ListItem key={idx} className="list-cnt" sx={{px:0,py:0,pb:"8px"}}>
               <ListItemIcon>
@@ -184,7 +184,7 @@ export default function WalletInfo({ infos,options }) {
                 size="small"
                 variant="contained"
                 aria-label="Disabled elevation buttons"
-                sx={{marginLeft: "60px"}}
+                
               >
                 <Box sx={{pr:"7%"}}>
                   <ListItemText id={idx} sx={listbtntextstyle} 

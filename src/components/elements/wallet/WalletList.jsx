@@ -12,6 +12,8 @@ export default function WalletList({rows}) {
     fontSize: "14px !important",
     textAlign:"center",
     color: "rgba(164, 166, 180, 1)",
+    minWidth:"110px",
+    maxWidth:"150px"
     
   }
   const cellstyle={
@@ -68,8 +70,8 @@ export default function WalletList({rows}) {
         
       </div>
     <Box className='row'>
-    <TableContainer className="table-cnt">
-      <Table size="small" aria-label="a dense table">
+    <TableContainer className="table-cnt overflow-auto" sx={{px:"24px"}}>
+      <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell sx={headstyle}>تاریخ</TableCell>
@@ -79,8 +81,6 @@ export default function WalletList({rows}) {
             <TableCell sx={headstyle}>آدرس ولت مبدا</TableCell>
             <TableCell sx={headstyle}>TXID</TableCell>
             <TableCell sx={headstyle}>وضعیت</TableCell>
-
-
 
           </TableRow>
         </TableHead>

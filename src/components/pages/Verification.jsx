@@ -27,6 +27,7 @@ import { styled } from '@mui/material/styles';
    [`&.${stepConnectorClasses.disabled}`]: {
     [`& .${stepConnectorClasses.line}`]: {
      border:"1px dashed rgba(193, 194, 220, 1)",
+     color:"#fff"
     },
   },
 }));
@@ -42,15 +43,23 @@ const stepstyle={
   '& .MuiStepLabel-root .Mui-active': {
     color: '#424BFB', // circle color (ACTIVE)
   },
+  '& .MuiStepLabel-root .Mui-disabled': {
+    color: '#000', // circle color (ACTIVE)
+  },
   '& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel': {
       color: '#424BFB', // Just text label (ACTIVE)
     },
   '& .MuiStepLabel-root .MuiStepIcon-text': {
     fontSize:"12px",
+    
   },
+  // "& .Mui-disabled .MuiStepIcon-root": { 
+  //   color: "#fff" ,
+  // },
   '& .MuiStepLabel-root .MuiStepIcon-root': {
     width:"32px",
     height:"32px",
+    justifyContent:"center"
   },
 }
 
