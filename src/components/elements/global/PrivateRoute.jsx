@@ -4,13 +4,15 @@ import Navbar from '../global/Navbar';
 import Sidebar from '../global/Sidebar';
 import { Box } from '@mui/material'
 import SideMobileDialog from './SideMobileDialog';
+import { useSelector } from 'react-redux';
 export default function PrivateRoute({children}) {
-
-  const [auth, setauth] = React.useState(true);
   const [isSide, setisSide] = React.useState(false);
   const [colClass, setcolClass] = React.useState("");
   const [isSideClick,setisSideClick]=React.useState(false);
   const [isMobile,setIsMobile]=React.useState(false);
+
+  const {auth} =useSelector(state=>state.authtoken);  
+  console.log(auth)
   const LoadNavMobile=(event)=>{
     setIsMobile(true);
   }
@@ -36,7 +38,7 @@ export default function PrivateRoute({children}) {
   }
    React.useEffect(() => {
       loadingSideScreen();
-      window.addEventListener('resize',loadingSideScreen,false);      
+      window.addEventListener('resize',loadingSideScreen,false); 
    }, [isSide,colClass]);
   
   const LoadSideDesk = (event) => {
@@ -52,7 +54,7 @@ export default function PrivateRoute({children}) {
 
     }
   }
-  return (auth?
+  return (auth!=null?
     <Box>
         <Navbar isSide={isSide} LoadSide={LoadSideDesk} LoadMobile={LoadNavMobile}/>
              <Box style={{ marginTop: '58px' }}>

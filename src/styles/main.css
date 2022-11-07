@@ -116,7 +116,6 @@ div.boxdate {
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 8px;
-  margin-top: 12px;
 }
 div.boxdate:active,
 div.boxdate:focus {
@@ -124,14 +123,12 @@ div.boxdate:focus {
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 8px;
-  margin-top: 12px;
 }
 div.boxdate:hover {
   border: 1px solid rgb(31, 31, 31);
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 8px;
-  margin-top: 12px;
 }
 
 @media only screen and (min-width: 768px) {

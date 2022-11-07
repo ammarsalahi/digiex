@@ -70,8 +70,8 @@ export default function AddCardBank({open,close}) {
   const location=useLocation();
 
   const menuItems=[
-      { name: 'داشبورد', address: '/main-dashboard', icon: DashboardIcon },
-      { name: 'خریدوفروش', address: '/', icon: ShoppingIcon },
+      { name: 'داشبورد', address: '/dashboard', icon: DashboardIcon },
+      { name: 'خریدوفروش', address: '/buy', icon: ShoppingIcon },
       { name: 'کیف‌پول', address: '/wallet', icon: WalletIcon },
       { name: 'تاریخچه‌سفارشات', address: '/orderhistory', icon: HistoryIcon },
       { name: 'تراکنش‌های‌مالی', address: '/transactions', icon: TransactionsIcon },

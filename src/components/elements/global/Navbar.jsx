@@ -7,9 +7,11 @@ import { ReactComponent as LOGO } from '../../../img/icons/logo-fa.svg';
 import { ReactComponent as USER } from '../../../img/icons/Group 7.svg';
 import MenuIcon from '@mui/icons-material/menu'
 import Svg from '../../utils/Svgs';
+import { useDispatch } from 'react-redux';
+import {logoutAction} from '../redux/actions'
 
 export default function Navbar({ isSide, LoadSide, LoadMobile}) {
-  let navigate = useNavigate()
+  const dispatch=useDispatch();
   const appbarstyle = {
     backgroundColor: "rgba(255, 255, 255, 1)",
     maxHeight: '73px',
@@ -22,7 +24,6 @@ export default function Navbar({ isSide, LoadSide, LoadMobile}) {
   }
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const [ismoblemenu,setIsmobilemenu]=React.useState(true);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -32,7 +33,7 @@ export default function Navbar({ isSide, LoadSide, LoadMobile}) {
   };
 
   const goLogin = (event) => {
-    navigate('/login')
+    dispatch(logoutAction());
   }
 
   return (

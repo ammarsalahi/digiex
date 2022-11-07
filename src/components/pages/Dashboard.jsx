@@ -1,8 +1,8 @@
 import React from 'react'
 import { Box ,Button} from '@mui/material'
-import DashboardInfo from '../elements/dashboard/DashboardInfo';
-import FormTabs from '../elements/dashboard/FormTabs';
-import FormInfo from '../elements/dashboard/FormInfo';
+import DashboardInfo from '../elements/buy/DashboardInfo';
+import FormTabs from '../elements/buy/FormTabs';
+import FormInfo from '../elements/buy/FormInfo';
 import { ReactComponent as DAI } from '../../img/icons/coin/dai.svg';
 import { ReactComponent as BC } from '../../img/icons/coin/Group 2.svg';
 import { ReactComponent as USD } from '../../img/icons/coin/Group 3.svg';

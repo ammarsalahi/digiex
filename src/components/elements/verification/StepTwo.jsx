@@ -1,10 +1,21 @@
 import { Typography,Box, FormGroup, FormControlLabel,Button,Checkbox  } from '@mui/material'
 import React from 'react'
+import DigiAlert from '../global/DigiAlert';
 
 export default function StepTwo({onNext}) {
     const [checked, setChecked] = React.useState(false);
+    const [open, setopen] = React.useState(false);
+    const [message, setmessage] = React.useState("")
     const handleCheckBox=(event)=>{
         setChecked(event.target.checked);
+    }
+    const submit=()=>{
+      if(checked===false){
+          setmessage("jjjj");
+          setopen(true)
+      }else{
+        onNext();
+      }
     }
   return (
     <div className='maincontent'>
@@ -47,8 +58,8 @@ export default function StepTwo({onNext}) {
             </Button>
           </Box>
         </div>
-        
         </form>
+        <DigiAlert open={open} close={()=>setopen(false)} message={message}/>
     </div>
   )
 }

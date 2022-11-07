@@ -1,6 +1,6 @@
 import React from 'react'
  import CheckCircleIcon from '../../img/payment/success.svg';
-import FormInfo from '../elements/dashboard/FormInfo';
+import FormInfo from '../elements/buy/FormInfo';
 import { Button } from '@mui/material';
 
 export default function Dashboard() {

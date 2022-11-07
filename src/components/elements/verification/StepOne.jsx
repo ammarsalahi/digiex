@@ -1,9 +1,11 @@
-import { Close, ErrorOutline } from '@mui/icons-material';
+import { Api, Close, ErrorOutline } from '@mui/icons-material';
 import { Button, FormGroup, FormLabel, Typography ,TextField,Snackbar} from '@mui/material'
 import { Box ,InputAdornment} from '@mui/material'
 import React from 'react';
+import { useRef } from 'react';
 import DigiAlert from '../global/DigiAlert';
 import inputFontSize from '../global/inputFontSize';
+import { VERIFICATION_INFO } from '../ApiConfig/Endpoints';
 
 
 export default function StepOne({onNext}) {
@@ -28,6 +30,9 @@ export default function StepOne({onNext}) {
     personalid:"",
     date:"",
   });
+
+  const inputRefs =useRef([]);
+
   
   const handleAlert=(props)=>(event)=>{
     if(props==='close'){
@@ -107,7 +112,22 @@ export default function StepOne({onNext}) {
   const textfieldstyle={
     mb:"24",
   }
-
+  
+   const submit=()=>{
+      const date=`${year}-${month}-${day}`;
+      Api.post(VERIFICATION_INFO,
+        {
+          "phoneNumber": formdata.phone,
+          "firstName": formdata.firstname,
+          "lastName": formdata.lastname,
+          "nationalCode": formdata.personalid,
+          "birthDate": date,
+        }).then((res)=>{
+          if(res.statusCode===2000){
+             onNext();
+          }
+        });
+   }
   return (
     <div>
        <Box className="d-flex justify-content-start">
@@ -173,8 +193,8 @@ export default function StepOne({onNext}) {
                 variant="outlined"
                 placeholder="0012345678"
                 sx={textfieldstyle}
+                type="number"
                 inputProps={{
-                  maxLength:10,
                   disableUnderline: true,
                   style:inputFontSize,
                 }}
@@ -198,12 +218,12 @@ export default function StepOne({onNext}) {
                   endAdornment: <InputAdornment position="end"> / </InputAdornment>,
                   style:inputFontSize,
                  }}
-                  value={formdata.year}
-                  onChange={handleDate('year')}
+                  value={formdata.day}
+                  onChange={handleDate('day')}
                  />
                 <TextField variant='standard'
                   placeholder='ماه'
-                  sx={{textAlign:"center",mx:"3%",border:"none"}}
+                  sx={{mx:"3%",border:"none"}}
                   type="number"           
                   InputProps={{
                     disableUnderline:true,
@@ -221,11 +241,11 @@ export default function StepOne({onNext}) {
                     disableUnderline:true,
                     style:inputFontSize,
                    }}  
-                  value={formdata.day}
-                  onChange={handleDate('day')}               
+                  value={formdata.year}
+                  onChange={handleDate('year')}               
                 />
                </div>
-               <Typography variant="p" fontSize={10} sx={{color:"red"}}>
+               <Typography variant="p" fontSize={12} sx={{color:"grey",mt:1,ml:2}}>
                   {errortext.date}
                </Typography>
             </FormGroup>
@@ -236,7 +256,7 @@ export default function StepOne({onNext}) {
             <Button 
               variant="contained" 
               sx={{ fontSize: 14, backgroundColor: "#424BFB", height: "55px" ,width:"183px",mt:"50px",borderRadius:'8px'}}
-              onClick={onNext}  
+              onClick={submit}  
             >
               ثبت و مرحله بعد
             </Button>
@@ -248,7 +268,7 @@ export default function StepOne({onNext}) {
                 fullWidth
                 variant="contained" 
                 sx={{ fontSize: 14, backgroundColor: "#424BFB", height: "55px",mt:"10%",borderRadius:"8px"}}
-                onClick={onNext}  
+                onClick={submit}  
             >
               ثبت و مرحله بعد
             </Button>

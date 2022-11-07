@@ -3,23 +3,13 @@ import React from 'react'
 import SignLayout from '../elements/global/SignLayout'
 import MobileNumberPage from '../elements/login/MobileNumberPage'
 import SecureCodePage from '../elements/login/SecureCodePage'
+import { LOGIN_PHONE,LOGIN_CODE } from '../elements/ApiConfig/Endpoints';
+import { Navigate } from 'react-router-dom';
+
 export default function Login() {
-  
-   const [isSend, setIsSend] = React.useState(false);
-   const sendCode=(event)=>{
-      if(isSend){
-        setIsSend(false)
-      }
-      else{
-        setIsSend(true)
-      }
-   }
   return (
     <SignLayout>
-        {isSend 
-          ? <SecureCodePage send={sendCode}/> 
-          :<MobileNumberPage send={sendCode}/>
-        }
+        <MobileNumberPage  phoneurl={LOGIN_PHONE}/>
     </SignLayout>
 
   )

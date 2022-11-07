@@ -1,6 +1,6 @@
 import React from 'react'
 import DangerousIcon from '../../img/payment/unseccess.svg';
-import FormInfo from '../elements/dashboard/FormInfo';
+import FormInfo from '../elements/buy/FormInfo';
 import { Button } from '@mui/material';
 
 export default function Dashboard() {

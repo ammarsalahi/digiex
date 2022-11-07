@@ -32,6 +32,7 @@ import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import MainDashboard from "./components/pages/MainDashboard";
 import textTheme from "./components/elements/global/TextFieldTheme";
+import Confirm from './components/pages/Confirm';
 
 const cacheRtl = createCache({
   key: 'muirtl',
@@ -46,32 +47,32 @@ function App() {
         <BrowserRouter>
         <Routes>
 
-          <Route path="/" exact element={
+          <Route path="/buy"  element={
             <PrivateRoute>
               <Dashboard/>
             </PrivateRoute>
           } />
-          <Route path="/main-dashboard" exact element={
+          <Route path="/dashboard" exact element={
             <PrivateRoute>
               <MainDashboard/>
             </PrivateRoute>
           } />
-          <Route path="/success-payment" exact element={
+          <Route path="/success-payment" element={
             <PrivateRoute>
               <SuccessPayment/>
             </PrivateRoute>
           } />
-          <Route path="/unsuccess-payment" exact element={
+          <Route path="/unsuccess-payment" element={
             <PrivateRoute>
               <UnSuccessPayment/>
             </PrivateRoute>
           } />
-          <Route path="/success-sales" exact element={
+          <Route path="/success-sales" element={
             <PrivateRoute>
               <SuccessSales/>
             </PrivateRoute>
           } />
-          <Route path="/unsuccess-sales" exact element={
+          <Route path="/unsuccess-sales" element={
             <PrivateRoute>
               <UnSuccessSales/>
             </PrivateRoute>
@@ -103,7 +104,7 @@ function App() {
           }/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
-
+          <Route path="/confirm" element={<Confirm/>}/>
         </Routes>
         </BrowserRouter>
       </ThemeProvider>

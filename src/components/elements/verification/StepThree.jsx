@@ -1,5 +1,6 @@
 import { Card, CardContent,Typography,Box,Button } from '@mui/material'
 import React from 'react'
+import { SELFIE_IMAGE, SELFIE_VIDEO } from '../ApiConfig/Endpoints'
 import UploadButton from './UploadButton'
 
 export default function StepThree({onNext}) {
@@ -12,9 +13,43 @@ export default function StepThree({onNext}) {
         my:'2%',
         p:"32px",
         fontSize:"14px",
-        
-    }
+    } 
+    const [load,setLoad]=React.useState({
+      image:false,
+      video:false,
+    });
+
+    const uploadImage=()=>{
+      Api.post(SELFIE_IMAGE,{
+
+      },{headers:{
+          'Content-Type': 'multipart/form-data'
+        }}).then((res)=>{
+        if(res.statusCode===200){
+          setLoad({image:true});     
+        }
+      }).catch(err=>{
+        setLoad({image:false}); 
+      });
+    }  
+    const uploadVideo=()=>{
+      Api.post(SELFIE_VIDEO,{}).then((res)=>{
+        if(res.statusCode===200){
+           setLoad({video:true});
+        }
+      }).catch(err=>{
+        setLoad({video:false}); 
+      });
+    } 
     
+    const gotoNext=()=>{
+       if(load.video===true && load.image===true){
+          onNext();
+       }
+       else{
+         console.log('jj')
+       }
+    }
   return (
     <div>
         <Box className="d-flex justify-content-start">
@@ -39,7 +74,7 @@ export default function StepThree({onNext}) {
                     <UploadButton text="آپلود تصویر"/>
               </Box>
               <Box className='d-flex justify-content-center' sx={{pb:"32px"}}>
-                <Button fontSize={12} sx={{color:"#a4a6b4"}}>
+                <Button fontSize={12} sx={{color:"#a4a6b4"}} onClick={uploadImage}>
                 مشاهد نمونه
                 </Button>
               </Box>
@@ -63,7 +98,7 @@ export default function StepThree({onNext}) {
                     <UploadButton text="آپلود ویدیو"/>
               </Box>
               <Box className='d-flex justify-content-center'>
-                <Button fontSize={12} sx={{color:"#a4a6b4"}}>
+                <Button fontSize={12} sx={{color:"#a4a6b4"}} onClick={uploadVideo}>
                 مشاهد نمونه
                 </Button>
               </Box>
@@ -77,7 +112,7 @@ export default function StepThree({onNext}) {
             <Button 
                 variant="contained" 
                 sx={{ fontSize: 14, backgroundColor: "#424BFB", height: "55px" ,width:"205px",mt:"45px",borderRadius:"8px"}}
-                onClick={onNext}  
+                onClick={gotoNext}  
             >
             ارسال مدارک           
             </Button>
@@ -89,7 +124,7 @@ export default function StepThree({onNext}) {
                  fullWidth
                  variant="contained" 
                  sx={{ fontSize: 14, backgroundColor: "#424BFB", height: "55px",mt:"10%",borderRadius:"8px"}}
-                onClick={onNext}  
+                onClick={gotoNext}  
             >
             ارسال مدارک           
             </Button>
