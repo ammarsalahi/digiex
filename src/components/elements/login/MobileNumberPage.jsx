@@ -44,9 +44,7 @@ export default function MobileNumberPage({send,phoneurl}) {
         Api.post(phoneurl,{"phoneNumber":phone}).then(res=>{
           if(res.data.statusCode==200){
            let token=res.data.data.result.tempToken;
-           console.log(token)
             dispatch(loginAction(token,phone));
-            navigate('/confirm');
           }
         }).catch(err=>console.log(err));
       }else{

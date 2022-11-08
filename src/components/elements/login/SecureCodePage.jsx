@@ -5,7 +5,9 @@ import { ArrowBackIos, Refresh } from '@mui/icons-material';
 import Api from '../ApiConfig/Api';
 import { useDispatch ,useSelector} from 'react-redux';
 import DigiAlert from '../global/DigiAlert';
-import { authAction } from '../redux/actions';
+import { authAction ,loginAction} from '../redux/actions';
+import { LOGIN_PHONE } from '../ApiConfig/Endpoints';
+import DigiAlertInfo from '../global/DigiAlertInfo';
 const labelStyle={
   fontSize:"14px",
   mt:"30px",
@@ -32,6 +34,10 @@ export default function SecureCodePage({codeurl,number,token}) {
     const [checked, setchecked] = useState(true);
     const [message, setmessage] = useState("");
     const [open, setopen] = useState(false);
+    const [messaged,setmessaged]=useState("");
+    const [opend, setopend] = useState(false);
+
+
     const dispatch=useDispatch();
     
     let naviagte=useNavigate();
@@ -54,10 +60,12 @@ export default function SecureCodePage({codeurl,number,token}) {
     const handleOpen=(props)=>()=>{
       setopen(props);
     }
+    const handleOpend=(props)=>()=>{
+      setopend(props);
+    }
     const CheckCode =()=>{
       const codes =`${code.first}${code.second}${code.third}${code.forth}${code.fivth}`;
-      console.log(codes)
-      console.log(token)
+      
       Api.post(codeurl,
         {
           "confirmationCode": codes,
@@ -66,7 +74,7 @@ export default function SecureCodePage({codeurl,number,token}) {
         if(res.data.statusCode===200){
             console.log(res.data)
             dispatch(authAction(res.data.token));
-            naviagte('/dashboard');
+            naviagte('/verification');
         }
       }).catch(err=>{
           console.log(err);
@@ -74,13 +82,30 @@ export default function SecureCodePage({codeurl,number,token}) {
           setopen(true);
       })
     }
+    const returnBack=()=>{
+      let navs=localStorage.getItem('conf-return');
+      if(navs!=null){
+        localStorage.removeItem('conf-return')
+        naviagte(navs);
+      }
+    }
+    const sendAgain=()=>{
+      Api.post(LOGIN_PHONE,{"phoneNumber":number}).then(res=>{
+        if(res.data.statusCode==200){
+         let token=res.data.data.result.tempToken;
+          dispatch(loginAction(token,number));
+          setmessaged('کد تایید دوباره ارسال شد')
+          setopend(true)
+        }
+      }).catch(err=>console.log(err));
+    }
   return (
         <Box>
               <Box className="d-flex justify-content-between">
                 <Typography className='boldfont' variant="h5" component="div" sx={{fontSize:"20px"}}>
                 کد تایید شماره موبایل
                 </Typography>
-                <Button size="small" endIcon={<ArrowBackIos/>}>
+                <Button size="small" endIcon={<ArrowBackIos/>} onClick={returnBack}>
                       بازگشت      
                 </Button>
               </Box>
@@ -162,7 +187,7 @@ export default function SecureCodePage({codeurl,number,token}) {
                   <FormLabel sx={labelStyle}>
                     مهلت استفاده کد: ۰۰:۴۸
                     </FormLabel>
-                  <Button size="small">
+                  <Button size="small" onClick={sendAgain}>
                   ارسال مجدد کد      
                     </Button>
               </Box>
@@ -178,6 +203,9 @@ export default function SecureCodePage({codeurl,number,token}) {
              </Box>
             </form>
                 <DigiAlert open={open} close={handleOpen(false)} message={message} />
+                <DigiAlertInfo open={opend} close={handleOpend(false)} message={messaged} />
+
+
            </Box>
   )
 }
