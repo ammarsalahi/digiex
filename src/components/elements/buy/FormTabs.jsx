@@ -148,11 +148,12 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
       <Box sx={{ borderBottom: 0, borderColor: 'divider', paddingBlock: .85 }}>
         <Tabs value={tabvalue} onChange={handleChange} fontSize="large" aria-label="basic tabs example"
           TabIndicatorProps={{
-            style:{ background: "#f2b107", height: 3 }
+            style:{ background: "#f2b107", height: 3 ,width:"100%"}
           }}
         >
           <Tab label={<span className={tabvalue === 0 ? "tab-color" : ""}>خرید‌ از‌ ما </span>} {...a11yProps(0)} />
           <Tab label={<span className={tabvalue === 1 ? "tab-color" : ""}>فروش به ما </span>} {...a11yProps(1)} />
+          
         </Tabs>
       </Box>
       <TabPanel value={tabvalue} index={0}>

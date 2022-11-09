@@ -33,6 +33,7 @@ import Register from "./components/pages/Register";
 import MainDashboard from "./components/pages/MainDashboard";
 import textTheme from "./components/elements/global/TextFieldTheme";
 import Confirm from './components/pages/Confirm';
+import Referral from './components/pages/Referral';
 
 const cacheRtl = createCache({
   key: 'muirtl',
@@ -52,7 +53,7 @@ function App() {
               <Dashboard/>
             </PrivateRoute>
           } />
-          <Route path="/dashboard" exact element={
+          <Route path="/" exact element={
             <PrivateRoute>
               <MainDashboard/>
             </PrivateRoute>
@@ -100,6 +101,11 @@ function App() {
           <Route path="/verification" element={
             <PrivateRoute>
               <Verification/>
+            </PrivateRoute>
+          }/>
+          <Route path="/referral" element={
+            <PrivateRoute>
+              <Referral/>
             </PrivateRoute>
           }/>
           <Route path="/login" element={<Login/>}/>

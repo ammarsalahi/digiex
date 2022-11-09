@@ -5,14 +5,15 @@ import Sidebar from '../global/Sidebar';
 import { Box } from '@mui/material'
 import SideMobileDialog from './SideMobileDialog';
 import { useSelector } from 'react-redux';
+
 export default function PrivateRoute({children}) {
   const [isSide, setisSide] = React.useState(false);
   const [colClass, setcolClass] = React.useState("");
   const [isSideClick,setisSideClick]=React.useState(false);
   const [isMobile,setIsMobile]=React.useState(false);
 
-  const {auth} =useSelector(state=>state.authtoken);  
-  console.log(auth)
+  // const {auth} =useSelector(state=>state.authtoken);  
+  const auth="jjj";
   const LoadNavMobile=(event)=>{
     setIsMobile(true);
   }
