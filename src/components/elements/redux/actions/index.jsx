@@ -24,9 +24,31 @@ const logoutAction=()=>{
         type:"DEL_AUTH",
     }
 }
+
+const profilelogAction=(level,userid,fullname)=>{
+    return {
+        type:'ADD_PROFILE_LOG',
+        level:level,
+        userid:userid,
+        fullname:fullname,
+    }
+}
+
+const addprofileAction=(phone,fullname,date,userid,pid)=>{
+    return {
+        type:'ADD_PROFILE',
+        phone:phone,
+        userid:userid,
+        fullname:fullname,
+        date:date,
+        pid:pid
+    }
+}
 export {
     authAction,
     logoutAction,
     loginAction,
-    removelogAction
+    removelogAction,
+    profilelogAction,
+    addprofileAction
 }

@@ -5,6 +5,7 @@ import Api from '../ApiConfig/Api';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch ,useSelector} from 'react-redux';
 import {loginAction} from '../redux/actions';
+import DigiAlert from '../global/DigiAlert';
 
 const labelStyle={
   fontSize:"13px"
@@ -20,24 +21,19 @@ export default function MobileNumberPage({send,phoneurl}) {
       const [phone, setphone] = React.useState("");
       const [errortext,setErrortext]=React.useState("");
       const dispatch=useDispatch();
+      const [message,setmessage]=React.useState("")
+      const [open,setopen]=React.useState(false);
 
        const handlePhone=(event)=>{
-        if(event.target.value.length===11){
-          if(regex.test(event.target.value)===false){
+        if(event.target.value.length<12){
+          setphone(event.target.value);
+          if(event.target.value.match(regex)){
+              setErrortext("")
+          }
+          else{
             setErrortext("شماره وارد شده قابل قبول نیست");
-          }else{
-            setphone(event.target.value);
-            setErrortext("");
           }
         }
-        else if(event.target.value.length > 11){
-            setErrortext("تعداد ارقام وارد شده بیشتر از حد مجاز است");
-        }
-        else{
-          setphone(event.target.value);
-          setErrortext("");
-        }
-     
     }
     const SendLogin=()=>{    
       if(phone!=="")  {
@@ -45,8 +41,13 @@ export default function MobileNumberPage({send,phoneurl}) {
           if(res.data.statusCode==200){
            let token=res.data.data.result.tempToken;
             dispatch(loginAction(token,phone));
+            localStorage.setItem('conf-return','/login')
+            navigate('/confirm')
           }
-        }).catch(err=>console.log(err));
+        }).catch(err=>{
+          console.log(err)
+          setmessage(err.response.data.data.message);
+        });
       }else{
         setErrortext("شماره موبایل را وارد نکرده اید!")
       }
@@ -77,6 +78,7 @@ export default function MobileNumberPage({send,phoneurl}) {
              </Button>
              </Box>
                 </form>
+              <DigiAlert open={open} close={()=>setopen(false)} type="error" message={message}  />
            </Box>
   )
 }

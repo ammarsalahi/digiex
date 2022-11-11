@@ -7,35 +7,82 @@ import { ReactComponent as LOGO } from '../../../img/icons/logo-fa.svg';
 import { ReactComponent as USER } from '../../../img/icons/Group 7.svg';
 import MenuIcon from '@mui/icons-material/menu'
 import Svg from '../../utils/Svgs';
-import { useDispatch } from 'react-redux';
-import {logoutAction} from '../redux/actions'
+import { useDispatch ,useSelector} from 'react-redux';
+import {logoutAction,profilelogAction} from '../redux/actions'
+import Api from '../ApiConfig/Api';
+import { ACCOUNT_PROFILE } from '../ApiConfig/Endpoints';
+import {authpost} from '../ApiConfig/ApiHeaders';
+
+const appbarstyle = {
+  backgroundColor: "rgba(255, 255, 255, 1)",
+  maxHeight: '73px',
+  minHeight: '73px',
+  borderBottom: "1px solid #cbe4eb",
+  pt: "5px"
+}
+const menistyle={
+  mt: "4px", borderRadius: "8px", width: "165px", cursor: "pointer" ,
+}
+
 
 export default function Navbar({ isSide, LoadSide, LoadMobile}) {
   const dispatch=useDispatch();
-  const appbarstyle = {
-    backgroundColor: "rgba(255, 255, 255, 1)",
-    maxHeight: '73px',
-    minHeight: '73px',
-    borderBottom: "1px solid #cbe4eb",
-    pt: "5px"
-  }
-  const menistyle={
-    mt: "4px", borderRadius: "8px", width: "165px", cursor: "pointer" ,
-  }
+  const navigate=useNavigate();
+  const {auth}=useSelector(state=>state.authtoken);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [userdata,setuserdata]=React.useState({
+    level:"",
+    fullname:""
+  })
   const open = Boolean(anchorEl);
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+  
+
 
   const goLogin = (event) => {
-    dispatch(logoutAction());
+    // Api.post(LOGOUT).then(res=>{
+    //   if(res.data.statusCode===200){
+        localStorage.clear()
+        dispatch(logoutAction());
+        event.preventDefault()
+        navigate('/login')
+      
   }
-
+  const getLevel=(level)=>{
+    if(level===1){
+        return "کاربر برنزی";
+    }else if(level===2){
+        return "کاربر نقره ای";
+    }
+    else if(level===3){
+      return "کاربر طلایی";
+  }else if(level===4){
+      return "کاربر پلاتینیوم";
+  }
+  }
+  const initialvalues=async()=>{
+    await Api.get(ACCOUNT_PROFILE,{
+      headers:authpost(auth)
+    }).then(res=>{
+      if(res.data.statusCode===200){
+          const {fullName,userId,level} =res.data.data.result
+          dispatch(profilelogAction(level,userId,fullName));
+          setuserdata({
+            level:level,
+            fullname:fullName
+          });
+      }
+    })
+  }
+  React.useEffect(()=>{
+      initialvalues();
+      console.log(userdata)
+  },[])
   return (
     <Box sx={{ flexGrow: 1, direction: 'ltr', width: '100%' }}>
       <AppBar position='fixed' elevation={0} sx={appbarstyle}>
@@ -64,9 +111,11 @@ export default function Navbar({ isSide, LoadSide, LoadMobile}) {
               {isSide ? <Close fontSize="medium"  /> : <MenuIcon fontSize="medium"/>}
             </IconButton>
             </div>
-          <Typography component={Link} to='/' sx={{ flexGrow: 1 }} className="textcenter">
+          <Box sx={{ flexGrow: 1 }} className="textcenter">
+            <Box component={Link} to='/'>
             <Svg Component={LOGO} className="logosize"/>
-          </Typography>
+            </Box>
+          </Box>
           <Box dir='rtl' className=" d-flex align-items-center" sx={{ mx: "7px", mt: "7px" }}>
             <Badge color='primary' badgeContent={5} anchorOrigin={{ vertical: 'top', horizontal: 'left', }}>
               <Svg Component={Notify} />
@@ -77,7 +126,7 @@ export default function Navbar({ isSide, LoadSide, LoadMobile}) {
                 <Box sx={{ mr: "7px" }} className=" d-flex align-items-center">
                   <Svg Component={USER} />
                 </Box>
-                <ListItemText sx={{ mx: "2px" }} primary="حسین اسدزاده" secondary="کاربر طلایی"
+                <ListItemText sx={{ mx: "2px" }} primary={userdata.fullname} secondary={getLevel(userdata.level)}
                   primaryTypographyProps={{ pb: "3px" }} secondaryTypographyProps={{ fontSize: "11px", color: "gold" }}
                 />
                 <ExpandMore style={{ color: "#a4a6b4", marginTop: "7px" }} />

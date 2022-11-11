@@ -39,7 +39,7 @@ export default function BankAccount() {
          <Box>
             <BanksList rows={rows} opendialog={opendialog}/>
          </Box>
-         <AddCardBank open={open} close={closedialog}/> 
+         <AddCardBank open={open} close={closedialog} fulling={false}/> 
       </Box>
     </div>
   )

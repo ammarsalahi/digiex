@@ -1,50 +1,103 @@
 import { Card, CardContent,Typography,Box,Button } from '@mui/material'
-import React from 'react'
+import React, { useRef } from 'react'
 import { SELFIE_IMAGE, SELFIE_VIDEO } from '../ApiConfig/Endpoints'
-import UploadButton from './UploadButton'
-
+import UploadButton from './UploadButton';
+import DigiAlert from '../global/DigiAlert'
+import Api from '../ApiConfig/Api'
+import { useNavigate } from 'react-router';
+import { authfile } from '../ApiConfig/ApiHeaders';
+import {useSelector} from 'react-redux'
+const cardstyle={
+  border:"1px dashed #cbe4eb",
+  borderRadius:"8px",
+  width:"440px",
+  height:"322px",
+  mx:"13px",
+  my:'2%',
+  p:"32px",
+  fontSize:"14px",
+} 
 export default function StepThree({onNext}) {
-    const cardstyle={
-        border:"1px dashed #cbe4eb",
-        borderRadius:"8px",
-        width:"440px",
-        height:"322px",
-        mx:"13px",
-        my:'2%',
-        p:"32px",
-        fontSize:"14px",
-    } 
+  const {auth}=useSelector(state=>state.authtoken);
+    const fileRef=useRef([])
+    // const [formdata,setFormdata]=React.useState({
+    //   image:null,
+    //   video:null,
+    //   imagename:""
+    // })
     const [load,setLoad]=React.useState({
       image:false,
       video:false,
     });
+    const [message,setMessage]=React.useState("")
+    const [open,setOpen]=React.useState(false)
+    let navigate=useNavigate()
 
-    const uploadImage=()=>{
-      Api.post(SELFIE_IMAGE,{
+    const handleChange=(props)=>(event)=>{
+        // setFormdata({...formdata,[props]:event.target.files[0]});
+        // setLoad({...load,[props]:false});  
+        let files=event.target.files[0]
+      if(event.target.files[0]){
+          if(props==='image'){
+            uploadImage(files)
+          }
+      }  
 
-      },{headers:{
-          'Content-Type': 'multipart/form-data'
-        }}).then((res)=>{
-        if(res.statusCode===200){
-          setLoad({image:true});     
-        }
-      }).catch(err=>{
-        setLoad({image:false}); 
-      });
+    }
+    const imageClick=()=>{
+      fileRef.current[0].click();
+    }
+
+    const videoClick=()=>{
+      fileRef.current[1].click();
+    }
+    const uploadImage=(files)=>{
+          const forms = new FormData();
+          forms.append('file',files);
+          Api.post(
+            SELFIE_IMAGE,
+            forms,
+            {
+              headers:authfile(auth)
+            }).then((res)=>{
+            if(res.statusCode===200){
+              setLoad({image:true});     
+              setMessage("تصویر آپلود شد");
+              setOpen(true);
+            }
+          }).catch(err=>{
+            setLoad({image:false}); 
+            setMessage("تصویر آپلود نشد");
+            setOpen(true);
+           
+          });
     }  
-    const uploadVideo=()=>{
-      Api.post(SELFIE_VIDEO,{}).then((res)=>{
-        if(res.statusCode===200){
-           setLoad({video:true});
-        }
-      }).catch(err=>{
-        setLoad({video:false}); 
-      });
-    } 
+    // const uploadVideo=()=>{
+    //     const forms = new FormData();
+    //     forms.append('file',formdata.image);
+    //     Api.post(
+    //       SELFIE_VIDEO,
+    //       forms,
+    //       {
+    //         headers:authfile(auth)
+    //       }).then((res)=>{
+    //       if(res.statusCode===200){
+    //         setLoad({video:true}); 
+    //         setMessage("ویدیو آپلود شد");
+    //         setOpen(true);
+    //         setFormdata({video:"none"});
+    //       }
+    //     }).catch(err=>{
+    //       setLoad({video:false}); 
+    //       setMessage("ویدیو آپلود نشد");
+    //       setOpen(true);
+    //       setFormdata({video:"none"});
+    //     });
+    // } 
     
     const gotoNext=()=>{
        if(load.video===true && load.image===true){
-          onNext();
+          navigate('/')
        }
        else{
          console.log('jj')
@@ -71,10 +124,13 @@ export default function StepThree({onNext}) {
                  </Box>
               </Box>
               <Box className='d-flex justify-content-center ' sx={{pt:"73px",pb:"16px"}}>
-                    <UploadButton text="آپلود تصویر"/>
+                    <input type="file" ref={myref=>fileRef.current[0]=myref} name="image" multiple
+                    accept=".png,.jpeg,.jpg" style={{display:"none"}} onChange={handleChange('image')}
+                    />
+                    <UploadButton text="آپلود تصویر" click={imageClick}/>
               </Box>
               <Box className='d-flex justify-content-center' sx={{pb:"32px"}}>
-                <Button fontSize={12} sx={{color:"#a4a6b4"}} onClick={uploadImage}>
+                <Button fontSize={12} sx={{color:"#a4a6b4"}}>
                 مشاهد نمونه
                 </Button>
               </Box>
@@ -95,10 +151,14 @@ export default function StepThree({onNext}) {
               
               </Box>
               <Box className='d-flex justify-content-center ' sx={{pt:"50px",pb:"16px"}}>
-                    <UploadButton text="آپلود ویدیو"/>
+                    <input type="file" accept=".mp4,.avi"
+                     ref={myref=>fileRef.current[1]=myref}   name="video"
+                    style={{display:"none"}}  onChange={handleChange('video')}
+                    />
+                    <UploadButton text="آپلود ویدیو" click={videoClick} /> 
               </Box>
               <Box className='d-flex justify-content-center'>
-                <Button fontSize={12} sx={{color:"#a4a6b4"}} onClick={uploadVideo}>
+                <Button fontSize={12} sx={{color:"#a4a6b4"}}>
                 مشاهد نمونه
                 </Button>
               </Box>
@@ -130,6 +190,7 @@ export default function StepThree({onNext}) {
             </Button>
           </Box>
         </div>
+        <DigiAlert open={open} close={()=>setOpen(false)} message={message} type="info"/>
     </div>
   )
 }

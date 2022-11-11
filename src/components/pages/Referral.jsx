@@ -134,13 +134,11 @@ function TabPanel(props) {
                     <Typography>{children}</Typography>
                 </Box>
             )}
-
-
-
         </div>
 
     );
 }
+
 
 TabPanel.propTypes = {
     children: PropTypes.node,
@@ -196,9 +194,9 @@ export default function Referral() {
                             style: { background: "#424BFB", height: 3 }
                         }}
                     >
-                        <Tab sx={{ padding: "32px 0 16px 0" }} label={<span className={tabvalue === 0 ? "tab-color" : ""}>کدهای دعوت</span>} {...a11yProps(0)} />
-                        <Tab sx={{ padding: "32px 0 16px 0" }} label={<span className={tabvalue === 1 ? "tab-color" : ""}>دوستان من</span>} {...a11yProps(1)} />
-                        <Tab sx={{ padding: "32px 0 16px 0" }} label={<span className={tabvalue === 2 ? "tab-color" : ""}>کمیسیون من</span>} {...a11yProps(2)} />
+                        <Tab sx={{ padding: "32px 0 16px 0" }} label={<span className={tabvalue === 0 ? "tab-color2" : ""}>کدهای دعوت</span>} {...a11yProps(0)} />
+                        <Tab sx={{ padding: "32px 0 16px 0" }} label={<span className={tabvalue === 1 ? "tab-color2" : ""}>دوستان من</span>} {...a11yProps(1)} />
+                        <Tab sx={{ padding: "32px 0 16px 0" }} label={<span className={tabvalue === 2 ? "tab-color2" : ""}>کمیسیون من</span>} {...a11yProps(2)} />
                         <Button sx={{ marginLeft: 'auto' }} color="inherit" startIcon={<AddCircle />} onClick={handleOpenModal(true)} >
                             ایجاد کد دعوت جدید
                         </Button>

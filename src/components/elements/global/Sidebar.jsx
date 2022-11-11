@@ -18,7 +18,7 @@ import {Link,useLocation} from 'react-router-dom';
 export default function Sidebar() {
   const location=useLocation();
   const menuItems = [
-    { name: 'داشبورد', address: '/dashboard', icon: DashboardIcon },
+    { name: 'داشبورد', address: '/', icon: DashboardIcon },
     { name: 'خریدوفروش', address: '/buy', icon: ShoppingIcon },
     { name: 'کیف‌پول', address: '/wallet', icon: WalletIcon },
     { name: 'تاریخچه معاملات', address: '/orderhistory', icon: HistoryIcon },

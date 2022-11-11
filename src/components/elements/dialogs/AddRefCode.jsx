@@ -207,14 +207,14 @@ export default function AddCardBank({ open, close, fulling, sizewidth }) {
                 {fulling === false && <Box sx={{ pt: "24px" }}>
 
                     <Button variant="contained" sx={{ fontSize: "16px", height: "55px", borderRadius: "8px" }} fullWidth>
-                        ثبت کارت بانکی جدید
+                        ایجاد کد دعوت
                     </Button>
                 </Box>}
 
             </DialogContent>
             {fulling === true && <DialogActions>
                 <Button variant="contained" sx={{ fontSize: "16px", height: "55px", borderRadius: "8px" }} fullWidth>
-                    ثبت کارت بانکی جدید
+                   ایجاد کد دعوت 
                 </Button>
             </DialogActions>}
         </BootstrapDialog>

@@ -11,6 +11,10 @@ import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Slide from '@mui/material/Slide';
 import {  Box,InputAdornment ,FormGroup, TextField} from '@mui/material';
+import Api from '../ApiConfig/Api'
+import { USER_BANK,USER_BANK_ID } from '../ApiConfig/Endpoints';
+import {authpost} from '../ApiConfig/ApiHeaders';
+import { useSelector } from 'react-redux';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />;
@@ -54,11 +58,6 @@ BootstrapDialogTitle.propTypes = {
     onClose: PropTypes.func.isRequired,
   };
 
-
-export default function AddCardBank({open,close,fulling ,sizewidth}) {
-
-  const [issmall, setissmall] = React.useState(fulling);
-
   const textfieldstyle={
     fontSize:"13px",
     '& :focus':{
@@ -77,6 +76,21 @@ export default function AddCardBank({open,close,fulling ,sizewidth}) {
     marginLeft:-10,
     paddingLeft:4,
   }
+
+  const inputStyle={ style: { textAlign: 'center' ,fontSize:"22px",padding:"10px 0px"}}
+
+export default function AddCardBank({open,close,fulling ,sizewidth}) {
+  
+  const {auth}=useSelector(state=>state.authtoken);
+  const [issmall, setissmall] = React.useState(fulling);
+  const inref=React.useRef([]);
+  const [cardnumber,setCardnumber]=React.useState({
+    first:"",
+    second:"",
+    third:"",
+    forth:""
+  });
+  const [checked, setchecked] = React.useState(false);
    
   const sizeDialog=()=>{
     if(fulling==false){
@@ -89,11 +103,48 @@ export default function AddCardBank({open,close,fulling ,sizewidth}) {
     }
     
   }
+  const handleChange=(props,idx,event)=>{
+    setchecked(false)
+    if(event.target.value.length <5){
+      setCardnumber({...cardnumber,[props]:event.target.value});
+      if(event.target.value.length==4){
+        if(idx===0){
+          setchecked(true)
+        }else{
+          inref.current[idx].focus();
+          }
+                
+      }
+    }
+    else{
+        inref.current[idx].focus();
+    }
+  }
    React.useEffect(() => {
       sizeDialog();
       window.addEventListener('resize',sizeDialog,false);
-   },[issmall]);
-   
+      if(checked===true && cardnumber.forth){
+        handleAddCard();
+      }
+   },[issmall,checked,cardnumber]);
+
+  const handleAddCard=()=>{
+    let card=`${cardnumber.first}${cardnumber.second}${cardnumber.third}${cardnumber.forth}`;
+    Api.post(USER_BANK,{
+      "cardNumber":card
+    },{
+      headers:authpost(auth)
+    }).then(res=>{
+      if(res.data.statusCode===200){
+        // console.log(res.data.data.message);
+
+        setchecked(false)
+      }
+    }).catch(err=>{
+      console.log(err.response)
+    })
+  }
+
   return (
       <BootstrapDialog
         fullScreen={issmall?true:false}
@@ -122,33 +173,53 @@ export default function AddCardBank({open,close,fulling ,sizewidth}) {
                        <TextField
                         color="digi"
                         variant="outlined"
-                        type="tel"
-                        inputProps={{ maxLength: 4,disableUnderline: true}}
+                        type="number"
                         sx={textfieldstyle}
                         style={{marginLeft:"16px"}}
+                        value={cardnumber.forth}
+                        inputRef={(ref)=>(inref.current[4]=ref)}
+                        onChange={(event)=>{
+                          handleChange('forth',0,event)
+                         }}
+                         inputProps={inputStyle}
                         />
                         <TextField
                         color="digi"
                         variant="outlined"
-                        type="tel"
-                        inputProps={{ maxLength: 4,disableUnderline: true}}
+                        type="number"
                         sx={textfieldstyle}
                         style={{marginLeft:"16px"}}
+                        value={cardnumber.third}
+                        inputRef={(ref)=>(inref.current[3]=ref)}
+                        onChange={(event)=>{
+                          handleChange('third',4,event)
+                         }}
+                         inputProps={inputStyle}
                         />
                         <TextField
                         color="digi"
                         variant="outlined"
-                        type="tel"
-                        inputProps={{ maxLength: 4,disableUnderline: true}}
+                        type="number"
                         sx={textfieldstyle}
                         style={{marginLeft:"16px"}}
+                        value={cardnumber.second}
+                        inputRef={(ref)=>inref.current[2]=ref}
+                        onChange={(event)=>{
+                          handleChange('second',3,event)
+                         }}
+                         inputProps={inputStyle}
                         />
                         <TextField
                         color="digi"
                         variant="outlined"
-                        type="tel"
-                        inputProps={{ maxLength: 4,disableUnderline: true}}
+                        type="number"
                         sx={textfieldstyle}
+                        value={cardnumber.first}
+                        inputRef={(ref)=>(inref.current[1]=ref)}
+                        onChange={(event)=>{
+                          handleChange('first',2,event)
+                         }}
+                         inputProps={inputStyle}
                         />
                </Box>
              </FormGroup>
@@ -165,6 +236,7 @@ export default function AddCardBank({open,close,fulling ,sizewidth}) {
                       color="digi"
                       fullWidth
                       sx={{'& :focus':btnbg}} 
+                      disabled
                       type="number"
                       InputProps={{
                         endAdornment:( 
@@ -177,14 +249,14 @@ export default function AddCardBank({open,close,fulling ,sizewidth}) {
                </FormGroup>
                {fulling===false &&<Box sx={{pt:"24px"}}>
 
-           <Button variant="contained" sx={{ fontSize: "16px", height: "55px" ,borderRadius:"8px"}} fullWidth>
+           <Button variant="contained" onClick={close}  sx={{ fontSize: "16px", height: "55px" ,borderRadius:"8px"}} fullWidth>
                 ثبت کارت بانکی جدید
              </Button>
              </Box>}
              
         </DialogContent>
         {fulling===true && <DialogActions>
-          <Button variant="contained" sx={{ fontSize: "16px", height: "55px" ,borderRadius:"8px"}} fullWidth>
+          <Button variant="contained" onClick={close}   sx={{ fontSize: "16px", height: "55px" ,borderRadius:"8px"}} fullWidth>
                 ثبت کارت بانکی جدید
              </Button>
         </DialogActions>}

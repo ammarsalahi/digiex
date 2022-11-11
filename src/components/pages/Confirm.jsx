@@ -7,12 +7,12 @@ import { useDispatch,useSelector } from 'react-redux';
 
 export default function Confirm() {
    
-   const {token,phone}=useSelector(state=>state.login);
+   const {phone}=useSelector(state=>state.login);
   return (
     <div>
     {phone!=null ?
     <SignLayout>
-          <SecureCodePage  codeurl={LOGIN_CODE} number={phone} token={token}/> 
+          <SecureCodePage  codeurl={LOGIN_CODE} number={phone}/> 
     </SignLayout>
      :<Navigate to="/login"/>}
     </div>

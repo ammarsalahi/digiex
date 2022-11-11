@@ -8,24 +8,29 @@ import DigiSelect from '../global/DigiSelect';
 import BuyStepTwo from '../dialogs/BuyStepTwo';
 import ShopStep from '../dialogs/ShopStep';
 import inputFontSize from '../global/inputFontSize';
+import Api from '../ApiConfig/Api'
+import {useSelector} from 'react-redux'
+import {authpost} from '../ApiConfig/ApiHeaders';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        // <Box sx={{ p: 7 }}>
-        <Box>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
+      <div
+          role="tabpanel"
+          hidden={value !== index}
+          id={`simple-tabpanel-${index}`}
+          aria-labelledby={`simple-tab-${index}`}
+          {...other}
+      >
+
+          {value === index && (
+              // <Box sx={{ p: 7 }}>
+              <Box>
+                  <Typography>{children}</Typography>
+              </Box>
+          )}
+      </div>
+
   );
 }
 
@@ -66,9 +71,20 @@ const btnstyle={
 
 export default function FormTabs({options,tabvalue,handleChange,openprop}) {
 
+  const {auth}=useSelector(state=>state.authtoken);
+
+  const [formdata,setFormdata]=React.useState({
+    cryptocurrencyId: 0,
+    amount: 0,
+    totalPrice: 0,
+    price: 0,
+    priceHistoryId: 0
+  });
+
+
   const [sizewidth, setSizewidth] = React.useState('auto');
   const [open,setopen]=React.useState(openprop);
-
+ 
 
   const sizeDialog =()=>{
     if (window.innerWidth < 700) {
@@ -141,18 +157,24 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
     setopen({...open,[props]:false});
   }
  
- 
+  const submitBuy=()=>{
+    Api.post({
+      headers:authpost(auth),
+    }).then(res=>{
+      console.log(res.data);
+    })
+  }
  
   return (
       <Box sx={{ width: '100%' }} >
-      <Box sx={{ borderBottom: 0, borderColor: 'divider', paddingBlock: .85 }}>
-        <Tabs value={tabvalue} onChange={handleChange} fontSize="large" aria-label="basic tabs example"
-          TabIndicatorProps={{
-            style:{ background: "#f2b107", height: 3 ,width:"100%"}
-          }}
-        >
-          <Tab label={<span className={tabvalue === 0 ? "tab-color" : ""}>خرید‌ از‌ ما </span>} {...a11yProps(0)} />
-          <Tab label={<span className={tabvalue === 1 ? "tab-color" : ""}>فروش به ما </span>} {...a11yProps(1)} />
+      <Box sx={{ borderBottom: 0, borderColor: 'divider', paddingBlock: .85 ,pt:'14px'}}>
+            <Tabs value={tabvalue} onChange={handleChange} fontSize="large" aria-label="basic tabs example"
+               TabIndicatorProps={{
+                style: { background: "#f2b107", height: 3}
+                  }}  
+            >
+          <Tab  label={<span className={tabvalue === 0 ? "tab-color" : ""}>خرید‌ از‌ ما </span>} {...a11yProps(0)} />
+          <Tab  label={<span className={tabvalue === 1 ? "tab-color" : ""}>فروش به ما </span>} {...a11yProps(1)} />
           
         </Tabs>
       </Box>
@@ -164,7 +186,7 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
           <FormGroup sx={formbtnstyle} >
             <FormLabel className="inputfont">مبلغ خرید(تومان)</FormLabel>
             <TextField color="digi" type="number"
-             fullWidth placeholder='0.00'
+             fullWidth placeholder='0.00' 
              InputProps={{
               endAdornment:( 
                   <InputAdornment position="end">تومان</InputAdornment>

@@ -12,8 +12,8 @@ export default function PrivateRoute({children}) {
   const [isSideClick,setisSideClick]=React.useState(false);
   const [isMobile,setIsMobile]=React.useState(false);
 
-  // const {auth} =useSelector(state=>state.authtoken);  
-  const auth="jjj";
+  const {auth} =useSelector(state=>state.authtoken);  
+  // const auth="jjj";
   const LoadNavMobile=(event)=>{
     setIsMobile(true);
   }

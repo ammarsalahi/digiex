@@ -1,6 +1,7 @@
 import { Typography, Box } from '@mui/material'
 import React from 'react'
 import svgsicon from '../../../img/logos/level-star.svg'
+import { useSelector } from 'react-redux'
 
 export default function HeaderInfo({ userdata, svgsDash }) {
   const infobox = {
@@ -19,6 +20,20 @@ export default function HeaderInfo({ userdata, svgsDash }) {
     fontSize:"12px"
 
   }
+  const {fullname,level}=useSelector(state=>state.profile)
+  
+  const getLevel=(levels)=>{
+    if(levels==="1"){
+        return "کاربر برنزی";
+    }else if(levels==="2"){
+        return "کاربر نقره ای";
+    }
+    else if(levels==="3"){
+      return "کاربر طلایی";
+  }else if(levels==="4"){
+      return "کاربر پلاتینیوم";
+  }
+  }
 
   return (
     <div className="row d-flex justify-content-center mycontainer backgroundClr" >
@@ -30,10 +45,10 @@ export default function HeaderInfo({ userdata, svgsDash }) {
             </div> : <div></div>}
             <div>
               <Typography variant="p" component="div">
-                {userdata.name}
+                {fullname}
               </Typography>
               <Typography variant="p" component="div" className='text-end py-1' sx={{ color: "#e9ab00" }}>
-                {userdata.level}
+                {getLevel(level)}
               </Typography>
             </div>
           </div>

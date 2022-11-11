@@ -2,7 +2,7 @@ import React from 'react'
 import { Typography,Box } from '@mui/material'
 import { ArrowDownward } from '@mui/icons-material'
 
-export default function UploadButton({text}) {
+export default function UploadButton({text,click}) {
     const uploadbtnstyle={
         height:"49px",
         width:"162px",
@@ -25,7 +25,7 @@ export default function UploadButton({text}) {
         textAlign:"center"
     }
   return (
-    <Box type="button" className='d-flex justify-content-between' sx={uploadbtnstyle}>
+    <Box type="button" className='d-flex justify-content-between' sx={uploadbtnstyle} onClick={click}>
         <Typography fontSize="14px" sx={{p:"14px"}}>
             {text}
          </Typography>

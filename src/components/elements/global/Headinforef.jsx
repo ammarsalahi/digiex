@@ -23,7 +23,7 @@ export default function HeaderInfo({ userdata, svgsDash }) {
     return (
         <Box sx={infobox} className="row d-flex justify-content-center mycontainer " >
             <Box className="row justify-content-between align-items-center">
-                <Box className="col-lg-8 col-12 g-0" sx={minibox} >
+                <Box className="col-12 g-0" sx={minibox} >
                     <Box className="row">
                         <Box className="col-lg-8 col-12">
                             <Box className="row">

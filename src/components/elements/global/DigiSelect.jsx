@@ -3,6 +3,11 @@ import { TextField,InputAdornment ,MenuItem,Box,Select,ListItem,ListItemText} fr
 import {Search} from '@mui/icons-material'
 import Svg from '../../utils/Svgs';
 import inputFontSize from './inputFontSize';
+import Api from '../ApiConfig/Api';
+import {WALLET_CRYPTO} from '../ApiConfig/Endpoints'
+import {authpost} from '../ApiConfig/ApiHeaders';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const tetstyle={
   pt:"3px",height: "30px", width: "30px",
@@ -30,11 +35,13 @@ const muilist={
 }
 
 export default function DigiSelect({options}) {
+
    const [optionstate, setoptionstate] = React.useState(options);
    const [open, setopen] = React.useState(false)
    const [search, setsearch] = React.useState("");
    const [isSearch, setisSearch] = React.useState(false);
-
+   const [crypto,setCrypto]=React.useState(null);
+   const {auth} =useSelector(state=>state.authtoken);
   
    const handleSearch=(event)=>{
     setoptionstate(
@@ -58,7 +65,18 @@ export default function DigiSelect({options}) {
       setoptionstate(options)
     }
 }
-
+   const getCryptos=async()=>{
+        await Api.get(WALLET_CRYPTO,{
+          headers: authpost(auth)
+        }).then(res=>{
+          console.log(res.data)
+          setCrypto(res.data.data.results);
+        })
+   }
+   useEffect(()=>{
+      getCryptos();
+   },[crypto]);
+   
   return (
     <div>
         <Select
@@ -70,7 +88,7 @@ export default function DigiSelect({options}) {
             defaultValue={optionstate[0].label}
             onChange={(e)=>console.log(e.target.value)}
             >
-            {options.length >=4 && <TextField 
+            {crypto && <TextField 
             color="digi"
             sx={textfieldstyle}
             size="small"
@@ -89,23 +107,23 @@ export default function DigiSelect({options}) {
                 }
               }}
             />}
-            {optionstate.length 
+            {crypto!=null 
             ? 
-            (optionstate.map((item,idx)=>(
-                <MenuItem button key={idx} sx={muilist} value={item.label}>
+            (crypto.map((item)=>(
+                <MenuItem button key={item.id} sx={muilist} value={item.namePer}>
                   <div  dir="rtl">
                   <div className="d-flex justify-content-start">
                         <Box className="text-center" 
-                         sx={ item.label==="تتر" || item.label==="یو اس دی کوین" ? tetstyle : daistyle }
+                         sx={ item.namePer==="تتر" || item.label==="یو اس دی کوین" ? tetstyle : daistyle }
                         >
                         <Svg Component={item.icon} style={{ height: "23px", width: "23px" }} />
                         </Box>
-                        <div className="mx-2 mt-1" style={fonsizes}>{item.label}</div>
+                        <div className="mx-2 mt-1" style={fonsizes}>{item.namePer}</div>
                      </div>
                   </div>
                  </MenuItem>                
             )))
-            :<Box sx={{py:"2%",textAlign:"center",fontWeight:"bold",fontSize:"14px"}}> 
+            :<Box className="fontbold"sx={{py:"2%",textAlign:"center",fontSize:"14px"}}> 
              <p>هیچ آیتمی وجود ندارد</p>
             </Box>}
         </Select>

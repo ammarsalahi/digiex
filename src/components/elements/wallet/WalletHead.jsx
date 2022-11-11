@@ -3,7 +3,12 @@ import { Typography, Box, Button } from '@mui/material';
 import { Menu, SouthWest, ArrowUpwardOutlined } from '@mui/icons-material';
 import { ReactComponent as UpGreen } from '../../../img/icons/coin/up - green.svg'
 import Svg from '../../utils/Svgs';
+import {useSelector} from 'react-redux';
+
 export default function WalletHead() {
+  
+  
+
   return (
     <div className='row  mycontainer backgroundClr'>
       <div className='col-lg-6 col-md-6 col-12 g-0'>

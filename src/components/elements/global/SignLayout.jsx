@@ -3,6 +3,7 @@ import { Box, Typography ,MobileStepper} from '@mui/material'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination,EffectFlip,Autoplay } from 'swiper';
 import Svg from '../../utils/Svgs'
+import {useLocation} from 'react-router-dom'
 import { ReactComponent as Logo} from '../../../img/icons/logo-fa-white.svg';
 
 import 'swiper/swiper-bundle.min.css'
@@ -36,6 +37,11 @@ const mobstepstyle={
 
 export default function SignLayout({children}) {
      const [active, setActive] = React.useState(0)
+     let location=useLocation();
+     const logstyle="d-lg-none d-md-none d-sm-block d-block text-center fixed-bottom";
+     const regstyle="d-lg-none d-md-none d-sm-block d-block text-center ";
+
+
   return (
     <div className='container-fluid ' >
     <Box className="row" dir="rtl" style={{height:"100vh"}}>
@@ -108,7 +114,7 @@ export default function SignLayout({children}) {
                   &#169; تمام حقوق این پلتفرم محفوظ میباشد 
                   </Typography>
                 </Box>
-                <Box className="d-lg-none d-md-none d-sm-block d-block text-center fixed-bottom" sx={{pb:"32px"}}>
+                <Box className={location.pathname==='/register'?regstyle:logstyle} sx={location.pathname==='/register'?{py:'32px'}:{pb:"32px"}}>
                   <Typography variant="p" component="div" fontSize="16px" >
                   &#169; تمام حقوق این پلتفرم محفوظ میباشد 
                   </Typography>

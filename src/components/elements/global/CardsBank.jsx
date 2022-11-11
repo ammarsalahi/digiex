@@ -6,6 +6,11 @@ import {ReactComponent as AddCircle} from '../../../img/icons/circle-add.svg';
 import {ReactComponent as Trash} from '../../../img/icons/trash.svg';
 import Svg from '../../utils/Svgs';
 import {ReactComponent as Saman} from '../../../img/icons/bank-saman.svg';
+import {authpost} from '../ApiConfig/ApiHeaders';
+import { useSelector } from 'react-redux';
+import Api from '../ApiConfig/Api';
+import { USER_BANK } from '../ApiConfig/Endpoints';
+import { useEffect } from 'react';
 
 export default function CardsBank() {
 
@@ -13,11 +18,33 @@ export default function CardsBank() {
   const [show,setShow]=React.useState(false);
   const numbercrd="6104337391508790";
 
+  const {auth} =useSelector(state=>state.authtoken);
+  const [banks,setBanks]=React.useState([]);
+
+  const getBanks=()=>{
+        Api.get(USER_BANK,{
+          headers:authpost(auth)
+        }).then(res=>{
+          if(res.data.statusCode===200){
+            setBanks(res.data.data.result)
+          }
+           
+        });
+  }
+  React.useEffect(()=>{
+    let isload=false;
+    if(isload===false){
+      getBanks();
+      isload=true
+    }
+  },[banks]);
+
   const opendialog=(event)=>{
     setOpen(true);
   }
   const closedialog=(event)=>{
     setOpen(false);
+    getBanks()
   }
   const handleArrow=(event)=>{
     if(show){
@@ -27,11 +54,21 @@ export default function CardsBank() {
       setShow(true);
     }
   }
-  const listdata=[
-    {'bank':"بانک سامان",'number':"6104337391508790"},
-    {'bank':"بانک سامان",'number':"6104337391508790"},
 
-  ] 
+  const handleDelete=(ids)=>(event)=>{
+    Api.delete(`${USER_BANK}?id=${ids}`,{
+        headers:authpost(auth),
+       }).then(res=>{
+        if(res.data.statusCode===200){
+          getBanks();
+        }
+    });
+  }
+  // const listdata=[
+  //   {'bank':"بانک سامان",'number':"6104337391508790"},
+  //   {'bank':"بانک سامان",'number':"6104337391508790"},
+
+  // ] 
   const StrToArray=(text,sidx,eidx)=>{
     let strarray=[]
      for(let i=0; i<=text.length;i++){
@@ -80,20 +117,20 @@ export default function CardsBank() {
                 </div>
                 
             </Box>
-           {show? listdata.map((item,idx)=>(
-            <Box key={idx} className="bordertop d-flex justify-content-between" sx={{cursor:"pointer",pt:2,px:"16px"}} >
+           {show? banks.map((item)=>(
+            <Box key={item.bankId} className="bordertop d-flex justify-content-between" sx={{cursor:"pointer",pt:2,px:"16px"}} >
                <div className="d-flex">
                 <Svg Component={Saman} style={{marginTop:"2px"}}/>
-                <ListItemText primary={item.bank} sx={{ml:'16px'}}/>
+                <ListItemText primary={item.bankName} sx={{ml:'16px'}}/>
                </div>
                 <div className="d-flex">
                 <ListItemText primary={
                    <div>
-                  <pre>{StrToArray(item.number,12,16)}    {StrToArray(item.number,8,12)}   {StrToArray(item.number,4,8)}    {StrToArray(item.number,0,4)}</pre> 
+                  <pre>{StrToArray(item.cardNumber,12,16)}    {StrToArray(item.cardNumber,8,12)}   {StrToArray(item.cardNumber,4,8)}    {StrToArray(item.cardNumber,0,4)}</pre> 
                    </div>
                 }
                 primaryTypographyProps={{fontSize:"17px"}} />
-                <Svg Component={Trash} style={{marginRight:'20px',marginLeft:"3px",marginTop:"2px"}} />
+                <Svg Component={Trash} style={{marginRight:'20px',marginLeft:"3px",marginTop:"2px"}} onClick={handleDelete(item.id)}/>
                 </div>
                 
             </Box>

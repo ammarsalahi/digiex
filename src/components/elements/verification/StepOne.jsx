@@ -1,19 +1,22 @@
-import { Api, Close, ErrorOutline } from '@mui/icons-material';
 import { Button, FormGroup, FormLabel, Typography ,TextField,Snackbar} from '@mui/material'
 import { Box ,InputAdornment} from '@mui/material'
 import React from 'react';
 import { useRef } from 'react';
 import DigiAlert from '../global/DigiAlert';
 import inputFontSize from '../global/inputFontSize';
-import { VERIFICATION_INFO } from '../ApiConfig/Endpoints';
-
+import { ACCOUNT_PROFILE, VERIFICATION_INFO } from '../ApiConfig/Endpoints';
+import { useSelector } from 'react-redux';
+import Api from '../ApiConfig/Api';
+import {authpost} from '../ApiConfig/ApiHeaders'
 
 export default function StepOne({onNext}) {
+  // const {phone,fullname,pid,date}=useSelector(state=>state.profile);
+  const {auth}=useSelector(state=>state.authtoken);
   const [isfucosed, setisfucosed] = React.useState(false)
   var regex = new RegExp('^(\\+98|0)?9\\d{9}$');
+  const [alert,setAlert]=React.useState(false);
 
-  const [alert,setAlert]=React.useState(true);
-
+  
   const [formdata,setFormdata]=React.useState({
     firstname:"",
     lastname:"",
@@ -31,8 +34,29 @@ export default function StepOne({onNext}) {
     date:"",
   });
 
-  const inputRefs =useRef([]);
-
+  const initialvalues=async()=>{
+    await Api.get(ACCOUNT_PROFILE,{
+      headers:authpost(auth)
+    }).then(res=>{
+      if(res.data.statusCode===200){
+        const {phoneNumber,firstName,lastName,nationalCode,birthDate}=res.data.data.result;
+        let dates=birthDate.slice(0,10).split('-')
+        setFormdata(
+          {...formdata,
+            phone:phoneNumber,
+            firstname:firstName,
+            lastname:lastName,
+            personalid:nationalCode,
+            year:dates[0],
+            month:dates[1],
+            day:dates[2]
+          })
+      }
+    })
+  }
+  React.useEffect(()=>{
+      initialvalues();    
+  },[])
   
   const handleAlert=(props)=>(event)=>{
     if(props==='close'){
@@ -42,42 +66,60 @@ export default function StepOne({onNext}) {
       setAlert(true);
     }
   }
-  const handleChnageFormData =(props)=>(event)=>{
-    if(props==='personalid'){
-       if(parseInt(event.target.value)){
-        setFormdata({personalid:event.target.value});
-       }
-    }else{
-      setFormdata({...formdata,[props]:event.target.value});
+
+
+  const handlePhone=(props,event)=>{
+    if(event.target.value.length===11){
+      if(regex.test(event.target.value)===false){
+        setErrortext({phone:"شماره وارد شده قابل قبول نیست"});
+      }else{
+        setFormdata({...formdata,[props]:event.target.value});
+        setErrortext({phone:""});
+      }
     }
-   
+    else if(event.target.value.length > 11){
+        setErrortext({phone:"تعداد ارقام وارد شده بیشتر از حد مجاز است"});
+    }
+    else{
+      setFormdata({phone:event.target.value});
+      setErrortext({phone:""});
+    }
   }
-    const handlePhone=(event)=>{
-        if(event.target.value.length===11){
-          if(regex.test(event.target.value)===false){
-            setErrortext({phone:"شماره وارد شده قابل قبول نیست"});
-          }else{
-            setFormdata({phone:event.target.value});
-            setErrortext({phone:""});
-          }
-        }
-        else if(event.target.value.length > 11){
-            setErrortext({phone:"تعداد ارقام وارد شده بیشتر از حد مجاز است"});
-        }
-        else{
-          setFormdata({phone:event.target.value});
-          setErrortext({phone:""});
-        }
-     
+  const handleID=(props,event)=>{
+    if(event.target.value.length>=0){
+      if(event.target.value.length<11){
+        setFormdata({...formdata,[props]:event.target.value});
+        setErrortext({personalid:""});
+      }else{
+        setErrortext({personalid:"تعداد ارقام وارد شده بیشتر از حد مجاز است"});
+      }
     }
+
+  }
+  const handleChnageFormData =(props)=>(event)=>{
+      if(props==='phone'){
+            handlePhone(props,event)
+      }
+      if(props==='personalid'){
+          handleID(props,event);
+      }
+      else{
+        setFormdata({...formdata,[props]:event.target.value});
+      }
+      
+
+  }
+    
+
+   
   const handleDate=(props)=>(event)=>{
       if(props==='year'){
         if(event.target.value.length <=4){
           setErrortext({date:""})
           if(event.target.value >0){
 
-            if(event.target.value <= 1390 ){
-              setFormdata({year:event.target.value});
+            if(event.target.value <= 2012 ){
+              setFormdata({...formdata,[props]:event.target.value});
             }
             else{
               setErrortext({date:"مقدار وارد شده اشتباه است"})
@@ -86,22 +128,35 @@ export default function StepOne({onNext}) {
           else{
             setErrortext({date:"مقدار وارد شده اشتباه است"})
           }
-      }
-        
+        }
       }
       if(props==='month'){
         if(event.target.value.length <=2 ){
-          if(event.target.value >=1 && event.target.value <=12){
-            setFormdata({month:event.target.value});
-
+         if(event.target.value.length >0 ){
+           if(event.target.value.length <=12 ){
+            setFormdata({...formdata,[props]:event.target.value});
+           }
+           else{
+            setErrortext({date:"مقدار وارد شده اشتباه است"})
+          }
+         }
+         else{
+          setErrortext({date:"مقدار وارد شده اشتباه است"})
           }
         }
       }
       if(props==='day'){
         if(event.target.value.length <=2 ){
-          if(event.target.value >=1 && event.target.value <=31){
-            setFormdata({day:event.target.value});
-
+         if(event.target.value.length >0 ){
+           if(event.target.value.length <=30){
+            setFormdata({...formdata,[props]:event.target.value});
+           }
+           else{
+            setErrortext({date:"مقدار وارد شده اشتباه است"})
+          }
+         }
+         else{
+          setErrortext({date:"مقدار وارد شده اشتباه است"})
           }
         }
       }
@@ -114,16 +169,17 @@ export default function StepOne({onNext}) {
   }
   
    const submit=()=>{
-      const date=`${year}-${month}-${day}`;
       Api.post(VERIFICATION_INFO,
         {
           "phoneNumber": formdata.phone,
           "firstName": formdata.firstname,
           "lastName": formdata.lastname,
           "nationalCode": formdata.personalid,
-          "birthDate": date,
-        }).then((res)=>{
-          if(res.statusCode===2000){
+          "birthDate": `${formdata.year}-${formdata.month}-${formdata.day}`,
+        },
+        {headers:authpost(auth)}).then((res)=>{
+         
+          if(res.data.statusCode===200){
              onNext();
           }
         });
@@ -148,7 +204,7 @@ export default function StepOne({onNext}) {
                 sx={textfieldstyle}
                 helperText={errortext.phone}
                 value={formdata.phone}
-                onChange={handlePhone}
+                onChange={handleChnageFormData('phone')}
                 InputProps={{
                   style:inputFontSize,
                 }}
@@ -163,6 +219,7 @@ export default function StepOne({onNext}) {
                 sx={textfieldstyle}
                 FormHelperTextProps={{color:"red"}}
                 helperText={errortext.firstname}
+                value={formdata.firstname}
                 onChange={handleChnageFormData('firstname')}
                 InputProps={{
                   style:inputFontSize,
@@ -178,6 +235,7 @@ export default function StepOne({onNext}) {
                 sx={textfieldstyle}
                 FormHelperTextProps={{color:"red"}}
                 helperText={errortext.lastname}
+                value={formdata.lastname}
                 onChange={handleChnageFormData('lastname')}
                 InputProps={{
                   style:inputFontSize,
@@ -277,7 +335,7 @@ export default function StepOne({onNext}) {
           
         </form>
        </Box>
-       <DigiAlert open={alert} close={handleAlert('close')} message="این یک پیام است!" />
+       <DigiAlert open={alert} close={handleAlert('close')} message="این یک پیام است!" type="error" />
     </div>
   )
 }
