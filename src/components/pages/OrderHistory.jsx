@@ -5,9 +5,11 @@ import TransactionHead from '../elements/transaction/TransactionHead'
 import { Box, Table, TableBody, TableHead, TableCell, TableContainer, TableRow , Typography,Button} from '@mui/material'
 import { SouthWest, NorthEast } from '@mui/icons-material'
 import {ThemeProvider, createTheme} from '@mui/material/styles';
-
-
-
+import Api from '../elements/ApiConfig/Api';
+import { authpost } from '../elements/ApiConfig/ApiHeaders';
+import { useSelector } from 'react-redux';
+import {REQUEST_BUY_PAGE} from '../elements/ApiConfig/Endpoints';
+import { useEffect } from 'react';
 
 
 function createData(date, name, operation, count, address , txid,station)  {
@@ -27,45 +29,50 @@ const rows = [
 
 ]
 
+const rowstyle={
+  '&:last-child td, &:last-child th': { border: 0 },
+  borderTop:"1px solid #afa6b4",
+  // borderTop:"1px solid rgba(203, 228, 235, 1)",
+}
+const headstyle={
+  py:"16px",
+  fontSize: "14px !important",
+  textAlign:"center",
+  color: "rgba(164, 166, 180, 1)",
+  maxWidth:"200px",
+  minWidth:"120px",
+}
+const cellstyle={
+  py:"24px",
+  fontSize: "14px !important",
+  textAlign:"center"
+}
+const boxbtnstyle={
+  border:"1px solid #afa6b4",
+  borderRadius:"10px",
+  height:"48px",
+  width:"153px",
+  px:"5px",
+  py:"5px",
+  display:"flex",
+}
+
+const darkbtnstyle={
+  height: "35px",
+  width: "77px",
+  borderRadius:"8px",
+}
+
+
 export default function Transaction() {
+  const {auth} =useSelector(state=>state.authtoken);
+
   const [btntext, setbtntext] = React.useState("withdraw")
   const handleBoxbtn=(props)=>(event)=>{
     setbtntext(props);
  }
 
-  const rowstyle={
-    '&:last-child td, &:last-child th': { border: 0 },
-    borderTop:"1px solid #afa6b4",
-    // borderTop:"1px solid rgba(203, 228, 235, 1)",
-  }
-  const headstyle={
-    py:"16px",
-    fontSize: "14px !important",
-    textAlign:"center",
-    color: "rgba(164, 166, 180, 1)",
-    maxWidth:"200px",
-    minWidth:"120px",
-  }
-  const cellstyle={
-    py:"24px",
-    fontSize: "14px !important",
-    textAlign:"center"
-  }
-  const boxbtnstyle={
-    border:"1px solid #afa6b4",
-    borderRadius:"10px",
-    height:"48px",
-    width:"153px",
-    px:"5px",
-    py:"5px",
-    display:"flex",
-  }
  
-  const darkbtnstyle={
-    height: "35px",
-    width: "77px",
-    borderRadius:"8px",
-  }
  
 
  
@@ -76,7 +83,17 @@ export default function Transaction() {
       },
     },
   });
-
+  
+  const GetTransactionData=()=>{
+    Api.get(REQUEST_BUY_PAGE(20,1),{
+      headers:authpost(auth)
+    }).then(res=>{
+      console.log(res.data)
+    })
+   }
+   useEffect(()=>{
+      GetTransactionData();
+   });
   return (
     <div>
       <Box>

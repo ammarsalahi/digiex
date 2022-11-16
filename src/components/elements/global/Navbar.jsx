@@ -10,7 +10,7 @@ import Svg from '../../utils/Svgs';
 import { useDispatch ,useSelector} from 'react-redux';
 import {logoutAction,profilelogAction} from '../redux/actions'
 import Api from '../ApiConfig/Api';
-import { ACCOUNT_PROFILE } from '../ApiConfig/Endpoints';
+import { ACCOUNT_PROFILE,LOGOUT } from '../ApiConfig/Endpoints';
 import {authpost} from '../ApiConfig/ApiHeaders';
 
 const appbarstyle = {
@@ -45,13 +45,16 @@ export default function Navbar({ isSide, LoadSide, LoadMobile}) {
 
 
   const goLogin = (event) => {
-    // Api.post(LOGOUT).then(res=>{
-    //   if(res.data.statusCode===200){
+    Api.delete(LOGOUT,{
+      headers:authpost(auth)
+    }).then(res=>{
+       if(res.data.statusCode===200){
         localStorage.clear()
         dispatch(logoutAction());
         event.preventDefault()
         navigate('/login')
-      
+       }
+    });
   }
   const getLevel=(level)=>{
     if(level===1){
@@ -81,7 +84,6 @@ export default function Navbar({ isSide, LoadSide, LoadMobile}) {
   }
   React.useEffect(()=>{
       initialvalues();
-      console.log(userdata)
   },[])
   return (
     <Box sx={{ flexGrow: 1, direction: 'ltr', width: '100%' }}>

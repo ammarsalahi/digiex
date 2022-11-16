@@ -1,7 +1,7 @@
 import React from 'react'
  import CheckCircleIcon from '../../img/payment/success.svg';
-import FormInfo from '../elements/buy/FormInfo';
-import { Button } from '@mui/material';
+ import FormInfoGlobal from '../elements/global/FormInfoGlobal';
+ import { Button } from '@mui/material';
 
 export default function Dashboard() {
     const list = [
@@ -46,7 +46,7 @@ export default function Dashboard() {
                             <h5>سفارش فروش شما با موفقیت ثبت شد.</h5>
                             <small className='text-muted '>پس از تایید واریز ارز ، مبلغ سفارش به حساب شما واریز خواهد شد.</small>
                         </div>
-                        <FormInfo listdata={list} />
+                        <FormInfoGlobal listdata={list} />
                         <div className='col-7 m-auto py-3'>
                             <Button variant="contained" sx={{ fontSize: 21, backgroundColor: "#424BFB", height: "55px" }} fullWidth>
                                 پیگیری معاملات

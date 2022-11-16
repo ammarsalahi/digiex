@@ -6,7 +6,8 @@ import { ArrowBackIos } from '@mui/icons-material';
 import Api from '../elements/ApiConfig/Api';
 import {ACCOUNT_PROFILE} from '../elements/ApiConfig/Endpoints';
 import DigiAlert from '../elements/global/DigiAlert';
-
+import { useSelector,useDispatch } from 'react-redux';
+import { authpost } from '../elements/ApiConfig/ApiHeaders';
 
 const labelStyle={
   fontSize:"14px"
@@ -15,30 +16,31 @@ const labelStyle={
 const textfieldstyle={
   mb:"24px",
   fontSize:"14px",
- }
+}
 
 export default function Register() {
+    
+    const {phone}=useSelector(state=>state.login);
+    const {auth}=useSelector(state=>state.authtoken);
     const [formdata, setformdata] = React.useState({
-      phone:"",
       firstname:"",
       lastname:"",
-      code:""
+      code:"none"
     });
     const [isload, setisload] = React.useState({
-      phone:false,
       firstname:false,
       lastname:false,
       code:false
     });
     const [message, setmessage] = React.useState("")
-
+    const [open,setOpen]=React.useState(false)
 
    let navigate=useNavigate();
 
 
    const handleChange=(props)=>(event)=>{
       setformdata({...formdata,[props]:event.target.value});
-      if(event.target.value<1){
+      if(event.target.value.length>2){
         setisload({...isload,[props]:true})
       }
       else{
@@ -46,19 +48,24 @@ export default function Register() {
       }
    }
    const submit=()=>{
-     if(isload.phone!=false && isload.firstname!=false && isload.lastname!=false ){
+     if(isload.firstname===true && isload.lastname===true ){
          Api.put(ACCOUNT_PROFILE,{
-           email:formdata.phone,
+           email:"me@you.com",
            firstName:formdata.firstname,
            lastName:formdata.lastname,
            referalCode:formdata.code,
+         },{
+          headers:authpost(auth)
          }).then(res=>{
-            console.log(res.data);
+            if(res.data.statusCode===300){
+              navigate('/verification')
+            }
          }).catch(err=>{
             console.log(err)
          });
      }else{
-         setmessage("اطلاعات کامل وارد نشده است")
+         setmessage("اطلاعات کامل وارد نشده است");
+         setOpen(true)
      }
    }
 
@@ -82,8 +89,9 @@ export default function Register() {
                  color="digi"
                  placeholder="09123456789"
                  sx={textfieldstyle}
+                 disabled
                  type="tel"
-                 inputProps={{ maxLength: 11}}
+                 value={phone}
                />
              </FormGroup>
              <Box className="row">
@@ -125,12 +133,17 @@ export default function Register() {
                />
              </FormGroup>
              <Box>
-             <Button variant="contained" onClick={submit} className='boxShadowUnset' sx={{height:"55px" ,backgroundColor:"#424BFB"}}  fullWidth>
+             <Button 
+                variant="contained" onClick={submit} 
+                className='boxShadowUnset' 
+                sx={{height:"55px" ,backgroundColor:"#424BFB"}}  
+                fullWidth
+              >
                   ثبت نام
              </Button>
              </Box>
             </form>
-              <DigiAlert />
+              <DigiAlert open={open} close={()=>setOpen(false)} message={message}  type="error"/>
            </Box>
     </SignLayout>
   )

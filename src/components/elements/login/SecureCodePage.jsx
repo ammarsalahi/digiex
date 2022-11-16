@@ -6,8 +6,22 @@ import Api from '../ApiConfig/Api';
 import { useDispatch ,useSelector} from 'react-redux';
 import DigiAlert from '../global/DigiAlert';
 import { authAction ,loginAction,profilelogAction,addprofileAction} from '../redux/actions';
-import { LOGIN_PHONE } from '../ApiConfig/Endpoints';
+import { LOGIN_PHONE,PHONE_CODE } from '../ApiConfig/Endpoints';
+import Countdown from 'react-countdown';
 
+const Completionist = () => <span>منقضی شد!</span>;
+
+// Renderer callback with condition
+const renderer = ({ hours, minutes, seconds, completed }) => {
+  if (completed) {
+    // Render a completed state
+    return <Completionist />;
+  } else {
+    // Render a countdown
+    return <FormLabel sx={labelStyle}>مهلت استفاده کد: {minutes}:{seconds}</FormLabel>;
+
+  }
+};
 const labelStyle={
   fontSize:"14px",
   mt:"30px",
@@ -23,7 +37,12 @@ const labelStyle={
 
 export default function SecureCodePage({codeurl,number}) {
     let {token} =useSelector(state=>state.login);
-    
+    const [countValue,setCountValue]=useState({
+      value:0,
+      basic:1000,
+      result:0
+    });
+
     const [code,setCode]=useState({
       first:"",
       second:"",
@@ -43,11 +62,24 @@ export default function SecureCodePage({codeurl,number}) {
     const dispatch=useDispatch();
     
     let naviagte=useNavigate();
+    const handleCountValue=(times)=>{
+        const results=times * countValue.basic;
+        setCountValue({...countValue,value:times,result:results});
+    }
+    const getCounter=()=>{
+      Api.get(PHONE_CODE(number)).then(res=>{
+        console.log(res.data);
+        const value=res.data.data.result
+        handleCountValue(value);
+      });
+    }
     useEffect(()=>{
       if(checked){
         inref.current[1].focus();
       }
-   })
+      getCounter();
+   },[countValue,Countdown]);
+
 
     const handleChange=(props,idx,event)=>{
       setchecked(false)
@@ -73,10 +105,14 @@ export default function SecureCodePage({codeurl,number}) {
         }).then(res=>{
             if(res.data.statusCode===200){
                 const {userId,fullName}=res.data.data.result;
+                
                 dispatch(authAction(res.data.token));
                dispatch(profilelogAction("",userId,fullName));
-              
-              naviagte('/verification');
+              if(fullName===" "){
+                naviagte('/register');
+              }else{
+                naviagte('/');
+              }
             }else{
               setmessage(err.response.data.data.message);
               setopen(true);
@@ -100,6 +136,7 @@ export default function SecureCodePage({codeurl,number}) {
           dispatch(loginAction(token,number));
           setmessaged('کد تایید دوباره ارسال شد')
           setopend(true)
+          getCounter()
         }
       }).catch(err=>console.log(err));
     }
@@ -188,9 +225,10 @@ export default function SecureCodePage({codeurl,number}) {
              </FormGroup>
              <Box>
                <Box className='d-flex justify-content-between' >
-                  <FormLabel sx={labelStyle}>
-                    مهلت استفاده کد: ۰۰:۴۸
-                    </FormLabel>
+                   <Countdown
+                    date={Date.now()+countValue.result}
+                    renderer={renderer}
+                  />
                   <Button size="small" onClick={sendAgain}>
                   ارسال مجدد کد      
                     </Button>
@@ -208,9 +246,6 @@ export default function SecureCodePage({codeurl,number}) {
             </form>
                 <DigiAlert open={open} close={handleOpen(false)} message={message}  type="error" />
                 <DigiAlert open={opend} close={handleOpend(false)} message={messaged} type="info" />
-
-                {/* <DigiAlertInfo open={opend} close={handleOpend(false)} message={messaged} /> */}
-
 
            </Box>
   )

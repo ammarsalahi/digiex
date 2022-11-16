@@ -79,7 +79,7 @@ BootstrapDialogTitle.propTypes = {
 
   const inputStyle={ style: { textAlign: 'center' ,fontSize:"22px",padding:"10px 0px"}}
 
-export default function AddCardBank({open,close,fulling ,sizewidth}) {
+export default function AddCardBank({open,close,fulling ,sizewidth,getbank}) {
   
   const {auth}=useSelector(state=>state.authtoken);
   const [issmall, setissmall] = React.useState(fulling);
@@ -91,7 +91,9 @@ export default function AddCardBank({open,close,fulling ,sizewidth}) {
     forth:""
   });
   const [checked, setchecked] = React.useState(false);
-   
+  const [ifadd,setIfadd]=React.useState(true);
+  const [error,setError]=React.useState("")
+
   const sizeDialog=()=>{
     if(fulling==false){
       if (window.innerWidth < 768) {
@@ -126,6 +128,7 @@ export default function AddCardBank({open,close,fulling ,sizewidth}) {
       if(checked===true && cardnumber.forth){
         handleAddCard();
       }
+      setError("")
    },[issmall,checked,cardnumber]);
 
   const handleAddCard=()=>{
@@ -136,15 +139,23 @@ export default function AddCardBank({open,close,fulling ,sizewidth}) {
       headers:authpost(auth)
     }).then(res=>{
       if(res.data.statusCode===200){
-        // console.log(res.data.data.message);
-
+        console.log(res.data.data)
         setchecked(false)
+        if(getbank!=null){
+           setIfadd(false)
+        }
       }
     }).catch(err=>{
+      setError("کارت موردنظر اضافه نشد لطفا اطلاعات را بررسی کنید");
+      setCardnumber({first:"",second:"",third:"",forth:""})
       console.log(err.response)
     })
   }
-
+  const handleCloseDialog=()=>{
+    setCardnumber({first:"",second:"",third:"",forth:""})
+    getbank();
+    close()
+  }
   return (
       <BootstrapDialog
         fullScreen={issmall?true:false}
@@ -247,16 +258,19 @@ export default function AddCardBank({open,close,fulling ,sizewidth}) {
                       }}
                     />
                </FormGroup>
-               {fulling===false &&<Box sx={{pt:"24px"}}>
+               <Typography variant="p" component="div" color="error" fontSize={14}>
+                   {error}
+               </Typography>
+            {fulling===false &&<Box sx={{pt:"24px"}}>
 
-           <Button variant="contained" onClick={close}  sx={{ fontSize: "16px", height: "55px" ,borderRadius:"8px"}} fullWidth>
+              <Button variant="contained" disabled={ifadd} onClick={handleCloseDialog}  sx={{ fontSize: "16px", height: "55px" ,borderRadius:"8px"}} fullWidth>
                 ثبت کارت بانکی جدید
-             </Button>
-             </Box>}
+              </Button>
+            </Box>}
              
         </DialogContent>
         {fulling===true && <DialogActions>
-          <Button variant="contained" onClick={close}   sx={{ fontSize: "16px", height: "55px" ,borderRadius:"8px"}} fullWidth>
+          <Button variant="contained" onClick={handleCloseDialog} disabled={ifadd}   sx={{ fontSize: "16px", height: "55px" ,borderRadius:"8px"}} fullWidth>
                 ثبت کارت بانکی جدید
              </Button>
         </DialogActions>}

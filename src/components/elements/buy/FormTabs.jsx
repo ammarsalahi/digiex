@@ -9,8 +9,9 @@ import BuyStepTwo from '../dialogs/BuyStepTwo';
 import ShopStep from '../dialogs/ShopStep';
 import inputFontSize from '../global/inputFontSize';
 import Api from '../ApiConfig/Api'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {authpost} from '../ApiConfig/ApiHeaders';
+import {addPay,addAmount,buyCrypto, addTotal} from '../redux/actions'
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -69,19 +70,28 @@ const btnstyle={
 }
 
 
-export default function FormTabs({options,tabvalue,handleChange,openprop}) {
+export default function FormTabs({tabvalue,handleChange,openprop}) {
 
   const {auth}=useSelector(state=>state.authtoken);
+  const {pay,amount,sellprice,buyprice,section} =useSelector(state=>state.crypto);
+  const dispatch=useDispatch();
 
-  const [formdata,setFormdata]=React.useState({
-    cryptocurrencyId: 0,
-    amount: 0,
-    totalPrice: 0,
-    price: 0,
-    priceHistoryId: 0
-  });
+  const [payment,setPayment]=React.useState(pay);
+  const [amountval,setAmountval]=React.useState(amount);
 
 
+  const handlePay=(event)=>{
+     setPayment(event.target.value);
+     dispatch(addPay(event.target.value))
+     dispatch(buyCrypto(buyprice,amount))
+  }
+
+  const handleAmount=(event)=>{
+    setAmountval(event.target.value);
+    dispatch(addAmount(parseInt(event.target.value)));
+    // dispatch(addTotal(values))
+
+  }
   const [sizewidth, setSizewidth] = React.useState('auto');
   const [open,setopen]=React.useState(openprop);
  
@@ -98,12 +108,24 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
       
     }
   }
+  const getTotal=()=>{
+    if(section===1){
+      if(payment>0){
+         if(payment > buyprice){
+             
+         }
+      }else{
+        dispatch(addTotal(amount * buyprice));
+      }
+    }
+  }
 
   React.useEffect(() => {
     sizeDialog();
     window.addEventListener('resize',sizeDialog,false);
     setopen(openprop);
-  },[sizewidth,openprop]);
+    getTotal();
+  },[sizewidth,openprop,amount,buyprice]);
 
   const [btnshop, setbtnshop] = React.useState({
     btn25:"primary",
@@ -181,12 +203,12 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
       <TabPanel value={tabvalue} index={0}>
         <form>
           <Box className="pt-3" sx={formbtnstyle}>
-              <DigiSelect options={options}/>
+              <DigiSelect sectiontype={1}/>
           </Box>
           <FormGroup sx={formbtnstyle} >
             <FormLabel className="inputfont">مبلغ خرید(تومان)</FormLabel>
             <TextField color="digi" type="number"
-             fullWidth placeholder='0.00' 
+             fullWidth placeholder='0.00' value={payment} onChange={handlePay}
              InputProps={{
               endAdornment:( 
                   <InputAdornment position="end">تومان</InputAdornment>
@@ -209,7 +231,8 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
             <FormLabel className="inputfont">تعداد بایننس کوین</FormLabel>
             <TextField color="digi" 
               fullWidth variant='outlined' type="number"  placeholder='0.00'
-              InputProps={{
+              value={amountval} onChange={handleAmount}
+              InputProps={{ 
                 endAdornment:( 
                   <InputAdornment position="end">BUSD</InputAdornment>
                 ),
@@ -235,7 +258,7 @@ export default function FormTabs({options,tabvalue,handleChange,openprop}) {
       <TabPanel value={tabvalue} index={1}>
       <form>
           <FormGroup className="pt-3" sx={formbtnstyle}>
-            <DigiSelect options={options}/>
+            <DigiSelect sectiontype={2}/>
           </FormGroup>
           <FormGroup sx={formbtnstyle}>
             <FormLabel className="inputfont">مبلغ فروش(تومان)</FormLabel>

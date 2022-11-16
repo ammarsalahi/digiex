@@ -4,11 +4,15 @@ import {Search} from '@mui/icons-material'
 import Svg from '../../utils/Svgs';
 import inputFontSize from './inputFontSize';
 import Api from '../ApiConfig/Api';
-import {WALLET_CRYPTO} from '../ApiConfig/Endpoints'
+import {GET_CRYPTO} from '../ApiConfig/Endpoints'
 import {authpost} from '../ApiConfig/ApiHeaders';
-import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-
+import { ReactComponent as Dai } from '../../../img/icons/coin/dai.svg';
+import { ReactComponent as BC } from '../../../img/icons/coin/Group 2.svg';
+import { ReactComponent as USD } from '../../../img/icons/coin/Group 3.svg';
+import { ReactComponent as Tether } from '../../../img/icons/coin/Shape.svg';
+import { addPrice,addCryptoId, addCrypto } from '../redux/actions';
+import { useDispatch ,useSelector} from 'react-redux';
 const tetstyle={
   pt:"3px",height: "30px", width: "30px",
   borderRadius:"8px",
@@ -34,18 +38,19 @@ const muilist={
   boxShadow:"unset",
 }
 
-export default function DigiSelect({options}) {
+export default function DigiSelect({sectiontype}) {
 
-   const [optionstate, setoptionstate] = React.useState(options);
    const [open, setopen] = React.useState(false)
    const [search, setsearch] = React.useState("");
    const [isSearch, setisSearch] = React.useState(false);
-   const [crypto,setCrypto]=React.useState(null);
+   const [crypto,setCrypto]=React.useState([]);
    const {auth} =useSelector(state=>state.authtoken);
-  
+   const datacryp=useSelector(state=>state.crypto)
+   const dispatch=useDispatch();
+
    const handleSearch=(event)=>{
-    setoptionstate(
-        options.filter((item)=>{
+    setCrypto(
+        crypto.filter((item)=>{
             if(item.label===event.target.value){
                 return item
             }
@@ -58,25 +63,59 @@ export default function DigiSelect({options}) {
    const handleClose=(event)=>{
     if(isSearch===false){
       setopen(false);
-      setoptionstate(options);
     }
     else{
       setopen(true);
-      setoptionstate(options)
+      getCryptos();
     }
 }
    const getCryptos=async()=>{
-        await Api.get(WALLET_CRYPTO,{
+        await Api.get(GET_CRYPTO,{
           headers: authpost(auth)
         }).then(res=>{
-          console.log(res.data)
-          setCrypto(res.data.data.results);
+          setCrypto(res.data.data.result);
         })
    }
    useEffect(()=>{
-      getCryptos();
-   },[crypto]);
+        getCryptos();
+   },[]);
    
+   const getLogo=(name)=>{
+    switch(name){
+       case "Dai":
+         return Dai
+       case "Tether":
+         return Tether
+       case "Binance usd":
+         return USD
+       case "Binance":
+         return BC
+       default:
+         return BC       
+    }
+    
+ }
+ const handleChangeCrypto=(event)=>{
+  const item=event.target.value;
+  if(item.price!=null){
+    dispatch(addCrypto(
+      item.id,
+      item.price.toman.buy,
+      item.price.toman.sell,
+      item.price.id,
+      sectiontype
+     ));
+  }
+  else{
+    dispatch(addCrypto(
+      item.id,
+      0,
+      0,
+      0,
+      sectiontype
+     ));
+  }
+}
   return (
     <div>
         <Select
@@ -85,10 +124,9 @@ export default function DigiSelect({options}) {
             open={open}
             onOpen={()=>setopen(true)}
             onClose={handleClose}
-            defaultValue={optionstate[0].label}
-            onChange={(e)=>console.log(e.target.value)}
+            onChange={handleChangeCrypto}
             >
-            {crypto && <TextField 
+            {crypto.length >4 && <TextField 
             color="digi"
             sx={textfieldstyle}
             size="small"
@@ -107,16 +145,16 @@ export default function DigiSelect({options}) {
                 }
               }}
             />}
-            {crypto!=null 
+            {crypto.length>0
             ? 
             (crypto.map((item)=>(
-                <MenuItem button key={item.id} sx={muilist} value={item.namePer}>
+                <MenuItem button key={item.id} sx={muilist} value={item}>
                   <div  dir="rtl">
                   <div className="d-flex justify-content-start">
                         <Box className="text-center" 
-                         sx={ item.namePer==="تتر" || item.label==="یو اس دی کوین" ? tetstyle : daistyle }
+                         sx={ item.namePer==="تتر" || item.namePer==="بایننس یو اس دی" ? tetstyle : daistyle}
                         >
-                        <Svg Component={item.icon} style={{ height: "23px", width: "23px" }} />
+                        <Svg Component={getLogo(item.nameEn)} style={{ height: "23px", width: "23px" }} />
                         </Box>
                         <div className="mx-2 mt-1" style={fonsizes}>{item.namePer}</div>
                      </div>

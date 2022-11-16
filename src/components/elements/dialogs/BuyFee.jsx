@@ -68,7 +68,7 @@ const boxunselected = {
   border: "1px solid grey",height:"56px", borderRadius: "10px", px: "16px", py: "4px",minWidth:"130px"
 }
 
-export default function BuyFee({ open, close, optionsdata,sizewidth }) {
+export default function BuyFee({ open, close,sizewidth }) {
 
   
   const [bep, setbep] = React.useState("bep-20");
@@ -102,7 +102,7 @@ export default function BuyFee({ open, close, optionsdata,sizewidth }) {
           از آنجا که در صرافی دیجیکس ۲۴ ارزهای متنوعی معامله میشود،کارمزد ارسال و دریافت هر کدام از این ارزها مختلف میباشد. به کمک لیست زیر میتوانید با انتخاب هر ارز، اطلاعاتی مانند سقف واریز و برداشت، کارمزد نقل و انتقال و … را مشاهده کنید.
         </Typography>
         <FormGroup className="pt-3" sx={formbtnstyle}>
-          <DigiSelect options={optionsdata} />
+          <DigiSelect />
         </FormGroup>
         <Box className="d-flex justify-content-start" sx={{mb:"24px"}}>
           <Box sx={ bep === "bep-20" ? boxselected : boxunselected}>

@@ -6,6 +6,10 @@ import { Stepper,Step,Typography,Box } from '@mui/material';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
 import StepLabel ,{stepLabelClasses} from '@mui/material/StepLabel';
 import { styled } from '@mui/material/styles';
+import { ACCOUNT_PROFILE, VERIFICATION_INFO } from '../elements/ApiConfig/Endpoints';
+import { useSelector } from 'react-redux';
+import Api from '../elements/ApiConfig/Api';
+import {authpost} from '../elements/ApiConfig/ApiHeaders'
 
  const MyConnector = styled(StepConnector)(({ theme }) => ({
    [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -66,7 +70,8 @@ export default function Verification() {
   const steps = ['تطبیق اطلاعات هویتی', 'قبول قوانین', 'بارگذاری مدارک'];
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
-  
+  const {auth}=useSelector(state=>state.authtoken);
+  const [userdata,setUserdata]=React.useState({});
   const isStepSkipped = (step) => {
     return skipped.has(step);
   };
@@ -75,6 +80,17 @@ export default function Verification() {
     setActiveStep((newStep)=>newStep+1);
   }
 
+  // const initialvalues=async()=>{
+  //   await Api.get(ACCOUNT_PROFILE,{
+  //     headers:authpost(auth)
+  //   }).then(res=>{
+  //     if(res.data.statusCode===200){
+  //       const {birthDate}=res.data.data.result;
+  //       let dates=birthDate.slice(0,10).split('-')
+        
+  //     }
+  //   })
+  // }
   return (
     <div>
       <div className='d-lg-block d-none'>
@@ -85,7 +101,7 @@ export default function Verification() {
       >
                 {steps.map((label, index) => {
                   const stepProps = {};
-                  const labelProps = {};
+                  // const labelProps = {};
                   if (isStepSkipped(index)) {
                     stepProps.completed = false;
                   }

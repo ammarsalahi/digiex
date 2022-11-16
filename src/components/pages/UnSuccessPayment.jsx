@@ -1,6 +1,6 @@
 import React from 'react'
 import DangerousIcon from '../../img/payment/unseccess.svg';
-import FormInfo from '../elements/buy/FormInfo';
+import FormInfoGlobal from '../elements/global/FormInfoGlobal';
 import { Button } from '@mui/material';
 
 export default function Dashboard() {
@@ -46,7 +46,7 @@ export default function Dashboard() {
                             <h5>مبلغ سفارش پرداخت نشد و سفارش لغو شد.</h5>
                             <small className='text-muted '> متاسفانه سفارش شما ثبت نشد. لطفا مجددا اقدام به ثبت سفارش نمایید</small>
                         </div>
-                        <FormInfo listdata={list} />
+                        <FormInfoGlobal listdata={list} />
                         <div className='col-7 m-auto py-3'>
                             <Button variant="contained" sx={{ fontSize: 21, backgroundColor: "#424BFB", height: "55px" }} fullWidth>
                                 پیگیری معاملات

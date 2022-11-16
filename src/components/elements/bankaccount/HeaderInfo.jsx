@@ -2,6 +2,9 @@ import { Typography, Box } from '@mui/material'
 import React from 'react'
 import svgsicon from '../../../img/logos/level-star.svg'
 import { useSelector } from 'react-redux'
+import {LOYALTY} from '../ApiConfig/Endpoints';
+import Api from '../ApiConfig/Api';
+import {authpost} from '../ApiConfig/ApiHeaders';
 
 export default function HeaderInfo({ userdata, svgsDash }) {
   const infobox = {
@@ -21,19 +24,31 @@ export default function HeaderInfo({ userdata, svgsDash }) {
 
   }
   const {fullname,level}=useSelector(state=>state.profile)
-  
+  const {auth}=useSelector(state=>state.authtoken);
+  const [userdatas,setUserdatas]=React.useState({})
   const getLevel=(levels)=>{
-    if(levels==="1"){
+    if(levels===1){
         return "کاربر برنزی";
-    }else if(levels==="2"){
+    }else if(levels===2){
         return "کاربر نقره ای";
     }
-    else if(levels==="3"){
+    else if(levels===3){
       return "کاربر طلایی";
   }else if(levels==="4"){
       return "کاربر پلاتینیوم";
   }
   }
+   const get_loyality=async()=>{
+     await Api.get(LOYALTY,{
+      headers:authpost(auth)
+     }).then(res=>{
+      setUserdatas(res.data.data.result)
+     })
+   }
+
+  React.useEffect(()=>{
+     get_loyality()
+  },[]);
 
   return (
     <div className="row d-flex justify-content-center mycontainer backgroundClr" >
@@ -45,10 +60,10 @@ export default function HeaderInfo({ userdata, svgsDash }) {
             </div> : <div></div>}
             <div>
               <Typography variant="p" component="div">
-                {fullname}
+                {userdatas.fullName}
               </Typography>
               <Typography variant="p" component="div" className='text-end py-1' sx={{ color: "#e9ab00" }}>
-                {getLevel(level)}
+                {getLevel(userdatas.level)}
               </Typography>
             </div>
           </div>
@@ -63,7 +78,7 @@ export default function HeaderInfo({ userdata, svgsDash }) {
                     واریز ریال (روزانه)
                   </Typography>
                   <Typography variant="p" component="div" >
-                    {userdata.withdraw}
+                    {userdatas.dailyWithdraw}
                   </Typography>
                 </Box>
                 <Box className="col-6 box-data">
@@ -71,7 +86,7 @@ export default function HeaderInfo({ userdata, svgsDash }) {
                     برداشت ریال (روزانه)
                   </Typography>
                   <Typography variant="p" component="div" >
-                    {userdata.deposit}
+                    {userdatas.dailyDeposit}
                   </Typography>
                 </Box>
                 </Box>
@@ -83,7 +98,7 @@ export default function HeaderInfo({ userdata, svgsDash }) {
                 حجم معاملات (30 روز)
               </Typography>
               <Typography variant="p" component="div" >
-                {userdata.values}
+                {userdatas.dealVolume}
               </Typography>
             </Box>
             <Box className="col-6">
@@ -91,7 +106,7 @@ export default function HeaderInfo({ userdata, svgsDash }) {
                 فاصله تا سطح نقره ای
               </Typography>
               <Typography variant="p" component="div" >
-                {userdata.distance}
+                {userdatas.toNextLevel}
               </Typography>
             </Box>
             </Box>

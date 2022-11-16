@@ -1,6 +1,6 @@
 import React from 'react'
 import { Snackbar,Box,Typography, IconButton } from '@mui/material'
-import { Close,Warning } from '@mui/icons-material'
+import { Close,Info,Warning } from '@mui/icons-material'
 import Svg from '../../utils/Svgs';
 import {ReactComponent as ErrorIcon} from '../../../img/icons/danger.svg'
 
@@ -51,7 +51,7 @@ export default function DigiAlert({open,close,message,type}) {
           open={open}
           autoHideDuration={30000}
           onClose={close}
-          sx={type=="error"?ErrorStyle:InfoStyle}
+          sx={type==="error"?ErrorStyle:InfoStyle}
           anchorOrigin={{
              vertical:"bottom", 
              horizontal:"center" 
@@ -59,10 +59,10 @@ export default function DigiAlert({open,close,message,type}) {
         >
         <Box className="d-flex justify-content-between" sx={{width:"100%",px:"10px",textAlign:"left"}}>
             <Box
-             sx={type=="error"?ErrorBox:InfoBox}
+             sx={type==="error"?ErrorBox:InfoBox}
              className="text-center"
              >
-                 <Warning color="whiteNo" />
+                {type=="error"?<Warning color="whiteNo" />:<Info color="whiteNo"/>}
             </Box>
             <Typography variant="p" component="div" sx={{pt:"50px"}}>
                 {message}

@@ -11,6 +11,7 @@ import Api from '../ApiConfig/Api';
 import { USER_BANK } from '../ApiConfig/Endpoints';
 import { useEffect } from 'react';
 import {ReactComponent as Saman} from '../../../img/icons/bank-saman.svg';
+import DeleteBank from '../dialogs/DeleteBank';
 
 const rowstyle={
   '&:last-child td, &:last-child th': { border: 0 },
@@ -45,11 +46,23 @@ const cardbtnstyle={
 }
 
 
-export default function BanksList({rows,opendialog}) {
+export default function BanksList() {
+
+
   const {auth} =useSelector(state=>state.authtoken);
   const [banks,setBanks]=React.useState(null);
   const [len,setLen]=React.useState(0)
   let isload=false;
+  const [open,setopen]=React.useState(false);
+  const [opendel,setOpenDel]=React.useState(false)
+  const [selectedBank,setSelectedBank]=React.useState(null);
+  const opendialog=(event)=>{
+    setopen(true)
+  }
+  const closedialog=(event)=>{
+    setopen(false)
+  }
+
   const getBanks=async()=>{
        await Api.get(USER_BANK,{
           headers:authpost(auth)
@@ -57,6 +70,7 @@ export default function BanksList({rows,opendialog}) {
           if(res.data.statusCode===200){
             setBanks(res.data.data.result)
             setLen(res.data.data.result.length)
+    
             if(banks!=[]){
               isload=true
             } 
@@ -68,17 +82,13 @@ export default function BanksList({rows,opendialog}) {
   }
   useEffect(()=>{
       getBanks();
-  },[banks]);
+  },[]);
   
 
-  const handleDelete=(ids)=>(event)=>{
-    Api.delete(`${USER_BANK}?id=${ids}`,{
-        headers:authpost(auth),
-       }).then(res=>{
-        if(res.data.statusCode===200){
-          getBanks();
-        }
-    });
+  
+  const handleDelete=(id)=>(event)=>{
+    setSelectedBank(banks[0])
+    setOpenDel(true);
   }
    const StrToArray=(text,sidx,eidx)=>{
     let strarray=[]
@@ -101,7 +111,7 @@ export default function BanksList({rows,opendialog}) {
           </TableRow>
         </TableHead>
         {len >0?<TableBody>
-          {banks.map((row) => (
+          {banks.map((row,idx) => (
             <TableRow
               key={row.bankId}
               sx={rowstyle}
@@ -115,7 +125,7 @@ export default function BanksList({rows,opendialog}) {
               </TableCell>
               <TableCell sx={cellstyle}>{row.iBan}</TableCell>
               <TableCell sx={cellstyle}>
-                <IconButton onClick={handleDelete(row.id)}>
+                <IconButton onClick={handleDelete(idx)}>
                   <Svg Component={Trash} />
                 </IconButton>
               </TableCell>
@@ -135,6 +145,9 @@ export default function BanksList({rows,opendialog}) {
           افزودن کارت بانکی جدید 
         </Button>
      </Box>
+     <AddCardBank open={open} close={closedialog} fulling={false} getbank={getBanks}/> 
+
+     {banks !=null &&<DeleteBank open={opendel} close={()=>setOpenDel(false)} fulling={false} getbank={getBanks} bank={selectedBank}/>}
     </Box>
   )
 }

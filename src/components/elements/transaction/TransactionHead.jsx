@@ -15,7 +15,8 @@ export default function TransactionHead() {
     {"value":1,"label":"انتخاب تاریخ"},
   ]
   const stateopt = [
-    {"value":1,"label":"وضعیت"},
+    {"value":1,"label":"تکمیل شده"},
+    {"value":1,"label":"ناموفق"},
   ]
   const selectstyle={
     minWidth:"165px",

@@ -3,6 +3,10 @@ import {SouthWest,NorthEast} from '@mui/icons-material'
 import React from 'react'
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import SpacialPagination from '../global/SpacialPagination';
+import Api from '../ApiConfig/Api';
+import { authpost } from '../ApiConfig/ApiHeaders';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 export default function TransactionList({rows}) {
   const rowstyle={
@@ -18,8 +22,8 @@ export default function TransactionList({rows}) {
     maxWidth:"150px"
   }
   const cellstyle={
-    py:"14px",
-    px:"14px",
+    py:"15px",
+    px:"15px",
     fontSize: "14px !important",
     textAlign:"center"
   }
@@ -48,10 +52,14 @@ export default function TransactionList({rows}) {
       },
     },
   });
-   const [btntext, setbtntext] = React.useState("withdraw")
+   const [btntext, setbtntext] = React.useState("withdraw");
+   const {auth}=useSelector(state=>state.authtoken);
+
    const handleBoxbtn=(props)=>(event)=>{
       setbtntext(props);
    }
+
+   
   return (
     <div>
       <Box>
@@ -102,7 +110,7 @@ export default function TransactionList({rows}) {
                     <TableCell sx={cellstyle}>
                       <div className='d-flex justify-content-center'>
                         <Box className={row.station==="ثبت شده"?'green-state':(row.station==='درحال پردازش'?'yellow-state':"red-state") }
-                        sx={{fontSize:"13px"}}>
+                        sx={{fontSize:"13px",pt:1}}>
                           {row.station} 
                         </Box>
                       </div>

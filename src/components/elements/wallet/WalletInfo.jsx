@@ -15,7 +15,56 @@ import WalletWithdraw from '../dialogs/WalletWithdraw';
 import WalletDesposit from '../dialogs/WalletDesposit';
 import AccountDesposit from '../dialogs/AccountDesposit'
 import AddCardBank from '../dialogs/AddCardBank';
+import { ReactComponent as Dai } from '../../../img/icons/coin/dai.svg';
+import { ReactComponent as BC } from '../../../img/icons/coin/Group 2.svg';
+import { ReactComponent as USD } from '../../../img/icons/coin/Group 3.svg';
+import { ReactComponent as Tether } from '../../../img/icons/coin/Shape.svg';
+
+import Api from '../ApiConfig/Api';
+import {GET_CRYPTO,WALLET_FIAT} from '../ApiConfig/Endpoints'
+import {authpost} from '../ApiConfig/ApiHeaders';
+import { useSelector } from 'react-redux';
+
+const cardstyle = {
+  borderRadius: '12px',
+  height: "230px",
+  width:"100%",
+  boxShadow:"unset",
+  padding:"8px 8px 0px 8px",
+  position:"relative"
+}
+const listbtnstyle = {
+  border: "1px solid #CBE4EB",
+  borderRadius: '8px',
+  color: "rgba(164, 166, 180, 1)",
+  width: "42px",
+  height: "42px",
+  mr: "2.5%",
+  my: "10px",
+  fontSize: "11px",
+}
+const listbtntextstyle = {
+  pt:"5px",
+  '& .MuiListItemText-secondary': {
+    color: "#1ed184"
+  }
+}
+const tetstyle={
+  p:"10px",height: "42px", width: "42px",
+  borderRadius:"8px",
+  backgroundColor:"rgba(217, 243, 232, 1)"
+}
+const daistyle={
+  p:"10px",height: "42px", width: "42px",
+  borderRadius:"8px",
+  backgroundColor:"#fbf4c6"
+}
+
 export default function WalletInfo({ infos,options }) {
+  const [crypto,setCrypto]=React.useState([]);
+
+  const {auth} =useSelector(state=>state.authtoken);
+
   const [open,setOpen]=React.useState({
     charge:false,
     deposit:false,
@@ -23,7 +72,7 @@ export default function WalletInfo({ infos,options }) {
     add:false
   });
   const [sizewidth, setSizewidth] = React.useState('auto');
-
+  const [walletvalue,setWalletvalue]=React.useState("");
   const handleOpen=(props)=>(event)=>{
     setOpen({...open,[props]:true});
   }
@@ -44,45 +93,46 @@ export default function WalletInfo({ infos,options }) {
       
     }
   }
+  const getCryptos=async()=>{
+    await Api.get(GET_CRYPTO,{
+      headers: authpost(auth)
+    }).then(res=>{
+      setCrypto(res.data.data.result);
+    })
+  }
+
+  const getCurrency=()=>{
+   Api.get(WALLET_FIAT,{
+      headers:authpost(auth),
+    }).then(res=>{
+      if(res.data.statusCode===200){
+        setWalletvalue(res.data.data.result.wallet);
+      }
+    });
+  }
   React.useEffect(() => {
     sizeDialog();
     window.addEventListener('resize',sizeDialog,false);
+    getCryptos();
+    getCurrency();
   },[sizewidth]);
 
-  const cardstyle = {
-    borderRadius: '12px',
-    height: "230px",
-    width:"100%",
-    boxShadow:"unset",
-    padding:"8px 8px 0px 8px",
-    position:"relative"
-  }
-  const listbtnstyle = {
-    border: "1px solid #CBE4EB",
-    borderRadius: '8px',
-    color: "rgba(164, 166, 180, 1)",
-    width: "42px",
-    height: "42px",
-    mr: "2.5%",
-    my: "10px",
-    fontSize: "11px",
-  }
-  const listbtntextstyle = {
-    pt:"5px",
-    '& .MuiListItemText-secondary': {
-      color: "#1ed184"
+  
+  const getLogo=(name)=>{
+    switch(name){
+       case "Dai":
+         return Dai
+       case "Tether":
+         return Tether
+       case "Binance usd":
+         return USD
+       case "Binance":
+         return BC
+       default:
+         return BC       
     }
-  }
-  const tetstyle={
-    p:"10px",height: "42px", width: "42px",
-    borderRadius:"8px",
-    backgroundColor:"rgba(217, 243, 232, 1)"
-  }
-  const daistyle={
-    p:"10px",height: "42px", width: "42px",
-    borderRadius:"8px",
-    backgroundColor:"#fbf4c6"
-  }
+ }
+
   return (
     <Box className="row mycontainer">
      <Box className="col-lg-6 col-md-12 col-12 gx-0" >
@@ -96,7 +146,9 @@ export default function WalletInfo({ infos,options }) {
                     موجودی کل حساب شما
                   </Typography>
                   <Typography variant="p" fontSize={18} component="div" sx={{mt:"12px"}}>
-                    873,083,300 تومان
+                    {walletvalue!={}? 
+                    <div>{walletvalue.currency}تومان </div>
+                    :<div>ناموجود</div>}
                   </Typography>
                 </Box>
                 <Box  style={{left:0}}>
@@ -169,16 +221,16 @@ export default function WalletInfo({ infos,options }) {
        
       <Box className="col-lg-6 col-md-12 col-12 gx-0">
         <List className="overflow-auto">
-          {infos.map((item, idx) => (
-            <ListItem key={idx} className="list-cnt" sx={{px:0,py:0,pb:"8px"}}>
+          {crypto.map((item) => (
+            <ListItem key={item.id} className="list-cnt" sx={{px:0,py:0,pb:"8px"}}>
               <ListItemIcon>
                 <Box className="text-center" 
-                  sx={ item.name==='تتر' || item.name==="یو اس دی کوین" ? tetstyle : daistyle }
+                  sx={ item.namePer==='تتر' || item.namePer==="بایننس یو اس دی" ? tetstyle : daistyle }
                 >
-                <Svg Component={item.icon} style={{ height: "auto", width: "24px" }} />
+                <Svg Component={getLogo(item.nameEn)}  style={{ height: "auto", width: "24px" }} />
                 </Box>
               </ListItemIcon>
-              <ListItemText id={idx} primary={item.name}  primaryTypographyProps={{fontSize:"14px"}} />
+              <ListItemText primary={item.namePer}  primaryTypographyProps={{fontSize:"14px"}} />
               <ButtonGroup 
                 disableElevation
                 size="small"
@@ -187,9 +239,9 @@ export default function WalletInfo({ infos,options }) {
                 
               >
                 <Box sx={{pr:"7%"}}>
-                  <ListItemText id={idx} sx={listbtntextstyle} 
-                    primary={item.number} secondary={item.percend} 
-                    secondaryTypographyProps={{pt:"3px",fontSize:"12px"}} primaryTypographyProps={{fontSize:"14px"}}
+                  <ListItemText  sx={listbtntextstyle} 
+                    primary={item.price?(item.price.toman.buy):0} secondary={"%"+(item.changePercent)} 
+                    secondaryTypographyProps={{pt:"3px",fontSize:"13px",textAlign:"center"}} primaryTypographyProps={{fontSize:"14px"}}
                   />
                 </Box>
                 <IconButton sx={listbtnstyle}>

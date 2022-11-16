@@ -3,7 +3,7 @@ let base="http://157.90.74.62:4321/";
 
 export const BASE_URL=base;
 
-const _ =(url)=>{return BASE_URL + 'api/v2'+url} 
+const _ =(url)=>{return BASE_URL + "api/v2"+url} 
 
 export const ACCOUNT_PROFILE= _("/accounts/profile/")
 
@@ -67,6 +67,13 @@ export const DISCOUNDS = _('/discounts/');
 
 export const DISCOUNDS_ID =(id)=> _('/discounts/types/'+id+"/");
 
+export const GET_CRYPTO =_("/cryptocurrencies/");
+
+export const GET_CRYPTO_ID =(id)=>_("/wallet/cryptocurrencies/"+id);
+
+export const CRYPTO_PRICE_ID =(id)=>_("/cryptocurrencies/"+id+"/price/");
+
+export const GET_CRYPTO_FEE_ID_STANDARD =(id,standard)=>_("/cryptocurrencies/fees/"+id+"/"+standard+"/standard");
 
 export const LOYALTY =_("/loyalties/");
 
@@ -85,7 +92,7 @@ export const WALLET_CRYPTO_ID =(id)=>_("/wallet/cryptocurrencies/"+id);
 
 export const WALLET_CRYPTO_NETWORK =(cryptoid,networkstandard)=>_("/wallet/cryptocurrencies/"+cryptoid+"/crypto/"+networkstandard+"/network");
 
-export const WALLET_FIAT =_("/wallet/fiats/");
+export const WALLET_FIAT =_("/wallets/fiats");
 
 
 

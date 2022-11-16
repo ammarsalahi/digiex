@@ -2,12 +2,11 @@ import React from 'react'
 import { Button, Box, Typography, ListItem,ListItemText,ListItemIcon } from '@mui/material'
 import {  InfoOutlined } from '@mui/icons-material';
 import BuyFee from '../dialogs/BuyFee';
-import { useSelector } from 'react-redux';
 
-export default function FormInfo({ title,description}) {
+export default function FormInfoGlobal({ listdata, title,description,finalvalue,options}) {
   const [open, setopen] = React.useState(false);
   const [sizewidth, setSizewidth] = React.useState('auto');
-  const data=useSelector(state=>state.crypto)
+
 
   const handleOpenDialog=(event)=>{
    setopen(true);
@@ -42,54 +41,20 @@ export default function FormInfo({ title,description}) {
   return (
     <Box component="div" sx={{ textAlign: 'left', }}>
      {title? <Typography variant="h5" component="div" className='boldfont title-info'>
-        جزئیات سفارش   
+      {title}
       </Typography>:<div></div>}
      <div>
-          <div className='d-flex justify-content-between info-list'>
+      {listdata.map((item, idx) => (
+          <div className='d-flex justify-content-between info-list' key={idx}>
             <Typography variant="p" component="div" sx={{fontSize : "14px"}}>
-            تعداد بایننس کوین
+              {item.name}
             </Typography>
             <hr />
             <Typography variant="p" component="div"  sx={{fontSize : "14px"}}>
-              {data.amount}
+              {item.price}
             </Typography>
           </div>
-          <div className='d-flex justify-content-between info-list'>
-            <Typography variant="p" component="div" sx={{fontSize : "14px"}}>
-              قیمت هر واحد
-            </Typography>
-            <hr />
-            <Typography variant="p" component="div"  sx={{fontSize : "14px"}}>
-            {data.section===1?data.buyprice:data.sellprice}
-            </Typography>
-          </div>
-          <div className='d-flex justify-content-between info-list'>
-            <Typography variant="p" component="div" sx={{fontSize : "14px"}}>
-              مبلغ   
-            </Typography>
-            <hr />
-            <Typography variant="p" component="div"  sx={{fontSize : "14px"}}>
-              {data.totalPrice}
-            </Typography>
-          </div>
-          <div className='d-flex justify-content-between info-list'>
-            <Typography variant="p" component="div" sx={{fontSize : "14px"}}>
-              تخفیف   
-            </Typography>
-            <hr />
-            <Typography variant="p" component="div"  sx={{fontSize : "14px"}}>
-              0
-            </Typography>
-          </div>
-          <div className='d-flex justify-content-between info-list'>
-            <Typography variant="p" component="div" sx={{fontSize : "14px"}}>
-              کارمزد‌شبکه‌ارسال 
-            </Typography>
-            <hr />
-            <Typography variant="p" component="div"  sx={{fontSize : "14px"}}>
-              درحال محاسبه
-            </Typography>
-          </div>
+        ))}
      </div>
       
       {description?<div>
@@ -101,7 +66,7 @@ export default function FormInfo({ title,description}) {
             />
           </ListItem>
       </div>
-       <div>
+       {finalvalue?<div>
         <div className="d-lg-block d-md-block d-sm-none d-none info-card">
           <Box sx={{ backgroundColor: 'rgba(243, 244, 249, 1)', borderRadius: "8px" ,height:"55px"}}>
           <div className='d-flex justify-content-between py-3 px-3'>
@@ -109,7 +74,7 @@ export default function FormInfo({ title,description}) {
               مبلغ پرداخت نهایی
             </Typography>
             <Typography variant="p" component="div">
-             {data.totalPrice}
+              {finalvalue}
             </Typography>
           </div>
         </Box>
@@ -121,14 +86,16 @@ export default function FormInfo({ title,description}) {
               مبلغ پرداخت نهایی
             </Typography>
             <Typography variant="p" component="div">
-              {data.totalPrice} 
+              {finalvalue}
             </Typography>
           </div>
         </Box>
       </div>
       </div>
+      :null}
+
       </div>:null}
-        {/* <BuyFee open={open} close={handleClose} listdata={listdata} sizewidth={sizewidth}/>  */}
+        <BuyFee open={open} close={handleClose} listdata={listdata} sizewidth={sizewidth}/> 
     </Box >
   )
 }

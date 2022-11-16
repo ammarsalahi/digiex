@@ -16,30 +16,16 @@ const rows = [
 
 ]
 export default function BankAccount() {
-  const [open,setopen]=React.useState(false);
+  
 
-  const opendialog=(event)=>{
-    setopen(true)
-  }
-  const closedialog=(event)=>{
-    setopen(false)
-  }
-  const [userdata, setUserdata] = React.useState({
-    name:"حسین اسدزاده",
-    level:"سطح طلایی",
-    withdraw:"100 میلیون تومان",
-    deposit:"نامحدود",
-    values:"کمتر از 3,000 تتر",
-    distance:"1,200 تتر",
-  });
   return (
     <div>
       <Box sx={{textAlign:'left'}}>
-            <HeaderInfo userdata={userdata}/>
+            <HeaderInfo/>
          <Box>
-            <BanksList rows={rows} opendialog={opendialog}/>
+            <BanksList/>
          </Box>
-         <AddCardBank open={open} close={closedialog} fulling={false}/> 
+         
       </Box>
     </div>
   )

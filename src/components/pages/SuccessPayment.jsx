@@ -1,6 +1,6 @@
 import React from 'react'
 import CheckCircleIcon from '../../img/payment/success.svg';
-import FormInfo from '../elements/buy/FormInfo';
+import FormInfoGlobal from '../elements/global/FormInfoGlobal';
 import { Button } from '@mui/material';
 
 export default function Dashboard() {
@@ -46,7 +46,7 @@ export default function Dashboard() {
                             <h5>مبلغ پرداخت و خرید شما با موفقیت پرداخت شد</h5>
                             <small className='text-muted '>پرداخت شما با موفقیت ثبت و دریافت شد. کارشناسان در اسرع وقت سفارش شما را تکمیل خواهند کرد.</small>
                         </div>
-                        <FormInfo listdata={list} />
+                        <FormInfoGlobal listdata={list} />
                         <div className='col-7 m-auto py-3'>
                             <Button variant="contained" sx={{ fontSize: 21, backgroundColor: "#424BFB", height: "55px" }} fullWidth>
                                 پیگیری معاملات

@@ -40,17 +40,10 @@ const options = [
   ]
 
 export default function Wallet() {
-    const [userdata, setUserdata] = React.useState({
-        name: "حسین اسدزاده",
-        level: "سطح طلایی",
-        withdraw: "100 میلیون تومان",
-        deposit: "نامحدود",
-        values: "کمتر از 3,000 تتر",
-        distance: "1,200 تتر",
-    });
+
     return (
         <div >
-              <HeaderInfo userdata={userdata} svgsDash={true}/>
+              <HeaderInfo  svgsDash={true}/>
               <WalletInfo infos={infodata}  options={options} />            
             <div className='row backgroundClr'>
                 <br />
