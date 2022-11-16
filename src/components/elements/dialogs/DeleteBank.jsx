@@ -152,10 +152,10 @@ export default function DeleteBank({open,close,fulling ,sizewidth,bank,getbank})
              
         </DialogContent>
         <DialogActions>
-            <Button variant="contained" onClick={close}  sx={{ fontSize: "16px", height: "55px",mr:2 ,borderRadius:"8px"}} fullWidth>
+            <Button variant="contained" color="digi" onClick={close}  sx={{ fontSize: "16px", height: "55px",mr:2 ,borderRadius:"8px"}} fullWidth>
                 خیر
              </Button>
-             <Button variant="contained" color="error" onClick={handleDelete}  sx={{ fontSize: "16px", height: "55px" ,borderRadius:"8px"}} fullWidth>
+             <Button variant="contained" onClick={handleDelete}  sx={{ fontSize: "16px", height: "55px" ,borderRadius:"8px"}} fullWidth>
                 بله    
              </Button> 
         </DialogActions>

@@ -139,7 +139,6 @@ export default function AddCardBank({open,close,fulling ,sizewidth,getbank}) {
       headers:authpost(auth)
     }).then(res=>{
       if(res.data.statusCode===200){
-        console.log(res.data.data)
         setchecked(false)
         if(getbank!=null){
            setIfadd(false)
