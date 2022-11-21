@@ -8,6 +8,8 @@ import { ACCOUNT_PROFILE, VERIFICATION_INFO } from '../ApiConfig/Endpoints';
 import { useSelector } from 'react-redux';
 import Api from '../ApiConfig/Api';
 import {authpost} from '../ApiConfig/ApiHeaders'
+import { toJalaali,toGregorian } from 'jalaali-js';
+
 
 export default function StepOne({onNext}) {
   // const {phone,fullname,pid,date}=useSelector(state=>state.profile);
@@ -42,15 +44,16 @@ export default function StepOne({onNext}) {
       if(res.data.statusCode===200){
         const {phoneNumber,firstName,lastName,nationalCode,birthDate}=res.data.data.result;
         let dates=birthDate.slice(0,10).split('-')
+        const {jy,jm,jd}=toJalaali(parseInt(dates[0]),parseInt(dates[1]),parseInt(dates[2]))
         setFormdata(
           {...formdata,
             phone:phoneNumber,
             firstname:firstName,
             lastname:lastName,
             personalid:nationalCode,
-            year:dates[0],
-            month:dates[1],
-            day:dates[2]
+            year:jy,
+            month:jm,
+            day:jd
           })
       }
     })
@@ -118,8 +121,7 @@ export default function StepOne({onNext}) {
         if(event.target.value.length <=4){
           setErrortext({date:""})
           if(event.target.value >0){
-
-            if(event.target.value <= 2012 ){
+            if(event.target.value <= 1390 ){
               setFormdata({...formdata,[props]:event.target.value});
             }
             else{
@@ -134,7 +136,7 @@ export default function StepOne({onNext}) {
       if(props==='month'){
         if(event.target.value.length <=2 ){
          if(event.target.value.length >0 ){
-           if(event.target.value.length <=12 ){
+           if(event.target.value <=12 ){
             setFormdata({...formdata,[props]:event.target.value});
            }
            else{
@@ -149,7 +151,8 @@ export default function StepOne({onNext}) {
       if(props==='day'){
         if(event.target.value.length <=2 ){
          if(event.target.value.length >0 ){
-           if(event.target.value.length <=30){
+           if(event.target.value <32){
+            
             setFormdata({...formdata,[props]:event.target.value});
            }
            else{
@@ -170,13 +173,14 @@ export default function StepOne({onNext}) {
   }
   
    const submit=()=>{
+    const {gy,gm,gd}=toGregorian(parseInt(formdata.year),parseInt(formdata.month),parseInt(formdata.day))
       Api.post(VERIFICATION_INFO,
         {
           "phoneNumber": formdata.phone,
           "firstName": formdata.firstname,
           "lastName": formdata.lastname,
           "nationalCode": formdata.personalid,
-          "birthDate": `${formdata.year}-${formdata.month}-${formdata.day}`,
+          "birthDate": `${gy}-${gm}-${gd}`,
         },
         {headers:authpost(auth)}).then((res)=>{
          
