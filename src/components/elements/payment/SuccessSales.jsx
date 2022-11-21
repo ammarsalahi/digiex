@@ -1,9 +1,9 @@
 import React from 'react'
- import CheckCircleIcon from '../../img/payment/success.svg';
- import FormInfoGlobal from '../elements/global/FormInfoGlobal';
+ import CheckCircleIcon from '../../../img/payment/success.svg';
+ import FormInfoGlobal from '../global/FormInfoGlobal';
  import { Button } from '@mui/material';
 
-export default function Dashboard() {
+export default function SuccessSales() {
     const list = [
         {
             'name': 'تعداد بایننس کوین',

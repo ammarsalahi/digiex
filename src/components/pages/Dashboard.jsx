@@ -29,7 +29,6 @@ export default function Dashboard() {
     setTabvalue(newValue);
   };
 
-   const value=" 67,973,000 تومان"
   return (
     <div> 
       <Box sx={{ textAlign: 'right' }}>
@@ -44,7 +43,7 @@ export default function Dashboard() {
           />
         </div>
         <div className='col-lg-6 col-12 mycontainer'>
-          <FormInfo description={true} finalvalue={value}  title="جزئیات سفارش"/>
+          <FormInfo description={true}  title="جزئیات سفارش" sizeval={tabvalue}/>
         </div>
       </div>
           <div className='d-lg-none d-md-none d-sm-block d-block'>

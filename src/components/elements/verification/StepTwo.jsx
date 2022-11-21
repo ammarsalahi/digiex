@@ -1,20 +1,32 @@
 import { Typography,Box, FormGroup, FormControlLabel,Button,Checkbox  } from '@mui/material'
 import React from 'react'
 import DigiAlert from '../global/DigiAlert';
-
+import { useSelector } from 'react-redux';
+import Api from '../ApiConfig/Api';
+import { VERIFICATION_RULE } from '../ApiConfig/Endpoints';
+import { authpost } from '../ApiConfig/ApiHeaders';
 export default function StepTwo({onNext}) {
-    const [checked, setChecked] = React.useState(false);
+  const {verifyRules}=useSelector(state=>state.userstate);
+  const {auth}=useSelector(state=>state.authtoken);
+    const [checked, setChecked] = React.useState(verifyRules);
     const [open, setopen] = React.useState(false);
+
     const [message, setmessage] = React.useState("")
     const handleCheckBox=(event)=>{
         setChecked(event.target.checked);
     }
     const submit=()=>{
       if(checked===false){
-          setmessage("jjjj");
+          setmessage("تیک اعلام موافقت با متن فوق را انتخاب نکرده اید")
           setopen(true)
       }else{
-        onNext();
+        Api.post(VERIFICATION_RULE,'',{headers:authpost(auth)}).then(res=>{
+          if(res.data.statusCode===200){
+            onNext();
+          }else{
+            console.log(res.data);
+          }
+        })
       }
     }
   return (
@@ -39,7 +51,7 @@ export default function StepTwo({onNext}) {
              <Button 
                 variant="contained" 
                 sx={{ fontSize: 14, backgroundColor: "#424BFB", height: "55px" ,width:"205px",mt:"85px",borderRadius:'8px'}}
-                onClick={onNext}  
+                onClick={submit}  
 
               >
             قبول قوانین و مرحله بعد            
@@ -52,7 +64,7 @@ export default function StepTwo({onNext}) {
                  fullWidth
                  variant="contained" 
                  sx={{ fontSize: 14, height: "55px",mt:"10%",borderRadius:"8px"}}
-                onClick={onNext}  
+                onClick={submit}  
             >
             قبول قوانین و مرحله بعد            
             </Button>

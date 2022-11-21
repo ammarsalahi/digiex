@@ -1,9 +1,9 @@
 import React from 'react'
-import DangerousIcon from '../../img/payment/unseccess.svg';
-import FormInfoGlobal from '../elements/global/FormInfoGlobal';
+import DangerousIcon from '../../../img/payment/unseccess.svg';
+import FormInfoGlobal from '../global/FormInfoGlobal';
 import { Button } from '@mui/material';
 
-export default function Dashboard() {
+export default function UnSuccessPayment() {
     const list = [
         {
             'name': 'تعداد بایننس کوین',

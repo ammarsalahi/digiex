@@ -7,7 +7,6 @@ const authpost=(token)=>{
 const authfile=(token)=>{
   return {
     'Authorization': `Bearer ${token}`,
-    'accept': '*/*',
     'Content-Type': 'multipart/form-data',
   }
 }

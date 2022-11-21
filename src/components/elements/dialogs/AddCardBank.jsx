@@ -128,6 +128,7 @@ export default function AddCardBank({open,close,fulling ,sizewidth,getbank}) {
       if(checked===true && cardnumber.forth){
         handleAddCard();
       }
+      
       setError("")
    },[issmall,checked,cardnumber]);
 
@@ -146,7 +147,6 @@ export default function AddCardBank({open,close,fulling ,sizewidth,getbank}) {
       }
     }).catch(err=>{
       setError("کارت موردنظر اضافه نشد لطفا اطلاعات را بررسی کنید");
-      setCardnumber({first:"",second:"",third:"",forth:""})
       console.log(err.response)
     })
   }

@@ -2,6 +2,7 @@ import {SessionSave,SessionGet} from '../store/SessionStoring';
 const initialState={
     phone:"",
     token:"",
+    times:0
 }
 
 
@@ -11,19 +12,22 @@ const LoginReducer=(state=initialState,action)=>{
             return {
                 ...state,
                 phone:SessionSave('phones',action.phone),
-                token:SessionSave('temps',action.token)
+                token:SessionSave('temps',action.token),
+                times:SessionSave('times',action.times),
             }
         case "DEL_LOGIN":
             return {
                 ...state,
                 phone:"",
-                token:""
+                token:"",
+                times:"",
             }   
         default:
             return{
                 ...state,
                 phone:SessionGet('phones'),
-                token:SessionGet('temps')
+                token:SessionGet('temps'),
+                times:SessionGet('times')
             }    
     }
 }

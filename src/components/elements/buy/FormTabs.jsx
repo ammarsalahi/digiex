@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextField, Button, Box, FormGroup, InputAdornment, FormLabel, Typography, ThemeProvider } from '@mui/material'
+import { TextField, Button, Box, FormGroup, InputAdornment, FormLabel, Typography, FormControlLabel } from '@mui/material'
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import PropTypes from 'prop-types';
@@ -12,6 +12,8 @@ import Api from '../ApiConfig/Api'
 import {useDispatch, useSelector} from 'react-redux'
 import {authpost} from '../ApiConfig/ApiHeaders';
 import {addPay,addAmount,buyCrypto, addTotal} from '../redux/actions'
+import {REQUEST_BUY_STEP1} from '../ApiConfig/Endpoints';
+import DigiSwitch from '../global/DigiSwitch';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -78,17 +80,18 @@ export default function FormTabs({tabvalue,handleChange,openprop}) {
 
   const [payment,setPayment]=React.useState(pay);
   const [amountval,setAmountval]=React.useState(amount);
-
+  const [discount,setDiscount]=React.useState("");
+  const [ifdiscount,setIfdiscount]=React.useState(false)
 
   const handlePay=(event)=>{
-     setPayment(event.target.value);
-     dispatch(addPay(event.target.value))
-     dispatch(buyCrypto(buyprice,amount))
+    //  setPayment(event.target.value);
+    //  dispatch(addPay(event.target.value))
+    //  dispatch(buyCrypto(buyprice,amount))
   }
 
   const handleAmount=(event)=>{
-    setAmountval(event.target.value);
-    dispatch(addAmount(parseInt(event.target.value)));
+  //   setAmountval(event.target.value);
+  //   dispatch(addAmount(parseInt(event.target.value)));
     // dispatch(addTotal(values))
 
   }
@@ -109,23 +112,35 @@ export default function FormTabs({tabvalue,handleChange,openprop}) {
     }
   }
   const getTotal=()=>{
-    if(section===1){
-      if(payment>0){
-         if(payment > buyprice){
-             
-         }
-      }else{
-        dispatch(addTotal(amount * buyprice));
-      }
-    }
+    // if(section===1){
+    //   if(payment > 1){
+    //      if(payment > buyprice){
+    //         dispatch(addTotal(payment));
+    //         const amounts=parseFloat(payment / buyprice).toFixed(2)
+    //          dispatch(addAmount(amounts))
+    //          setAmountval(amounts)
+    //      }
+    //   }else{
+    //     const tot=amount * buyprice
+    //     setPayment(tot)
+    //     dispatch(addTotal(tot));
+    //   }
+    // }
   }
+   const handleChangeDis=()=>{
+      if(ifdiscount===true){
+        setIfdiscount(false);
+      }else{
+        setIfdiscount(true);
+      }
+   }
 
   React.useEffect(() => {
     sizeDialog();
     window.addEventListener('resize',sizeDialog,false);
     setopen(openprop);
     getTotal();
-  },[sizewidth,openprop,amount,buyprice]);
+  },[sizewidth,openprop,amountval,buyprice,payment]);
 
   const [btnshop, setbtnshop] = React.useState({
     btn25:"primary",
@@ -180,7 +195,13 @@ export default function FormTabs({tabvalue,handleChange,openprop}) {
   }
  
   const submitBuy=()=>{
-    Api.post({
+    Api.post(REQUEST_BUY_STEP1,{
+      "cryptocurrencyId": 0,
+      "amount": 0,
+      "totalPrice": 0,
+      "price": 0,
+      "priceHistoryId": 0
+    },{
       headers:authpost(auth),
     }).then(res=>{
       console.log(res.data);
@@ -246,6 +267,19 @@ export default function FormTabs({tabvalue,handleChange,openprop}) {
               </Button>
             </Box>
           </FormGroup>
+          <FormGroup sx={formbtnstyle} style={{marginBottom:'5px'}}>
+              <FormLabel className="inputfont">کد تخفیف</FormLabel>
+              <Box className="d-flex">
+              <FormGroup sx={{pt:1,pl:1}}>
+                  <FormControlLabel
+                    control={<DigiSwitch size="large" checked={ifdiscount} onChange={handleChangeDis}/>}
+                  />
+              </FormGroup>
+              {ifdiscount? 
+                <TextField color='digi' size="small" placeholder="کد تخفیف را وارد کنید" fullWidth/>
+               :null}
+              </Box>
+            </FormGroup>
           <Box className='d-lg-block d-md-block d-sm-none d-none form-button' >
             <Button variant="contained" className='boxShadowUnset' onClick={handleOpen('buy')}  sx={btnstyle}  fullWidth>
               خرید بایننس کوین
@@ -293,13 +327,14 @@ export default function FormTabs({tabvalue,handleChange,openprop}) {
                 style:inputFontSize,
               }}
             />
-            <Box className="d-flex justify-content-between align-items-center" sx={{py:"12px"}}>
+            <Box className="d-flex justify-content-between align-items-center" sx={{pt:"12px",pb:"10px"}}>
             <p className='text-muted helper-fontsize mt-1 m-0'>موجودی 0 بایننس</p>
                <Button color="digigrey" variant="outlined"  onClick={handleWal} sx={{minHeight:"25px",maxHeight:"25px",borderRadius:"30px",pt:"9px" , fontSize: "10px"}}>
               واریز‌ به‌کیف‌ پول
               </Button>
             </Box>
           </FormGroup>
+            
           <Box className='d-lg-block d-md-block d-sm-none d-none form-button p-0'  >
             <Button  variant="contained" className='boxShadowUnset' style={{marginTop:"20px"}} onClick={handleOpen('shop')} sx={btnstyle} fullWidth>
               فروش بایننس کوین

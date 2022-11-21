@@ -29,6 +29,7 @@ export default function Navbar({ isSide, LoadSide, LoadMobile}) {
   const dispatch=useDispatch();
   const navigate=useNavigate();
   const {auth}=useSelector(state=>state.authtoken);
+  
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [userdata,setuserdata]=React.useState({
     level:"",
@@ -50,7 +51,6 @@ export default function Navbar({ isSide, LoadSide, LoadMobile}) {
     }).then(res=>{
        if(res.data.statusCode===200){
         localStorage.clear()
-        dispatch(logoutAction());
         event.preventDefault()
         navigate('/login')
        }

@@ -1,9 +1,9 @@
 import React from 'react'
-import DangerousIcon from '../../img/payment/unseccess.svg';
-import FormInfoGlobal from '../elements/global/FormInfoGlobal';
+import CheckCircleIcon from '../../../img/payment/success.svg';
+import FormInfoGlobal from '../global/FormInfoGlobal';
 import { Button } from '@mui/material';
 
-export default function Dashboard() {
+export default function SuccessPayment() {
     const list = [
         {
             'name': 'تعداد بایننس کوین',
@@ -39,12 +39,12 @@ export default function Dashboard() {
             <div className="row  justify-content-center">
                 <div className="col-lg-8 text-center py-5">
                     <div className='successIcon pb-5'>
-                        <img src={DangerousIcon} style={{ fill: "#f03139", fontSize: "86px" }} alt="unsuccessSale" />
+                        <img src={CheckCircleIcon} style={{ fill: "#79e3b0", fontSize: "86px" }} alt="successPayment" />
                     </div>
                     <div className="successInfo mt-4">
                         <div className='pb-4'>
-                            <h5>سفارش فروش شما ثبت نشد</h5>
-                            <small className='text-muted '> متاسفانه سفارش شما ثبت نشد. لطفا مجددا اقدم نمایید  </small>
+                            <h5>مبلغ پرداخت و خرید شما با موفقیت پرداخت شد</h5>
+                            <small className='text-muted '>پرداخت شما با موفقیت ثبت و دریافت شد. کارشناسان در اسرع وقت سفارش شما را تکمیل خواهند کرد.</small>
                         </div>
                         <FormInfoGlobal listdata={list} />
                         <div className='col-7 m-auto py-3'>

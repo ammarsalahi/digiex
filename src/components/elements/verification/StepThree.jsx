@@ -1,11 +1,11 @@
 import { Card, CardContent,Typography,Box,Button } from '@mui/material'
 import React, { useRef } from 'react'
-import { SELFIE_IMAGE, SELFIE_VIDEO } from '../ApiConfig/Endpoints'
+import { SELFIE_IMAGE, SELFIE_VIDEO ,VERIFICATION_DOCUMENTS} from '../ApiConfig/Endpoints'
 import UploadButton from './UploadButton';
 import DigiAlert from '../global/DigiAlert'
 import Api from '../ApiConfig/Api'
 import { useNavigate } from 'react-router';
-import { authfile } from '../ApiConfig/ApiHeaders';
+import { authfile ,authpost} from '../ApiConfig/ApiHeaders';
 import {useSelector} from 'react-redux'
 const cardstyle={
   border:"1px dashed #cbe4eb",
@@ -20,26 +20,23 @@ const cardstyle={
 export default function StepThree({onNext}) {
   const {auth}=useSelector(state=>state.authtoken);
     const fileRef=useRef([])
-    // const [formdata,setFormdata]=React.useState({
-    //   image:null,
-    //   video:null,
-    //   imagename:""
-    // })
     const [load,setLoad]=React.useState({
       image:false,
       video:false,
     });
     const [message,setMessage]=React.useState("")
+    const [mesType,setMestype]=React.useState("")
+
     const [open,setOpen]=React.useState(false)
     let navigate=useNavigate()
 
     const handleChange=(props)=>(event)=>{
-        // setFormdata({...formdata,[props]:event.target.files[0]});
-        // setLoad({...load,[props]:false});  
-        let files=event.target.files[0]
       if(event.target.files[0]){
           if(props==='image'){
-            uploadImage(files)
+            uploadImage(event.target.files[0]);
+          }
+          else if(props==='video'){
+            uploadVideo(event.target.files[0]);
           }
       }  
 
@@ -52,56 +49,82 @@ export default function StepThree({onNext}) {
       fileRef.current[1].click();
     }
     const uploadImage=(files)=>{
-          const forms = new FormData();
-          forms.append('file',files);
+        let formdata=new FormData();
+        formdata.append('file',files)
           Api.post(
             SELFIE_IMAGE,
-            forms,
+            formdata,
             {
               headers:authfile(auth)
-            }).then((res)=>{
-            if(res.statusCode===200){
-              setLoad({image:true});     
-              setMessage("تصویر آپلود شد");
+            }
+            ).then((res)=>{
+            if(res.data.statusCode===200){
+              setLoad({...load,image:true});     
+              setMessage("با موفقیت انجام شد");
               setOpen(true);
+              setMestype('info')
+            }else{
+              setLoad({...load,image:false});     
+              setMessage(res.data.data.message);
+              setOpen(true);
+              setMestype('error')
+
             }
           }).catch(err=>{
-            setLoad({image:false}); 
-            setMessage("تصویر آپلود نشد");
+            setLoad({...load,image:false}); 
+            setMessage(err.response.data.data.message);
             setOpen(true);
-           
+            setMestype('error')
+
           });
     }  
-    // const uploadVideo=()=>{
-    //     const forms = new FormData();
-    //     forms.append('file',formdata.image);
-    //     Api.post(
-    //       SELFIE_VIDEO,
-    //       forms,
-    //       {
-    //         headers:authfile(auth)
-    //       }).then((res)=>{
-    //       if(res.statusCode===200){
-    //         setLoad({video:true}); 
-    //         setMessage("ویدیو آپلود شد");
-    //         setOpen(true);
-    //         setFormdata({video:"none"});
-    //       }
-    //     }).catch(err=>{
-    //       setLoad({video:false}); 
-    //       setMessage("ویدیو آپلود نشد");
-    //       setOpen(true);
-    //       setFormdata({video:"none"});
-    //     });
-    // } 
+    const uploadVideo=(files)=>{
+        let forms = new FormData();
+        forms.append('file',files);
+        Api.post(
+          SELFIE_VIDEO,
+          forms,
+          {
+            headers:authfile(auth)
+          }
+          ).then((res)=>{
+          if(res.data.statusCode===200){
+            setLoad({...load,video:true});     
+            setMessage("با موفقیت انجام شد");
+            setOpen(true);
+            setMestype('info')
+
+          }else{
+            setLoad({...load,video:false});     
+            setMessage(res.data.data.message);
+            setOpen(true);
+            setMestype('error')
+
+          }
+        }).catch(err=>{
+          setLoad({...load,video:false}); 
+          setMessage(err.response.data.data.message);
+          setOpen(true);
+          setMestype('error')
+
+        });
+          
+    } 
     
     const gotoNext=()=>{
-       if(load.video===true && load.image===true){
-          navigate('/')
-       }
-       else{
-         console.log('jj')
-       }
+       console.log(load)
+        if(load.video===true && load.image===true){
+         Api.post(VERIFICATION_DOCUMENTS,'',{
+           headers:authpost(auth),
+         }).then(res=>{
+           if(res.data.statusCode===200){
+            navigate('/');
+           }
+           else{
+              console.log(res.data)
+           }
+         })
+        }
     }
   return (
     <div>
@@ -190,7 +213,7 @@ export default function StepThree({onNext}) {
             </Button>
           </Box>
         </div>
-        <DigiAlert open={open} close={()=>setOpen(false)} message={message} type="info"/>
+        <DigiAlert open={open} close={()=>setOpen(false)} message={message} type={mesType}/>
     </div>
   )
 }

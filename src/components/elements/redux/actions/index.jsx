@@ -1,9 +1,10 @@
 
-const loginAction=(token,phone)=>{
+const loginAction=(token,phone,times)=>{
     return {
         type:"ADD_LOGIN",
         phone:phone,
-        token:token
+        token:token,
+        times:times
     }
 }
 const removelogAction=()=>{
@@ -112,6 +113,19 @@ const buyCrypto=(price,amount)=>{
         price:price
     }
 }
+
+const addUserState=(payload)=>{
+    return {
+        type:"ADD_STATE",
+        payload:payload
+    }
+}
+const initTime=(payload)=>{
+    return {
+        type:"INIT_TIME",
+        payload:payload,
+    }
+}
 export {
     authAction,
     logoutAction,
@@ -127,5 +141,7 @@ export {
     addAmount,
     addCrypto,
     addPay,
-    buyCrypto
+    buyCrypto,
+    addUserState,
+    initTime,
 }

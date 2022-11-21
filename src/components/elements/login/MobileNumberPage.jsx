@@ -4,9 +4,9 @@ import inputFontSize from '../global/inputFontSize'
 import Api from '../ApiConfig/Api';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch ,useSelector} from 'react-redux';
-import {loginAction} from '../redux/actions';
+import {initTime, loginAction} from '../redux/actions';
 import DigiAlert from '../global/DigiAlert';
-
+import {PHONE_CODE} from '../ApiConfig/Endpoints'
 const labelStyle={
   fontSize:"13px"
 };
@@ -35,13 +35,19 @@ export default function MobileNumberPage({send,phoneurl}) {
           }
         }
     }
-    const SendLogin=()=>{    
-      if(phone!=="")  {
+    const getCounter=async(number)=>{
+      await Api.get(PHONE_CODE(number)).then(res=>{
+        dispatch(initTime(res.data.data.result))
+      });
+    }
+    const SendLogin=(e)=>{    
+      if(phone!='')  {
         Api.post(phoneurl,{"phoneNumber":phone}).then(res=>{
           if(res.data.statusCode==200){
-           let token=res.data.data.result.tempToken;
-            dispatch(loginAction(token,phone));
-            localStorage.setItem('conf-return','/login')
+            const {tempToken,ttlSecond}=res.data.data.result;
+            dispatch(loginAction(tempToken,phone,ttlSecond));
+            localStorage.setItem('conf-return','/login');
+            e.preventDefault();
             navigate('/confirm')
           }
         }).catch(err=>{
@@ -57,7 +63,7 @@ export default function MobileNumberPage({send,phoneurl}) {
          <Typography className='boldfont' variant="p" component="div" sx={{fontSize:"20px"}}>
           ورود | ثبت نام
           </Typography>
-          <form>
+          <form >
              <FormGroup sx={{mt:"32px"}}>
                <FormLabel sx={labelStyle}>شماره موبایل</FormLabel>
                <TextField
@@ -73,7 +79,7 @@ export default function MobileNumberPage({send,phoneurl}) {
                />
              </FormGroup>
              <Box>
-             <Button  onClick={SendLogin} className='boxShadowUnset'  variant="contained" sx={{height:"55px" ,backgroundColor:"#424BFB",borderRadius:"8px"}}  fullWidth >
+             <Button onClick={SendLogin} className='boxShadowUnset'  variant="contained" sx={{height:"55px" ,backgroundColor:"#424BFB",borderRadius:"8px"}}  fullWidth >
                   ورود
              </Button>
              </Box>

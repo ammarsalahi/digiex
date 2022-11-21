@@ -6,22 +6,9 @@ import Api from '../ApiConfig/Api';
 import { useDispatch ,useSelector} from 'react-redux';
 import DigiAlert from '../global/DigiAlert';
 import { authAction ,loginAction,profilelogAction,addprofileAction} from '../redux/actions';
-import { LOGIN_PHONE,PHONE_CODE } from '../ApiConfig/Endpoints';
+import { LOGIN_PHONE,PHONE_CODE,LOGIN_CODE } from '../ApiConfig/Endpoints';
 import Countdown from 'react-countdown';
 
-const Completionist = () => <span>منقضی شد!</span>;
-
-// Renderer callback with condition
-const renderer = ({ hours, minutes, seconds, completed }) => {
-  if (completed) {
-    // Render a completed state
-    return <Completionist />;
-  } else {
-    // Render a countdown
-    return <FormLabel sx={labelStyle}>مهلت استفاده کد: {minutes}:{seconds}</FormLabel>;
-
-  }
-};
 const labelStyle={
   fontSize:"14px",
   mt:"30px",
@@ -35,14 +22,10 @@ const labelStyle={
   textAlign:"center",
  }
 
-export default function SecureCodePage({codeurl,number}) {
-    let {token} =useSelector(state=>state.login);
-    const [countValue,setCountValue]=useState({
-      value:0,
-      basic:1000,
-      result:0
-    });
-
+export default function SecureCodePage() {
+    let {token,phone,times} =useSelector(state=>state.login);
+    const [finaltime,setFinaltime]=useState("");
+    const [countValue,setCountValue]=useState(times);
     const [code,setCode]=useState({
       first:"",
       second:"",
@@ -62,23 +45,34 @@ export default function SecureCodePage({codeurl,number}) {
     const dispatch=useDispatch();
     
     let naviagte=useNavigate();
-    const handleCountValue=(times)=>{
-        const results=times * countValue.basic;
-        setCountValue({...countValue,value:times,result:results});
-    }
-    const getCounter=()=>{
-      Api.get(PHONE_CODE(number)).then(res=>{
-        console.log(res.data);
-        const value=res.data.data.result
-        handleCountValue(value);
+    
+    const getCounter=async()=>{
+      await Api.get(PHONE_CODE(phone)).then(res=>{
+        setCountValue(res.data.data.result);
+        console.log(res.data.data.result)
       });
+    }
+    const displayTime=(second)=>{
+      const min=Math.floor(second/60);
+      const sec=Math.floor(second%60);
+      setFinaltime(`${min<10?'0':''}${min}:${sec<10?'0':''}${sec}`);
     }
     useEffect(()=>{
       if(checked){
         inref.current[1].focus();
       }
-      getCounter();
-   },[countValue,Countdown]);
+
+      const interval = setInterval(() => {
+        setCountValue(countValue-1)
+        displayTime(countValue);
+        if(countValue<=0 || countValue<1){
+          clearInterval(interval);
+          setFinaltime("00:00");
+
+        }
+      }, 1000);
+      return () => clearInterval(interval);
+   },[countValue]);
 
 
     const handleChange=(props,idx,event)=>{
@@ -97,30 +91,34 @@ export default function SecureCodePage({codeurl,number}) {
     const handleOpend=(props)=>()=>{
       setopend(props);
     }
-    const CheckCode =()=>{
-      Api.post(codeurl,
+    const CheckCode =(event)=>{
+    const finalcode=`${code.first}${code.second}${code.third}${code.forth}${code.fivth}`
+    if(finalcode!=""){
+      event.preventDefault();
+      Api.post(LOGIN_CODE,
         {
-          "confirmationCode":`${code.first}${code.second}${code.third}${code.forth}${code.fivth}`,
+          "confirmationCode":finalcode,
           "tempToken": token,
         }).then(res=>{
             if(res.data.statusCode===200){
-                const {userId,fullName}=res.data.data.result;
+                  const {userId,fullName}=res.data.data.result;
                 
-                dispatch(authAction(res.data.token));
-               dispatch(profilelogAction("",userId,fullName));
-              if(fullName===" "){
-                naviagte('/register');
-              }else{
-                naviagte('/');
-              }
-            }else{
-              setmessage(err.response.data.data.message);
-              setopen(true);
+                  dispatch(authAction(res.data.token));
+                  dispatch(profilelogAction("",userId,fullName));
+                  if(fullName===" "){
+                    naviagte('/register');
+                  }else{
+                    naviagte('/');
+                  }
             }
         
       }).catch(err=>{
-        console.log(err)
-      })
+        setmessage(err.response.data.data.message);
+        setopen(true);
+        setCode({first:"",second:"",third:"",forth:"",fivth:""});
+      });
+    }
+      
     }
     const returnBack=()=>{
       let navs=localStorage.getItem('conf-return');
@@ -129,14 +127,15 @@ export default function SecureCodePage({codeurl,number}) {
         naviagte(navs);
       }
     }
-    const sendAgain=()=>{
-      Api.post(LOGIN_PHONE,{"phoneNumber":number}).then(res=>{
+    const sendAgain=(event)=>{
+      event.preventDefault();
+      Api.post(LOGIN_PHONE,{"phoneNumber":phone}).then(res=>{
         if(res.data.statusCode==200){
           token=res.data.data.result.tempToken;
-          dispatch(loginAction(token,number));
+          dispatch(loginAction(token,phone));
           setmessaged('کد تایید دوباره ارسال شد')
           setopend(true)
-          getCounter()
+          getCounter();
         }
       }).catch(err=>console.log(err));
     }
@@ -151,10 +150,10 @@ export default function SecureCodePage({codeurl,number}) {
                 </Button>
               </Box>
      
-          <form>
+          <form onSubmit={CheckCode}>
              <FormGroup>
                <FormLabel sx={labelStyle}>
-               کد تایید به شماره موبایل {number} ارسال شد.
+               کد تایید به شماره موبایل {phone} ارسال شد.
                </FormLabel>
                <Box className="d-flex justify-content-between">    
                <TextField
@@ -225,20 +224,17 @@ export default function SecureCodePage({codeurl,number}) {
              </FormGroup>
              <Box>
                <Box className='d-flex justify-content-between' >
-                   <Countdown
-                    date={Date.now()+countValue.result}
-                    renderer={renderer}
-                  />
-                  <Button size="small" onClick={sendAgain}>
+               <FormLabel sx={labelStyle}>مهلت استفاده کد: {finaltime==="00:00"?'منقضی شد!':finaltime}</FormLabel>
+                 {finaltime==="00:00" && <Button size="small" onClick={sendAgain}>
                   ارسال مجدد کد      
-                    </Button>
+                    </Button>}
               </Box>
               <Button 
                 variant="contained" 
                 className='boxShadowUnset' 
                 sx={{height:"55px" ,backgroundColor:"#424BFB"}}  
                 fullWidth
-                 onClick={CheckCode}
+                 type="submit"
               >
                   بررسی 
              </Button>

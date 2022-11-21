@@ -16,10 +16,6 @@ import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
 
 import Dashboard from './components/pages/Dashboard';
-import SuccessPayment from './components/pages/SuccessPayment';
-import UnSuccessPayment from './components/pages/UnSuccessPayment';
-import SuccessSales from './components/pages/SuccessSales';
-import UnSuccessSales from './components/pages/UnSuccessSales';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Transaction from "./components/pages/Transaction";
 import BankAccount from "./components/pages/BankAccount";
@@ -34,6 +30,7 @@ import MainDashboard from "./components/pages/MainDashboard";
 import textTheme from "./components/elements/global/TextFieldTheme";
 import Confirm from './components/pages/Confirm';
 import Referral from './components/pages/Referral';
+import Payment from './components/pages/Payment';
 
 const cacheRtl = createCache({
   key: 'muirtl',
@@ -58,25 +55,8 @@ function App() {
               <MainDashboard/>
             </PrivateRoute>
           } />
-          <Route path="/success-payment" element={
-            <PrivateRoute>
-              <SuccessPayment/>
-            </PrivateRoute>
-          } />
-          <Route path="/unsuccess-payment" element={
-            <PrivateRoute>
-              <UnSuccessPayment/>
-            </PrivateRoute>
-          } />
-          <Route path="/success-sales" element={
-            <PrivateRoute>
-              <SuccessSales/>
-            </PrivateRoute>
-          } />
-          <Route path="/unsuccess-sales" element={
-            <PrivateRoute>
-              <UnSuccessSales/>
-            </PrivateRoute>
+         <Route path="/payment" exact element={
+              <Payment/>
           } />
           <Route path="/transactions" element={
             <PrivateRoute>
@@ -101,6 +81,21 @@ function App() {
           <Route path="/verification" element={
             <PrivateRoute>
               <Verification/>
+            </PrivateRoute>
+          }/>
+          <Route path="/verification/info" element={
+            <PrivateRoute>
+              <Verification stepNumber={0}/>
+            </PrivateRoute>
+          }/>
+          <Route path="/verification/rule" element={
+            <PrivateRoute>
+              <Verification stepNumber={1}/>
+            </PrivateRoute>
+          }/>
+          <Route path="/verification/document" element={
+            <PrivateRoute>
+              <Verification stepNumber={2}/>
             </PrivateRoute>
           }/>
           <Route path="/referral" element={

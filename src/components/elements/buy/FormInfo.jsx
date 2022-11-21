@@ -4,7 +4,7 @@ import {  InfoOutlined } from '@mui/icons-material';
 import BuyFee from '../dialogs/BuyFee';
 import { useSelector } from 'react-redux';
 
-export default function FormInfo({ title,description}) {
+export default function FormInfo({ title,description,sizeval}) {
   const [open, setopen] = React.useState(false);
   const [sizewidth, setSizewidth] = React.useState('auto');
   const data=useSelector(state=>state.crypto)
@@ -27,6 +27,9 @@ export default function FormInfo({ title,description}) {
       setSizewidth('500px')
       
     }
+  }
+  const getLocalNumber=(num)=>{
+      return num.toLocaleString()
   }
 
   React.useEffect(() => {
@@ -51,7 +54,7 @@ export default function FormInfo({ title,description}) {
             </Typography>
             <hr />
             <Typography variant="p" component="div"  sx={{fontSize : "14px"}}>
-              {data.amount}
+               {getLocalNumber(data.amount)} BUSD
             </Typography>
           </div>
           <div className='d-flex justify-content-between info-list'>
@@ -60,7 +63,7 @@ export default function FormInfo({ title,description}) {
             </Typography>
             <hr />
             <Typography variant="p" component="div"  sx={{fontSize : "14px"}}>
-            {data.section===1?data.buyprice:data.sellprice}
+              {data.section===1?getLocalNumber(data.buyprice):getLocalNumber(data.sellprice)} تومان
             </Typography>
           </div>
           <div className='d-flex justify-content-between info-list'>
@@ -69,7 +72,7 @@ export default function FormInfo({ title,description}) {
             </Typography>
             <hr />
             <Typography variant="p" component="div"  sx={{fontSize : "14px"}}>
-              {data.totalPrice}
+              {getLocalNumber(data.totalPrice)} تومان
             </Typography>
           </div>
           <div className='d-flex justify-content-between info-list'>
@@ -103,7 +106,7 @@ export default function FormInfo({ title,description}) {
       </div>
        <div>
         <div className="d-lg-block d-md-block d-sm-none d-none info-card">
-          <Box sx={{ backgroundColor: 'rgba(243, 244, 249, 1)', borderRadius: "8px" ,height:"55px"}}>
+          <Box sx={sizeval===0?{backgroundColor: 'rgba(243, 244, 249, 1)', borderRadius: "8px" ,height:"55px",mt:9.5}:{ backgroundColor: 'rgba(243, 244, 249, 1)', borderRadius: "8px" ,height:"55px"}}>
           <div className='d-flex justify-content-between py-3 px-3'>
             <Typography variant="p" component="div">
               مبلغ پرداخت نهایی

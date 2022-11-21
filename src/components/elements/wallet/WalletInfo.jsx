@@ -23,7 +23,7 @@ import { ReactComponent as Tether } from '../../../img/icons/coin/Shape.svg';
 import Api from '../ApiConfig/Api';
 import {GET_CRYPTO,WALLET_FIAT} from '../ApiConfig/Endpoints'
 import {authpost} from '../ApiConfig/ApiHeaders';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 
 const cardstyle = {
   borderRadius: '12px',

@@ -25,7 +25,7 @@ export default function Register() {
     const [formdata, setformdata] = React.useState({
       firstname:"",
       lastname:"",
-      code:"none"
+      code:""
     });
     const [isload, setisload] = React.useState({
       firstname:false,
@@ -119,6 +119,16 @@ export default function Register() {
              </FormGroup>
              </Box>
              <FormGroup>
+               <FormLabel sx={labelStyle}>ایمیل</FormLabel>
+               <TextField
+                  variant="outlined"
+                  color="digi"
+                  placeholder="example@mail.com"
+                  sx={textfieldstyle}
+                  type="email"
+               />
+             </FormGroup>
+             <FormGroup>
                <FormLabel sx={labelStyle}>کد معرف</FormLabel>
                <TextField
                   variant="outlined"
@@ -132,7 +142,7 @@ export default function Register() {
                   }}
                />
              </FormGroup>
-             <Box>
+             <Box sx={{mb:'52px'}}>
              <Button 
                 variant="contained" onClick={submit} 
                 className='boxShadowUnset' 

@@ -43,7 +43,7 @@ export const REQUEST_BUY =(id)=>_("/requests/buy/"+id)
 
 export const REQUEST_BUY_PAGE =(size,number)=>_("/requests/buy/"+size+"/"+number)
 
-export const REQUEST_BUY_STEP1 =_("/requests/buy/step1")
+export const REQUEST_BUY_STEP1 =_("/requests/buy/step1/")
 
 export const BUY_STEP2_CREDIT =(id)=>_("/requests/buy/step2/"+id+"/creditcard/digiexwallet/")
 

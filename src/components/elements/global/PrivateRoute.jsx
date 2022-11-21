@@ -4,7 +4,11 @@ import Navbar from '../global/Navbar';
 import Sidebar from '../global/Sidebar';
 import { Box } from '@mui/material'
 import SideMobileDialog from './SideMobileDialog';
-import { useSelector } from 'react-redux';
+import Api from '../ApiConfig/Api';
+import {useSelector,useDispatch} from 'react-redux';
+import {VERIFICATION_STATE_ID} from '../ApiConfig/Endpoints'
+import {authpost} from '../ApiConfig/ApiHeaders';
+import { addUserState } from '../redux/actions';
 
 export default function PrivateRoute({children}) {
   const [isSide, setisSide] = React.useState(false);
@@ -12,7 +16,9 @@ export default function PrivateRoute({children}) {
   const [isSideClick,setisSideClick]=React.useState(false);
   const [isMobile,setIsMobile]=React.useState(false);
 
-  const {auth} =useSelector(state=>state.authtoken);  
+  const {auth} =useSelector(state=>state.authtoken); 
+  const {userid}=useSelector(state=>state.profile);
+  const dispatch=useDispatch();
   // const auth="jjj";
   const LoadNavMobile=(event)=>{
     setIsMobile(true);
@@ -35,11 +41,20 @@ export default function PrivateRoute({children}) {
       setcolClass('');
     }
       
+    }
   }
+  const getUserState=async()=>{
+      await Api.get(VERIFICATION_STATE_ID(userid),{
+        headers:authpost(auth)
+      }).then(res=>{
+        dispatch(addUserState(res.data.data.result))
+      })
   }
+
    React.useEffect(() => {
       loadingSideScreen();
       window.addEventListener('resize',loadingSideScreen,false); 
+      getUserState();
    }, [isSide,colClass]);
   
   const LoadSideDesk = (event) => {

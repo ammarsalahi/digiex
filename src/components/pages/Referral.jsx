@@ -17,11 +17,11 @@ import { ReactComponent as svgsicon3 } from '../../img/icons/shareicon.svg'
 import Svg from '../utils/Svgs'
 import { Button } from '@mui/material'
 import { ReactComponent as AddCircle } from '../../img/icons/circle-add.svg';
-import { styled } from '@mui/material/styles';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import AddRefCode from '../elements/dialogs/AddRefCode';
+import DigiSwitch from '../elements/global/DigiSwitch';
 
 function createData(date, name, operation, count, address, txid, station, auth) {
     return { date, name, operation, count, address, txid, station, auth };
@@ -64,57 +64,7 @@ const headstyle = {
 
 
 
-const IOSSwitch = styled((props) => (
-    <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
-))(({ theme }) => ({
-    width: 42,
-    height: 26,
-    padding: 0,
-    '& .MuiSwitch-switchBase': {
-        padding: 0,
-        margin: 2,
-        transitionDuration: '300ms',
-        '&.Mui-checked': {
-            transform: 'translateX(16px)',
-            color: '#fff',
-            '& + .MuiSwitch-track': {
-                backgroundColor: theme.palette.mode === 'dark' ? '#2ECA45' : '#424BFB',
-                opacity: 1,
-                border: 0,
-            },
-            '&.Mui-disabled + .MuiSwitch-track': {
-                opacity: 0.5,
-            },
-        },
-        '&.Mui-focusVisible .MuiSwitch-thumb': {
-            color: '#33cf4d',
-            border: '6px solid #fff',
-        },
-        '&.Mui-disabled .MuiSwitch-thumb': {
-            color:
-                theme.palette.mode === 'light'
-                    ? theme.palette.grey[100]
-                    : theme.palette.grey[600],
-        },
-        '&.Mui-disabled + .MuiSwitch-track': {
-            opacity: theme.palette.mode === 'light' ? 0.7 : 0.3,
-        },
-    },
-    '& .MuiSwitch-thumb': {
-        boxSizing: 'border-box',
-        width: 22,
-        height: 22,
-    },
-    '& .MuiSwitch-track': {
-        borderRadius: 26 / 2,
-        backgroundColor: theme.palette.mode === 'light' ? '#fff' : '#111',
-        opacity: 1,
-        border: "1px solid #000",
-        transition: theme.transitions.create(['background-color'], {
-            duration: 500,
-        }),
-    },
-}));
+
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -241,11 +191,7 @@ export default function Referral() {
                                                 </TableCell>
                                                 <TableCell sx={cellstyle}>{row.operation}</TableCell>
                                                 <TableCell sx={cellstyle} className="d-flex align-items-center">
-                                                    <FormGroup>
-                                                        <FormControlLabel
-                                                            control={<IOSSwitch sx={{ m: 0 }} defaultChecked />}
-                                                        />
-                                                    </FormGroup>
+                                                    <DigiSwitch defaultChecked={true} cheched={true}/>
                                                     <Svg Component={svgsicon2} alt="trash" className='me-4' style={{ cursor: "pointer" }} />
                                                     <Svg Component={svgsicon3} alt="trash" className='me-4' style={{ cursor: "pointer" }} />
 
