@@ -74,6 +74,7 @@ export default function DigiSelect({sectiontype}) {
           headers: authpost(auth)
         }).then(res=>{
           setCrypto(res.data.data.result);
+          console.log(res.data);
         })
    }
    useEffect(()=>{

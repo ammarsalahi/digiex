@@ -29,7 +29,8 @@ export default function FormInfo({ title,description,sizeval}) {
     }
   }
   const getLocalNumber=(num)=>{
-      return num.toLocaleString()
+       const nums=parseFloat(num)
+      return nums.toLocaleString()
   }
 
   React.useEffect(() => {
@@ -112,7 +113,7 @@ export default function FormInfo({ title,description,sizeval}) {
               مبلغ پرداخت نهایی
             </Typography>
             <Typography variant="p" component="div">
-             {data.totalPrice}
+            {getLocalNumber(data.totalPrice)} تومان
             </Typography>
           </div>
         </Box>
@@ -124,7 +125,7 @@ export default function FormInfo({ title,description,sizeval}) {
               مبلغ پرداخت نهایی
             </Typography>
             <Typography variant="p" component="div">
-              {data.totalPrice} 
+            {getLocalNumber(data.totalPrice)} تومان
             </Typography>
           </div>
         </Box>

@@ -65,7 +65,9 @@ export const DISCOUNDS_TYPES = _('/discounts/types/');
 
 export const DISCOUNDS = _('/discounts/');
 
-export const DISCOUNDS_ID =(id)=> _('/discounts/types/'+id+"/");
+export const DISCOUNTS_ID =(id)=> _('/discounts/types/'+id+"/");
+
+export const DISCOUNTS_VALIDATE =_("/discounts/validate/");
 
 export const GET_CRYPTO =_("/cryptocurrencies/");
 

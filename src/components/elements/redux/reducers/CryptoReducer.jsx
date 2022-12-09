@@ -5,6 +5,7 @@ const initialState={
     buyprice: 0,
     sellprice:0,
     priceHistoryId: 0,
+    discounts:"",
     section:1,
     pay:0
 }
@@ -19,6 +20,7 @@ const CryptoReducer=(state=initialState,action)=>{
                 sellprice: action.sell,
                 buyprice: action.buy,
                 priceHistoryId: action.priceHistoryId,
+                discounts: action.discounts,
                 section:action.section,
                 pay:action.pay
             }
@@ -46,13 +48,18 @@ const CryptoReducer=(state=initialState,action)=>{
         case "ADD_AMOUNT":
             return {
                     ...state,
-                    amount: action.amount ,
+                    amount: action.payload ,
             }   
         case "ADD_PAY":
                 return {
                         ...state,
                         pay: action.payload ,
-                }      
+                }  
+        case "ADD_DISCOUNT":
+                    return {
+                            ...state,
+                            discounts: action.payload ,
+                    }             
         case "ADD_CRYPTO":
                 return {
                     ...state,

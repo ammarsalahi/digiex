@@ -12,7 +12,7 @@ import Api from '../ApiConfig/Api'
 import {useDispatch, useSelector} from 'react-redux'
 import {authpost} from '../ApiConfig/ApiHeaders';
 import {addPay,addAmount,buyCrypto, addTotal} from '../redux/actions'
-import {REQUEST_BUY_STEP1} from '../ApiConfig/Endpoints';
+import {REQUEST_BUY_STEP1,DISCOUNTS_VALIDATE} from '../ApiConfig/Endpoints';
 import DigiSwitch from '../global/DigiSwitch';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -75,25 +75,37 @@ const btnstyle={
 export default function FormTabs({tabvalue,handleChange,openprop}) {
 
   const {auth}=useSelector(state=>state.authtoken);
-  const {pay,amount,sellprice,buyprice,section} =useSelector(state=>state.crypto);
+  const {pay,amount,sellprice,buyprice,section,totalPrice,cryptocurrencyId,priceHistoryId} =useSelector(state=>state.crypto);
+  const crypto =useSelector(state=>state.crypto);
+
   const dispatch=useDispatch();
 
-  const [payment,setPayment]=React.useState(pay);
-  const [amountval,setAmountval]=React.useState(amount);
+  const [payment,setPayment]=React.useState(crypto.pay);
+  const [amountval,setAmountval]=React.useState(crypto.amount);
   const [discount,setDiscount]=React.useState("");
   const [ifdiscount,setIfdiscount]=React.useState(false)
+  const [discountError,setDiscountError]=React.useState("");
 
   const handlePay=(event)=>{
-    //  setPayment(event.target.value);
-    //  dispatch(addPay(event.target.value))
-    //  dispatch(buyCrypto(buyprice,amount))
+    const val=event.target.value
+    setPayment(val);
+    dispatch(addPay(parseInt(val)))
+    dispatch(addTotal(parseInt(val)))
+    if(val>crypto.buyprice){
+      const amounts=parseFloat(val / crypto.buyprice).toFixed(2)
+      dispatch(addAmount(amounts))
+      setAmountval(amounts)
+    }
   }
 
   const handleAmount=(event)=>{
-  //   setAmountval(event.target.value);
-  //   dispatch(addAmount(parseInt(event.target.value)));
-    // dispatch(addTotal(values))
-
+    const val=event.target.value
+    setAmountval(val);
+    dispatch(addAmount(parseFloat(val)));
+    const tot=parseFloat(val) * crypto.buyprice
+      dispatch(addPay(parseInt(tot)))
+      dispatch(addTotal(parseInt(tot)))
+    
   }
   const [sizewidth, setSizewidth] = React.useState('auto');
   const [open,setopen]=React.useState(openprop);
@@ -111,22 +123,6 @@ export default function FormTabs({tabvalue,handleChange,openprop}) {
       
     }
   }
-  const getTotal=()=>{
-    // if(section===1){
-    //   if(payment > 1){
-    //      if(payment > buyprice){
-    //         dispatch(addTotal(payment));
-    //         const amounts=parseFloat(payment / buyprice).toFixed(2)
-    //          dispatch(addAmount(amounts))
-    //          setAmountval(amounts)
-    //      }
-    //   }else{
-    //     const tot=amount * buyprice
-    //     setPayment(tot)
-    //     dispatch(addTotal(tot));
-    //   }
-    // }
-  }
    const handleChangeDis=()=>{
       if(ifdiscount===true){
         setIfdiscount(false);
@@ -139,8 +135,7 @@ export default function FormTabs({tabvalue,handleChange,openprop}) {
     sizeDialog();
     window.addEventListener('resize',sizeDialog,false);
     setopen(openprop);
-    getTotal();
-  },[sizewidth,openprop,amountval,buyprice,payment]);
+  },[sizewidth,openprop]);
 
   const [btnshop, setbtnshop] = React.useState({
     btn25:"primary",
@@ -194,13 +189,38 @@ export default function FormTabs({tabvalue,handleChange,openprop}) {
     setopen({...open,[props]:false});
   }
  
+  const validateDiscount=()=>{
+    console.log(discount)
+    Api.post(DISCOUNTS_VALIDATE+"cccccc",{},{
+      headers:authpost(auth),
+    }).then(res=>{
+      if(res.data.data.reslut===false){
+           setDiscountError(res.data.data.message);
+           console.log(res.data.data.message)
+      }
+      console.log(res.data)
+    }).catch(err=>{
+      console.log(err.response.data.data.message)
+       setDiscountError(err.response.data.data.message);
+    })
+  }
+
+  const handleDiscount=(e)=>{
+      setDiscount(e.target.value);
+      if(e.target.value.length >= 7){
+          validateDiscount()
+      }else{
+        setDiscountError("");
+      }
+  }
   const submitBuy=()=>{
     Api.post(REQUEST_BUY_STEP1,{
-      "cryptocurrencyId": 0,
-      "amount": 0,
-      "totalPrice": 0,
-      "price": 0,
-      "priceHistoryId": 0
+      "cryptocurrencyId": crypto.cryptocurrencyId,
+      "amount": crypto.amount,
+      "totalPrice": crypto.totalPrice,
+      "price": crypto.buyprice,
+      "priceHistoryId": crypto.priceHistoryId,
+      "discountCode": crypto.discounts    
     },{
       headers:authpost(auth),
     }).then(res=>{
@@ -276,12 +296,16 @@ export default function FormTabs({tabvalue,handleChange,openprop}) {
                   />
               </FormGroup>
               {ifdiscount? 
-                <TextField color='digi' size="small" placeholder="کد تخفیف را وارد کنید" fullWidth/>
+                <TextField color='digi' size="small"
+                  value={discount} onChange={handleDiscount} 
+                  placeholder="کد تخفیف را وارد کنید" fullWidth
+                  helperText={discountError}
+                  />
                :null}
               </Box>
             </FormGroup>
           <Box className='d-lg-block d-md-block d-sm-none d-none form-button' >
-            <Button variant="contained" className='boxShadowUnset' onClick={handleOpen('buy')}  sx={btnstyle}  fullWidth>
+            <Button variant="contained" className='boxShadowUnset' onClick={submitBuy}  sx={btnstyle}  fullWidth>
               خرید بایننس کوین
             </Button>
           </Box>

@@ -65,7 +65,7 @@ const addCryptoId=(payload)=>{
 const addAmount=(payload)=>{
     return {
       type:"ADD_AMOUNT",
-      amount: payload ,
+      payload: payload ,
     }  
 }
 const addPrice=(payload)=>{
@@ -102,6 +102,13 @@ const addCrypto=(id,buy,sell,history,section)=>{
 const addPay=(payload)=>{
     return {
       type:"ADD_PAY",
+      payload: payload
+    }  
+}
+
+const addDiscount=(payload)=>{
+    return {
+      type:"ADD_DISCOUNT",
       payload: payload
     }  
 }
